@@ -1,0 +1,59 @@
+Arts目录说明
+Arts是美术资源目录
+所有的动画资源跟图片PSD 资源都存放到此目录
+分为prgect(战场)Room(房间)临时Prgect 
+
+
+
+
+unity美术资源命名
+Res-美术资源（PSB，特效序列帧，动画序列帧）
+       0.1 Partner-伙伴
+             Pa_类型_编号
+                  资源
+                  动画
+                  Prefabs
+       0.2 Enemy-敌人
+             En_类型_编号
+                  资源
+                  动画
+                  Prefabs
+       0.3 Warboss-主角
+             War_编号
+                  资源
+                  动画
+                  Prefabs
+       0.4 GJJ-主体
+             GJJ_编号
+                  资源
+                  动画
+                  Prefabs
+       0.5 Special-特效                                   
+             Sp_类型_编号            
+                  (资源
+                  动画
+                  Prefabs)
+     0.6 Scenes-场景                                   
+             Sc_类型_编号            
+                  (资源
+                  动画
+                  Prefabs)
+
+
+
+类型：Soot烟尘 
+EX 尾气
+PK 炮口 
+QK 枪口  
+ZD 子弹   
+BZ 爆炸
+PD 炮弹
+SJ 受击
+角色部件命名
+类型_部件缩写_编号
+PA_T     头
+PA_J     肩
+PA_B     臂   01前大臂   02前小臂  03前手   04后大臂  05后小臂   06后手
+PA_X     胸
+PA_T     腿   01前大腿   02小腿    03后大腿  04后小腿   05臀
+PA_W    武器

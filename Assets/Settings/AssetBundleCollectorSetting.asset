@@ -1,0 +1,158 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 185f6993d5150494d98da50e26cb1c25, type: 3}
+  m_Name: AssetBundleCollectorSetting
+  m_EditorClassIdentifier: 
+  ShowPackageView: 0
+  EnableAddressable: 1
+  UniqueBundleName: 0
+  ShowEditorAlias: 1
+  Packages:
+  - PackageName: MainPackage
+    PackageDesc: 
+    Groups:
+    - GroupName: Configs
+      GroupDesc: "\u6240\u6709\u914D\u7F6E\u8868"
+      AssetTags: Configs
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/GameRes/Configs
+        CollectorGUID: 69ecbc61d7bd6a64d8775ff5e1b92002
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: HotFixDLL
+      GroupDesc: "\u70ED\u66F4\u65B0DLL"
+      AssetTags: HotFixDLL
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/GameRes/HotFixDLL
+        CollectorGUID: ad601a37c66152d44b6bee11983a3969
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameRes/GameCore.prefab
+        CollectorGUID: 5b1f4b6da13d5b0419a140a12d86f62a
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackSeparately
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: Scene
+      GroupDesc: "\u573A\u666F"
+      AssetTags: Scene
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/GameRes/Scene
+        CollectorGUID: 814d42940d510e04aa1ce4ed60644e67
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackSeparately
+        FilterRuleName: CollectScene
+        AssetTags: 
+        UserData: 
+    - GroupName: UIPrefab
+      GroupDesc: "\u6240\u6709UI\u9884\u8BBE"
+      AssetTags: UIPrefab
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/GameRes/UI
+        CollectorGUID: 55e2a8a7d05eed24cb6e7afd7df9a7a1
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackSeparately
+        FilterRuleName: CollectPrefab
+        AssetTags: 
+        UserData: 
+    - GroupName: Actor
+      GroupDesc: "\u602A\u7269\u7B49"
+      AssetTags: Actor
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/GameRes/Player/Enemy
+        CollectorGUID: f29800767ddefa24bb7bc5a3a986d69c
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackSeparately
+        FilterRuleName: CollectPrefab
+        AssetTags: 
+        UserData: 
+    - GroupName: Effect
+      GroupDesc: "\u6548\u679C\u8868\u73B0"
+      AssetTags: Effect
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/GameRes/Effect/Fight
+        CollectorGUID: 8114e735fdd5c6049ba31e835621e92a
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectPrefab
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameRes/Effect/Common
+        CollectorGUID: a8e85e541c53ca943b9fe462748ee80e
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: Icons
+      GroupDesc: "\u6E38\u620F\u9053\u5177\u6280\u80FD\u7B49Icon"
+      AssetTags: Icons
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/GameRes/Icons/Skill
+        CollectorGUID: 6e6818c0c8dc5054fb7c9cce340147de
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectSprite
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameRes/Icons/Partner
+        CollectorGUID: 8fd2de8267eecd244bf4f138be309684
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectSprite
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameRes/Icons/Equip
+        CollectorGUID: 411cc10cece2d6f4598704af86e99ec1
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: Skills
+      GroupDesc: "\u73A9\u5BB6\u6280\u80FD\u5BF9\u8C61"
+      AssetTags: Skills
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/GameRes/Player/Skill
+        CollectorGUID: 0c48e8c727f4b3c46a1c02956ea39646
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackSeparately
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
