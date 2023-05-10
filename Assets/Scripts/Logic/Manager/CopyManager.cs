@@ -21,14 +21,41 @@ namespace Logic.Manager
     {
         public GameCopyData m_DiamondCopyData;
         public GameCopyData m_CoinCopyData;
+        public GameCopyOilData m_OilCopyData;
 
         public int CurSelectedLevel { get; private set; }
         public int CurCDTime { get; set; }
+
+        /// <summary>
+        /// 原油副本BOSS当前等级
+        /// </summary>
+        int m_curBossLevel;
+        public int CurBossLevel { get => m_curBossLevel;
+            set {
+                if( m_curBossLevel != value)
+                {
+                    m_curBossLevel = value;
+                    EventManager.Call(LogicEvent.Fight_OilBossLevelChanged, value);
+                }
+                
+            } 
+        } 
+
+        /// <summary>
+        /// 原油副本Boss当前的攻击次数
+        /// </summary>
+        public int CurBossAttackCount { get; set; } //记录当前副本boss攻击次数
+
+        /// <summary>
+        /// 原油副本玩家输入的总伤害
+        /// </summary>
+        public BigDouble CurTotalDamage { get; set; } //记录当前总伤害
 
         public void Init(S2C_Login pMsg)
         {
             m_DiamondCopyData = pMsg.m_DiamondCopyData;
             m_CoinCopyData = pMsg.m_CoinCopyData;
+            m_OilCopyData = pMsg.m_OilCopyData;
 
             //已经跨天 重置
             //TODO 临时在客户端实现
@@ -43,26 +70,37 @@ namespace Logic.Manager
             switch ((LevelType)pMsg.m_LevelType)
             {
                 case LevelType.DiamondCopy:
-                {
-                    m_DiamondCopyCount = 1;
-                    CurCDTime = GameDefine.CopyDiamondTime;
-                    var _Para = new FightSwitchTo { m_SwitchToType = SwitchToType.ToDiamondCopy };
-                    EventManager.Call(LogicEvent.Fight_Switch, _Para);
-                    if (_Para.m_CanSwitchToNextNode == false)
-                        return;
-                }
+                    {
+                        m_DiamondCopyCount = 1;
+                        CurCDTime = GameDefine.CopyDiamondTime;
+                        var _Para = new FightSwitchTo { m_SwitchToType = SwitchToType.ToDiamondCopy };
+                        EventManager.Call(LogicEvent.Fight_Switch, _Para);
+                        if (_Para.m_CanSwitchToNextNode == false)
+                            return;
+                    }
                     break;
                 case LevelType.CoinCopy:
-                {
-                    CurCDTime = GameDefine.CopyCoinTime;
-                    var _Para = new FightSwitchTo { m_SwitchToType = SwitchToType.ToCoinCopy };
-                    EventManager.Call(LogicEvent.Fight_Switch, _Para);
-                    if (_Para.m_CanSwitchToNextNode == false)
-                        return;
-                    break;
-                }
-                case LevelType.EngineCopy:
-                    break;
+                    {
+                        CurCDTime = GameDefine.CopyCoinTime;
+                        var _Para = new FightSwitchTo { m_SwitchToType = SwitchToType.ToCoinCopy };
+                        EventManager.Call(LogicEvent.Fight_Switch, _Para);
+                        if (_Para.m_CanSwitchToNextNode == false)
+                            return;
+                        break;
+                    }
+                case LevelType.OilCopy:
+                    {
+                        CurBossLevel = 1;
+                        CurBossAttackCount = 1;
+                        CurTotalDamage = 0;
+                        CurCDTime = GameDefine.CopyCoinTime;
+                        var _Para = new FightSwitchTo { m_SwitchToType = SwitchToType.ToOilCopy };
+                        EventManager.Call(LogicEvent.Fight_Switch, _Para);
+                        if (_Para.m_CanSwitchToNextNode == false)
+                            return;
+                        break;
+                    }
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -93,18 +131,30 @@ namespace Logic.Manager
 
                 TaskManager.Ins.DoTaskUpdate(TaskType.TT_2002, pMsg.m_Level);
             }
+            else if(pMsg.m_LevelType == (int)LevelType.OilCopy)
+            {
+                m_OilCopyData.m_Level = pMsg.m_Level;
+                m_OilCopyData.m_KeyCount = pMsg.m_KeyCount;
+                m_OilCopyData.m_BestDamageRecord = pMsg.m_CurTotalDamage;
+                m_OilCopyData.m_BestLevelRecord = pMsg.m_CurBossLevel;
+
+            }
 
             // 副本挑战成功返回到副本选择界面，再次打开进入副本界面
             UIManager.Ins.Show<UICopy>();
-            UIManager.Ins.Show<UICopyEnter>(pMsg.m_LevelType);
 
-            await UIManager.Ins.OpenUI<UICopyExit>(pMsg);
+            if(pMsg.m_LevelType != (int)LevelType.OilCopy)
+            {
+                UIManager.Ins.Show<UICopyEnter>(pMsg.m_LevelType);
+                await UIManager.Ins.OpenUI<UICopyExit>(pMsg);
+            }
         }
 
         public void OnUpdateCopyKeyCount(S2C_UpdateCopyKeyCount pMsg)
         {
             m_DiamondCopyData.m_KeyCount = pMsg.m_DiamondKeyCount;
             m_CoinCopyData.m_KeyCount = pMsg.m_CoinKeyCount;
+            m_OilCopyData.m_KeyCount = pMsg.m_OilKeyCount;
             EventManager.Call(LogicEvent.CopyKeyChanged);
         }
 
@@ -230,6 +280,41 @@ namespace Logic.Manager
             if (_data == null)
                 _data = CopyDiamondCfg.GetData(0);
             return RandomHelper.Range(_data.MonsterCountMin, _data.MonsterCountMax);
+        }
+
+        public int GetOilCopyBossCount()
+        {
+            return 1;
+        }
+
+        public BigDouble GetCopyOilBossATK()
+        {
+            var _data = CopyOilCfg.GetData(CurBossLevel);
+            if (_data == null)
+                _data = CopyOilCfg.GetData(0);
+
+            return 5 * CurBossAttackCount;// MathF.Pow(GameDefine.CopyOilBossAtkConstValue, CurBossAttackCount);
+        }
+
+        public BigDouble GetCopyOilBossHp()
+        {
+            var _data = CopyOilCfg.GetData(CurBossLevel);
+            if (_data == null)
+                _data = CopyOilCfg.GetData(0);
+
+            int multip = CurBossLevel - GameDefine.CopyOilConstValue;
+
+            multip = multip <= 0 ? 0 : multip;
+
+            return 1000;// (BigDouble)(_data.BOSSHPBase + (_data.BOSSHPGrow * CurBossLevel) * MathF.Pow(_data.BOSSHPGrowMultiple , multip));
+        }
+
+        public int GetCopyOilBossID()
+        {
+            var _data = CopyOilCfg.GetData(CurBossLevel);
+            if (_data == null)
+                _data = CopyOilCfg.GetData(0);
+            return _data.ResGroupId;
         }
 
         #endregion

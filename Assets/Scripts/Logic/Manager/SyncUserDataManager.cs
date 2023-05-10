@@ -20,7 +20,7 @@ namespace Logic.Manager
         
         public void OnSingletonInit()
         { 
-            m_EventGroup.Register(LogicEvent.SyncUserData, OnSyncUserData);  //只要数据发生变化就会收到消息，1秒后发送，会有重复数据
+            m_EventGroup.Register(LogicEvent.SyncUserData, OnSyncUserData);
         }
 
         void OnDestroy()

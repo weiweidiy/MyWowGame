@@ -1,4 +1,5 @@
 using System;
+using BreakInfinity;
 using Cysharp.Threading.Tasks;
 using Framework.EventKit;
 using Framework.Extension;
@@ -36,6 +37,7 @@ namespace Logic.UI.UIFight
         public GameObject m_NormalLevelNode;
         public GameObject m_DiamondCopyNode;
         public GameObject m_CoinCopyNode;
+        public GameObject m_OilCopyNode;
 
         #endregion
         
@@ -70,7 +72,10 @@ namespace Logic.UI.UIFight
         public TextMeshProUGUI m_DiamondLevelName;
         public TextMeshProUGUI m_DiamondCopyPro;
         public TextMeshProUGUI m_CoinLevelName;
-        
+        public TextMeshProUGUI m_OilLevelName;
+        public TextMeshProUGUI m_OilBoxNumber;
+        public Image m_OilBossHpBar;
+
         #endregion
 
         public Toggle m_AutoSkill;
@@ -82,6 +87,7 @@ namespace Logic.UI.UIFight
                 m_NormalLevelNode.Hide();
                 m_DiamondCopyNode.Hide();
                 m_CoinCopyNode.Hide();
+                m_OilCopyNode.Hide();
                 switch ((LevelType)o)
                 {
                     case LevelType.NormalLevel:
@@ -96,7 +102,9 @@ namespace Logic.UI.UIFight
                         m_CoinCopyNode.Show();
                         m_CoinLevelName.text = $"<color=#F3B736>金币副本 </color>{CopyManager.Ins.CurSelectedLevel}";
                         break;
-                    case LevelType.EngineCopy:
+                    case LevelType.OilCopy:
+                        m_OilCopyNode.Show();
+                        m_OilLevelName.text = $"<color=#F3B736>原油副本 </color>";
                         break;
                 }
             });
@@ -133,6 +141,26 @@ namespace Logic.UI.UIFight
             m_EventGroup.Register(LogicEvent.Fight_CopyDiamondCountChanged, ((i, o) =>
             {
                 m_DiamondCopyPro.text = $"{CopyManager.Ins.m_DiamondCopyCount}/{GameDefine.CopyDiamondCount}";
+            }));
+
+            //显示原油副本Boss血条
+            m_EventGroup.Register(LogicEvent.Fight_ShowOilBossHpBar, ((i, o) =>
+            {
+                m_OilBossHpBar.transform.parent.gameObject.SetActive(true);
+                m_OilBoxNumber.text = CopyManager.Ins.CurBossLevel.ToString();
+            }));
+
+            m_EventGroup.Register(LogicEvent.Fight_OilBossHpChanged, ((i, o) => {
+                var args = o as object[];
+                var curHp = (BigDouble)args[0];
+                var maxHp = (BigDouble)args[1];
+                m_OilBossHpBar.fillAmount = (float)(curHp / maxHp).ToDouble();
+            }));
+
+            m_EventGroup.Register(LogicEvent.Fight_OilBossLevelChanged, ((i,o) =>{
+                var level = (int)o;
+                m_OilBoxNumber.text = level.ToString();
+
             }));
             
             

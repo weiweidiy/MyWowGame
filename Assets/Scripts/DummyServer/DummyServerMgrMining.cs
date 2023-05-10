@@ -60,6 +60,11 @@ namespace DummyServer
                 case MiningType.Scope:
                     m_DB.m_MiningData.m_ScopeCount += count;
                     break;
+                case MiningType.CopperMine:
+                case MiningType.SilverMine:
+                case MiningType.GoldMine:
+                    m_DB.m_MiningData.m_MineCount += count;
+                    break;
             }
 
             SendS2CUpdateMiningData(miningDataType);

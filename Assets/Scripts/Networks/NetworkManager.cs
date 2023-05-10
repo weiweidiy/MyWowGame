@@ -154,6 +154,11 @@ namespace Networks
                     GameDataManager.Ins.Diamond = ((S2C_DiamondUpdate)pMsg).m_Diamond;
                 }
                     break;
+                case NetWorkMsgType.S2C_OilUpdate:
+                    {
+                        GameDataManager.Ins.Oil = ((S2C_OilUpdate)pMsg).m_Oil;
+                    }
+                    break;
                 case NetWorkMsgType.S2C_EquipOn:
                 {
                     EquipManager.Ins.OnEquipOn(pMsg as S2C_EquipOn);
@@ -268,6 +273,11 @@ namespace Networks
                     RewardManager.Ins.On_S2C_CommonReward(pMsg as S2C_CommonReward);
                 }
                     break;
+                case NetWorkMsgType.S2C_OilCopyReward:
+                    {
+                        RewardManager.Ins.On_S2C_OilCopyReward(pMsg as S2C_OilCopyReward);
+                    }
+                    break;
                 case NetWorkMsgType.S2C_UpdateMiningData:
                 {
                     MiningManager.Ins.On_S2C_UpdateMiningData(pMsg as S2C_UpdateMiningData);
@@ -306,6 +316,16 @@ namespace Networks
                 case NetWorkMsgType.S2C_UpdateCopyKeyCount:
                 {
                     CopyManager.Ins.OnUpdateCopyKeyCount(pMsg as S2C_UpdateCopyKeyCount);
+                }
+                    break;
+                case NetWorkMsgType.S2C_UpdateResearchTime:
+                {
+                    ResearchManager.Ins.OnUpdateResearchTime(pMsg as S2C_UpdateResearchTime);
+                }
+                    break;
+                case NetWorkMsgType.S2C_Researching:
+                {
+                    ResearchManager.Ins.OnResearching(pMsg as S2C_Researching);
                 }
                     break;
                 default:

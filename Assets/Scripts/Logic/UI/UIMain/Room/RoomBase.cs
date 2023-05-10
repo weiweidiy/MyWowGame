@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using BreakInfinity;
 using Framework.EventKit;
 using Framework.Extension;
@@ -19,23 +18,17 @@ namespace Logic.UI.UIMain.Room
     public class RoomBase : MonoBehaviour
     {
         private EventGroup m_EventGroup = new();
-        
-        [LabelText("房间类型")]
-        public RoomType m_RoomType; //房间类型
-        
-        [LabelText("房间等级")]
-        public TextMeshProUGUI m_RoomLevel; //房间等级
-        
-        [LabelText("房间效果")]
-        public TextMeshProUGUI m_RoomEffect; //房间效果
-        
-        [LabelText("房间升级消耗")]
-        public TextMeshProUGUI m_RoomCost; //房间升级消耗
-        
-        [LabelText("消耗节点")]
-        public GameObject m_CostNode;
-        [LabelText("满级节点")]
-        public GameObject m_MaxNode;
+
+        [LabelText("房间类型")] public RoomType m_RoomType; //房间类型
+
+        [LabelText("房间等级")] public TextMeshProUGUI m_RoomLevel; //房间等级
+
+        [LabelText("房间效果")] public TextMeshProUGUI m_RoomEffect; //房间效果
+
+        [LabelText("房间升级消耗")] public TextMeshProUGUI m_RoomCost; //房间升级消耗
+
+        [LabelText("消耗节点")] public GameObject m_CostNode;
+        [LabelText("满级节点")] public GameObject m_MaxNode;
 
         public ButtonEx m_Btn;
         public TextMeshProUGUI m_BtnText;
@@ -56,15 +49,16 @@ namespace Logic.UI.UIMain.Room
                 m_EventGroup.Register(LogicEvent.EquipAllATKEffectUpdate, (i, o) => ShowAddEffect());
                 m_EventGroup.Register(LogicEvent.EquipAllHPEffectUpdate, (i, o) => ShowAddEffect());
             }
-            
+
             if (m_RoomType == RoomType.HP)
             {
                 m_EventGroup.Register(LogicEvent.EquipAllHPEffectUpdate, (i, o) => ShowAddEffect());
             }
-            
+
             m_EventGroup.Register(LogicEvent.EngineAllEffectUpdate, (i, o) => ShowAddEffect());
+            m_EventGroup.Register(LogicEvent.ResearchCompleteEffectUpdate, (i, o) => ShowAddEffect());
         }
-        
+
         private void OnDestroy()
         {
             m_EventGroup.Release();
@@ -99,12 +93,12 @@ namespace Logic.UI.UIMain.Room
 
             return -1;
         }
-        
+
         protected BigDouble GetRoomUpgradeCost()
         {
             return Formula.GetGJJRoomUpgradeCost(m_RoomType, GetCurLevel());
         }
-        
+
         protected bool IsMaxLevel()
         {
             switch (m_RoomType)
@@ -129,12 +123,12 @@ namespace Logic.UI.UIMain.Room
 
             return false;
         }
-        
+
         protected bool IsCanUpgrade()
         {
             return GameDataManager.Ins.Coin >= GetRoomUpgradeCost();
         }
-        
+
         protected void ShowAddEffect()
         {
             switch (m_RoomType)
@@ -149,10 +143,10 @@ namespace Logic.UI.UIMain.Room
                     m_RoomEffect.text = Formula.GetGJJHPRecover().ToUIString();
                     break;
                 case RoomType.Critical:
-                    m_RoomEffect.text = (Formula.GetGJJCritical()*100).ToString("F2")+"%";
+                    m_RoomEffect.text = (Formula.GetGJJCritical() * 100).ToString("F2") + "%";
                     break;
                 case RoomType.CriticalDamage:
-                    m_RoomEffect.text = (Formula.GetGJJCriticalDamage()*100).ToUIStringFloat()+"%";
+                    m_RoomEffect.text = (Formula.GetGJJCriticalDamage() * 100).ToUIStringFloat() + "%";
                     break;
                 case RoomType.Speed:
                     m_RoomEffect.text = Formula.GetGJJAtkSpeed().ToString("F2") + "";
@@ -178,7 +172,7 @@ namespace Logic.UI.UIMain.Room
                 m_RoomLevel.text = "MAX";
                 return;
             }
-            
+
             m_RoomCost.text = GetRoomUpgradeCost().ToUIString();
             m_RoomLevel.text = "Lv: " + GetCurLevel();
             m_CostNode.Show();
@@ -199,12 +193,12 @@ namespace Logic.UI.UIMain.Room
                 m_RoomCost.color = Color.red;
             }
         }
-        
+
         protected virtual void OnCoinChanged(int arg1, object arg2)
         {
             if (IsMaxLevel())
                 return;
-            
+
             if (IsCanUpgrade())
             {
                 m_Btn.interactable = true;
@@ -220,7 +214,7 @@ namespace Logic.UI.UIMain.Room
                 m_RoomCost.color = Color.red;
             }
         }
-        
+
         protected virtual void OnClickUpgrade()
         {
             if (IsMaxLevel())
@@ -230,11 +224,11 @@ namespace Logic.UI.UIMain.Room
                 EventManager.Call(LogicEvent.ShowTips, "金币不足");
                 return;
             }
-            
+
             //扣钱
             var _Cost = GetRoomUpgradeCost();
             GameDataManager.Ins.Coin -= _Cost;
-            
+
             //升级
             DoUpgrade();
         }
@@ -276,9 +270,9 @@ namespace Logic.UI.UIMain.Room
                     TaskManager.Ins.DoTaskUpdate(TaskType.TT_3008, 1);
                     break;
             }
-            
+
             Refresh();
-            
+
             EventManager.Call(LogicEvent.RoomUpgraded, m_RoomType);
             EventManager.Call(LogicEvent.CoinChanged);
         }

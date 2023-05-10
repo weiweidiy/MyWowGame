@@ -53,6 +53,7 @@ namespace Logic.States.Game
             await UIManager.Ins.OpenUI<UICommonTips>();
             await UIManager.Ins.OpenUI<UIMainRight>();
             await UIManager.Ins.OpenUI<UIMainLeft>();
+            await UIManager.Ins.OpenUI<UIMainCommon>();
 
             //初始化某些游戏逻辑
             SingletonCreator.CreateSingleton<SyncUserDataManager>();

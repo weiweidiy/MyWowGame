@@ -33,6 +33,8 @@ namespace Networks
                     return JsonMapper.ToObject<C2S_GMAccount>(_Msg);
                 case NetWorkMsgType.S2C_DiamondUpdate:
                     return JsonMapper.ToObject<S2C_DiamondUpdate>(_Msg);
+                case NetWorkMsgType.S2C_OilUpdate:
+                    return JsonMapper.ToObject<S2C_OilUpdate>(_Msg);
                 case NetWorkMsgType.C2S_SyncPlayerData:
                     return JsonMapper.ToObject<C2S_SyncPlayerData>(_Msg);
                 case NetWorkMsgType.C2S_EquipOn:
@@ -115,6 +117,8 @@ namespace Networks
                     return JsonMapper.ToObject<C2S_CommonReward>(_Msg);
                 case NetWorkMsgType.S2C_CommonReward:
                     return JsonMapper.ToObject<S2C_CommonReward>(_Msg);
+                case NetWorkMsgType.S2C_OilCopyReward:
+                    return JsonMapper.ToObject<S2C_OilCopyReward>(_Msg);
                 case NetWorkMsgType.C2S_UpdateMiningData:
                     return JsonMapper.ToObject<C2S_UpdateMiningData>(_Msg);
                 case NetWorkMsgType.S2C_UpdateMiningData:
@@ -147,6 +151,14 @@ namespace Networks
                     return JsonMapper.ToObject<S2C_UpdateCopyKeyCount>(_Msg);
                 case NetWorkMsgType.C2S_UpdateLockStoryData:
                     return JsonMapper.ToObject<C2S_UpdateLockStoryData>(_Msg);
+                case NetWorkMsgType.C2S_UpdateResearchTime:
+                    return JsonMapper.ToObject<C2S_UpdateResearchTime>(_Msg);
+                case NetWorkMsgType.S2C_UpdateResearchTime:
+                    return JsonMapper.ToObject<S2C_UpdateResearchTime>(_Msg);
+                case NetWorkMsgType.C2S_Researching:
+                    return JsonMapper.ToObject<C2S_Researching>(_Msg);
+                case NetWorkMsgType.S2C_Researching:
+                    return JsonMapper.ToObject<S2C_Researching>(_Msg);
                 default:
                     throw new Exception($"MessageProcess 没有实现! 请实现一下! {_T.m_MsgType}");
             }

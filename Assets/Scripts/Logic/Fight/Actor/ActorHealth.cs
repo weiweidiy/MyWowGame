@@ -17,6 +17,7 @@ public class UnityBDEvent : UnityEvent<BigDouble>
 
 namespace Logic.Fight.Actor
 {
+
     /// <summary>
     /// Actor血量管理
     /// 所有战斗中可被攻击拾取的目标 都必须包含此组件
@@ -35,7 +36,7 @@ namespace Logic.Fight.Actor
 
         public BigDouble MaxHP { get; set; } = BigDouble.One;
         public bool IsDead => HP <= BigDouble.Zero;
-        public BigDouble HP { get; private set; }
+        public BigDouble HP { get; protected set; }
 
         /// <summary>
         /// 初始化
@@ -51,7 +52,7 @@ namespace Logic.Fight.Actor
         /// <summary>
         /// 受到攻击 扣血
         /// </summary>
-        public void Damage(BigDouble pDamage, bool pIsCritical = false)
+        public virtual void Damage(BigDouble pDamage, bool pIsCritical = false)
         {
             if (pDamage < BigDouble.Zero)
             {

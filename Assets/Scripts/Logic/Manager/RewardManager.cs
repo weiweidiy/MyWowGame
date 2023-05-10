@@ -71,5 +71,11 @@ namespace Logic.Manager
         }
 
         #endregion
+
+        public void On_S2C_OilCopyReward(S2C_OilCopyReward pMsg)
+        {
+            //(List<int>, List<int>) data = (pMsg.m_LstRewardId, pMsg.m_LstRewardCount);
+            EventManager.Call(LogicEvent.ShowOilCopyRewards, pMsg);
+        }
     }
 }

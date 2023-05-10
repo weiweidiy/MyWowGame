@@ -119,9 +119,9 @@ namespace Logic.States.Fight
                     pContext.m_SM.ToStandby();
                 }
                     break;
-                case SwitchToType.ToEngineCopy:
+                case SwitchToType.ToOilCopy:
                 {
-                    pContext.m_SM.m_ContextData.m_LevelType = LevelType.EngineCopy;
+                    pContext.m_SM.m_ContextData.m_LevelType = LevelType.OilCopy;
                     EventManager.Call(LogicEvent.ShowFightSwitch, FightSwitchEvent.NormalBoss);
                     EventManager.Call(LogicEvent.SkillReset);
                     

@@ -34,6 +34,7 @@ namespace Logic.Data
             m_Data.m_Coin = BigDouble.Parse(pData.m_Coin);
             m_Data.m_Diamond = pData.m_Diamond;
             m_Data.m_Iron = pData.m_Iron;
+            m_Data.m_Oil = pData.m_Oil;
 
             m_Data.m_AutoSkill = pData.m_AutoSkill;
             m_Data.m_IsMusicOn = pData.m_IsMusicOn;
@@ -74,6 +75,8 @@ namespace Logic.Data
             MiningManager.Ins.Init(pData);
             //开放剧情
             LockStoryManager.Ins.Init(pData.m_LockStoryList);
+            //考古研究
+            ResearchManager.Ins.Init(pData.m_ResearchList, pData.m_ResearchEffectData);
 
             //通知其他逻辑 成功获取玩家基础数据 登录成功
             EventManager.Call(LogicEvent.LoginSuccess);
@@ -117,6 +120,17 @@ namespace Logic.Data
             {
                 m_Data.m_Diamond = value;
                 EventManager.Call(LogicEvent.DiamondChanged);
+            }
+        }
+
+        //原油
+        public int Oil
+        {
+            get => m_Data.m_Oil;
+            set
+            {
+                m_Data.m_Oil = value;
+                EventManager.Call(LogicEvent.OilChanged);
             }
         }
 

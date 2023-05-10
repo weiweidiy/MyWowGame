@@ -142,6 +142,29 @@ namespace Logic.Fight.Common
             
             DoSpawnEnemy(m_SpawnIntervalCopyDiamond);
         }
+
+        /// <summary>
+        /// 原油副本BOSS
+        /// </summary>
+        public void StartSpawnOilCopyBoss()
+        {
+            m_IsSpawningEnemy = true;
+            _CurrentMoveSpeedMult = GameDefine.CopyDiamondMoveSpeedMult;
+            var _Count = CopyManager.Ins.GetOilCopyBossCount();
+
+            var _ATK = (CopyManager.Ins.GetCopyOilBossATK() / _Count).Ceiling();
+            var _HP = (CopyManager.Ins.GetCopyOilBossHp() / _Count).Ceiling();
+
+            var _EList = ResCfgEx.GetResGroup(CopyManager.Ins.GetCopyOilBossID());
+
+            for (int i = 0; i < _Count; i++)
+            {
+                m_EnemySpawnQueue.Enqueue(new SpawnData(_EList.Next(), _ATK, _HP, 0));
+            }
+
+            DoSpawnEnemy(m_SpawnIntervalCopyDiamond);
+        }
+
         
         #endregion
         

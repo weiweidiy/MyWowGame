@@ -250,7 +250,9 @@ namespace Logic.UI.UIUser
                 RefreshBtnEquipOff();
             }
 
-            RefreshBtnIntensify(m_CurSelectItem.m_GameEngineData.m_Id);
+
+            RefreshBtnIntensify(Formula.GetEngineIntensifyCost(m_CurSelectItem.m_GameEngineData.m_Level,
+                m_CurSelectItem.m_GameEngineData.m_Reform));
         }
 
 
@@ -366,7 +368,7 @@ namespace Logic.UI.UIUser
         {
             RefreshBtnEquipOff();
             EngineManager.Ins.DoEngineOff(m_CurSelectItem.m_GameEngineData.m_Id);
-            if (IsSelectItemOn())
+            if (!IsSelectItemOn())
             {
                 ClearSelectItem();
             }

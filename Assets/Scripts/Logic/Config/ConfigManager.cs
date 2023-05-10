@@ -43,6 +43,7 @@ namespace Logic.Config
         public LevelCfg m_LevelCfg;
         public EngineLvlUpCfg m_EngineLvlUpCfg;
         public DigResearchCfg m_DigResearchCfg;
+        public CopyOilCfg m_CopyOilCfg;
 
         #endregion
 
@@ -210,6 +211,12 @@ namespace Logic.Config
                 await _Load.ToUniTask();
                 _Data = _Load.AssetObject as TextAsset;
                 m_DigResearchCfg = JsonMapper.ToObject<DigResearchCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("CopyOilCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_CopyOilCfg = JsonMapper.ToObject<CopyOilCfg>(_Data.text);
                 _Load.Release();
             }
             catch (Exception e)

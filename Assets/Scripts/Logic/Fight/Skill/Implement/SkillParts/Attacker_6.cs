@@ -125,6 +125,7 @@ namespace Logic.Fight.Skill.Implement
         {
             m_CurrentTarget = currentTarget;
             m_Animator.SetTrigger(m_Attack);
+            RotateToDir(currentTarget.GetPos());
         }
 
         protected override void DoEnding()
@@ -215,6 +216,11 @@ namespace Logic.Fight.Skill.Implement
             action?.Invoke();
         }
 
-
+        protected void RotateToDir(Vector3 targetPos)
+        {
+            Vector2 direction = targetPos - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
     }
 }

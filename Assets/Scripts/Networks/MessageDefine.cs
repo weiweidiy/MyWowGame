@@ -48,6 +48,16 @@ namespace Networks
         public long m_Diamond;
     }
 
+    public class S2C_OilUpdate : MessageHead
+    {
+        public S2C_OilUpdate()
+        {
+            m_MsgType = NetWorkMsgType.S2C_OilUpdate;
+        }
+
+        public int m_Oil;
+    }
+
     /// <summary>
     /// 返回玩家完整数据
     /// </summary>
@@ -70,6 +80,7 @@ namespace Networks
         public string m_Coin; //游戏币
         public long m_Diamond; //金币
         public int m_Iron; //钢铁
+        public int m_Oil; //原油
 
         #endregion
 
@@ -155,12 +166,20 @@ namespace Networks
 
         public GameCopyData m_DiamondCopyData; //钻石副本数据
         public GameCopyData m_CoinCopyData; //金币副本数据
+        public GameCopyOilData m_OilCopyData;
 
         #endregion
 
         #region 开放剧情数据
 
         public List<GameLockStoryData> m_LockStoryList = new List<GameLockStoryData>(64); // 开放剧情数据
+
+        #endregion
+
+        #region 考古研究数据
+
+        public List<GameResearchData> m_ResearchList = new List<GameResearchData>(64); //考古研究数据
+        public GameResearchEffectData m_ResearchEffectData; //考古属性加成数据
 
         #endregion
     }
@@ -648,6 +667,21 @@ namespace Networks
         }
     }
 
+    /// <summary>
+    /// 通知客户端获得了原油副本奖励
+    /// </summary>
+    public class S2C_OilCopyReward : MessageHead
+    {
+        public S2C_OilCopyReward()
+        {
+            m_MsgType = NetWorkMsgType.S2C_OilCopyReward;
+        }
+
+        public int m_Oil;
+        public List<int> m_LstRewardId;
+        public List<int> m_LstRewardCount;
+    }
+
     public class C2S_CommonReward : MessageHead
     {
         public C2S_CommonReward()
@@ -794,6 +828,8 @@ namespace Networks
         }
 
         public int m_LevelType;
+        public string m_CurTotalDamage;
+        public int m_CurBossLevel;
     }
 
     public class S2C_ExitCopy : MessageHead
@@ -807,6 +843,8 @@ namespace Networks
         public int m_Level;
         public long m_RewardCount;
         public int m_KeyCount;
+        public string m_CurTotalDamage;
+        public int m_CurBossLevel;
     }
 
     public class C2S_UpdateCopyKeyCount : MessageHead
@@ -826,6 +864,7 @@ namespace Networks
 
         public int m_DiamondKeyCount;
         public int m_CoinKeyCount;
+        public int m_OilKeyCount;
     }
 
     //开放剧情系统
@@ -837,5 +876,52 @@ namespace Networks
         }
 
         public GameLockStoryData m_LockStoryData;
+    }
+
+    // 考古研究
+
+    public class C2S_UpdateResearchTime : MessageHead
+    {
+        public C2S_UpdateResearchTime()
+        {
+            m_MsgType = NetWorkMsgType.C2S_UpdateResearchTime;
+        }
+
+        public int m_ResearchId;
+    }
+
+    public class S2C_UpdateResearchTime : MessageHead
+    {
+        public S2C_UpdateResearchTime()
+        {
+            m_MsgType = NetWorkMsgType.S2C_UpdateResearchTime;
+        }
+
+        public int m_ResearchId;
+        public long m_ResearchTimeStamp;
+    }
+
+    public class C2S_Researching : MessageHead
+    {
+        public C2S_Researching()
+        {
+            m_MsgType = NetWorkMsgType.C2S_Researching;
+        }
+
+        public int m_ResearchId;
+        public int m_ResearchCompleteType;
+    }
+
+    public class S2C_Researching : MessageHead
+    {
+        public S2C_Researching()
+        {
+            m_MsgType = NetWorkMsgType.S2C_Researching;
+        }
+
+        public int m_ResearchId;
+        public int m_ResearchLevel;
+        public List<GameResearchData> m_ResearchList;
+        public GameResearchEffectData m_ResearchEffectData;
     }
 }

@@ -97,9 +97,9 @@ namespace Logic.States.Fight
                     OnCoinCopyFinished(pWasWin);
                 }
                     break;
-                case LevelType.EngineCopy:
+                case LevelType.OilCopy:
                 {
-                    OnEngineCopyFinished(pWasWin);
+                    OnOilCopyFinished(pWasWin);
                 }
                     break;
                 default:
@@ -201,8 +201,18 @@ namespace Logic.States.Fight
         }
 
         //引擎副本结束处理
-        private void OnEngineCopyFinished(bool pWasWin)
+        private void OnOilCopyFinished(bool pWasWin)
         {
+            const LevelType levelType = LevelType.OilCopy;
+            CopyManager.Ins.StopCopyTimer();
+            NetworkManager.Ins.SendMsg(new C2S_ExitCopy
+            {
+                m_LevelType = (int)levelType,
+                m_CurBossLevel = CopyManager.Ins.CurBossLevel,
+                m_CurTotalDamage = CopyManager.Ins.CurTotalDamage.ToString()
+            });
+
+            OnCopyExit(pWasWin, levelType);
         }
 
         private void OnCopyExit(bool pWasWin, LevelType levelType)
@@ -215,7 +225,18 @@ namespace Logic.States.Fight
             if (!pWasWin)
             {
                 UIManager.Ins.Show<UICopy>();
-                UIManager.Ins.Show<UICopyEnter>(levelType);
+
+                switch(levelType)
+                {
+                    case LevelType.OilCopy:
+                        //UIManager.Ins.Show<UIOilCopyEnter>();
+                        break;
+                    default:
+                        UIManager.Ins.Show<UICopyEnter>(levelType);
+                        break;
+                          
+                }
+                
             }
 
             m_FSMData.m_SM.ToSwitch(SwitchToType.ToNormalLevel);

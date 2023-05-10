@@ -5,6 +5,7 @@ using Logic.Common;
 using Logic.Data;
 using Logic.Manager;
 using Networks;
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ namespace Logic.UI.UIMain
     {
         public TextMeshProUGUI m_Coin;
         public TextMeshProUGUI m_Diamond;
+        public TextMeshProUGUI m_Oil;
 
         // 点击解锁全部开放功能
         public GameObject m_BtnUnlock;
@@ -24,7 +26,13 @@ namespace Logic.UI.UIMain
         private void Awake()
         {
             m_EventGroup.Register(LogicEvent.CoinChanged, OnCoinChanged)
-                .Register(LogicEvent.DiamondChanged, OnDiamondChanged);
+                .Register(LogicEvent.DiamondChanged, OnDiamondChanged)
+                .Register(LogicEvent.OilChanged, OnOilChanged);
+        }
+
+        private void OnOilChanged(int arg1, object arg2)
+        {
+            m_Oil.text = GameDataManager.Ins.Oil.ToString();
         }
 
         private void OnCoinChanged(int arg1, object arg2)
@@ -41,6 +49,7 @@ namespace Logic.UI.UIMain
         {
             m_Coin.text = GameDataManager.Ins.Coin.ToUIString();
             m_Diamond.text = GameDataManager.Ins.Diamond.ToString();
+            m_Oil.text = GameDataManager.Ins.Oil.ToString();
         }
 
         #region 便捷测试相关功能

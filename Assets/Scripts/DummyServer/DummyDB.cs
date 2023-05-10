@@ -26,6 +26,7 @@ namespace DummyServer
         public string m_Coin; //游戏币
         public long m_Diamond; //钻石
         public int m_Iron; //钢铁
+        public int m_Oil;  //原油
 
         #endregion
 
@@ -111,12 +112,20 @@ namespace DummyServer
 
         public GameCopyData m_DiamondCopyData; //钻石副本数据
         public GameCopyData m_CoinCopyData; //金币副本数据
+        public GameCopyOilData m_OilCopyData;
 
         #endregion
 
         #region 开放剧情数据
 
         public List<GameLockStoryData> m_LockStoryList; // 开放剧情数据
+
+        #endregion
+
+        #region 考古研究数据
+
+        public List<GameResearchData> m_ResearchList; //考古研究数据
+        public GameResearchEffectData m_ResearchEffectData; //考古属性加成数据
 
         #endregion
 
@@ -170,6 +179,9 @@ namespace DummyServer
             DummyServerMgr.Ins.InitCopy(this);
 
             m_LockStoryList = new List<GameLockStoryData>(64);
+            m_ResearchList = new List<GameResearchData>(64);
+
+            DummyServerMgr.Ins.InitResearch(this);
         }
 
         #region 静态操作接口

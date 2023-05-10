@@ -144,16 +144,19 @@ namespace Logic.Common
         public static float CopyDiamondMoveSpeedMult;
         public static int CopyCoinTime;
         public static int CopyDiamondSpawnInterval;
+        public static int CopyOilConstValue; //公式常量
+        public static float CopyOilBossAtkConstValue; //Boss攻击常量
 
         #endregion
 
         #region 考古相关配置
 
         public static int MaxHammerCount; // 矿锤最大数量
-        public static int AddHammerCount; // 矿锤单次回复数量
         public static int AddHammerTime; // 矿锤回复刷新时间
         public static int MiningLoopStartFloor; // 考古随机开始矿层
         public static int MiningLoopEndFloor; // 考古随机终止矿层
+        public static int ResearchDiamondCost; // 研究每分钟钻石消耗数
+
         public static int MaxEngineCount; // 玩家引擎数量初始上限
         public static int EngineFormulaId; // 引擎强化公式ID
 
@@ -220,12 +223,14 @@ namespace Logic.Common
             CopyDiamondMoveSpeedMult = GameDefineCfg.GetData(605).floatValue;
             CopyDiamondSpawnInterval = GameDefineCfg.GetData(606).IntValue;
             CopyCoinTime = GameDefineCfg.GetData(611).IntValue;
+            CopyOilConstValue = GameDefineCfg.GetData(641).IntValue;
+            CopyOilBossAtkConstValue = GameDefineCfg.GetData(642).floatValue;
 
             MaxHammerCount = GameDefineCfg.GetData(701).IntValue;
-            AddHammerCount = GameDefineCfg.GetData(702).IntValue;
             AddHammerTime = GameDefineCfg.GetData(703).IntValue;
             MiningLoopStartFloor = GameDefineCfg.GetData(704).IntValue;
             MiningLoopEndFloor = GameDefineCfg.GetData(705).IntValue;
+            ResearchDiamondCost = GameDefineCfg.GetData(706).IntValue;
 
             MaxEngineCount = GameDefineCfg.GetData(800).IntValue;
             EngineFormulaId = GameDefineCfg.GetData(801).IntValue;

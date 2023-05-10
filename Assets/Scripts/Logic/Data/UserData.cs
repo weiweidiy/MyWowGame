@@ -22,6 +22,7 @@ namespace Logic.Data
         public BigDouble m_Coin; //游戏币
         public long m_Diamond; //金币
         public int m_Iron; //钢铁
+        public int m_Oil; //原油
 
         #endregion
 

@@ -108,7 +108,7 @@ namespace Logic.Fight.Actor
             m_EnemySM.ToRecycle();
         }
 
-        public void OnHpChange(BigDouble pCurHP)
+        public virtual void OnHpChange(BigDouble pCurHP)
         {
             m_HPCtrl.Show();
             m_HPCtrl.SetHP((float)(pCurHP / m_Health.MaxHP).ToDouble());

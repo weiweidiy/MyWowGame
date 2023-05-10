@@ -13,7 +13,7 @@ namespace Logic.Common
         NormalLevel = 0, //普通关卡
         DiamondCopy = 1, //钻石副本
         CoinCopy = 2, //金币副本
-        EngineCopy = 3, //引擎副本
+        OilCopy = 3, //原油副本
     }
 
     /// <summary>
@@ -38,7 +38,7 @@ namespace Logic.Common
 
         ToDiamondCopy = 10, //钻石副本
         ToCoinCopy = 11, //金币副本
-        ToEngineCopy = 12, //引擎副本
+        ToOilCopy = 12, //引擎副本
     }
 
     /// <summary>
@@ -425,10 +425,11 @@ namespace Logic.Common
         LT_2000 = 2000, //装备引擎(引擎系统开启)
         LT_2100 = 2100, //钻石副本
         LT_2200 = 2200, //金币副本
-        LT_2300 = 2300, //村庄副本
-        LT_2400 = 2400, //侏儒副本
-        LT_2500 = 2500, //突击副本
+        LT_2300 = 2300, //功勋副本
+        LT_2400 = 2400, //原油副本
+        LT_2500 = 2500, //改造副本
         LT_2600 = 2600, //考古玩法
+        LT_2601 = 2601, //考古研究
         LT_2700 = 2700, //召唤装备
         LT_2800 = 2800, //召唤技能
         LT_2900 = 2900, //召唤兽人
@@ -457,12 +458,26 @@ namespace Logic.Common
     public enum ResearchType
     {
         None,
-        [LabelText("攻击力增加")] IncreaseATK,
-        [LabelText("矿锤补充速度增加")] IncreaseHammerRecoverSpeed,
-        [LabelText("矿锤拥有上限增加")] IncreaseHammerLimit,
-        [LabelText("矿石获得量增加")] IncreaseMineObtainAmount,
-        [LabelText("体力增加")] IncreaseHP,
-        [LabelText("研究速度增加")] IncreaseResearchSpeed,
+        [LabelText("攻击力增加")] IncreaseATK = 41001,
+        [LabelText("体力增加")] IncreaseHP = 42001,
+        [LabelText("矿锤拥有上限增加")] IncreaseHammerLimit = 43001,
+        [LabelText("矿石获得量增加")] IncreaseMineObtainAmount = 44001,
+        [LabelText("矿锤补充速度增加")] IncreaseHammerRecoverSpeed = 45001,
+        [LabelText("研究速度增加")] IncreaseResearchSpeed = 46001,
+    }
+
+    public enum ResearchState
+    {
+        [LabelText("未研究")] UnLock,
+        [LabelText("可研究")] Min,
+        [LabelText("研究中")] Middle,
+        [LabelText("研究完成")] Max,
+    }
+
+    public enum ResearchCompleteType
+    {
+        TimeComplete,
+        DiamondComplete,
     }
 
     #endregion

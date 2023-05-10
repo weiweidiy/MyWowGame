@@ -20,6 +20,9 @@
         //元宝更新
         S2C_DiamondUpdate,
 
+        //原油更新
+        S2C_OilUpdate,
+
         //同步玩家当前数据
         C2S_SyncPlayerData,
 
@@ -74,6 +77,7 @@
         C2S_GetPlaceReward,
         C2S_CommonReward,
         S2C_CommonReward,
+        S2C_OilCopyReward,
         C2S_UpdateMiningData, // 更新考古相关数据
         S2C_UpdateMiningData,
 
@@ -96,5 +100,11 @@
 
         //开放剧情
         C2S_UpdateLockStoryData,
+
+        //考古研究
+        C2S_UpdateResearchTime,
+        S2C_UpdateResearchTime,
+        C2S_Researching,
+        S2C_Researching,
     }
 }

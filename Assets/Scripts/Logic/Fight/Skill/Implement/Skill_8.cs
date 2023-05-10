@@ -31,14 +31,19 @@ namespace Logic.Fight.Skill.Implement
         /// </summary>
         public GameObject m_LightBulletTemplate;
 
+        [Tooltip("发射到落针的延迟")]
+        public float m_LaunchDelay ;
+
         [Tooltip("攻击延迟")]
-        public float m_AttackDelay = 1f;
+        public float m_AttackDelay;
 
 
         [Tooltip("雷击攻击范围")]
         public float m_AttackRange = 1f;
 
         private static readonly int Launch = Animator.StringToHash("Launch");
+
+        Coroutine m_co;
 
         /// <summary>
         /// 固定2个
@@ -69,6 +74,8 @@ namespace Logic.Fight.Skill.Implement
             m_Animator.ResetTrigger(Launch);
             m_Animator.enabled = false;
             m_SkillObj.Hide();
+            if (m_co != null)
+                StopCoroutine(m_co);
         }
 
         public override bool NeedSearchTarget()
@@ -91,24 +98,8 @@ namespace Logic.Fight.Skill.Implement
             m_Animator.enabled = true;
             m_Animator.SetTrigger(Launch);
 
-            StartCoroutine(WaitForBulletsDown(2f));
+            StartCoroutine(WaitForBulletsDown(m_LaunchDelay));
         }
-
-        /// <summary>
-        /// 创建attacker，让其自行搜索目标
-        /// </summary>
-        void PlayBulletsDown()
-        {
-            for (int i = 0; i < m_LightBulletCount; i++)
-            {
-                var goBullet = Instantiate(m_LightBulletTemplate);
-                goBullet.transform.position = new Vector3(0, m_LightBulletTemplate.transform.position.y, 0);
-                goBullet.SetActive(true);
-                var attacker = goBullet.GetComponent<Attacker>();
-                attacker.Ready(m_AttackRange, Formula.GetGJJAtk() * GetSkillBaseDamage() / 100, m_AttackDelay);
-            }
-        }
-
 
         /// <summary>
         /// 等待引雷针下落
@@ -119,8 +110,26 @@ namespace Logic.Fight.Skill.Implement
         IEnumerator WaitForBulletsDown(float interval)
         {
             yield return new WaitForSeconds(interval);
-            PlayBulletsDown();
+            StartCoroutine(PlayBulletsDown(0.3f));
         }
+
+        /// <summary>
+        /// 创建attacker，让其自行搜索目标
+        /// </summary>
+        IEnumerator PlayBulletsDown(float interval)
+        {
+            for (int i = 0; i < m_LightBulletCount; i++)
+            {
+                yield return new WaitForSeconds(interval);
+
+                var goBullet = Instantiate(m_LightBulletTemplate);
+                goBullet.transform.position = new Vector3(0, m_LightBulletTemplate.transform.position.y, 0);
+                goBullet.SetActive(true);
+                var attacker = goBullet.GetComponent<Attacker>();
+                attacker.Ready(m_AttackRange, Formula.GetGJJAtk() * GetSkillBaseDamage() / 100, m_AttackDelay);
+            }
+        }
+
 
         /// <summary>
         /// 投射器播放完成回调

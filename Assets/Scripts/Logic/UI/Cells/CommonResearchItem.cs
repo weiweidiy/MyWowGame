@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Configs;
 using Framework.EventKit;
 using Framework.Extension;
 using Logic.Common;
+using Logic.Manager;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,41 +14,159 @@ namespace Logic.UI.Cells
 {
     public class CommonResearchItem : MonoBehaviour
     {
-        [Header("研究类型")] public ResearchType m_ResearchType;
+        [Header("研究数据")] public int m_ResearchId;
+        public int m_ResearchLevel { get; private set; }
+        public int m_ResearchMaxLevel { get; private set; }
+        public int m_IsResearching { get; private set; }
+        public long m_researchTimeStamp { get; private set; }
+        public ResearchType m_ResearchType { get; private set; }
+        public DigResearchData m_ResearchData { get; private set; }
+        public AttributeData m_AttributeData { get; private set; }
+
         [Header("研究父节点")] public List<CommonResearchItem> m_ParentNode;
-        [Header("研究子节点")] public List<CommonResearchItem> m_ChildNode;
-        [Header("研究状态")] public GameObject m_MinState;
-        public GameObject m_MiddleState;
-        public GameObject m_MaxState;
+        // [Header("研究子节点")] public List<CommonResearchItem> m_ChildNode;
+
+        [Header("研究状态")] public ResearchState m_ResearchState;
+        public GameObject m_UnLockState, m_MinState, m_MiddleState, m_MaxState;
         public GameObject m_Selected;
-        public GameObject m_IsResearching;
+        public GameObject m_Researching;
         public Image m_CanProcess;
         public TextMeshProUGUI m_ProcessText;
-        public Button m_BtnItemClick;
 
         // 逻辑属性
         public Action<CommonResearchItem> m_ClickItem;
         private bool m_IsSelected;
-
         private EventGroup m_EventGroup = new();
 
 
         private void Awake()
         {
+            m_EventGroup.Register(LogicEvent.OnUpdateResearchTime, OnUpdateResearchTime);
+            m_EventGroup.Register(LogicEvent.OnResearching, OnResearching);
+            Init();
         }
 
+        //初始化研究
         private void Init()
         {
+            m_ResearchData = ResearchManager.Ins.GetResearchData(m_ResearchId);
+            var attributeId = m_ResearchData.ResearchAttrGroup;
+            m_ResearchType = (ResearchType)attributeId;
+            m_AttributeData = ResearchManager.Ins.GetAttributeData(attributeId);
+            if (ResearchManager.Ins.ResearchMap.ContainsKey(m_ResearchId))
+            {
+                var gameResearchData = ResearchManager.Ins.ResearchMap[m_ResearchId];
+                m_ResearchLevel = gameResearchData.m_ResearchLevel;
+                m_IsResearching = gameResearchData.m_IsResearching;
+                m_researchTimeStamp = gameResearchData.m_researchTimeStamp;
+            }
+
+            m_ResearchMaxLevel = m_ResearchData.LvlMax;
+            UpdateResearchState(m_ResearchLevel);
+            UpdateResearchTime();
+        }
+
+        //更新研究状态
+        private void UpdateResearchState(int level)
+        {
+            UpdateResearchLevel();
+
+            if (level <= 0)
+            {
+                if (m_ParentNode.Any(parentItems => parentItems.m_ResearchState != ResearchState.Max))
+                {
+                    m_ResearchState = ResearchState.UnLock;
+                    m_UnLockState.Show();
+                    m_MinState.Hide();
+                    m_MiddleState.Hide();
+                    m_MaxState.Hide();
+                    return;
+                }
+
+                m_ResearchState = ResearchState.Min;
+                m_UnLockState.Hide();
+                m_MinState.Show();
+                m_MiddleState.Hide();
+                m_MaxState.Hide();
+            }
+            else if (level == m_ResearchMaxLevel)
+            {
+                m_ResearchState = ResearchState.Max;
+                m_UnLockState.Hide();
+                m_MinState.Hide();
+                m_MiddleState.Hide();
+                m_MaxState.Show();
+            }
+            else
+            {
+                m_ResearchState = ResearchState.Middle;
+                m_UnLockState.Hide();
+                m_MinState.Hide();
+                m_MiddleState.Show();
+                m_MaxState.Hide();
+            }
+        }
+
+        //更新研究等级
+        private void UpdateResearchLevel()
+        {
+            m_ProcessText.text = $"{m_ResearchLevel}/{m_ResearchMaxLevel}";
+            m_CanProcess.fillAmount = (float)m_ResearchLevel / m_ResearchMaxLevel;
+        }
+
+        /// <summary>
+        /// 初始更新是否处于研究状态
+        /// 0 false 1 true
+        /// </summary>
+        private void UpdateResearchTime()
+        {
+            switch (m_IsResearching)
+            {
+                case 0:
+                    m_Researching.Hide();
+                    break;
+                case 1:
+                    m_Researching.Show();
+                    break;
+            }
+        }
+
+        //游戏中接收事件更新是否处于研究状态
+        private void OnUpdateResearchTime(int eventId, object data)
+        {
+            var (id, time) = (ValueTuple<int, long>)data;
+
+            if (m_ResearchId == id)
+            {
+                m_Researching.Show();
+            }
+        }
+
+        //接收事件更新已完成的研究
+        private void OnResearching(int eventId, object data)
+        {
+            var (id, level) = (ValueTuple<int, int>)data;
+            if (m_ResearchId == id)
+            {
+                m_Researching.Hide();
+                m_ResearchLevel = level;
+                UpdateResearchState(m_ResearchLevel);
+                EventManager.Call(LogicEvent.ResearchLevelChanged, this);
+            }
+            else
+            {
+                UpdateResearchState(m_ResearchLevel);
+            }
         }
 
         private void OnDestroy()
         {
+            m_EventGroup.Release();
             m_ClickItem = null;
         }
 
         public void OnBtnItemClick()
         {
-            m_EventGroup.Release();
             m_ClickItem?.Invoke(this);
         }
 

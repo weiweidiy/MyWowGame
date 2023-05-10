@@ -77,6 +77,8 @@ namespace Logic.UI.UIUser
             m_EventGroup.Register(LogicEvent.EngineOff, (i, o) => { UpdateEngineNode(); });
             m_EventGroup.Register(LogicEvent.EngineAllEffectUpdate, (i, o) => UpdateAttrInfo());
             m_EventGroup.Register(LogicEvent.EngineIntensify, (i, o) => UpdateEngineNode());
+            //研究
+            m_EventGroup.Register(LogicEvent.ResearchCompleteEffectUpdate, (i, o) => { UpdateAttrInfo(); });
         }
 
         private void OnDestroy()

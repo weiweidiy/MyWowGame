@@ -9,6 +9,7 @@ using Logic.Fight.Actor;
 using Logic.Fight.Common;
 using Logic.Fight.Skill.Implement.SkillParts;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Logic.Fight.Skill.Implement
 {
@@ -35,6 +36,10 @@ namespace Logic.Fight.Skill.Implement
         /// </summary>
         Coroutine m_coCreateSkillSubObject = null;
 
+
+        public Transform[] m_SpawnPoint;
+
+
         /// <summary>
         /// 存放技能实例的列表
         /// </summary>
@@ -48,26 +53,39 @@ namespace Logic.Fight.Skill.Implement
         public override void OnStartSkill()
         {
             base.OnStartSkill();
-            m_coCreateSkillSubObject = StartCoroutine(CreateSkillSubObjects());
+            m_coCreateSkillSubObject = StartCoroutine(CreateAttackers());
         }
 
         
-        IEnumerator CreateSkillSubObjects()
+        IEnumerator CreateAttackers()
         {
             for (int i = 0; i < m_subSkillObjectCount; i++)
             {
-                var go = CreateSkillSubObject();
+                var go = CreateAttacker();
                 m_goSkillSubObjects.Add(go);
                 yield return new WaitForSeconds(Random.Range(m_spawnInterval.x, m_spawnInterval.y));
             }
         }
 
-        GameObject CreateSkillSubObject()
+        GameObject CreateAttacker()
         {
             var go = Instantiate(m_skillSubObjectTemplate, transform);
             go.SetActive(true);
-            go.transform.position += new Vector3(0, Random.Range(-0.35f, 0.05f), 0);
-            DOMove(go.GetComponent<SkillSubObject>());
+            var index = Random.Range(0, 2);
+            var point = m_SpawnPoint[index].position;
+            go.transform.position = (point + new Vector3(0, Random.Range(-0.35f, 0.05f), 0));
+
+            var attacker = go.GetComponent<SkillSubObject>();
+
+            //如果是背景坐标点，层级修改为0
+            if(index == 1)
+            {
+                foreach (SortingGroup sortingGroup in attacker.SortingGroups)
+                    sortingGroup.sortingOrder = 0;
+            }
+            
+
+            DOMove(attacker);
             return go;
         }
 
@@ -118,6 +136,8 @@ namespace Logic.Fight.Skill.Implement
                     _HitEffect.Show();
                     _HitEffect.PlayAni(_Enemy.transform.position);
 
+                    StartCoroutine(WaitForHide(_HitEffect));
+
                     var position = _ObjTrans.position;
                     FightEnemyManager.Ins.GetTargetByRange(_hitList, position.x - m_AttackRange, 
                         position.x + m_AttackRange);
@@ -130,6 +150,13 @@ namespace Logic.Fight.Skill.Implement
                     }
                 }
             });
+        }
+
+        IEnumerator WaitForHide(Skill_3MissilesHit component)
+        {
+            yield return new WaitForSeconds(1f);
+            component.gameObject.SetActive(false);
+
         }
     }
 }

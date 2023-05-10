@@ -6,6 +6,7 @@ using Logic.Fight.Actor;
 using Logic.Fight.Common;
 using Logic.Fight.Skill.Implement.SkillParts;
 using Logic.Fight.Skill.State;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -17,6 +18,9 @@ namespace Logic.Fight.Skill.Implement
         public Transform m_body;
 
         public Skill_3MissilesHit hitEffect;
+
+        public ParticleSystem m_Hahaha;
+
         /// <summary>
         /// 伴飞坐标点
         /// </summary>
@@ -27,14 +31,25 @@ namespace Logic.Fight.Skill.Implement
         /// </summary>
         public int Index { get; private set; }
 
-        
+        /// <summary>
+        /// 飞行速度
+        /// </summary>
+        float m_EnterSpeed;
+
+        float m_AtkSpeed;
+
+        float m_PathHight;
+
+
         BigDouble m_Damage;
 
 
         SortingGroup[] sortingGroups;
         SortingGroup[] SortingGroups => sortingGroups ?? (sortingGroups = GetComponentsInChildren<SortingGroup>());
 
-
+        /// <summary>
+        /// 动画监听协程
+        /// </summary>
         Coroutine m_coAnim = null;
 
 
@@ -60,16 +75,28 @@ namespace Logic.Fight.Skill.Implement
             m_tranIdle = args[0] as Transform;
             Index = (int)args[1];
             m_Damage = (BigDouble)args[2];
+            m_EnterSpeed = (float)args[3];
+            m_PathHight = (float)args[4];
+            m_AtkSpeed = (float)args[5];
 
             transform.localScale = m_tranIdle.localScale;
+
+            //第6个位置要修改层级 to do:暴露属性让策划调整
+            if (Index == 1)
+            {
+                foreach (SortingGroup sortingGroup in SortingGroups)
+                    sortingGroup.sortingOrder = 0;
+            }
         }
+
 
         /// <summary>
         /// 播放准备动画
         /// </summary>
         protected override void DoReady()
         {
-            transform.DOMove(m_tranIdle.position, 1f).onComplete = () => {
+            
+            transform.DOMove(m_tranIdle.position, m_EnterSpeed).SetSpeedBased().SetEase(Ease.OutQuad).onComplete = () => {
 
                 Idle();
             };
@@ -101,16 +128,32 @@ namespace Logic.Fight.Skill.Implement
         /// <param name="targetPos"></param>
         private void PlayAtk(Vector3 targetPos)
         {
+
+            //播放一次hahha
+            //m_Hahaha.Play();
+
+            var targetPoint = Vector3.zero;
             //动态创建一个曲线路径
             var path = new Vector3[3];
             path[0] = transform.position; //0.8 5.6
-            path[1] = transform.position + new Vector3(3f, -0.3f, 0);
+            path[1] = transform.position + new Vector3(3f, m_PathHight, 0);
             path[2] = targetPos; //10 5
-            var tweenPath = transform.DOPath(path, 20f, PathType.CatmullRom).SetSpeedBased();
+            var tweenPath = transform.DOPath(path, m_AtkSpeed, PathType.CatmullRom).SetSpeedBased().SetEase(Ease.InSine);
             tweenPath.onComplete = () =>
             {
                 m_body.gameObject.SetActive(false);
                 OnHitting(targetPos);
+            };
+            tweenPath.onWaypointChange = (point) =>
+            {
+                targetPoint = path[point];
+            };
+
+            tweenPath.onUpdate = () =>
+            {
+                Vector3 forward = Vector3.Slerp(transform.position, targetPoint, 0.1f);
+                forward.z = 0;
+                //transform.Rotate(forward);
             };
         }
 
@@ -133,16 +176,27 @@ namespace Logic.Fight.Skill.Implement
                     enemy.m_Health.Damage(m_Damage);
             }
 
-            //监听动画结束
-            var animHelper = new AnimatorHelper();
-            m_coAnim = StartCoroutine(animHelper.CheckAnimationComplete(hitEffect.m_Animator, "Skill_3_Down", () =>
-            {
-                //进入结束状态
-                End();
-            }));
-            
+
+            m_coAnim = StartCoroutine(WaitEnd(1f));
+
+            ////监听动画结束
+            //var animHelper = new AnimatorHelper();
+            //m_coAnim = StartCoroutine(animHelper.CheckAnimationComplete(hitEffect.m_Animator, "Skill_3_Down", () =>
+            //{
+            //    hitEffect.Hide();
+            //    //进入结束状态
+            //    End();
+            //}));
+
         }
 
+        IEnumerator WaitEnd(float interval)
+        {
+            yield return new WaitForSeconds(interval);
+            hitEffect.Hide();
+            //进入结束状态
+            End();
+        }
 
 
         void OnEnable()

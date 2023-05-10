@@ -54,6 +54,10 @@
         Fight_CopyBossTimerChanged,
         Fight_CopyTimeUp, //副本时间到
         Fight_CopyDiamondCountChanged, //钻石副本进度变化
+        Fight_ShowOilBossHpBar, //显示原油副本Boss血条
+        Fight_OilBossHpChanged, //Boss血条变化
+        Fight_OilBossLevelChanged, //Boss等级变化
+        
 
         #endregion
 
@@ -61,6 +65,7 @@
 
         CoinChanged, //游戏币变化
         DiamondChanged, //元宝变化
+        OilChanged,   //原油变化
         CopyKeyChanged, // 副本钥匙变化
 
         //技能
@@ -95,7 +100,7 @@
         EngineIronUpdate, //引擎分解强化材料变化
         EngineOn, //引擎装备
         EngineOff, //引擎解除
-        EngineAllEffectUpdate, //引擎总加成攻击力变化
+        EngineAllEffectUpdate, //引擎属性总加成变化
 
         #endregion
 
@@ -131,26 +136,36 @@
 
         #region 考古相关
 
-        MiningDataChanged,
-        ShowCrossedGrid,
-        HideCrossedGrid,
-        ShowNineGrid,
-        HideNineGrid,
+        MiningDataChanged, //更新考古数据
+        ShowCrossedGrid, // 显示炸弹格子
+        HideCrossedGrid, // 隐藏炸弹格子
+        ShowNineGrid, // 显示透视镜格子
+        HideNineGrid, // 隐藏透视镜格子
 
         #endregion
 
         #region 奖励相关
 
-        ShowMiningReward,
-        ShowPlaceReward,
-        ShowCommonReward,
+        ShowMiningReward, // 显示考古奖励
+        ShowPlaceReward, // 显示放置奖励
+        ShowCommonReward, // 显示通用奖励
+        ShowOilCopyRewards,
 
         #endregion
 
         #region 开放剧情相关
 
-        UpdateLockState,
-        UpdateUnlockAll,
+        UpdateLockState, //更新开放解锁状态
+        UpdateUnlockAll, //开放所有解锁功能
+
+        #endregion
+
+        #region 研究相关
+
+        OnUpdateResearchTime, //正在研究
+        OnResearching, //研究完成
+        ResearchLevelChanged, //研究等级变化
+        ResearchCompleteEffectUpdate, //研究属性总加成变化
 
         #endregion
     }

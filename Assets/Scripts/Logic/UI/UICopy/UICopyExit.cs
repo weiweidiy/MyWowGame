@@ -34,7 +34,7 @@ namespace Logic.UI.UICopy
                     m_Coin.Show();
                     m_Reward.text = CopyManager.Ins.GetCopyCoinReward(_Data.m_Level - 1).ToUIString();
                     break;
-                case LevelType.EngineCopy:
+                case LevelType.OilCopy:
                     m_Diamond.Hide();
                     m_Coin.Hide();
                     break;
@@ -46,4 +46,5 @@ namespace Logic.UI.UICopy
             Hide();
         }
     }
+
 }

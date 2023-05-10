@@ -48,12 +48,17 @@ namespace DummyServer
             var count = RandomHelper.Range(itemDetails[1], itemDetails[2] + 1);
             switch (treasureType)
             {
-                case MiningType.Hammer:
-                case MiningType.Bomb:
-                case MiningType.Scope:
                 case MiningType.CopperMine:
                 case MiningType.SilverMine:
                 case MiningType.GoldMine:
+                    // 矿石获得量增加 %
+                    var researchMineObtainAmount = m_DB.m_ResearchEffectData.researchMineObtainAmount;
+                    count = (int)(count * (1 + researchMineObtainAmount));
+                    OnIncreaseMiningData((int)treasureType, count);
+                    break;
+                case MiningType.Hammer:
+                case MiningType.Bomb:
+                case MiningType.Scope:
                 case MiningType.Honor:
                 case MiningType.Gear:
                     OnIncreaseMiningData((int)treasureType, count);

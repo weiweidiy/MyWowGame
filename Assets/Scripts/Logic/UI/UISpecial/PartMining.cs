@@ -19,6 +19,7 @@ namespace Logic.UI.UISpecial
         {
             m_BtnEnter.onClick.AddListener(OnBtnEnterClick);
             m_EventGroup.Register(LogicEvent.MiningDataChanged, OnHammerChanged);
+            m_EventGroup.Register(LogicEvent.ResearchCompleteEffectUpdate, (i, o) => OnResearchCompleteEffectUpdate());
             Refresh();
         }
 
@@ -40,9 +41,15 @@ namespace Logic.UI.UISpecial
             }
         }
 
+        private void OnResearchCompleteEffectUpdate()
+        {
+            Refresh();
+        }
+
         private void Refresh()
         {
-            m_Number.text = $"{MiningManager.Ins.m_MiningData.m_HammerCount}/{GameDefine.MaxHammerCount}";
+            var maxHammerCount = GameDefine.MaxHammerCount + ResearchManager.Ins.ResearchHammerLimit;
+            m_Number.text = $"{MiningManager.Ins.m_MiningData.m_HammerCount}/{maxHammerCount}";
         }
     }
 }

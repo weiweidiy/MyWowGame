@@ -1,4 +1,5 @@
 ﻿using System;
+using BreakInfinity;
 using Logic.Common;
 
 namespace Networks
@@ -262,6 +263,29 @@ namespace Networks
         }
     }
 
+    public class GameCopyOilData : GameCopyData
+    {
+        public string m_BestDamageRecord;
+        public int m_BestLevelRecord;
+
+        public GameCopyOilData():base()
+        {
+        }
+
+        public GameCopyOilData(GameCopyOilData pData)
+        {
+            m_KeyCount = pData.m_KeyCount;
+            m_Level = pData.m_Level;
+            m_BestDamageRecord = pData.m_BestDamageRecord;
+            m_BestLevelRecord = pData.m_BestLevelRecord;
+        }
+
+        public GameCopyOilData Clone()
+        {
+            return new GameCopyOilData(this);
+        }
+    }
+
     //考古数据
     [Serializable]
     public class GameMiningData
@@ -319,6 +343,69 @@ namespace Networks
         public GameLockStoryData Clone()
         {
             return new GameLockStoryData(this);
+        }
+    }
+
+    //考古研究
+    [Serializable]
+    public class GameResearchData
+    {
+        public int m_ResearchId; //研究Id
+        public int m_ResearchLevel; //研究等级
+        public int m_IsResearching; //是否在研究 0 false 1 true
+        public long m_researchTimeStamp; //研究完成时间戳
+
+        public GameResearchData()
+        {
+        }
+
+        public GameResearchData(GameResearchData pData)
+        {
+            m_ResearchId = pData.m_ResearchId;
+            m_ResearchLevel = pData.m_ResearchLevel;
+            m_IsResearching = pData.m_IsResearching;
+            m_researchTimeStamp = pData.m_researchTimeStamp;
+        }
+
+        public GameResearchData Clone()
+        {
+            return new GameResearchData(this);
+        }
+    }
+
+    //考古研究属性
+    public class GameResearchEffectData
+    {
+        public float researchATK; // 攻击力增加%
+        public float researchHP; //体力增加%
+        public float researchHammerLimit; //矿锤拥有上限增加
+        public float researchMineObtainAmount; //矿石获得量增加%
+        public float researchHammerRecoverSpeed; //矿锤补充速度增加%
+        public float researchSpeed; //研究速度增加%
+
+        public GameResearchEffectData()
+        {
+            researchATK = 0;
+            researchHP = 0;
+            researchHammerLimit = 0;
+            researchMineObtainAmount = 0;
+            researchHammerRecoverSpeed = 0;
+            researchSpeed = 0;
+        }
+
+        public GameResearchEffectData(GameResearchEffectData pData)
+        {
+            researchATK = pData.researchATK;
+            researchHP = pData.researchHP;
+            researchHammerLimit = pData.researchHammerLimit;
+            researchMineObtainAmount = pData.researchMineObtainAmount;
+            researchHammerRecoverSpeed = pData.researchHammerRecoverSpeed;
+            researchSpeed = pData.researchSpeed;
+        }
+
+        public GameResearchEffectData Clone()
+        {
+            return new GameResearchEffectData(this);
         }
     }
 }

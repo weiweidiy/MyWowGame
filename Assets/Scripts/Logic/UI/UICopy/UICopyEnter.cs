@@ -46,7 +46,7 @@ namespace Logic.UI.UICopy
                     m_KeyCount.text = $"{CopyManager.Ins.m_CoinCopyData.m_KeyCount}/2";
                     ShowLevel();
                     break;
-                case LevelType.EngineCopy:
+                case LevelType.OilCopy:
                     m_DiamondNode.Hide();
                     m_CoinNode.Hide();
                     break;
@@ -70,7 +70,7 @@ namespace Logic.UI.UICopy
                 case LevelType.CoinCopy:
                     m_Reward.text = CopyManager.Ins.GetCopyCoinReward(m_CurSelectLevel).ToUIString();
                     break;
-                case LevelType.EngineCopy:
+                case LevelType.OilCopy:
                     m_Reward.text = "";
                     break;
                 default:
@@ -135,7 +135,7 @@ namespace Logic.UI.UICopy
                 case LevelType.CoinCopy:
                     _KeyCount = CopyManager.Ins.m_CoinCopyData.m_KeyCount;
                     break;
-                case LevelType.EngineCopy:
+                case LevelType.OilCopy:
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

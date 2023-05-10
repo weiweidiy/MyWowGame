@@ -46,6 +46,8 @@ namespace Logic.UI.UIMining
 
         // TODO: GameDefine配置
         private int k_AutoMiningCount = 3;
+        private float m_MaxHammerCount;
+        private float m_ResearchHammerRecoverSpeed;
 
         private void Awake()
         {
@@ -58,6 +60,18 @@ namespace Logic.UI.UIMining
             m_EventGroup.Register(LogicEvent.ShowMiningReward, OnShowMiningReward);
             m_EventGroup.Register(LogicEvent.MiningDataChanged, OnMiningDataChanged);
             m_EventGroup.Register(LogicEvent.EngineGet, (i, o) => { OnEngineGet(); });
+            m_EventGroup.Register(LogicEvent.ResearchCompleteEffectUpdate, (i, o) => OnResearchCompleteEffectUpdate());
+        }
+
+        private void Start()
+        {
+            UpdateMaxHammerCount();
+        }
+
+        private void OnResearchCompleteEffectUpdate()
+        {
+            UpdateMaxHammerCount();
+            m_ResearchHammerRecoverSpeed = ResearchManager.Ins.ResearchHammerRecoverSpeed;
         }
 
         private void OnEngineGet()
@@ -102,7 +116,7 @@ namespace Logic.UI.UIMining
 
         private void OnHammerChanged()
         {
-            m_HammerText.text = $"{MiningManager.Ins.m_MiningData.m_HammerCount}/{GameDefine.MaxHammerCount}";
+            m_HammerText.text = $"{MiningManager.Ins.m_MiningData.m_HammerCount}/{m_MaxHammerCount}";
             UpdateMiningTimer();
         }
 
@@ -153,15 +167,15 @@ namespace Logic.UI.UIMining
 
         private void Refresh()
         {
-            m_Floor.text = MiningManager.Ins.m_MiningData.m_FloorCount.ToString();
-            m_HammerText.text = $"{MiningManager.Ins.m_MiningData.m_HammerCount}/{GameDefine.MaxHammerCount}";
-            m_MineText.text = MiningManager.Ins.m_MiningData.m_MineCount.ToString();
-            m_BombText.text = MiningManager.Ins.m_MiningData.m_BombCount.ToString();
-            m_ScopeText.text = MiningManager.Ins.m_MiningData.m_ScopeCount.ToString();
-            m_EngineText.text =
-                $"{MiningManager.Ins.m_MiningData.m_GearCount}/{EngineManager.Ins.curEngineGetIdGearCost}";
-            m_CanProgress.fillAmount = (float)MiningManager.Ins.m_MiningData.m_GearCount /
-                                       EngineManager.Ins.curEngineGetIdGearCost;
+            var miningData = MiningManager.Ins.m_MiningData;
+            var gearCost = EngineManager.Ins.curEngineGetIdGearCost;
+            m_Floor.text = miningData.m_FloorCount.ToString();
+            m_HammerText.text = $"{miningData.m_HammerCount}/{m_MaxHammerCount}";
+            m_MineText.text = miningData.m_MineCount.ToString();
+            m_BombText.text = miningData.m_BombCount.ToString();
+            m_ScopeText.text = miningData.m_ScopeCount.ToString();
+            m_EngineText.text = $"{miningData.m_GearCount}/{gearCost}";
+            m_CanProgress.fillAmount = (float)miningData.m_GearCount / gearCost;
         }
 
         private void OnShowMiningReward(int eventId, object data)
@@ -239,16 +253,23 @@ namespace Logic.UI.UIMining
 
         #region 矿锤次数回复时间逻辑
 
+        private void UpdateMaxHammerCount()
+        {
+            m_MaxHammerCount = GameDefine.MaxHammerCount + ResearchManager.Ins.ResearchHammerLimit;
+        }
+
         private void UpdateMiningTimer()
         {
             // TODO:处理时间计算问题
-            if (MiningManager.Ins.m_MiningData.m_HammerCount < GameDefine.MaxHammerCount)
+            if (MiningManager.Ins.m_MiningData.m_HammerCount < m_MaxHammerCount)
             {
                 if (!m_IsTimerStart)
                 {
                     m_IsTimerStart = true;
                     m_CountDownText.Show();
-                    var second = GameDefine.AddHammerTime;
+                    //矿锤补充速度增加 %
+                    var researchHammerRecoverSpeed = 1 - m_ResearchHammerRecoverSpeed;
+                    var second = (int)(GameDefine.AddHammerTime * researchHammerRecoverSpeed);
                     m_MiningTimer = Timer.Register(1f,
                         () =>
                         {
@@ -258,7 +279,6 @@ namespace Logic.UI.UIMining
                             {
                                 m_MiningTimer.Cancel();
                                 m_IsTimerStart = false;
-                                //TODO:添加矿锤增加数量
                                 MiningManager.Ins.SendMsgC2SUpdateMiningData(MiningType.Hammer,
                                     MiningUpdateType.Increase);
                             }

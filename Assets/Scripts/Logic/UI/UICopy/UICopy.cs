@@ -12,6 +12,7 @@ namespace Logic.UI.UICopy
     {
         public TextMeshProUGUI m_DiamondKeyCount;
         public TextMeshProUGUI m_CoinKeyCount;
+        public TextMeshProUGUI m_OilKeyCount;
         public TextMeshProUGUI m_CDTimer;
 
         private Timer m_Timer;
@@ -59,6 +60,11 @@ namespace Logic.UI.UICopy
             await UIManager.Ins.OpenUI<UICopyEnter>(LevelType.CoinCopy);
         }
 
+        public async void OnClick_EnterOilCopy()
+        {
+            await UIManager.Ins.OpenUI<UIOilCopyEnter>();
+        }
+
         /// <summary>
         /// 副本钥匙变化
         /// </summary>
@@ -66,6 +72,7 @@ namespace Logic.UI.UICopy
         {
             m_DiamondKeyCount.text = $"{CopyManager.Ins.m_DiamondCopyData.m_KeyCount}/2";
             m_CoinKeyCount.text = $"{CopyManager.Ins.m_CoinCopyData.m_KeyCount}/2";
+            m_OilKeyCount.text = $"{CopyManager.Ins.m_OilCopyData.m_KeyCount}/2";
         }
     }
 }

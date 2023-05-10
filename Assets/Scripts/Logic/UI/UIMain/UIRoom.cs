@@ -19,13 +19,14 @@ namespace Logic.UI.UIMain
             m_EventGroup.Register(LogicEvent.PartnerAllEffectUpdate, ((i, o) => { ShowFightPower(); }));
             m_EventGroup.Register(LogicEvent.EquipAllATKEffectUpdate, ((i, o) => { ShowFightPower(); }));
             m_EventGroup.Register(LogicEvent.EngineAllEffectUpdate, ((i, o) => { ShowFightPower(); }));
+            m_EventGroup.Register(LogicEvent.ResearchCompleteEffectUpdate, (i, o) => { ShowFightPower(); });
         }
 
         public override void OnShow()
         {
             ShowFightPower();
         }
-        
+
         private void ShowFightPower()
         {
             m_FightPower.text = Formula.GetGJJFightPower().ToUIString();

@@ -25,19 +25,24 @@ namespace Logic.Fight.Skill.Implement
         public Transform[] m_SpawnPositions;
         public Transform[] m_IdlePositions;
         
-        public Skill_3MissilesHit m_HitEffect;
 
         [Tooltip("释放的导弹个数")]
         public int missileCount;
         [Tooltip("每颗导弹发出间隔")]
         public float spawnInterval;
-        [Tooltip("导弹飞行时间")]
-        public float flyDuration;
-        [Tooltip("导弹飞行路径")]
-        public Transform[] path;
+
+        //[Tooltip("导弹飞行路径")]
+        //public Transform[] path;
         [Tooltip("飞行曲线幅度")]
         public float pathHight;
 
+        [Tooltip("入场飞行速度")]
+        public float m_EnterSpeed;
+        [Tooltip("攻击飞行速度")]
+        public float m_AtkSpeed;
+
+        [Tooltip("索敌延迟")]
+        public float m_SearchDelay;
 
         /// <summary>
         /// 创建动画的协程
@@ -103,7 +108,7 @@ namespace Logic.Fight.Skill.Implement
                 m_Attackers.Add(attacker);
                 m_AllAttackers.Add(attacker);
                 var index = m_Attackers.Count - 1;
-                attacker.Ready(m_IdlePositions[i], index, Formula.GetGJJAtk() * GetSkillBaseDamage() / 100);
+                attacker.Ready(m_IdlePositions[i], index, Formula.GetGJJAtk() * GetSkillBaseDamage() / 100, m_EnterSpeed, pathHight,m_AtkSpeed);
                 
                 attacker.onIdle += Attacker_onIdle;
                 attacker.onEmitting += Attacker_onEmitting;
@@ -173,7 +178,7 @@ namespace Logic.Fight.Skill.Implement
         /// <returns></returns>
         IEnumerator WaitSearching(IAttacker atker)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(m_SearchDelay);
             atker.Search();
 
         }

@@ -20,6 +20,7 @@ namespace Logic.Fight.Skill.Implement
         public GameObject m_SkillObjBack;
         public GameObject[] m_Missiles;
         public Animator[] m_MissileAnimators;
+
         public int m_missileCount;
         
         private static readonly int Launch = Animator.StringToHash("Launch");
@@ -59,6 +60,12 @@ namespace Logic.Fight.Skill.Implement
             
             m_SkillObj.SetActive(false);
             m_SkillObjBack.SetActive(false);
+
+            for (int i = 0; i < m_missileCount; i++)
+            {
+                m_Missiles[i].Hide();
+                m_MissileAnimators[i].enabled = false;
+            }
         }
 
         public override void OnSkillReset()
@@ -67,11 +74,7 @@ namespace Logic.Fight.Skill.Implement
             OnStopSkill();
             m_SM.ToIdle();
 
-            // for (int i = 0; i < 6; i++)
-            // {
-            //     m_Missiles[i].Hide();
-            //     m_MissileAnimators[i].enabled = false;
-            // }
+
         }
 
         private readonly WaitForSeconds WaitSecond = new(0.25f);
@@ -113,6 +116,8 @@ namespace Logic.Fight.Skill.Implement
                 if(enemy != null && enemy.CanAttack())
                     enemy.m_Health.Damage(_ATK);
             }
+
+
         }
 
         //导弹攻击结束

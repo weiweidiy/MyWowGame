@@ -75,10 +75,10 @@ namespace Logic.States.Fight
                     CopyManager.Ins.StartCopyTimer();
                 }
                     break;
-                case LevelType.EngineCopy:
+                case LevelType.OilCopy:
                 {
-                    
-                }
+                        FightEnemyManager.Ins.StartSpawnOilCopyBoss();
+                    }
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

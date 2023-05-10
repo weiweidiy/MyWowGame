@@ -160,13 +160,13 @@ namespace Logic.Manager
         }
 
         //引擎攻击力加成
-        public BigDouble GetEngineAddATK()
+        public BigDouble GetEngineATKAdd()
         {
             return AllHaveATKEffect;
         }
 
         //引擎血量加成
-        public BigDouble GetEngineAddHP()
+        public BigDouble GetEngineHPAdd()
         {
             return AllHaveHPEffect;
         }

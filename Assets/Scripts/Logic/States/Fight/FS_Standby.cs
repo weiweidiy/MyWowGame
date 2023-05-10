@@ -63,7 +63,7 @@ namespace Logic.States.Fight
                 case LevelType.CoinCopy:
                     m_StateData.m_SM.ToFighting();
                     break;
-                case LevelType.EngineCopy:
+                case LevelType.OilCopy:
                     m_StateData.m_SM.ToFighting();
                     break;
                 default:

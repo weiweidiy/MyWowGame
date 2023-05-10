@@ -149,6 +149,7 @@ namespace Logic.Manager
                 case 30:
                     listLockType.Add(LockType.LT_2000);
                     listLockType.Add(LockType.LT_2600);
+                    listLockType.Add(LockType.LT_2601);
                     listLockType.Add(LockType.LT_3000);
 
                     if (!IsLockTypeUnlock(LockType.LT_2600))

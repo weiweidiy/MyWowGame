@@ -1,3 +1,4 @@
+using System;
 using BreakInfinity;
 using Configs;
 using Logic.Data;
@@ -25,9 +26,10 @@ namespace Logic.Common
             BigDouble _SKILL = 1 + SkillManager.Ins.AllHaveEffect;
             BigDouble _PARTNER = 1 + PartnerManager.Ins.AllHaveEffect;
             BigDouble _EQUIP = 1 + EquipManager.Ins.GetWeaponAdd();
-            BigDouble _Engine = 1 + EngineManager.Ins.GetEngineAddATK();
+            BigDouble _Engine = 1 + EngineManager.Ins.GetEngineATKAdd();
+            BigDouble _Research = 1 + ResearchManager.Ins.GetResearchATKAdd();
 
-            return _BASE * _SKILL * _PARTNER * _EQUIP * _Engine;
+            return _BASE * _SKILL * _PARTNER * _EQUIP * _Engine * _Research;
         }
 
         //获取GJJ最大血量
@@ -35,8 +37,10 @@ namespace Logic.Common
         {
             BigDouble _BASE = GameDefine.GJJBaseHP + (BigDouble)(GameDefine.GJJHPGrow * GameDataManager.Ins.GJJHPLevel);
             BigDouble _EQUIP = 1 + EquipManager.Ins.GetArmorAdd();
-            BigDouble _Engine = 1 + EngineManager.Ins.GetEngineAddHP();
-            return _BASE * _EQUIP * _Engine;
+            BigDouble _Engine = 1 + EngineManager.Ins.GetEngineHPAdd();
+            BigDouble _Research = 1 + ResearchManager.Ins.GetResearchHPAdd();
+
+            return _BASE * _EQUIP * _Engine * _Research;
         }
 
         //获取GJJ血量恢复速度
@@ -170,6 +174,26 @@ namespace Logic.Common
             return engineLvlUpData.DecomposeBase
                    + engineReform * engineLvlUpData.DecomposeReformAddition
                    + engineLevel * engineLvlUpData.DecomposeLvlAddition;
+        }
+
+        public static int GetResearchMineCost(int id, int level)
+        {
+            var researchData = DigResearchCfg.GetData(id);
+            return researchData.BaseCost + researchData.GrowCost * level;
+        }
+
+        public static float GetResearchTimeCost(int id, int level)
+        {
+            var researchData = DigResearchCfg.GetData(id);
+            var researchTimeCost = researchData.BaseCostTime + researchData.BaseCostTime * level;
+            var researchSpeed = 1 + ResearchManager.Ins.ResearchSpeed; //研究速度增加 %
+            return researchTimeCost / researchSpeed;
+        }
+
+        public static int GetResearchDiamondCost(int id, int level)
+        {
+            var cost = GetResearchTimeCost(id, level) / 60;
+            return (int)(MathF.Ceiling(cost) * GameDefine.ResearchDiamondCost);
         }
 
         #endregion

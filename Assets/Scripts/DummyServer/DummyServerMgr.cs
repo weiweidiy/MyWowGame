@@ -126,6 +126,12 @@ namespace DummyServer
                 case NetWorkMsgType.C2S_UpdateLockStoryData:
                     On_C2S_UpdateLockStoryData(_Msg as C2S_UpdateLockStoryData);
                     break;
+                case NetWorkMsgType.C2S_UpdateResearchTime:
+                    On_C2S_UpdateResearchTime(_Msg as C2S_UpdateResearchTime);
+                    break;
+                case NetWorkMsgType.C2S_Researching:
+                    On_C2S_Researching(_Msg as C2S_Researching);
+                    break;
                 default:
                 {
                     Debug.LogError(_Msg.m_MsgType);
@@ -159,6 +165,7 @@ namespace DummyServer
                 m_Coin = m_DB.m_Coin,
                 m_Diamond = m_DB.m_Diamond,
                 m_Iron = m_DB.m_Iron,
+                m_Oil = m_DB.m_Oil,
 
                 m_GJJAtkLevel = m_DB.m_GJJAtkLevel,
                 m_GJJHPLevel = m_DB.m_GJJHPLevel,
@@ -234,6 +241,7 @@ namespace DummyServer
             //副本
             _Data.m_DiamondCopyData = m_DB.m_DiamondCopyData.Clone();
             _Data.m_CoinCopyData = m_DB.m_CoinCopyData.Clone();
+            _Data.m_OilCopyData = m_DB.m_OilCopyData.Clone();
 
             //考古
             _Data.m_MiningData = m_DB.m_MiningData.Clone();
@@ -243,6 +251,14 @@ namespace DummyServer
             {
                 _Data.m_LockStoryList.Add(lockStoryData.Clone());
             }
+
+            //考古研究
+            foreach (var researchData in m_DB.m_ResearchList)
+            {
+                _Data.m_ResearchList.Add(researchData.Clone());
+            }
+
+            _Data.m_ResearchEffectData = m_DB.m_ResearchEffectData.Clone();
 
             SendMsg(_Data);
         }
@@ -414,6 +430,16 @@ namespace DummyServer
             OnUpdateLockStoryData(pMsg);
         }
 
+        public void On_C2S_UpdateResearchTime(C2S_UpdateResearchTime pMsg)
+        {
+            OnUpdateResearchTime(pMsg);
+        }
+
+        public void On_C2S_Researching(C2S_Researching pMsg)
+        {
+            OnResearching(pMsg);
+        }
+
         #endregion
 
         private void SendMsg(object pMsg)
@@ -428,7 +454,15 @@ namespace DummyServer
         public void UpdateDiamond(long pDiamond)
         {
             m_DB.m_Diamond += pDiamond;
+            DummyDB.Save(m_DB);
             SendMsg(new S2C_DiamondUpdate { m_Diamond = m_DB.m_Diamond });
+        }
+
+        public void UpdateOil(int pOil)
+        {
+            m_DB.m_Oil += pOil;
+            DummyDB.Save(m_DB);
+            SendMsg(new S2C_OilUpdate { m_Oil = m_DB.m_Oil });
         }
 
         /// <summary>
@@ -438,6 +472,7 @@ namespace DummyServer
         public void UpdateIron(int pIron)
         {
             m_DB.m_Iron += pIron;
+            DummyDB.Save(m_DB);
             SendMsg(new S2C_EngineIronUpdate { m_Iron = m_DB.m_Iron });
         }
 
@@ -448,11 +483,14 @@ namespace DummyServer
         {
             m_DB.m_CoinCopyData.m_KeyCount += pKey;
             m_DB.m_DiamondCopyData.m_KeyCount += pKey;
+            m_DB.m_OilCopyData.m_KeyCount += pKey;
             DummyDB.Save(m_DB);
             SendMsg(new S2C_UpdateCopyKeyCount
             {
                 m_CoinKeyCount = m_DB.m_CoinCopyData.m_KeyCount,
-                m_DiamondKeyCount = m_DB.m_DiamondCopyData.m_KeyCount
+                m_DiamondKeyCount = m_DB.m_DiamondCopyData.m_KeyCount,
+                m_OilKeyCount = m_DB.m_OilCopyData.m_KeyCount
+                
             });
         }
 
