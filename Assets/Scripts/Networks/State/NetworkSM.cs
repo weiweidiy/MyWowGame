@@ -66,6 +66,7 @@ namespace Networks.State
     //游戏全局状态机
     public enum NetworkState
     {
+        None,
         Connect,    //连接服务器
         Working,    //工作中
         BreakLine,  //断线(通信异常)

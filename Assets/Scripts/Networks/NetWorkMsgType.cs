@@ -17,14 +17,23 @@
         //更新GM数据
         C2S_GMAccount,
 
+        //游戏币变化
+        C2S_SyncCoin,
+
         //元宝更新
         S2C_DiamondUpdate,
 
         //原油更新
         S2C_OilUpdate,
 
+        //战功同步
+        C2S_SyncTrophy,
+
         //同步玩家当前数据
-        C2S_SyncPlayerData,
+        C2S_SyncRoomData,
+        C2S_SyncSettingData,
+        C2S_SyncLevelData,
+        C2S_SyncPlaceRewardData,
 
         //装备
         C2S_EquipOn, //穿装备
@@ -69,17 +78,27 @@
         C2S_UpdateDrawCardData,
         S2C_UpdateDrawCardData,
 
-        //奖励
-        C2S_MiningReward,
-        S2C_MiningReward,
+        //放置挂机
         C2S_PlaceReward,
         S2C_PlaceReward,
+        
+        //奖励
         C2S_GetPlaceReward,
         C2S_CommonReward,
         S2C_CommonReward,
         S2C_OilCopyReward,
-        C2S_UpdateMiningData, // 更新考古相关数据
+        
+        // 更新考古相关数据
+        C2S_MiningReward,
+        S2C_MiningReward,
+        C2S_UpdateMiningData, 
         S2C_UpdateMiningData,
+        
+        //考古研究
+        C2S_UpdateResearchTime,
+        S2C_UpdateResearchTime,
+        C2S_Researching,
+        S2C_Researching,
 
         //任务
         C2S_UpdateTaskProcess, //更新任务进度
@@ -101,10 +120,30 @@
         //开放剧情
         C2S_UpdateLockStoryData,
 
-        //考古研究
-        C2S_UpdateResearchTime,
-        S2C_UpdateResearchTime,
-        C2S_Researching,
-        S2C_Researching,
+        //淬炼
+        C2S_QuenchingLock,
+        C2S_Quenching,
+
+        //战利品
+        C2S_SpoilDraw,
+        S2C_SpoilDraw,
+        S2C_SpoilSlotUnlock,
+        C2S_SpoilEquip,
+        S2C_SpoilEquip,
+        C2S_SpoilUpgrade,
+        S2C_SpoilUpgrade,
+
+
+        //英雄
+        C2S_RoleOn, //装配英雄
+        S2C_RoleOn,
+        S2C_RoleOff, //英雄替换
+        C2S_RoleIntensify, //英雄强化
+        S2C_RoleIntensify,
+        C2S_RoleBreak, //英雄突破
+        S2C_RoleBreak,
+        S2C_RoleListUpdate, //英雄列表更新
+        S2C_MushRoomUpdate, //英雄升级材料更新
+        S2C_BreakOreUpdate, //英雄突破材料更新
     }
 }

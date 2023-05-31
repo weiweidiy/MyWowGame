@@ -1,4 +1,5 @@
-﻿using Framework.GameFSM;
+﻿using Chronos;
+using Framework.GameFSM;
 
 namespace Logic.Fight.Actor.State
 {
@@ -44,6 +45,7 @@ namespace Logic.Fight.Actor.State
     {
         public EnemySM m_SM;
         public Enemy m_Owner;
+        public Timeline m_TimeLine;
         
         //状态
         public readonly ES_Idle m_Idle = new (EnemyState.Idle);

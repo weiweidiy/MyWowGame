@@ -69,21 +69,21 @@ namespace Logic.Fight.Skill.Implement
         {
             base.Init(pSkillId);
 
-            m_EventGroup.Register(LogicEvent.Fight_Switch, OnFightSwitch);
+           // m_EventGroup.Register(LogicEvent.Fight_Switch, OnFightSwitch);
         }
 
-        /// <summary>
-        /// 战斗切换换了
-        /// </summary>
-        /// <param name="arg1"></param>
-        /// <param name="arg2"></param>
-        private void OnFightSwitch(int arg1, object arg2)
-        {
-            foreach (var atker in m_AllAttackers)
-            {
-                atker.End();
-            }
-        }
+        ///// <summary>
+        ///// 战斗切换换了
+        ///// </summary>
+        ///// <param name="arg1"></param>
+        ///// <param name="arg2"></param>
+        //private void OnFightSwitch(int arg1, object arg2)
+        //{
+        //    //foreach (var atker in m_AllAttackers)
+        //    //{
+        //    //    atker.End();
+        //    //}
+        //}
 
 
 
@@ -219,13 +219,19 @@ namespace Logic.Fight.Skill.Implement
 
             if (coSkillAtk != null)
                 StopCoroutine(coSkillAtk);
+
         }
 
         public override void OnSkillReset()
         {
-
+            //Debug.LogError("OnSkillReset");
             OnStopSkill();
             m_SM.ToIdle();
+
+            foreach (var atker in m_AllAttackers)
+            {
+                atker.End();
+            }
         }
         
         public override bool NeedSearchTarget()

@@ -13,18 +13,18 @@ namespace Logic.Manager
     {
         #region 宝箱奖励
 
-        public void SendMsgC2SMiningReward(MiningType itemType)
+        public void SendMsgC2SMiningReward(int itemType)
         {
             var pMsg = new C2S_MiningReward()
             {
-                m_TreasureType = itemType,
+                TreasureType = itemType,
             };
             NetworkManager.Ins.SendMsg(pMsg);
         }
 
         public void On_S2C_MiningReward(S2C_MiningReward pMsg)
         {
-            (MiningType, int, int) data = (pMsg.m_TreasureType, pMsg.m_RewardId, pMsg.m_RewardCount);
+            (int, int, int) data = (pMsg.TreasureType, pMsg.RewardId, pMsg.RewardCount);
             EventManager.Call(LogicEvent.ShowMiningReward, data);
         }
 
@@ -36,14 +36,14 @@ namespace Logic.Manager
         {
             var pMsg = new C2S_PlaceReward()
             {
-                m_PlaceRewardCount = count,
+                PlaceRewardCount = count,
             };
             NetworkManager.Ins.SendMsg(pMsg);
         }
 
         public void On_S2C_PlaceReward(S2C_PlaceReward pMsg)
         {
-            (List<int>, List<int>) data = (pMsg.m_PlaceRewardId, pMsg.m_PlaceRewardCount);
+            (List<int>, List<int>) data = (pMsg.PlaceRewardId, pMsg.PlaceRewardCount);
             EventManager.Call(LogicEvent.ShowPlaceReward, data);
         }
 

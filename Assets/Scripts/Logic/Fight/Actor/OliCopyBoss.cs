@@ -2,15 +2,22 @@
 using Framework.EventKit;
 using Logic.Common;
 using Logic.Manager;
+using System.Collections;
+using UnityEngine;
 
 namespace Logic.Fight.Actor
 {
     public class OliCopyBoss : RangeEnemy
     {
-        protected override void Awake()
-        {
-            base.Awake();
+        //protected override void Awake()
+        //{
+        //    base.Awake();
 
+            
+        //}
+
+        private void OnEnable()
+        {
             EventManager.Call(LogicEvent.Fight_ShowOilBossHpBar);
         }
 
@@ -34,15 +41,25 @@ namespace Logic.Fight.Actor
             args[0] = pCurHP;
             args[1] = m_Health.MaxHP;
             EventManager.Call(LogicEvent.Fight_OilBossHpChanged, args);
-            //(float)(pCurHP / m_Health.MaxHP)
         }
 
         protected override void OnDead()
         {
             CopyManager.Ins.CurBossLevel++;
 
-            //单次死亡
-            m_Health.Recover(CopyManager.Ins.GetCopyOilBossHp());
+            StartCoroutine(RecoverHp());       
+        }
+
+        IEnumerator RecoverHp()
+        {
+            yield return new WaitForSeconds(0.1f);
+            if(m_Health != null)
+            {
+                m_Health.MaxHP = CopyManager.Ins.GetCopyOilBossHp();
+                m_Health.Recover(m_Health.MaxHP);
+            }
+                
+
         }
     }
 }

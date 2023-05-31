@@ -13,6 +13,7 @@ using UnityTimer;
 
 namespace Logic.Fight.GJJ
 {
+
     /// <summary>
     /// 控制GJJ
     /// </summary>
@@ -29,6 +30,7 @@ namespace Logic.Fight.GJJ
 
         [LabelText("兽人伙伴挂载点")] public GJJPartner[] m_Partners;
         [LabelText("GJJ动画组件")] public Animator m_GJJAnimator;
+        public GameObject m_RunningSmoke;
 
         [NonSerialized] public ActorHealth m_Health;
 
@@ -57,7 +59,7 @@ namespace Logic.Fight.GJJ
             m_EventGroup.Register(LogicEvent.Fight_Standby, OnStandBy)
                 .Register(LogicEvent.Fight_Fighting, (i, o) => ToFighting())
                 .Register(LogicEvent.Fight_Over, (i, o) => ToStandby()).Register(LogicEvent.RoomUpgraded, OnRoomUpgrade)
-                .Register(LogicEvent.Fight_Win, OnFightWinMove)
+                .Register(LogicEvent.Fight_Win, (i,o)=> { OnFightWinMove((LevelType)o); })
                 .Register(LogicEvent.PartnerOn, (i, o) => RefreshPartner())
                 .Register(LogicEvent.PartnerOff, (i, o) => RefreshPartner());
 
@@ -65,6 +67,8 @@ namespace Logic.Fight.GJJ
 
             //定时器
             Timer.Register(1, RecoverHP, null, true, false, this);
+
+            m_RunningSmoke.SetActive(false);
         }
 
         /// <summary>
@@ -143,10 +147,12 @@ namespace Logic.Fight.GJJ
             _Sequence = DOTween.Sequence();
             m_GJJAnimator.SetTrigger(AniTrigger.ToMove);
             _Sequence.Append(transform.DOLocalMoveX(MoveToPosX, MoveToTime).SetEase(Ease.InSine)); //向前走
-            _Sequence.AppendCallback(() => { m_GJJAnimator.SetTrigger(AniTrigger.ToIdle); });
+            _Sequence.AppendCallback(() => { m_GJJAnimator.SetTrigger(AniTrigger.ToIdle); 
+                EventManager.Call(LogicEvent.Fight_MapMoveBack); });
             _Sequence.Append(transform.DOLocalMoveX(StartPosX, MoveBackTime).SetEase(Ease.OutSine)); //回退
             _Sequence.onComplete += () =>
             {
+                m_RunningSmoke.SetActive(false);
                 _Sequence = null;
                 //动画播放完成 切换到战斗状态
                 EventManager.Call(LogicEvent.Fight_MapStop);
@@ -154,6 +160,7 @@ namespace Logic.Fight.GJJ
             };
 
             EventManager.Call(LogicEvent.Fight_MapMove); //场景背景移动
+            m_RunningSmoke.SetActive(true);
         }
 
         /// <summary>
@@ -166,19 +173,29 @@ namespace Logic.Fight.GJJ
             transform.LocalPositionX(StartPosX);
         }
 
-        public void OnFightWinMove(int arg1, object arg2)
+        /// <summary>
+        /// 胜利移动，GJJ往前走
+        /// </summary>
+        /// <param name="arg1"></param>
+        /// <param name="arg2"></param>
+        public void OnFightWinMove(LevelType levelType)
         {
+            if((levelType == LevelType.TrophyCopy && CopyManager.Ins.m_TrophyCopyCount < GameDefine.CopyTrophyCount)
+                || (levelType == LevelType.DiamondCopy && CopyManager.Ins.m_DiamondCopyCount < GameDefine.CopyDiamondCount))
+            {
+                return;
+            }
             _Tweener = transform.DOLocalMoveX(WinMoveToPosX, 4).SetEase(Ease.InSine);
         }
 
         private void OnRoomUpgrade(int arg1, object arg2)
         {
-            var _RoomType = (RoomType)arg2;
+            var _RoomType = (AttributeType)arg2;
             switch (_RoomType)
             {
-                case RoomType.ATK:
+                case AttributeType.ATK:
                     break;
-                case RoomType.HP:
+                case AttributeType.HP:
                 {
                     var _Max = Formula.GetGJJHP();
                     var _Change = _Max - m_Health.MaxHP;
@@ -191,17 +208,17 @@ namespace Logic.Fight.GJJ
                     m_HPCtrl.SetHP((float)(m_Health.HP / m_Health.MaxHP).ToDouble());
                 }
                     break;
-                case RoomType.HPRecover:
+                case AttributeType.HPRecover:
                     break;
-                case RoomType.Critical:
+                case AttributeType.Critical:
                     break;
-                case RoomType.CriticalDamage:
+                case AttributeType.CriticalDamage:
                     break;
-                case RoomType.Speed:
+                case AttributeType.Speed:
                     break;
-                case RoomType.DoubleHit:
+                case AttributeType.DoubleHit:
                     break;
-                case RoomType.TripletHit:
+                case AttributeType.TripletHit:
                     break;
             }
         }

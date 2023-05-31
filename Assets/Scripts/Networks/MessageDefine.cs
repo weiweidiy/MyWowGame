@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Logic.Common;
 using Logic.Data;
 
 namespace Networks
@@ -13,7 +12,21 @@ namespace Networks
     /// </summary>
     public class MessageHead
     {
-        public NetWorkMsgType m_MsgType; //消息类型
+        public NetWorkMsgType MsgType; //消息类型
+        public long MsgID; //消息ID
+    }
+
+    /// <summary>
+    /// 服务器推送的错误 通常是比较严重的问题
+    /// </summary>
+    public class S2C_CommonError : MessageHead
+    {
+        public S2C_CommonError()
+        {
+            MsgType = NetWorkMsgType.S2C_CommonError;
+        }
+
+        public int ErrorCode;
     }
 
     /// <summary>
@@ -23,39 +36,61 @@ namespace Networks
     {
         public C2S_Login()
         {
-            m_MsgType = NetWorkMsgType.C2S_Login;
+            MsgType = NetWorkMsgType.C2S_Login;
         }
 
-        //TODO 账号ID
+        //账号ID
+        public string AccountID;
     }
 
-    //元宝更新
     public class C2S_GMAccount : MessageHead
     {
         public C2S_GMAccount()
         {
-            m_MsgType = NetWorkMsgType.C2S_GMAccount;
+            MsgType = NetWorkMsgType.C2S_GMAccount;
         }
     }
 
+    //游戏币变化
+    public class C2S_SyncCoin : MessageHead
+    {
+        public C2S_SyncCoin()
+        {
+            MsgType = NetWorkMsgType.C2S_SyncCoin;
+        }
+
+        public string Coin;
+    }
+
+    //元宝更新
     public class S2C_DiamondUpdate : MessageHead
     {
         public S2C_DiamondUpdate()
         {
-            m_MsgType = NetWorkMsgType.S2C_DiamondUpdate;
+            MsgType = NetWorkMsgType.S2C_DiamondUpdate;
         }
 
-        public long m_Diamond;
+        public long Diamond;
     }
 
     public class S2C_OilUpdate : MessageHead
     {
         public S2C_OilUpdate()
         {
-            m_MsgType = NetWorkMsgType.S2C_OilUpdate;
+            MsgType = NetWorkMsgType.S2C_OilUpdate;
         }
 
-        public int m_Oil;
+        public int Oil;
+    }
+
+    public class C2S_SyncTrophy : MessageHead
+    {
+        public C2S_SyncTrophy()
+        {
+            MsgType = NetWorkMsgType.C2S_SyncTrophy;
+        }
+
+        public string Trophy;
     }
 
     /// <summary>
@@ -65,121 +100,148 @@ namespace Networks
     {
         public S2C_Login()
         {
-            m_MsgType = NetWorkMsgType.S2C_Login;
+            MsgType = NetWorkMsgType.S2C_Login;
         }
 
         #region 公用逻辑数据
 
-        public bool m_IsFirstLogin = true; //是否是第一次登录
-        public string m_LastGameDate; //上次登录时间
+        public long LastGameDate; //上次下线时间
 
         #endregion
 
         #region 货币
 
-        public string m_Coin; //游戏币
-        public long m_Diamond; //金币
-        public int m_Iron; //钢铁
-        public int m_Oil; //原油
+        public string Coin; //游戏币
+        public long Diamond; //金币
+        public int Iron; //钢铁
+        public int Oil; //原油
+        public string Trophy; //战利品
+        public int MushRoom; //英雄升级蘑菇
+        public int BreakOre; //英雄突破矿石
 
         #endregion
 
         #region GJJ数据
 
-        public long m_GJJAtkLevel; //GJJ攻击力等级
-        public long m_GJJHPLevel; //GJJ血量等级
-        public long m_GJJHPRecoverLevel; //GJJ血量恢复速度等级
-        public long m_GJJCriticalLevel; //GJJ暴击等级
-        public long m_GJJCriticalDamageLevel; //GJJ暴击伤害等级
-        public long m_GJJAtkSpeedLevel; //GJJ攻击速度等级
-        public long m_GJJDoubleHitLevel; //GJJ两连攻击等级
-        public long m_GJJTripletHitLevel; //GJJ三连攻击等级
+        public long GJJAtkLevel; //GJJ攻击力等级
+        public long GJJHPLevel; //GJJ血量等级
+        public long GJJHPRecoverLevel; //GJJ血量恢复速度等级
+        public long GJJCriticalLevel; //GJJ暴击等级
+        public long GJJCriticalDamageLevel; //GJJ暴击伤害等级
+        public long GJJAtkSpeedLevel; //GJJ攻击速度等级
+        public long GJJDoubleHitLevel; //GJJ两连攻击等级
+        public long GJJTripletHitLevel; //GJJ三连攻击等级
 
         #endregion
 
         #region 通用设置等
 
-        public bool m_AutoSkill; //自动技能
-        public bool m_IsMusicOn; //音乐开关
-        public bool m_IsSoundOn; //音效开关
+        public bool AutoSkill; //自动技能
+        public bool IsMusicOn; //音乐开关
+        public bool IsSoundOn; //音效开关
 
         #endregion
 
         #region 关卡数据
 
-        public long m_CurLevelID; //当前关卡ID
-        public int m_CurLevelNode; //当前关卡节点
-        public int m_CurLevelState; //当前关卡状态
+        public long CurLevelID; //当前关卡ID
+        public int CurLevelNode; //当前关卡节点
+        public int CurLevelState; //当前关卡状态
 
         #endregion
 
         #region 放置奖励数据
 
-        public long m_BtnPlaceRewardClickTime; //放置奖励按钮点击时间戳
-        public float m_BtnPlaceRewardShowTime; // 放置奖励按钮显示时间
-        public string m_PopPlaceRewardTime; // 放置奖励页面每日主动弹出时间
+        public long PlaceRewardClickTime; //放置奖励按钮点击时间戳
+        public float PlaceRewardShowTime; // 放置奖励按钮显示时间
+        public int PlaceRewardPopTime; // 放置奖励页面每日主动弹出时间
 
         #endregion
 
         #region 考古相关数据
 
-        public GameMiningData m_MiningData;
+        public GameMiningData MiningData;
 
         #endregion
 
         #region 伙伴 装备 技能 引擎
 
-        public List<int> m_PartnerOnList = new List<int>(5); //伙伴上阵列表
-        public List<GamePartnerData> m_PartnerList = new List<GamePartnerData>(64);
+        public List<int> PartnerOnList = new List<int>(5); //伙伴上阵列表
+        public List<GamePartnerData> PartnerList = new List<GamePartnerData>(64);
 
-        public int m_WeaponOnID; //武器上阵ID
-        public int m_ClothesOnID; //衣服上阵ID
-        public List<GameEquipData> m_WeaponList = new List<GameEquipData>(64);
-        public List<GameEquipData> m_ArmorList = new List<GameEquipData>(64);
+        public int WeaponOnID; //武器上阵ID
+        public int ArmorOnID; //衣服上阵ID
+        public List<GameEquipData> WeaponList = new List<GameEquipData>(64);
+        public List<GameEquipData> ArmorList = new List<GameEquipData>(64);
 
-        public List<int> m_SkillOnList = new List<int>(); //技能上阵列表
-        public List<GameSkillData> m_SkillList = new List<GameSkillData>(64);
+        public List<int> SkillOnList = new List<int>(); //技能上阵列表
+        public List<GameSkillData> SkillList = new List<GameSkillData>(64);
 
-        public int m_EngineOnId; // 引擎上阵ID
-        public int m_EngineGetId; // 引擎获取ID
-        public List<GameEngineData> m_EngineList = new List<GameEngineData>(64);
+        public int EngineOnId; // 引擎上阵ID
+        public int EngineGetId; // 引擎获取ID
+        public List<GameEngineData> EngineList = new List<GameEngineData>(64);
 
         #endregion
 
         #region 任务数据
 
-        public int m_MainTaskCount; //主线任务完成次数
-        public GameTaskData m_CurMainTask; //当前主线任务
-        public List<GameTaskData> m_DailyTaskList = new List<GameTaskData>(32); //每日任务列表
+        public int MainTaskCount; //主线任务完成次数
+        public GameTaskData CurMainTask; //当前主线任务
+        public List<GameTaskData> DailyTaskList = new List<GameTaskData>(32); //每日任务列表
 
         #endregion
 
         #region 抽卡数据
 
-        public GameShopSkillData m_ShopSkillData;
-        public GameShopPartnerData m_ShopPartnerData;
-        public GameShopEquipData m_ShopEquipData;
+        public GameShopSkillData ShopSkillData;
+        public GameShopPartnerData ShopPartnerData;
+        public GameShopEquipData ShopEquipData;
 
         #endregion
 
         #region 副本数据
 
-        public GameCopyData m_DiamondCopyData; //钻石副本数据
-        public GameCopyData m_CoinCopyData; //金币副本数据
-        public GameCopyOilData m_OilCopyData;
+        public GameCopyData DiamondCopyData; //钻石副本数据
+        public GameCopyData CoinCopyData; //金币副本数据
+        public GameCopyOilData OilCopyData;
+        public GameCopyData TrophyCopyData; //功勋副本
 
         #endregion
 
         #region 开放剧情数据
 
-        public List<GameLockStoryData> m_LockStoryList = new List<GameLockStoryData>(64); // 开放剧情数据
+        public List<GameLockStoryData> LockStoryList = new List<GameLockStoryData>(64); // 开放剧情数据
 
         #endregion
 
         #region 考古研究数据
 
-        public List<GameResearchData> m_ResearchList = new List<GameResearchData>(64); //考古研究数据
-        public GameResearchEffectData m_ResearchEffectData; //考古属性加成数据
+        public List<GameResearchData> ResearchList = new List<GameResearchData>(64); //考古研究数据
+        public GameResearchEffectData ResearchEffectData; //考古属性加成数据
+
+        #endregion
+
+        #region 淬炼数据
+
+        public List<GameQuenchingData> QuenchingList = new List<GameQuenchingData>(64);
+
+        #endregion
+
+
+        #region 战利品数据
+
+        public List<int> SpoilSlotsUnlockData = new List<int>(8); //战利品槽位解锁数据
+        public List<SpoilSlotData> SpoilSlotsData = new List<SpoilSlotData>(8); //战利品槽位数据
+        public List<SpoilData> SpoilsData = new List<SpoilData>(32); //战利品数据
+        public int SpoilDrawProgress; //战利品抽卡池当前进度
+
+        #endregion
+
+
+        #region 英雄数据
+
+        public int RoleOnId; //英雄上阵ID
+        public List<GameRoleData> RoleList = new List<GameRoleData>(64); //英雄上阵列表
 
         #endregion
     }
@@ -188,56 +250,89 @@ namespace Networks
     /// 向服务器同步玩家部分数据 - 每个一段时间 自动同步一下
     /// 有单独Manager控制的数据已经同步过了 不需要在这里同步
     /// </summary>
-    public class C2S_SyncPlayerData : MessageHead
+    public class C2S_SyncRoomData : MessageHead
     {
-        public C2S_SyncPlayerData()
+        public C2S_SyncRoomData()
         {
-            m_MsgType = NetWorkMsgType.C2S_SyncPlayerData;
+            MsgType = NetWorkMsgType.C2S_SyncRoomData;
         }
 
-        public string m_Coin; //游戏币
-
-        public long m_GJJAtkLevel; //GJJ攻击力等级
-        public long m_GJJHPLevel; //GJJ血量等级
-        public long m_GJJHPRecoverLevel; //GJJ血量恢复速度等级
-        public long m_GJJCriticalLevel; //GJJ暴击等级
-        public long m_GJJCriticalDamageLevel; //GJJ暴击伤害等级
-        public long m_GJJAtkSpeedLevel; //GJJ攻击速度等级
-        public long m_GJJDoubleHitLevel; //GJJ两连攻击等级
-        public long m_GJJTripletHitLevel; //GJJ三连攻击等级
-
-        public bool m_AutoSkill; //自动技能
-
-        public long m_CurLevelID; //当前关卡ID
-        public int m_CurLevelNode; //当前关卡节点
-        public int m_CurLevelState; //当前关卡状态
-
-        public long m_BtnPlaceRewardClickTime; //放置奖励按钮点击时间戳
-        public float m_BtnPlaceRewardShowTime; // 放置奖励按钮显示时间
-        public string m_PopPlaceRewardTime; // 放置奖励页面每日主动弹出时间
+        public long GJJAtkLevel; //GJJ攻击力等级
+        public long GJJHPLevel; //GJJ血量等级
+        public long GJJHPRecoverLevel; //GJJ血量恢复速度等级
+        public long GJJCriticalLevel; //GJJ暴击等级
+        public long GJJCriticalDamageLevel; //GJJ暴击伤害等级
+        public long GJJAtkSpeedLevel; //GJJ攻击速度等级
+        public long GJJDoubleHitLevel; //GJJ两连攻击等级
+        public long GJJTripletHitLevel; //GJJ三连攻击等级
 
         public void Init()
         {
-            m_Coin = GameDataManager.Ins.Coin.ToString();
+            GJJAtkLevel = GameDataManager.Ins.GJJAtkLevel;
+            GJJHPLevel = GameDataManager.Ins.GJJHPLevel;
+            GJJHPRecoverLevel = GameDataManager.Ins.GJJHPRecoverLevel;
+            GJJCriticalLevel = GameDataManager.Ins.GJJCriticalLevel;
+            GJJCriticalDamageLevel = GameDataManager.Ins.GJJCriticalDamageLevel;
+            GJJAtkSpeedLevel = GameDataManager.Ins.GJJAtkSpeedLevel;
+            GJJDoubleHitLevel = GameDataManager.Ins.GJJDoubleHitLevel;
+            GJJTripletHitLevel = GameDataManager.Ins.GJJTripletHitLevel;
+        }
+    }
 
-            m_GJJAtkLevel = GameDataManager.Ins.GJJAtkLevel;
-            m_GJJHPLevel = GameDataManager.Ins.GJJHPLevel;
-            m_GJJHPRecoverLevel = GameDataManager.Ins.GJJHPRecoverLevel;
-            m_GJJCriticalLevel = GameDataManager.Ins.GJJCriticalLevel;
-            m_GJJCriticalDamageLevel = GameDataManager.Ins.GJJCriticalDamageLevel;
-            m_GJJAtkSpeedLevel = GameDataManager.Ins.GJJAtkSpeedLevel;
-            m_GJJDoubleHitLevel = GameDataManager.Ins.GJJDoubleHitLevel;
-            m_GJJTripletHitLevel = GameDataManager.Ins.GJJTripletHitLevel;
+    public class C2S_SyncSettingData : MessageHead
+    {
+        public C2S_SyncSettingData()
+        {
+            MsgType = NetWorkMsgType.C2S_SyncSettingData;
+        }
 
-            m_AutoSkill = GameDataManager.Ins.AutoSkill;
+        public bool AutoSkill; //自动技能
+        public bool IsMusicOn; //音乐开关
+        public bool IsSoundOn; //音效开关
 
-            m_CurLevelID = GameDataManager.Ins.CurLevelID;
-            m_CurLevelNode = GameDataManager.Ins.CurLevelNode;
-            m_CurLevelState = (int)GameDataManager.Ins.LevelState;
+        public void Init()
+        {
+            AutoSkill = GameDataManager.Ins.AutoSkill;
+            IsMusicOn = GameDataManager.Ins.Music;
+            IsSoundOn = GameDataManager.Ins.Sound;
+        }
+    }
 
-            m_BtnPlaceRewardClickTime = GameDataManager.Ins.BtnPlaceRewardClickTime;
-            m_BtnPlaceRewardShowTime = GameDataManager.Ins.BtnPlaceRewardShowTime;
-            m_PopPlaceRewardTime = GameDataManager.Ins.PopPlaceRewardTime;
+    public class C2S_SyncLevelData : MessageHead
+    {
+        public C2S_SyncLevelData()
+        {
+            MsgType = NetWorkMsgType.C2S_SyncLevelData;
+        }
+
+        public long CurLevelID; //当前关卡ID
+        public int CurLevelNode; //当前关卡节点
+        public int CurLevelState; //当前关卡状态
+
+        public void Init()
+        {
+            CurLevelID = GameDataManager.Ins.CurLevelID;
+            CurLevelNode = GameDataManager.Ins.CurLevelNode;
+            CurLevelState = (int)GameDataManager.Ins.LevelState;
+        }
+    }
+
+    public class C2S_SyncPlaceRewardData : MessageHead
+    {
+        public C2S_SyncPlaceRewardData()
+        {
+            MsgType = NetWorkMsgType.C2S_SyncPlaceRewardData;
+        }
+
+        public long PlaceRewardClickTime; //放置奖励按钮点击时间戳
+        public float PlaceRewardShowTime; // 放置奖励按钮显示时间
+        public int PlaceRewardPopTime; // 放置奖励页面每日主动弹出时间
+
+        public void Init()
+        {
+            PlaceRewardClickTime = GameDataManager.Ins.BtnPlaceRewardClickTime;
+            PlaceRewardShowTime = GameDataManager.Ins.BtnPlaceRewardShowTime;
+            PlaceRewardPopTime = GameDataManager.Ins.PopPlaceRewardTime;
         }
     }
 
@@ -246,22 +341,22 @@ namespace Networks
     {
         public C2S_EquipOn()
         {
-            m_MsgType = NetWorkMsgType.C2S_EquipOn;
+            MsgType = NetWorkMsgType.C2S_EquipOn;
         }
 
-        public int m_EquipID;
-        public ItemType m_Type;
+        public int EquipID;
+        public int Type;
     }
 
     public class S2C_EquipOn : MessageHead
     {
         public S2C_EquipOn()
         {
-            m_MsgType = NetWorkMsgType.S2C_EquipOn;
+            MsgType = NetWorkMsgType.S2C_EquipOn;
         }
 
-        public int m_EquipID;
-        public ItemType m_Type;
+        public int EquipID;
+        public int Type;
     }
 
     //装备-装备下
@@ -269,11 +364,11 @@ namespace Networks
     {
         public S2C_EquipOff()
         {
-            m_MsgType = NetWorkMsgType.S2C_EquipOff;
+            MsgType = NetWorkMsgType.S2C_EquipOff;
         }
 
-        public int m_EquipID;
-        public ItemType m_Type;
+        public int EquipID;
+        public int Type;
     }
 
     //装备-强化
@@ -281,24 +376,24 @@ namespace Networks
     {
         public C2S_EquipIntensify()
         {
-            m_MsgType = NetWorkMsgType.C2S_EquipIntensify;
+            MsgType = NetWorkMsgType.C2S_EquipIntensify;
         }
 
-        public bool m_IsAuto;
-        public int m_EquipID;
-        public ItemType m_Type;
+        public bool IsAuto;
+        public int EquipID;
+        public int Type;
     }
 
     public class S2C_EquipIntensify : MessageHead
     {
         public S2C_EquipIntensify()
         {
-            m_MsgType = NetWorkMsgType.S2C_EquipIntensify;
+            MsgType = NetWorkMsgType.S2C_EquipIntensify;
         }
 
-        public bool m_IsAuto;
-        public ItemType m_Type;
-        public List<GameEquipUpgradeData> m_EquipList;
+        public bool IsAuto;
+        public int Type;
+        public List<GameEquipUpgradeData> EquipList;
     }
 
     //装备列表更新
@@ -306,11 +401,11 @@ namespace Networks
     {
         public S2C_EquipListUpdate()
         {
-            m_MsgType = NetWorkMsgType.S2C_EquipListUpdate;
+            MsgType = NetWorkMsgType.S2C_EquipListUpdate;
         }
 
-        public List<GameEquipData> m_WeaponList;
-        public List<GameEquipData> m_ArmorList;
+        public List<GameEquipData> WeaponList;
+        public List<GameEquipData> ArmorList;
     }
 
     //---------------------------------------------------------------------------
@@ -319,21 +414,21 @@ namespace Networks
     {
         public C2S_PartnerOn()
         {
-            m_MsgType = NetWorkMsgType.C2S_PartnerOn;
+            MsgType = NetWorkMsgType.C2S_PartnerOn;
         }
 
-        public int m_PartnerID;
+        public int PartnerID;
     }
 
     public class S2C_PartnerOn : MessageHead
     {
         public S2C_PartnerOn()
         {
-            m_MsgType = NetWorkMsgType.S2C_PartnerOn;
+            MsgType = NetWorkMsgType.S2C_PartnerOn;
         }
 
-        public int m_PartnerID;
-        public int m_Index;
+        public int PartnerID;
+        public int Index;
     }
 
     //伙伴-下阵
@@ -341,43 +436,43 @@ namespace Networks
     {
         public C2S_PartnerOff()
         {
-            m_MsgType = NetWorkMsgType.C2S_PartnerOff;
+            MsgType = NetWorkMsgType.C2S_PartnerOff;
         }
 
-        public int m_PartnerID;
+        public int PartnerID;
     }
 
     public class S2C_PartnerOff : MessageHead
     {
         public S2C_PartnerOff()
         {
-            m_MsgType = NetWorkMsgType.S2C_PartnerOff;
+            MsgType = NetWorkMsgType.S2C_PartnerOff;
         }
 
-        public int m_PartnerID;
-        public int m_Index;
+        public int PartnerID;
+        public int Index;
     }
 
     public class C2S_PartnerIntensify : MessageHead
     {
         public C2S_PartnerIntensify()
         {
-            m_MsgType = NetWorkMsgType.C2S_PartnerIntensify;
+            MsgType = NetWorkMsgType.C2S_PartnerIntensify;
         }
 
-        public bool m_IsAuto;
-        public int m_PartnerID;
+        public bool IsAuto;
+        public int PartnerID;
     }
 
     public class S2C_PartnerIntensify : MessageHead
     {
         public S2C_PartnerIntensify()
         {
-            m_MsgType = NetWorkMsgType.S2C_PartnerIntensify;
+            MsgType = NetWorkMsgType.S2C_PartnerIntensify;
         }
 
-        public bool m_IsAuto;
-        public List<GamePartnerUpgradeData> m_PartnerList;
+        public bool IsAuto;
+        public List<GamePartnerUpgradeData> PartnerList;
     }
 
     //伙伴列表更新
@@ -385,10 +480,10 @@ namespace Networks
     {
         public S2C_PartnerListUpdate()
         {
-            m_MsgType = NetWorkMsgType.S2C_PartnerListUpdate;
+            MsgType = NetWorkMsgType.S2C_PartnerListUpdate;
         }
 
-        public List<GamePartnerData> m_PartnerList;
+        public List<GamePartnerData> PartnerList;
     }
 
     //---------------------------------------------------------------------------
@@ -397,21 +492,21 @@ namespace Networks
     {
         public C2S_SkillOn()
         {
-            m_MsgType = NetWorkMsgType.C2S_SkillOn;
+            MsgType = NetWorkMsgType.C2S_SkillOn;
         }
 
-        public int m_SkillID;
+        public int SkillID;
     }
 
     public class S2C_SkillOn : MessageHead
     {
         public S2C_SkillOn()
         {
-            m_MsgType = NetWorkMsgType.S2C_SkillOn;
+            MsgType = NetWorkMsgType.S2C_SkillOn;
         }
 
-        public int m_SkillID;
-        public int m_Index;
+        public int SkillID;
+        public int Index;
     }
 
     //技能-装备下
@@ -419,21 +514,21 @@ namespace Networks
     {
         public C2S_SkillOff()
         {
-            m_MsgType = NetWorkMsgType.C2S_SkillOff;
+            MsgType = NetWorkMsgType.C2S_SkillOff;
         }
 
-        public int m_SkillID;
+        public int SkillID;
     }
 
     public class S2C_SkillOff : MessageHead
     {
         public S2C_SkillOff()
         {
-            m_MsgType = NetWorkMsgType.S2C_SkillOff;
+            MsgType = NetWorkMsgType.S2C_SkillOff;
         }
 
-        public int m_SkillID;
-        public int m_Index;
+        public int SkillID;
+        public int Index;
     }
 
     //技能-强化
@@ -441,22 +536,22 @@ namespace Networks
     {
         public C2S_SkillIntensify()
         {
-            m_MsgType = NetWorkMsgType.C2S_SkillIntensify;
+            MsgType = NetWorkMsgType.C2S_SkillIntensify;
         }
 
-        public bool m_IsAuto;
-        public int m_SkillID;
+        public bool IsAuto;
+        public int SkillID;
     }
 
     public class S2C_SkillIntensify : MessageHead
     {
         public S2C_SkillIntensify()
         {
-            m_MsgType = NetWorkMsgType.S2C_SkillIntensify;
+            MsgType = NetWorkMsgType.S2C_SkillIntensify;
         }
 
-        public bool m_IsAuto;
-        public List<GameSkillUpgradeData> m_SkillList;
+        public bool IsAuto;
+        public List<GameSkillUpgradeData> SkillList;
     }
 
     //技能列表更新
@@ -464,10 +559,10 @@ namespace Networks
     {
         public S2C_SkillListUpdate()
         {
-            m_MsgType = NetWorkMsgType.S2C_SkillListUpdate;
+            MsgType = NetWorkMsgType.S2C_SkillListUpdate;
         }
 
-        public List<GameSkillData> m_SkillList;
+        public List<GameSkillData> SkillList;
     }
 
     //引擎获取
@@ -475,11 +570,11 @@ namespace Networks
     {
         public S2C_EngineGet()
         {
-            m_MsgType = NetWorkMsgType.S2C_EngineGet;
+            MsgType = NetWorkMsgType.S2C_EngineGet;
         }
 
-        public List<GameEngineData> m_EngineList;
-        public int m_LastEngineGetId;
+        public List<GameEngineData> EngineList;
+        public int LastEngineGetId;
     }
 
     //引擎强化
@@ -487,21 +582,21 @@ namespace Networks
     {
         public C2S_EngineIntensify()
         {
-            m_MsgType = NetWorkMsgType.C2S_EngineIntensify;
+            MsgType = NetWorkMsgType.C2S_EngineIntensify;
         }
 
-        public int m_EngineIntensifyId;
+        public int EngineId;
     }
 
     public class S2C_EngineIntensify : MessageHead
     {
         public S2C_EngineIntensify()
         {
-            m_MsgType = NetWorkMsgType.S2C_EngineIntensify;
+            MsgType = NetWorkMsgType.S2C_EngineIntensify;
         }
 
-        public int m_EngineIntensifyId;
-        public int m_EngineLevel;
+        public int EngineId;
+        public int EngineLevel;
     }
 
     //引擎分解
@@ -509,10 +604,10 @@ namespace Networks
     {
         public C2S_EngineRemove()
         {
-            m_MsgType = NetWorkMsgType.C2S_EngineRemove;
+            MsgType = NetWorkMsgType.C2S_EngineRemove;
         }
 
-        public int m_EngineRemoveId;
+        public int EngineId;
     }
 
     //引擎材料更新
@@ -520,10 +615,10 @@ namespace Networks
     {
         public S2C_EngineIronUpdate()
         {
-            m_MsgType = NetWorkMsgType.S2C_EngineIronUpdate;
+            MsgType = NetWorkMsgType.S2C_EngineIronUpdate;
         }
 
-        public int m_Iron;
+        public int Iron;
     }
 
     //引擎-装备上
@@ -531,20 +626,20 @@ namespace Networks
     {
         public C2S_EngineOn()
         {
-            m_MsgType = NetWorkMsgType.C2S_EngineOn;
+            MsgType = NetWorkMsgType.C2S_EngineOn;
         }
 
-        public int m_EngineOnId;
+        public int EngineId;
     }
 
     public class S2C_EngineOn : MessageHead
     {
         public S2C_EngineOn()
         {
-            m_MsgType = NetWorkMsgType.S2C_EngineOn;
+            MsgType = NetWorkMsgType.S2C_EngineOn;
         }
 
-        public int m_EngineOnId;
+        public int EngineId;
     }
 
     //引擎-装备下
@@ -552,20 +647,20 @@ namespace Networks
     {
         public C2S_EngineOff()
         {
-            m_MsgType = NetWorkMsgType.C2S_EngineOff;
+            MsgType = NetWorkMsgType.C2S_EngineOff;
         }
 
-        public int m_EngineOffId;
+        public int EngineId;
     }
 
     public class S2C_EngineOff : MessageHead
     {
         public S2C_EngineOff()
         {
-            m_MsgType = NetWorkMsgType.S2C_EngineOff;
+            MsgType = NetWorkMsgType.S2C_EngineOff;
         }
 
-        public int m_EngineOffId;
+        public int EngineId;
     }
 
     //抽卡
@@ -573,46 +668,46 @@ namespace Networks
     {
         public C2S_DrawCard()
         {
-            m_MsgType = NetWorkMsgType.C2S_DrawCard;
+            MsgType = NetWorkMsgType.C2S_DrawCard;
         }
 
-        public int m_DrawCardType;
-        public int m_DrawCardCostType;
+        public int DrawCardType;
+        public int DrawCardCostType;
     }
 
     public class S2C_DrawCard : MessageHead
     {
         public S2C_DrawCard()
         {
-            m_MsgType = NetWorkMsgType.S2C_DrawCard;
+            MsgType = NetWorkMsgType.S2C_DrawCard;
         }
 
-        public int m_DrawCardType;
-        public List<int> m_List;
+        public int DrawCardType;
+        public List<int> List;
     }
 
     public class C2S_UpdateDrawCardData : MessageHead
     {
         public C2S_UpdateDrawCardData()
         {
-            m_MsgType = NetWorkMsgType.C2S_UpdateDrawCardData;
+            MsgType = NetWorkMsgType.C2S_UpdateDrawCardData;
         }
 
-        public int m_DrawCardType;
+        public int DrawCardType;
     }
 
     public class S2C_UpdateDrawCardData : MessageHead
     {
         public S2C_UpdateDrawCardData()
         {
-            m_MsgType = NetWorkMsgType.S2C_UpdateDrawCardData;
+            MsgType = NetWorkMsgType.S2C_UpdateDrawCardData;
         }
 
-        public int m_DrawCardType;
-        public int m_DrawCardId;
-        public int m_DrawCardLevel;
-        public int m_DarwCardExp;
-        public int m_DrawCardTotalExp;
+        public int DrawCardType;
+        public int DrawCardId;
+        public int DrawCardLevel;
+        public int DrawCardExp;
+        public int DrawCardTotalExp;
     }
 
     // 奖励
@@ -620,50 +715,50 @@ namespace Networks
     {
         public C2S_MiningReward()
         {
-            m_MsgType = NetWorkMsgType.C2S_MiningReward;
+            MsgType = NetWorkMsgType.C2S_MiningReward;
         }
 
-        public MiningType m_TreasureType;
+        public int TreasureType;
     }
 
     public class S2C_MiningReward : MessageHead
     {
         public S2C_MiningReward()
         {
-            m_MsgType = NetWorkMsgType.S2C_MiningReward;
+            MsgType = NetWorkMsgType.S2C_MiningReward;
         }
 
-        public MiningType m_TreasureType;
-        public int m_RewardId;
-        public int m_RewardCount;
+        public int TreasureType;
+        public int RewardId;
+        public int RewardCount;
     }
 
     public class C2S_PlaceReward : MessageHead
     {
         public C2S_PlaceReward()
         {
-            m_MsgType = NetWorkMsgType.C2S_PlaceReward;
+            MsgType = NetWorkMsgType.C2S_PlaceReward;
         }
 
-        public int m_PlaceRewardCount;
+        public int PlaceRewardCount;
     }
 
     public class S2C_PlaceReward : MessageHead
     {
         public S2C_PlaceReward()
         {
-            m_MsgType = NetWorkMsgType.S2C_PlaceReward;
+            MsgType = NetWorkMsgType.S2C_PlaceReward;
         }
 
-        public List<int> m_PlaceRewardId;
-        public List<int> m_PlaceRewardCount;
+        public List<int> PlaceRewardId;
+        public List<int> PlaceRewardCount;
     }
 
     public class C2S_GetPlaceReward : MessageHead
     {
         public C2S_GetPlaceReward()
         {
-            m_MsgType = NetWorkMsgType.C2S_GetPlaceReward;
+            MsgType = NetWorkMsgType.C2S_GetPlaceReward;
         }
     }
 
@@ -674,19 +769,19 @@ namespace Networks
     {
         public S2C_OilCopyReward()
         {
-            m_MsgType = NetWorkMsgType.S2C_OilCopyReward;
+            MsgType = NetWorkMsgType.S2C_OilCopyReward;
         }
 
-        public int m_Oil;
-        public List<int> m_LstRewardId;
-        public List<int> m_LstRewardCount;
+        public int Oil;
+        public List<int> LstRewardId;
+        public List<int> LstRewardCount;
     }
 
     public class C2S_CommonReward : MessageHead
     {
         public C2S_CommonReward()
         {
-            m_MsgType = NetWorkMsgType.C2S_CommonReward;
+            MsgType = NetWorkMsgType.C2S_CommonReward;
         }
     }
 
@@ -694,7 +789,7 @@ namespace Networks
     {
         public S2C_CommonReward()
         {
-            m_MsgType = NetWorkMsgType.S2C_CommonReward;
+            MsgType = NetWorkMsgType.S2C_CommonReward;
         }
 
         public List<int> m_CommonRewardId;
@@ -706,22 +801,22 @@ namespace Networks
     {
         public C2S_UpdateMiningData()
         {
-            m_MsgType = NetWorkMsgType.C2S_UpdateMiningData;
+            MsgType = NetWorkMsgType.C2S_UpdateMiningData;
         }
 
-        public int m_MiningDataType;
-        public int m_UpdateType;
+        public int MiningDataType;
+        public int UpdateType;
     }
 
     public class S2C_UpdateMiningData : MessageHead
     {
         public S2C_UpdateMiningData()
         {
-            m_MsgType = NetWorkMsgType.S2C_UpdateMiningData;
+            MsgType = NetWorkMsgType.S2C_UpdateMiningData;
         }
 
-        public int m_MiningDataType;
-        public GameMiningData m_MiningData;
+        public int MiningDataType;
+        public GameMiningData MiningData;
     }
 
     //任务
@@ -729,63 +824,63 @@ namespace Networks
     {
         public C2S_UpdateTaskProcess()
         {
-            m_MsgType = NetWorkMsgType.C2S_UpdateTaskProcess;
+            MsgType = NetWorkMsgType.C2S_UpdateTaskProcess;
         }
 
-        public int m_TaskID;
-        public long m_Process;
-        public bool m_IsMain;
+        public int TaskID;
+        public long Process;
+        public bool IsMain;
     }
 
     public class S2C_UpdateTaskState : MessageHead
     {
         public S2C_UpdateTaskState()
         {
-            m_MsgType = NetWorkMsgType.S2C_UpdateTaskState;
+            MsgType = NetWorkMsgType.S2C_UpdateTaskState;
         }
 
-        public int m_TaskID;
-        public int m_TaskState;
-        public bool m_IsMain;
+        public int TaskID;
+        public int TaskState;
+        public bool IsMain;
     }
 
     public class S2C_UpdateDailyTask : MessageHead
     {
         public S2C_UpdateDailyTask()
         {
-            m_MsgType = NetWorkMsgType.S2C_UpdateDailyTask;
+            MsgType = NetWorkMsgType.S2C_UpdateDailyTask;
         }
 
-        public int m_TaskID;
+        public int TaskID;
     }
 
     public class C2S_TaskGetReward : MessageHead
     {
         public C2S_TaskGetReward()
         {
-            m_MsgType = NetWorkMsgType.C2S_TaskGetReward;
+            MsgType = NetWorkMsgType.C2S_TaskGetReward;
         }
 
-        public int m_TaskID;
-        public bool m_IsMain;
+        public int TaskID;
+        public bool IsMain;
     }
 
     public class S2C_UpdateMainTask : MessageHead
     {
         public S2C_UpdateMainTask()
         {
-            m_MsgType = NetWorkMsgType.S2C_UpdateMainTask;
+            MsgType = NetWorkMsgType.S2C_UpdateMainTask;
         }
 
-        public GameTaskData m_TaskData;
-        public int m_MainTaskCount;
+        public GameTaskData TaskData;
+        public int MainTaskCount;
     }
 
     public class C2S_RequestDailyTaskList : MessageHead
     {
         public C2S_RequestDailyTaskList()
         {
-            m_MsgType = NetWorkMsgType.C2S_RequestDailyTaskList;
+            MsgType = NetWorkMsgType.C2S_RequestDailyTaskList;
         }
     }
 
@@ -793,10 +888,10 @@ namespace Networks
     {
         public S2C_RequestDailyTaskList()
         {
-            m_MsgType = NetWorkMsgType.S2C_RequestDailyTaskList;
+            MsgType = NetWorkMsgType.S2C_RequestDailyTaskList;
         }
 
-        public List<GameTaskData> m_DailyTaskList;
+        public List<GameTaskData> DailyTaskList;
     }
 
     //副本
@@ -804,54 +899,54 @@ namespace Networks
     {
         public C2S_EnterCopy()
         {
-            m_MsgType = NetWorkMsgType.C2S_EnterCopy;
+            MsgType = NetWorkMsgType.C2S_EnterCopy;
         }
 
-        public int m_LevelType;
+        public int LevelType;
     }
 
     public class S2C_EnterCopy : MessageHead
     {
         public S2C_EnterCopy()
         {
-            m_MsgType = NetWorkMsgType.S2C_EnterCopy;
+            MsgType = NetWorkMsgType.S2C_EnterCopy;
         }
 
-        public int m_LevelType;
+        public int LevelType;
     }
 
     public class C2S_ExitCopy : MessageHead
     {
         public C2S_ExitCopy()
         {
-            m_MsgType = NetWorkMsgType.C2S_ExitCopy;
+            MsgType = NetWorkMsgType.C2S_ExitCopy;
         }
 
-        public int m_LevelType;
-        public string m_CurTotalDamage;
-        public int m_CurBossLevel;
+        public int LevelType;
+        public string CurTotalDamage;
+        public int CurBossLevel;
     }
 
     public class S2C_ExitCopy : MessageHead
     {
         public S2C_ExitCopy()
         {
-            m_MsgType = NetWorkMsgType.S2C_ExitCopy;
+            MsgType = NetWorkMsgType.S2C_ExitCopy;
         }
 
-        public int m_LevelType;
-        public int m_Level;
-        public long m_RewardCount;
-        public int m_KeyCount;
-        public string m_CurTotalDamage;
-        public int m_CurBossLevel;
+        public int LevelType;
+        public int Level;
+        public long RewardCount;
+        public int KeyCount;
+        public string CurTotalDamage;
+        public int CurBossLevel;
     }
 
     public class C2S_UpdateCopyKeyCount : MessageHead
     {
         public C2S_UpdateCopyKeyCount()
         {
-            m_MsgType = NetWorkMsgType.C2S_UpdateCopyKeyCount;
+            MsgType = NetWorkMsgType.C2S_UpdateCopyKeyCount;
         }
     }
 
@@ -859,12 +954,13 @@ namespace Networks
     {
         public S2C_UpdateCopyKeyCount()
         {
-            m_MsgType = NetWorkMsgType.S2C_UpdateCopyKeyCount;
+            MsgType = NetWorkMsgType.S2C_UpdateCopyKeyCount;
         }
 
-        public int m_DiamondKeyCount;
-        public int m_CoinKeyCount;
-        public int m_OilKeyCount;
+        public int DiamondKeyCount;
+        public int CoinKeyCount;
+        public int OilKeyCount;
+        public int TrophyKeyCount;
     }
 
     //开放剧情系统
@@ -872,10 +968,10 @@ namespace Networks
     {
         public C2S_UpdateLockStoryData()
         {
-            m_MsgType = NetWorkMsgType.C2S_UpdateLockStoryData;
+            MsgType = NetWorkMsgType.C2S_UpdateLockStoryData;
         }
 
-        public GameLockStoryData m_LockStoryData;
+        public GameLockStoryData LockStoryData;
     }
 
     // 考古研究
@@ -884,44 +980,248 @@ namespace Networks
     {
         public C2S_UpdateResearchTime()
         {
-            m_MsgType = NetWorkMsgType.C2S_UpdateResearchTime;
+            MsgType = NetWorkMsgType.C2S_UpdateResearchTime;
         }
 
-        public int m_ResearchId;
+        public int ResearchId;
     }
 
     public class S2C_UpdateResearchTime : MessageHead
     {
         public S2C_UpdateResearchTime()
         {
-            m_MsgType = NetWorkMsgType.S2C_UpdateResearchTime;
+            MsgType = NetWorkMsgType.S2C_UpdateResearchTime;
         }
 
-        public int m_ResearchId;
-        public long m_ResearchTimeStamp;
+        public int ResearchId;
+        public long ResearchTimeStamp;
     }
 
     public class C2S_Researching : MessageHead
     {
         public C2S_Researching()
         {
-            m_MsgType = NetWorkMsgType.C2S_Researching;
+            MsgType = NetWorkMsgType.C2S_Researching;
         }
 
-        public int m_ResearchId;
-        public int m_ResearchCompleteType;
+        public int ResearchId;
+        public int ResearchCompleteType;
     }
 
     public class S2C_Researching : MessageHead
     {
         public S2C_Researching()
         {
-            m_MsgType = NetWorkMsgType.S2C_Researching;
+            MsgType = NetWorkMsgType.S2C_Researching;
         }
 
-        public int m_ResearchId;
-        public int m_ResearchLevel;
-        public List<GameResearchData> m_ResearchList;
-        public GameResearchEffectData m_ResearchEffectData;
+        public int ResearchId;
+        public int ResearchLevel;
+        public List<GameResearchData> ResearchList;
+        public GameResearchEffectData ResearchEffectData;
+    }
+
+    //淬炼
+    public class C2S_QuenchingLock : MessageHead
+    {
+        public C2S_QuenchingLock()
+        {
+            MsgType = NetWorkMsgType.C2S_QuenchingLock;
+        }
+
+        public int QuenchingId;
+        public int QuenchingUnLockType;
+    }
+
+    public class C2S_Quenching : MessageHead
+    {
+        public C2S_Quenching()
+        {
+            MsgType = NetWorkMsgType.C2S_Quenching;
+        }
+
+        public List<GameQuenchingData> QuenchingList;
+    }
+
+    #region 战利品相关协议
+
+    public class C2S_SpoilDraw : MessageHead
+    {
+        public C2S_SpoilDraw()
+        {
+            MsgType = NetWorkMsgType.C2S_SpoilDraw;
+        }
+    }
+
+    public class S2C_SpoilDraw : MessageHead
+    {
+        public S2C_SpoilDraw()
+        {
+            MsgType = NetWorkMsgType.S2C_SpoilDraw;
+        }
+
+        public SpoilData Spoil;
+    }
+
+    public class S2C_SpoilSlotUnlock : MessageHead
+    {
+        public S2C_SpoilSlotUnlock()
+        {
+            MsgType = NetWorkMsgType.S2C_SpoilSlotUnlock;
+        }
+
+        public int SlotId;
+    }
+
+    public class C2S_SpoilEquip : MessageHead
+    {
+        public C2S_SpoilEquip()
+        {
+            MsgType = NetWorkMsgType.C2S_SpoilEquip;
+        }
+
+        public int SpoilId;
+    }
+
+    public class S2C_SpoilEquip : MessageHead
+    {
+        public S2C_SpoilEquip()
+        {
+            MsgType = NetWorkMsgType.S2C_SpoilEquip;
+        }
+
+        public SpoilSlotData CurSlotData;
+        public SpoilSlotData OriginSlotData;
+    }
+
+    public class C2S_SpoilUpgrade : MessageHead
+    {
+        public C2S_SpoilUpgrade()
+        {
+            MsgType = NetWorkMsgType.C2S_SpoilUpgrade;
+        }
+
+        public SpoilData Spoil;
+    }
+
+    public class S2C_SpoilUpgrade : MessageHead
+    {
+        public S2C_SpoilUpgrade()
+        {
+            MsgType = NetWorkMsgType.S2C_SpoilUpgrade;
+        }
+
+        public SpoilData Spoil;
+    }
+
+    #endregion
+
+
+    //英雄
+    public class C2S_RoleOn : MessageHead
+    {
+        public C2S_RoleOn()
+        {
+            MsgType = NetWorkMsgType.C2S_RoleOn;
+        }
+
+        public int RoleId;
+    }
+
+    public class S2C_RoleOn : MessageHead
+    {
+        public S2C_RoleOn()
+        {
+            MsgType = NetWorkMsgType.S2C_RoleOn;
+        }
+
+        public int RoleId;
+    }
+
+    public class S2C_RoleOff : MessageHead
+    {
+        public S2C_RoleOff()
+        {
+            MsgType = NetWorkMsgType.S2C_RoleOff;
+        }
+
+        public int RoleId;
+    }
+
+    public class C2S_RoleIntensify : MessageHead
+    {
+        public C2S_RoleIntensify()
+        {
+            MsgType = NetWorkMsgType.C2S_RoleIntensify;
+        }
+
+        public int RoleId;
+    }
+
+    public class S2C_RoleIntensify : MessageHead
+    {
+        public S2C_RoleIntensify()
+        {
+            MsgType = NetWorkMsgType.S2C_RoleIntensify;
+        }
+
+        public int RoleId;
+        public int RoleLevel;
+        public int RoleExp;
+        public bool RoleBreakState;
+    }
+
+    public class C2S_RoleBreak : MessageHead
+    {
+        public C2S_RoleBreak()
+        {
+            MsgType = NetWorkMsgType.C2S_RoleBreak;
+        }
+
+        public int RoleId;
+    }
+
+    public class S2C_RoleBreak : MessageHead
+    {
+        public S2C_RoleBreak()
+        {
+            MsgType = NetWorkMsgType.S2C_RoleBreak;
+        }
+
+        public int RoleId;
+        public int RoleBreakLevel;
+        public bool RoleBreakState;
+    }
+
+    public class S2C_RoleListUpdate : MessageHead
+    {
+        public S2C_RoleListUpdate()
+        {
+            MsgType = NetWorkMsgType.S2C_RoleListUpdate;
+        }
+
+        public List<GameRoleData> RoleList;
+    }
+
+    //英雄升级材料更新
+    public class S2C_MushRoomUpdate : MessageHead
+    {
+        public S2C_MushRoomUpdate()
+        {
+            MsgType = NetWorkMsgType.S2C_MushRoomUpdate;
+        }
+
+        public int MushRoom;
+    }
+
+    //英雄突破材料更新
+    public class S2C_BreakOreUpdate : MessageHead
+    {
+        public S2C_BreakOreUpdate()
+        {
+            MsgType = NetWorkMsgType.S2C_BreakOreUpdate;
+        }
+
+        public int BreakOre;
     }
 }

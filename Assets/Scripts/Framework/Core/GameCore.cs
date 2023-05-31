@@ -1,9 +1,8 @@
 
-using System;
-using Cysharp.Threading.Tasks;
 using Framework.Extension;
 using Logic.States.Game;
 using Sirenix.OdinInspector;
+using UnityEngine.Rendering;
 
 namespace Framework.Core
 {
@@ -17,40 +16,27 @@ namespace Framework.Core
         [LabelText("是否是本地单机模式")]
         [InfoBox("\n 仅供本地测试使用, 服务器功能开发完成后会被废弃 \n")]
         public bool UseDummyServer = true;
+
+        [ShowIf("@this.UseDummyServer == false")]
+        public string ServerAddr = "ws://127.0.0.1:8848";
         
         private void Start()
         {
             //启动状态机
             var _StateData = new GameStateData();
             GameSM.Ins.Start(_StateData, _StateData.m_InitState);
-            //DummyServerMgr.Instance.Init();
 
-            //OnDemandRendering.renderFrameInterval = 3;
+            //OnDemandRendering.renderFrameInterval = 10;
         }
 
         private void Update()
         {
             GameSM.Ins.Update();
-            //DummyServerMgr.Instance.Update(Time.deltaTime);
-            //NetWorkManager.Instance.Update(Time.deltaTime);
         }
 
         private void OnDestroy()
         {
             GameSM.Ins.Release();
-        }
-
-        private void OnApplicationPause(bool pauseStatus)
-        {
-            if (pauseStatus)
-            {
-                
-            }
-        }
-
-        private void OnApplicationQuit()
-        {
-    
         }
     }
 }

@@ -82,7 +82,8 @@ namespace Logic.Fight.Skill.Implement
             transform.localScale = m_tranIdle.localScale;
 
             //第6个位置要修改层级 to do:暴露属性让策划调整
-            if (Index == 1)
+            //两个位置调整层级
+            if (Index == 2 || Index == 4)
             {
                 foreach (SortingGroup sortingGroup in SortingGroups)
                     sortingGroup.sortingOrder = 0;
@@ -95,11 +96,13 @@ namespace Logic.Fight.Skill.Implement
         /// </summary>
         protected override void DoReady()
         {
-            
-            transform.DOMove(m_tranIdle.position, m_EnterSpeed).SetSpeedBased().SetEase(Ease.OutQuad).onComplete = () => {
+
+            var tween = transform.DOMove(m_tranIdle.position, m_EnterSpeed).SetSpeedBased().SetEase(Ease.OutQuad);
+            tween.onComplete = () => {
 
                 Idle();
             };
+            tween.endValue = m_tranIdle.position;
         }
 
 
@@ -193,7 +196,8 @@ namespace Logic.Fight.Skill.Implement
         IEnumerator WaitEnd(float interval)
         {
             yield return new WaitForSeconds(interval);
-            hitEffect.Hide();
+            hitEffect.Destroy();
+
             //进入结束状态
             End();
         }

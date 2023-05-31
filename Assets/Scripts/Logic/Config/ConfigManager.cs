@@ -44,6 +44,18 @@ namespace Logic.Config
         public EngineLvlUpCfg m_EngineLvlUpCfg;
         public DigResearchCfg m_DigResearchCfg;
         public CopyOilCfg m_CopyOilCfg;
+        public CopyTrophyCfg m_CopyTrophyCfg;
+        public DJCfg m_DJCfg;
+        public DJComboCfg m_DJComboCfg;
+        public DJDesCfg m_DJDesCfg;
+        public SceneCfg m_SceneCfg;
+        public SpoilUnlockCfg m_SpoilUnlockCfg;
+        public SpoilCfg m_SpoilCfg;
+        public SpoilLvlUpCfg m_SpoilLvlUpCfg;
+        public HerosCfg m_HerosCfg;
+        public HerosLvUpCfg m_HerosLvUpCfg;
+        public HerosBreakUpCfg m_HerosBreakUpCfg;
+        public RoomCfg m_RoomCfg;
 
         #endregion
 
@@ -66,7 +78,8 @@ namespace Logic.Config
                 _Data = _Load.AssetObject as TextAsset;
                 m_ResCfg = JsonMapper.ToObject<ResCfg>(_Data.text);
                 ResCfgEx.Init(m_ResCfg);
-                m_ResCfg = null; //这个表后面没用 这里直接释放掉 读取操作需要通过 ResCfgEx 获取
+                //m_ResCfg = null;  //这个表后面没用 这里直接释放掉 读取操作需要通过 ResCfgEx 获取 
+                //0517：暂时不释放，需要查询单个数据
                 _Load.Release();
 
                 _Load = YooAssets.LoadAssetAsync<TextAsset>("LevelResCfg");
@@ -218,6 +231,80 @@ namespace Logic.Config
                 _Data = _Load.AssetObject as TextAsset;
                 m_CopyOilCfg = JsonMapper.ToObject<CopyOilCfg>(_Data.text);
                 _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("CopyTrophyCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_CopyTrophyCfg = JsonMapper.ToObject<CopyTrophyCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("DJCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_DJCfg = JsonMapper.ToObject<DJCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("DJComboCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_DJComboCfg = JsonMapper.ToObject<DJComboCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("DJDesCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_DJDesCfg = JsonMapper.ToObject<DJDesCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("SceneCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_SceneCfg = JsonMapper.ToObject<SceneCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("SpoilUnlockCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_SpoilUnlockCfg = JsonMapper.ToObject<SpoilUnlockCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("SpoilCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_SpoilCfg = JsonMapper.ToObject<SpoilCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("SpoilLvlUpCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_SpoilLvlUpCfg = JsonMapper.ToObject<SpoilLvlUpCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("HerosCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_HerosCfg = JsonMapper.ToObject<HerosCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("HerosLvUpCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_HerosLvUpCfg = JsonMapper.ToObject<HerosLvUpCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("HerosBreakUpCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_HerosBreakUpCfg = JsonMapper.ToObject<HerosBreakUpCfg>(_Data.text);
+                _Load.Release();
+
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("RoomCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_RoomCfg = JsonMapper.ToObject<RoomCfg>(_Data.text);
+                _Load.Release();
+                
             }
             catch (Exception e)
             {

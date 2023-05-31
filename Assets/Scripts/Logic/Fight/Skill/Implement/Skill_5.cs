@@ -155,7 +155,7 @@ namespace Logic.Fight.Skill.Implement
         IEnumerator WaitForHide(Skill_3MissilesHit component)
         {
             yield return new WaitForSeconds(1f);
-            component.gameObject.SetActive(false);
+            component.Destroy();
 
         }
     }

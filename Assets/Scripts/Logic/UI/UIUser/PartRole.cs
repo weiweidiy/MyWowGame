@@ -35,11 +35,26 @@ namespace Logic.UI.UIUser
         [Header("属性")] public TextMeshProUGUI m_ATKValue;
         public TextMeshProUGUI m_HPValue;
         public TextMeshProUGUI m_HPRecoverValue;
+        public TextMeshProUGUI m_SpeedValue;
         public TextMeshProUGUI m_CriticalValue;
         public TextMeshProUGUI m_CriticalDamageValue;
-        public TextMeshProUGUI m_SpeedValue;
         public TextMeshProUGUI m_DoubleHitValue;
         public TextMeshProUGUI m_TripletHitValue;
+        public TextMeshProUGUI m_EvasionRateValue;
+        public TextMeshProUGUI m_CompanionDamageValue;
+        public TextMeshProUGUI m_CompanionASPDValue;
+        public TextMeshProUGUI m_SkillDamageValue;
+        public TextMeshProUGUI m_SkillCooldownValue;
+        public TextMeshProUGUI m_GoldObtainValue;
+        public TextMeshProUGUI m_BossDamageAmountValue;
+        public TextMeshProUGUI m_BattleDurationValue;
+        public TextMeshProUGUI m_HPRecoverEverySecondValue;
+        public TextMeshProUGUI m_MultipleShotValue;
+        public TextMeshProUGUI m_ResearchHammerLimitValue;
+        public TextMeshProUGUI m_ResearchMineObtainAmountValue;
+        public TextMeshProUGUI m_ResearchHammerRecoverSpeedValue;
+        public TextMeshProUGUI m_ResearchSpeedValue;
+
 
         private EventGroup m_EventGroup = new EventGroup();
 
@@ -48,12 +63,13 @@ namespace Logic.UI.UIUser
             m_EventGroup.Register(LogicEvent.EquipOn, (i, o) =>
             {
                 var _Msg = (S2C_EquipOn)o;
-                if (_Msg.m_Type == ItemType.Weapon)
+                var type = (ItemType)_Msg.Type;
+                if (type == ItemType.Weapon)
                 {
                     UpdateWeaponNode();
                     UpdateAttrInfo();
                 }
-                else if (_Msg.m_Type == ItemType.Armor)
+                else if (type == ItemType.Armor)
                 {
                     UpdateArmorNode();
                     UpdateAttrInfo();
@@ -79,6 +95,10 @@ namespace Logic.UI.UIUser
             m_EventGroup.Register(LogicEvent.EngineIntensify, (i, o) => UpdateEngineNode());
             //研究
             m_EventGroup.Register(LogicEvent.ResearchCompleteEffectUpdate, (i, o) => { UpdateAttrInfo(); });
+            m_EventGroup.Register(LogicEvent.QuenchingEffectUpdate, (i, o) => { UpdateAttrInfo(); });
+            //战利品
+            m_EventGroup.Register(LogicEvent.OnSpoilDraw, (i, o) => { UpdateAttrInfo(); });
+            m_EventGroup.Register(LogicEvent.OnSpoilUpgrade, (i, o) => { UpdateAttrInfo(); });
         }
 
         private void OnDestroy()
@@ -96,11 +116,25 @@ namespace Logic.UI.UIUser
             m_ATKValue.text = Formula.GetGJJAtk().ToUIString();
             m_HPValue.text = Formula.GetGJJHP().ToUIString();
             m_HPRecoverValue.text = Formula.GetGJJHPRecover().ToUIString();
-            m_CriticalValue.text = Formula.GetGJJCritical().ToString("F2") + "%";
-            m_CriticalDamageValue.text = (Formula.GetGJJCriticalDamage() * 100).ToUIStringFloat() + "%";
             m_SpeedValue.text = Formula.GetGJJAtkSpeed().ToString("F2") + "";
-            m_DoubleHitValue.text = Formula.GetGJJAtkSpeed().ToString("F2") + "";
-            m_TripletHitValue.text = Formula.GetGJJTripletHit() + "";
+            m_CriticalValue.text = (Formula.GetGJJCritical() * 100) + "%";
+            m_CriticalDamageValue.text = (Formula.GetGJJCriticalDamage() * 100).ToUIStringFloat() + "%";
+            m_DoubleHitValue.text = Formula.GetGJJDoubleHit() + "%";
+            m_TripletHitValue.text = Formula.GetGJJTripletHit() + "%";
+            m_EvasionRateValue.text = (Formula.GetGJJEvasionRate() * 100) + "%";
+            m_CompanionDamageValue.text = (Formula.GetCompanionDamage() * 100) + "%";
+            m_CompanionASPDValue.text = Formula.GetCompanionASPD() + "";
+            m_SkillDamageValue.text = (Formula.GetSkillDamage() * 100) + "%";
+            m_SkillCooldownValue.text = (Formula.GetSkillCooldown() * 100) + "%";
+            m_GoldObtainValue.text = (Formula.GetGoldObtain() * 100) + "%";
+            m_BossDamageAmountValue.text = (Formula.GetBossDamageAmount() * 100) + "%";
+            m_BattleDurationValue.text = Formula.GetBattleDuration() + "";
+            m_HPRecoverEverySecondValue.text = (Formula.GetGJJHPRecoverEverySecond() * 100) + "%";
+            m_MultipleShotValue.text = (Formula.GetGJJMultipleShot() * 100) + "%";
+            m_ResearchHammerLimitValue.text = Formula.GetResearchHammerLimit() + "";
+            m_ResearchMineObtainAmountValue.text = (Formula.GetResearchMineObtainAmount() * 100) + "%";
+            m_ResearchHammerRecoverSpeedValue.text = (Formula.GetResearchHammerRecoverSpeed() * 100) + "%";
+            m_ResearchSpeedValue.text = (Formula.GetResearchSpeed() * 100) + "%";
         }
 
         private void Start()
@@ -126,7 +160,7 @@ namespace Logic.UI.UIUser
                 var weaponGameData = EquipManager.Ins.GetEquipData(curWeaponOnID, ItemType.Weapon);
                 UICommonHelper.LoadIcon(m_WIcon, itemData.Res);
                 UICommonHelper.LoadQuality(m_WQuality, weaponData.Quality);
-                m_WLevel.text = "Lv." + weaponGameData.m_Level;
+                m_WLevel.text = "Lv." + weaponGameData.Level;
                 m_WeaponNode.Show();
             }
         }
@@ -147,7 +181,7 @@ namespace Logic.UI.UIUser
                 var armorGameData = EquipManager.Ins.GetEquipData(curArmorOnID, ItemType.Armor);
                 UICommonHelper.LoadIcon(m_AIcon, itemData.Res);
                 UICommonHelper.LoadQuality(m_AQuality, armorData.Quality);
-                m_ALevel.text = "Lv." + armorGameData.m_Level;
+                m_ALevel.text = "Lv." + armorGameData.Level;
                 m_ArmorNode.Show();
             }
         }
@@ -164,10 +198,11 @@ namespace Logic.UI.UIUser
                 m_EngineEmpty.Hide();
                 var curEngineOnID = EngineManager.Ins.curEngineOnId;
                 var engineGameData = EngineManager.Ins.GetGameEngineData(curEngineOnID);
-                var engineData = EngineCfg.GetData(engineGameData.m_TypeId);
-                // UICommonHelper.LoadIcon(m_EIcon, itemData.Res);
+                var engineData = EngineCfg.GetData(engineGameData.TypeId);
+                var resPath = ResCfg.GetData(engineData.ResID).Res;
+                UICommonHelper.LoadIcon(m_EIcon, resPath);
                 UICommonHelper.LoadQuality(m_EQuality, engineData.Quality);
-                m_ELevel.text = "Lv." + engineGameData.m_Level;
+                m_ELevel.text = "Lv." + engineGameData.Level;
                 m_EngineNode.Show();
             }
         }
@@ -185,6 +220,11 @@ namespace Logic.UI.UIUser
         public async void OnClickEngine()
         {
             await UIManager.Ins.OpenUI<UIEngine>();
+        }
+
+        public async void OnBtnRoleChangeClick()
+        {
+            await UIManager.Ins.OpenUI<UIRole.UIRole>();
         }
     }
 }

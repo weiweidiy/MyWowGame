@@ -44,6 +44,7 @@ namespace Logic.UI.UIShop
 
         // 卡池升级
         public GameObject m_DrawLevelUp;
+        public GameObject m_DrawLevelUpBg;
         public TextMeshProUGUI m_LastLevel;
         public TextMeshProUGUI m_NextLevel;
         public TextMeshProUGUI m_Quality;
@@ -331,7 +332,7 @@ namespace Logic.UI.UIShop
 
             if (isShow)
             {
-                m_DrawLevelUp.transform.position = position + new Vector3(0, -1, 0);
+                m_DrawLevelUpBg.transform.position = position + new Vector3(0, -1, 0);
                 m_DrawLevelUp.Show();
                 m_LevelUpCanvasGroup.DOFade(1, 0.5f);
                 m_LastLevel.text = (level - 1).ToString();

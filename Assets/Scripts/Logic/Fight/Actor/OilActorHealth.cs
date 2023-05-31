@@ -1,5 +1,6 @@
 ﻿using BreakInfinity;
 using Logic.Fight.Data;
+using Logic.Manager;
 using UnityEngine;
 
 namespace Logic.Fight.Actor
@@ -9,6 +10,8 @@ namespace Logic.Fight.Actor
         public override void Damage(BigDouble pDamage, bool pIsCritical = false)
         {
             base.Damage(pDamage, pIsCritical);
+
+            CopyManager.Ins.CurTotalDamage += pDamage;
         }
 
 

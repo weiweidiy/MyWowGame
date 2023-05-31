@@ -33,6 +33,7 @@ namespace Networks.State
         {
             pContext.m_WebSocket.OnMessage -= Socket_OnMessage;
             pContext.m_WebSocket.OnError -= Socket_OnError;
+            pContext.m_WebSocket.CloseAsync();
         }
         
         //收到消息 

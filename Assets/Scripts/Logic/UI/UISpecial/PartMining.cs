@@ -49,7 +49,7 @@ namespace Logic.UI.UISpecial
         private void Refresh()
         {
             var maxHammerCount = GameDefine.MaxHammerCount + ResearchManager.Ins.ResearchHammerLimit;
-            m_Number.text = $"{MiningManager.Ins.m_MiningData.m_HammerCount}/{maxHammerCount}";
+            m_Number.text = $"{MiningManager.Ins.m_MiningData.HammerCount}/{maxHammerCount}";
         }
     }
 }

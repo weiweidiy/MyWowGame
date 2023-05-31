@@ -17,7 +17,7 @@ namespace DummyServer
         #region 公用逻辑数据
 
         public bool m_IsFirstLogin = true; //是否是第一次登录
-        public string m_LastGameDate; //上次登录时间
+        public long m_LastGameDate; //上次登录时间
 
         #endregion
 
@@ -26,7 +26,10 @@ namespace DummyServer
         public string m_Coin; //游戏币
         public long m_Diamond; //钻石
         public int m_Iron; //钢铁
-        public int m_Oil;  //原油
+        public int m_Oil; //原油
+        public string m_Trophy; //战利品
+        public int m_MushRoom; //角色升级蘑菇
+        public int m_BreakOre; //角色突破矿石
 
         #endregion
 
@@ -61,9 +64,9 @@ namespace DummyServer
 
         #region 放置奖励数据
 
-        public long m_BtnPlaceRewardClickTime; //放置奖励按钮点击时间戳
+        public long m_BtnPlaceRewardClickTime; // 放置奖励按钮点击时间戳
         public float m_BtnPlaceRewardShowTime; // 放置奖励按钮显示时间
-        public string m_PopPlaceRewardTime; // 放置奖励页面每日主动弹出时间
+        public int m_PopPlaceRewardTime; // 放置奖励页面每日主动弹出时间
 
         #endregion
 
@@ -112,7 +115,8 @@ namespace DummyServer
 
         public GameCopyData m_DiamondCopyData; //钻石副本数据
         public GameCopyData m_CoinCopyData; //金币副本数据
-        public GameCopyOilData m_OilCopyData;
+        public GameCopyOilData m_OilCopyData; //原油副本
+        public GameCopyData m_TropyCopyData; //战利品副本
 
         #endregion
 
@@ -129,17 +133,44 @@ namespace DummyServer
 
         #endregion
 
+        #region 淬炼数据
+
+        public List<GameQuenchingData> m_QuenchingList;
+
+        #endregion
+
+
+        #region 战利品数据
+
+        public List<int> m_SpoilSlotsUnlockData; //战利品槽位解锁数据
+        public List<SpoilSlotData> m_SpoilSlotsData; //战利品槽位数据
+        public List<SpoilData> m_SpoilsData; //战利品数据
+        public int m_SpoilDrawProgress; //战利品抽卡池当前进度
+
+        #endregion
+
+
+        #region 英雄数据
+
+        public int m_RoleOnId; //英雄上阵ID
+        public List<GameRoleData> m_RoleList; //英雄上阵列表
+
+        #endregion
+
+
         /// <summary>
         /// 初始化 玩家第一次进游戏的默认数据
         /// </summary>
         public void Init()
         {
             m_IsFirstLogin = true;
-            m_LastGameDate = TimeHelper.GetDateTimeNowString(); //首次进入默认当前日期
+            m_LastGameDate = TimeHelper.GetUnixTimeStamp(); //首次进入默认当前日期
 
             m_Coin = "0";
             m_Diamond = 0;
             m_Iron = 0;
+            m_MushRoom = 0;
+            m_BreakOre = 0;
 
             m_GJJAtkLevel = 1;
             m_GJJHPLevel = 1;
@@ -170,7 +201,7 @@ namespace DummyServer
 
             m_BtnPlaceRewardClickTime = TimeHelper.GetUnixTimeStamp();
             m_BtnPlaceRewardShowTime = 0;
-            m_PopPlaceRewardTime = TimeHelper.GetDateTimeYesterdayString();
+            m_PopPlaceRewardTime = 1;
 
             DummyServerMgr.Ins.InitShop(this);
             DummyServerMgr.Ins.InitMining(this);
@@ -180,8 +211,19 @@ namespace DummyServer
 
             m_LockStoryList = new List<GameLockStoryData>(64);
             m_ResearchList = new List<GameResearchData>(64);
-
             DummyServerMgr.Ins.InitResearch(this);
+
+            m_QuenchingList = new List<GameQuenchingData>(64);
+
+            //战利品系统
+            m_SpoilSlotsUnlockData = new List<int>(8);
+            m_SpoilSlotsData = new List<SpoilSlotData>(8);
+            m_SpoilsData = new List<SpoilData>(32);
+            m_SpoilDrawProgress = 1;
+
+            m_RoleOnId = 7101;
+            m_RoleList = new List<GameRoleData>(64);
+            DummyServerMgr.Ins.InitRole(this);
         }
 
         #region 静态操作接口

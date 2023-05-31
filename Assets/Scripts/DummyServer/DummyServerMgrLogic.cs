@@ -21,17 +21,17 @@ namespace DummyServer
             List<int> _SkillList = new List<int>(10);
             for (int i = 0; i < count; i++)
             {
-                var _id = GetRandomItemID(GetGroupIDFromSummon(m_DB.m_ShopSkillData.m_ID));
+                var _id = GetRandomItemID(GetGroupIDFromSummon(m_DB.m_ShopSkillData.ID));
                 _SkillList.Add(_id);
             }
 
             // 更新技能商店数据
-            UpdateGameShopSkillData(m_DB.m_ShopSkillData.m_ID, count);
+            UpdateGameShopSkillData(m_DB.m_ShopSkillData.ID, count);
 
             SendMsg(new S2C_DrawCard()
             {
-                m_DrawCardType = (int)DrawCardType.Skill,
-                m_List = _SkillList,
+                DrawCardType = (int)DrawCardType.Skill,
+                List = _SkillList,
             });
 
             //更新技能数据
@@ -39,9 +39,9 @@ namespace DummyServer
             {
                 var gameSkillData = m_DB.m_SkillList.Find(pData =>
                 {
-                    if (pData.m_SkillID == id)
+                    if (pData.SkillID == id)
                     {
-                        pData.m_Count++;
+                        pData.Count++;
                         return true;
                     }
 
@@ -50,13 +50,13 @@ namespace DummyServer
 
                 if (gameSkillData == null)
                 {
-                    m_DB.m_SkillList.Add(new GameSkillData { m_SkillID = id, m_Count = 0, m_Level = 1 });
+                    m_DB.m_SkillList.Add(new GameSkillData { SkillID = id, Count = 0, Level = 1 });
                 }
             }
 
             SendMsg(new S2C_SkillListUpdate()
             {
-                m_SkillList = m_DB.m_SkillList
+                SkillList = m_DB.m_SkillList
             });
 
             DummyDB.Save(m_DB);
@@ -65,22 +65,22 @@ namespace DummyServer
         //单次升级
         public void SkillIntensify(int pID)
         {
-            var _SkillData = m_DB.m_SkillList.Find(pData => pData.m_SkillID == pID);
+            var _SkillData = m_DB.m_SkillList.Find(pData => pData.SkillID == pID);
             if (_SkillData == null)
             {
                 return;
             }
 
-            var _OldLevel = _SkillData.m_Level;
+            var _OldLevel = _SkillData.Level;
             DoSkillIntensify(_SkillData, false);
-            if (_OldLevel == _SkillData.m_Level)
+            if (_OldLevel == _SkillData.Level)
                 return;
 
             SendMsg(new S2C_SkillIntensify
             {
-                m_IsAuto = false,
-                m_SkillList = new List<GameSkillUpgradeData>()
-                    { new() { m_SkillData = _SkillData, m_OldLevel = _OldLevel } }
+                IsAuto = false,
+                SkillList = new List<GameSkillUpgradeData>()
+                    { new() { SkillData = _SkillData, OldLevel = _OldLevel } }
             });
 
             DummyDB.Save(m_DB);
@@ -92,34 +92,34 @@ namespace DummyServer
             List<GameSkillUpgradeData> _SkillList = new List<GameSkillUpgradeData>();
             for (int i = 1; i <= GameDefine.SkillMaxID; i++)
             {
-                var _SkillData = m_DB.m_SkillList.Find(pData => pData.m_SkillID == i);
+                var _SkillData = m_DB.m_SkillList.Find(pData => pData.SkillID == i);
                 if (_SkillData == null)
                     continue;
 
-                var _OldLevel = _SkillData.m_Level;
+                var _OldLevel = _SkillData.Level;
                 DoSkillIntensify(_SkillData);
-                if (_OldLevel == _SkillData.m_Level)
+                if (_OldLevel == _SkillData.Level)
                     continue;
 
-                _SkillList.Add(new() { m_SkillData = _SkillData, m_OldLevel = _OldLevel });
+                _SkillList.Add(new() { SkillData = _SkillData, OldLevel = _OldLevel });
             }
 
             if (_SkillList.Count > 0)
-                SendMsg(new S2C_SkillIntensify { m_IsAuto = true, m_SkillList = _SkillList });
+                SendMsg(new S2C_SkillIntensify { IsAuto = true, SkillList = _SkillList });
 
             DummyDB.Save(m_DB);
         }
 
         private void DoSkillIntensify(GameSkillData pData, bool pAuto = true)
         {
-            var _CurCount = pData.m_Count;
-            var _NeedCount = pData.m_Level > 10
+            var _CurCount = pData.Count;
+            var _NeedCount = pData.Level > 10
                 ? SkillLvlUpCfg.GetData(10).Cost
-                : SkillLvlUpCfg.GetData(pData.m_Level).Cost;
+                : SkillLvlUpCfg.GetData(pData.Level).Cost;
             if (_CurCount >= _NeedCount)
             {
-                pData.m_Level++;
-                pData.m_Count -= _NeedCount;
+                pData.Level++;
+                pData.Count -= _NeedCount;
                 if (pAuto)
                     DoSkillIntensify(pData);
             }
@@ -132,7 +132,7 @@ namespace DummyServer
                 if (m_DB.m_SkillOnList[i] == 0)
                 {
                     m_DB.m_SkillOnList[i] = pID;
-                    SendMsg(new S2C_SkillOn { m_SkillID = pID, m_Index = i });
+                    SendMsg(new S2C_SkillOn { SkillID = pID, Index = i });
                     DummyDB.Save(m_DB);
                     return;
                 }
@@ -146,7 +146,7 @@ namespace DummyServer
                 if (m_DB.m_SkillOnList[i] == pID)
                 {
                     m_DB.m_SkillOnList[i] = 0;
-                    SendMsg(new S2C_SkillOff { m_SkillID = pID, m_Index = i });
+                    SendMsg(new S2C_SkillOff { SkillID = pID, Index = i });
                     DummyDB.Save(m_DB);
                     return;
                 }
@@ -163,17 +163,17 @@ namespace DummyServer
             List<int> _PartnerList = new List<int>(10);
             for (int i = 0; i < count; i++)
             {
-                var _id = GetRandomItemID(GetGroupIDFromSummon(m_DB.m_ShopPartnerData.m_ID));
+                var _id = GetRandomItemID(GetGroupIDFromSummon(m_DB.m_ShopPartnerData.ID));
                 _PartnerList.Add(_id);
             }
 
             // 更新伙伴商店数据
-            UpdateGameShopPartnerData(m_DB.m_ShopPartnerData.m_ID, count);
+            UpdateGameShopPartnerData(m_DB.m_ShopPartnerData.ID, count);
 
             SendMsg(new S2C_DrawCard()
             {
-                m_DrawCardType = (int)DrawCardType.Partner,
-                m_List = _PartnerList
+                DrawCardType = (int)DrawCardType.Partner,
+                List = _PartnerList
             });
 
             //更新技能数据
@@ -181,9 +181,9 @@ namespace DummyServer
             {
                 var gamePartnerData = m_DB.m_PartnerList.Find(pData =>
                 {
-                    if (pData.m_PartnerID == id)
+                    if (pData.PartnerID == id)
                     {
-                        pData.m_Count++;
+                        pData.Count++;
                         return true;
                     }
 
@@ -192,13 +192,13 @@ namespace DummyServer
 
                 if (gamePartnerData == null)
                 {
-                    m_DB.m_PartnerList.Add(new GamePartnerData { m_PartnerID = id, m_Count = 0, m_Level = 1 });
+                    m_DB.m_PartnerList.Add(new GamePartnerData { PartnerID = id, Count = 0, Level = 1 });
                 }
             }
 
             SendMsg(new S2C_PartnerListUpdate()
             {
-                m_PartnerList = m_DB.m_PartnerList
+                PartnerList = m_DB.m_PartnerList
             });
 
             DummyDB.Save(m_DB);
@@ -207,22 +207,22 @@ namespace DummyServer
         //单次升级
         public void PartnerIntensify(int pID)
         {
-            var _PartnerData = m_DB.m_PartnerList.Find(pData => pData.m_PartnerID == pID);
+            var _PartnerData = m_DB.m_PartnerList.Find(pData => pData.PartnerID == pID);
             if (_PartnerData == null)
             {
                 return;
             }
 
-            var _OldLevel = _PartnerData.m_Level;
+            var _OldLevel = _PartnerData.Level;
             DoPartnerIntensify(_PartnerData, false);
-            if (_OldLevel == _PartnerData.m_Level)
+            if (_OldLevel == _PartnerData.Level)
                 return;
 
             SendMsg(new S2C_PartnerIntensify
             {
-                m_IsAuto = false,
-                m_PartnerList = new List<GamePartnerUpgradeData>()
-                    { new() { m_PartnerData = _PartnerData, m_OldLevel = _OldLevel } }
+                IsAuto = false,
+                PartnerList = new List<GamePartnerUpgradeData>()
+                    { new() { PartnerData = _PartnerData, OldLevel = _OldLevel } }
             });
 
             DummyDB.Save(m_DB);
@@ -234,34 +234,34 @@ namespace DummyServer
             List<GamePartnerUpgradeData> _PartnerList = new List<GamePartnerUpgradeData>();
             for (int i = 1; i <= GameDefine.PartnerMaxID; i++)
             {
-                var _PartnerData = m_DB.m_PartnerList.Find(pData => pData.m_PartnerID == i);
+                var _PartnerData = m_DB.m_PartnerList.Find(pData => pData.PartnerID == i);
                 if (_PartnerData == null)
                     continue;
 
-                var _OldLevel = _PartnerData.m_Level;
+                var _OldLevel = _PartnerData.Level;
                 DoPartnerIntensify(_PartnerData);
-                if (_OldLevel == _PartnerData.m_Level)
+                if (_OldLevel == _PartnerData.Level)
                     continue;
 
-                _PartnerList.Add(new() { m_PartnerData = _PartnerData, m_OldLevel = _OldLevel });
+                _PartnerList.Add(new() { PartnerData = _PartnerData, OldLevel = _OldLevel });
             }
 
             if (_PartnerList.Count > 0)
-                SendMsg(new S2C_PartnerIntensify { m_IsAuto = true, m_PartnerList = _PartnerList });
+                SendMsg(new S2C_PartnerIntensify { IsAuto = true, PartnerList = _PartnerList });
 
             DummyDB.Save(m_DB);
         }
 
         private void DoPartnerIntensify(GamePartnerData pData, bool pAuto = true)
         {
-            var _CurCount = pData.m_Count;
-            var _NeedCount = pData.m_Level > 10
+            var _CurCount = pData.Count;
+            var _NeedCount = pData.Level > 10
                 ? PartnerLvlUpCfg.GetData(10).Cost
-                : PartnerLvlUpCfg.GetData(pData.m_Level).Cost;
+                : PartnerLvlUpCfg.GetData(pData.Level).Cost;
             if (_CurCount >= _NeedCount)
             {
-                pData.m_Level++;
-                pData.m_Count -= _NeedCount;
+                pData.Level++;
+                pData.Count -= _NeedCount;
                 if (pAuto)
                     DoPartnerIntensify(pData);
             }
@@ -274,7 +274,7 @@ namespace DummyServer
                 if (m_DB.m_PartnerOnList[i] == 0)
                 {
                     m_DB.m_PartnerOnList[i] = pID;
-                    SendMsg(new S2C_PartnerOn { m_PartnerID = pID, m_Index = i });
+                    SendMsg(new S2C_PartnerOn { PartnerID = pID, Index = i });
                     DummyDB.Save(m_DB);
                     return;
                 }
@@ -288,7 +288,7 @@ namespace DummyServer
                 if (m_DB.m_PartnerOnList[i] == pID)
                 {
                     m_DB.m_PartnerOnList[i] = 0;
-                    SendMsg(new S2C_PartnerOff { m_PartnerID = pID, m_Index = i });
+                    SendMsg(new S2C_PartnerOff { PartnerID = pID, Index = i });
                     DummyDB.Save(m_DB);
                     return;
                 }
@@ -312,24 +312,24 @@ namespace DummyServer
             {
                 if (RandomHelper.NextBool())
                 {
-                    var _id = GetRandomItemID(GetGroupIDFromSummon(m_DB.m_ShopEquipData.m_ID));
+                    var _id = GetRandomItemID(GetGroupIDFromSummon(m_DB.m_ShopEquipData.ID));
                     _Weapon.Add(_id);
                 }
                 else
                 {
                     // TODO: 防具ID与武器ID相差1000，目前这里待进一步优化处理
-                    var _id = GetRandomItemID(GetGroupIDFromSummon(m_DB.m_ShopEquipData.m_ID + 1000));
+                    var _id = GetRandomItemID(GetGroupIDFromSummon(m_DB.m_ShopEquipData.ID + 1000));
                     _Weapon.Add(_id);
                 }
             }
 
             // 更新装备商店数据
-            UpdateGameShopEquipData(m_DB.m_ShopEquipData.m_ID, count);
+            UpdateGameShopEquipData(m_DB.m_ShopEquipData.ID, count);
 
             SendMsg(new S2C_DrawCard()
             {
-                m_DrawCardType = (int)DrawCardType.Equip,
-                m_List = _Weapon
+                DrawCardType = (int)DrawCardType.Equip,
+                List = _Weapon
             });
 
             //更新技能数据
@@ -343,9 +343,9 @@ namespace DummyServer
 
                 var _Data = _Temp.Find(pData =>
                 {
-                    if (pData.m_EquipID == id)
+                    if (pData.EquipID == id)
                     {
-                        pData.m_Count++;
+                        pData.Count++;
                         return true;
                     }
 
@@ -354,63 +354,65 @@ namespace DummyServer
 
                 if (_Data == null)
                 {
-                    _Temp.Add(new GameEquipData { m_EquipID = id, m_Count = 0, m_Level = 1 });
+                    _Temp.Add(new GameEquipData { EquipID = id, Count = 0, Level = 1 });
                 }
             }
 
             SendMsg(new S2C_EquipListUpdate()
             {
-                m_WeaponList = m_DB.m_WeaponList,
-                m_ArmorList = m_DB.m_ArmorList
+                WeaponList = m_DB.m_WeaponList,
+                ArmorList = m_DB.m_ArmorList
             });
 
             DummyDB.Save(m_DB);
         }
 
         //单次升级
-        public void EquipIntensify(int pID, ItemType pType)
+        public void EquipIntensify(int pID, int pType)
         {
+            var equipType = (ItemType)pType;
             List<GameEquipData> _Temp = null;
-            if (pType == ItemType.Weapon)
+            if (equipType == ItemType.Weapon)
                 _Temp = m_DB.m_WeaponList;
-            else if (pType == ItemType.Armor)
+            else if (equipType == ItemType.Armor)
                 _Temp = m_DB.m_ArmorList;
 
-            var _Equip = _Temp.Find(pData => pData.m_EquipID == pID);
+            var _Equip = _Temp.Find(pData => pData.EquipID == pID);
             if (_Equip == null)
             {
                 return;
             }
 
-            var _OldLevel = _Equip.m_Level;
+            var _OldLevel = _Equip.Level;
             DoEquipIntensify(_Equip, false);
-            if (_OldLevel == _Equip.m_Level)
+            if (_OldLevel == _Equip.Level)
                 return;
 
             SendMsg(new S2C_EquipIntensify
             {
-                m_IsAuto = false, m_Type = pType,
-                m_EquipList = new List<GameEquipUpgradeData>()
-                    { new() { m_EquipData = _Equip, m_OldLevel = _OldLevel } }
+                IsAuto = false, Type = pType,
+                EquipList = new List<GameEquipUpgradeData>()
+                    { new() { EquipData = _Equip, OldLevel = _OldLevel } }
             });
 
             DummyDB.Save(m_DB);
         }
 
         //批量升满
-        public void EquipIntensifyAuto(ItemType pType)
+        public void EquipIntensifyAuto(int pType)
         {
+            var equipType = (ItemType)pType;
             List<GameEquipUpgradeData> _EquipList = new List<GameEquipUpgradeData>();
             int iStartID = 0;
             int iMaxID = 0;
             List<GameEquipData> _Temp = null;
-            if (pType == ItemType.Weapon)
+            if (equipType == ItemType.Weapon)
             {
                 iStartID = 1001;
                 iMaxID = GameDefine.WeaponMaxID;
                 _Temp = m_DB.m_WeaponList;
             }
-            else if (pType == ItemType.Armor)
+            else if (equipType == ItemType.Armor)
             {
                 iStartID = 2001;
                 iMaxID = GameDefine.ArmorMaxID;
@@ -419,60 +421,61 @@ namespace DummyServer
 
             for (int i = iStartID; i <= iMaxID; i++)
             {
-                var _EquipData = _Temp.Find(pData => pData.m_EquipID == i);
+                var _EquipData = _Temp.Find(pData => pData.EquipID == i);
                 if (_EquipData == null)
                     continue;
 
-                var _OldLevel = _EquipData.m_Level;
+                var _OldLevel = _EquipData.Level;
                 DoEquipIntensify(_EquipData);
-                if (_OldLevel == _EquipData.m_Level)
+                if (_OldLevel == _EquipData.Level)
                     continue;
 
-                _EquipList.Add(new() { m_EquipData = _EquipData, m_OldLevel = _OldLevel });
+                _EquipList.Add(new() { EquipData = _EquipData, OldLevel = _OldLevel });
             }
 
             if (_EquipList.Count > 0)
-                SendMsg(new S2C_EquipIntensify { m_IsAuto = true, m_Type = pType, m_EquipList = _EquipList });
+                SendMsg(new S2C_EquipIntensify { IsAuto = true, Type = pType, EquipList = _EquipList });
 
             DummyDB.Save(m_DB);
         }
 
         private void DoEquipIntensify(GameEquipData pData, bool pAuto = true)
         {
-            var _CurCount = pData.m_Count;
-            var _NeedCount = pData.m_Level > 10
+            var _CurCount = pData.Count;
+            var _NeedCount = pData.Level > 10
                 ? EquipLvlUpCfg.GetData(10).Cost
-                : EquipLvlUpCfg.GetData(pData.m_Level).Cost;
+                : EquipLvlUpCfg.GetData(pData.Level).Cost;
             if (_CurCount >= _NeedCount)
             {
-                pData.m_Level++;
-                pData.m_Count -= _NeedCount;
+                pData.Level++;
+                pData.Count -= _NeedCount;
                 if (pAuto)
                     DoEquipIntensify(pData);
             }
         }
 
-        private void DoEquipOn(int pID, ItemType pType)
+        private void DoEquipOn(int pID, int pType)
         {
-            if (pType == ItemType.Weapon)
+            var equipType = (ItemType)pType;
+            if (equipType == ItemType.Weapon)
             {
                 if (m_DB.m_WeaponOnID != 0)
                 {
-                    SendMsg(new S2C_EquipOff { m_EquipID = m_DB.m_WeaponOnID, m_Type = pType });
+                    SendMsg(new S2C_EquipOff { EquipID = m_DB.m_WeaponOnID, Type = pType });
                 }
 
                 m_DB.m_WeaponOnID = pID;
-                SendMsg(new S2C_EquipOn { m_EquipID = pID, m_Type = pType });
+                SendMsg(new S2C_EquipOn { EquipID = pID, Type = pType });
             }
-            else if (pType == ItemType.Armor)
+            else if (equipType == ItemType.Armor)
             {
                 if (m_DB.m_ArmorOnID != 0)
                 {
-                    SendMsg(new S2C_EquipOff { m_EquipID = m_DB.m_ArmorOnID, m_Type = pType });
+                    SendMsg(new S2C_EquipOff { EquipID = m_DB.m_ArmorOnID, Type = pType });
                 }
 
                 m_DB.m_ArmorOnID = pID;
-                SendMsg(new S2C_EquipOn { m_EquipID = pID, m_Type = pType });
+                SendMsg(new S2C_EquipOn { EquipID = pID, Type = pType });
             }
 
             DummyDB.Save(m_DB);
@@ -519,7 +522,7 @@ namespace DummyServer
         private EngineData GetRandomEngineData()
         {
             var index = 0;
-            while (index < m_DigDeep.Length && m_DB.m_MiningData.m_FloorCount > m_DigDeep[index])
+            while (index < m_DigDeep.Length && m_DB.m_MiningData.FloorCount > m_DigDeep[index])
             {
                 index++;
             }
@@ -553,8 +556,8 @@ namespace DummyServer
             // 添加将要获取的引擎到引擎列表中
             m_DB.m_EngineList.Add(new GameEngineData
             {
-                m_Id = m_DB.m_EngineGetId, m_TypeId = engineData.ID, m_IsGet = 0, m_AttrId = engineAttrId,
-                m_Level = 0, m_Reform = 0,
+                Id = m_DB.m_EngineGetId, TypeId = engineData.ID, IsGet = 0, AttrId = engineAttrId,
+                Level = 0, Reform = 0,
             });
 
             DummyDB.Save(m_DB);
@@ -565,7 +568,7 @@ namespace DummyServer
         /// </summary>
         private void UpdateGetEngine()
         {
-            m_DB.m_EngineList.Find(i => i.m_Id == m_DB.m_EngineGetId).m_IsGet = 1;
+            m_DB.m_EngineList.Find(i => i.Id == m_DB.m_EngineGetId).IsGet = 1;
             //临时存储的上一个将要获取的引擎Id，通知客户端该Id引擎被获得
             var lastEngineGetId = m_DB.m_EngineGetId;
 
@@ -574,8 +577,8 @@ namespace DummyServer
 
             SendMsg(new S2C_EngineGet()
             {
-                m_EngineList = m_DB.m_EngineList,
-                m_LastEngineGetId = lastEngineGetId,
+                EngineList = m_DB.m_EngineList,
+                LastEngineGetId = lastEngineGetId,
             });
 
             DummyDB.Save(m_DB);
@@ -588,7 +591,7 @@ namespace DummyServer
         /// <returns></returns>
         private bool IsEngineListHave(int engineGetId)
         {
-            var gameEngineData = m_DB.m_EngineList.Find(i => i.m_Id == engineGetId);
+            var gameEngineData = m_DB.m_EngineList.Find(i => i.Id == engineGetId);
             return gameEngineData != null;
         }
 
@@ -598,7 +601,7 @@ namespace DummyServer
         /// <returns></returns>
         private int GetEngineCostGear()
         {
-            var typeId = m_DB.m_EngineList.Find(i => i.m_Id == m_DB.m_EngineGetId).m_TypeId;
+            var typeId = m_DB.m_EngineList.Find(i => i.Id == m_DB.m_EngineGetId).TypeId;
             var costGear = EngineCfg.GetData(typeId).CostGear;
             return costGear;
         }
@@ -628,9 +631,9 @@ namespace DummyServer
         /// </summary>
         private void DoEngineRemove(int pID)
         {
-            foreach (var engine in m_DB.m_EngineList.Where(engine => engine.m_Id == pID))
+            foreach (var engine in m_DB.m_EngineList.Where(engine => engine.Id == pID))
             {
-                UpdateIron(GetEngineDecomposeGet(engine.m_Level, engine.m_Reform)); //更新引擎分解材料
+                UpdateIron(GetEngineDecomposeGet(engine.Level, engine.Reform)); //更新引擎分解材料
                 m_DB.m_EngineList.Remove(engine); //分解引擎
                 break;
             }
@@ -646,11 +649,11 @@ namespace DummyServer
         {
             if (m_DB.m_EngineOnId != 0)
             {
-                SendMsg(new S2C_EngineOff() { m_EngineOffId = m_DB.m_EngineOnId });
+                SendMsg(new S2C_EngineOff() { EngineId = m_DB.m_EngineOnId });
             }
 
             m_DB.m_EngineOnId = pID;
-            SendMsg(new S2C_EngineOn() { m_EngineOnId = pID });
+            SendMsg(new S2C_EngineOn() { EngineId = pID });
             DummyDB.Save(m_DB);
         }
 
@@ -661,21 +664,21 @@ namespace DummyServer
         private void DoEngineOff(int pID)
         {
             m_DB.m_EngineOnId = 0;
-            SendMsg(new S2C_EngineOff() { m_EngineOffId = pID });
+            SendMsg(new S2C_EngineOff() { EngineId = pID });
             DummyDB.Save(m_DB);
         }
 
         //引擎升级
         private void DoEngineIntensify(int pID)
         {
-            var engineData = m_DB.m_EngineList.Find(pData => pData.m_Id == pID);
+            var engineData = m_DB.m_EngineList.Find(pData => pData.Id == pID);
             if (engineData == null) return;
-            UpdateIron(-GetEngineIntensifyCost(engineData.m_Level, engineData.m_Reform)); //更新引擎强化材料
-            engineData.m_Level++; //强化引擎等级
+            UpdateIron(-GetEngineIntensifyCost(engineData.Level, engineData.Reform)); //更新引擎强化材料
+            engineData.Level++; //强化引擎等级
             SendMsg(new S2C_EngineIntensify()
             {
-                m_EngineIntensifyId = pID,
-                m_EngineLevel = engineData.m_Level,
+                EngineId = pID,
+                EngineLevel = engineData.Level,
             });
             DummyDB.Save(m_DB);
         }

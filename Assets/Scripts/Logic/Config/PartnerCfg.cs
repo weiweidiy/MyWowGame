@@ -41,6 +41,35 @@ namespace Configs
         //伙伴攻击速度
         public float AtkSpeed;
 
+        //出现舱室
+        public List<int> Rooms;
+
+        //舱室权重
+        public List<int> RoomWight;
+
+        //移动速度区间
+        public List<int> Speed;
+
+        /*
+        Administrator:
+巡逻积极性
+0,待机
+越高越积极
+
+        */
+        //状态切换时间
+        public int Patrol;
+
+        /*
+        Administrator:
+巡逻积极性
+0,待机
+越高越积极
+
+        */
+        //偷懒时间
+        public int LazyTime;
+
         //资源
         public string ResourceName;
 

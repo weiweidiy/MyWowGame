@@ -2,7 +2,9 @@
 using BreakInfinity;
 using Framework.EventKit;
 using Framework.Extension;
+using Framework.Helper;
 using Logic.Common;
+using Logic.Common.RedDot;
 using Logic.Manager;
 using Networks;
 using UnityEngine;
@@ -28,77 +30,201 @@ namespace Logic.Data
         /// <param name="pData">服务器登录数据</param>
         public void OnReceiveLoginData(S2C_Login pData)
         {
-            m_Data.m_IsFirstLogin = pData.m_IsFirstLogin;
-            m_Data.m_LastGameDate = DateTime.Parse(pData.m_LastGameDate);
+            m_Data.m_LastGameDate = pData.LastGameDate;
 
-            m_Data.m_Coin = BigDouble.Parse(pData.m_Coin);
-            m_Data.m_Diamond = pData.m_Diamond;
-            m_Data.m_Iron = pData.m_Iron;
-            m_Data.m_Oil = pData.m_Oil;
+            m_Data.m_Coin = BigDouble.Parse(pData.Coin);
+            m_Data.m_Diamond = pData.Diamond;
+            m_Data.m_Iron = pData.Iron;
+            m_Data.m_Oil = pData.Oil;
+            m_Data.m_Trophy = BigDouble.Parse(pData.Trophy);
+            m_Data.m_MushRoom = pData.MushRoom;
+            m_Data.m_BreakOre = pData.BreakOre;
 
-            m_Data.m_AutoSkill = pData.m_AutoSkill;
-            m_Data.m_IsMusicOn = pData.m_IsMusicOn;
-            m_Data.m_IsSoundOn = pData.m_IsSoundOn;
+            m_Data.m_AutoSkill = pData.AutoSkill;
+            m_Data.m_IsMusicOn = pData.IsMusicOn;
+            m_Data.m_IsSoundOn = pData.IsSoundOn;
 
-            m_Data.m_GJJAtkLevel = pData.m_GJJAtkLevel;
-            m_Data.m_GJJHPLevel = pData.m_GJJHPLevel;
-            m_Data.m_GJJHPRecoverLevel = pData.m_GJJHPRecoverLevel;
-            m_Data.m_GJJCriticalLevel = pData.m_GJJCriticalLevel;
-            m_Data.m_GJJCriticalDamageLevel = pData.m_GJJCriticalDamageLevel;
-            m_Data.m_GJJAtkSpeedLevel = pData.m_GJJAtkSpeedLevel;
-            m_Data.m_GJJDoubleHitLevel = pData.m_GJJDoubleHitLevel;
-            m_Data.m_GJJTripletHitLevel = pData.m_GJJTripletHitLevel;
+            m_Data.m_GJJAtkLevel = pData.GJJAtkLevel;
+            m_Data.m_GJJHPLevel = pData.GJJHPLevel;
+            m_Data.m_GJJHPRecoverLevel = pData.GJJHPRecoverLevel;
+            m_Data.m_GJJCriticalLevel = pData.GJJCriticalLevel;
+            m_Data.m_GJJCriticalDamageLevel = pData.GJJCriticalDamageLevel;
+            m_Data.m_GJJAtkSpeedLevel = pData.GJJAtkSpeedLevel;
+            m_Data.m_GJJDoubleHitLevel = pData.GJJDoubleHitLevel;
+            m_Data.m_GJJTripletHitLevel = pData.GJJTripletHitLevel;
 
-            m_Data.m_CurLevelID = pData.m_CurLevelID;
-            m_Data.m_CurLevelNode = pData.m_CurLevelNode;
-            m_Data.m_LevelState = (LevelState)pData.m_CurLevelState;
+            m_Data.m_CurLevelID = pData.CurLevelID;
+            m_Data.m_CurLevelNode = pData.CurLevelNode;
+            m_Data.m_LevelState = (LevelState)pData.CurLevelState;
 
-            m_Data.m_BtnPlaceRewardClickTime = pData.m_BtnPlaceRewardClickTime;
-            m_Data.m_BtnPlaceRewardShowTime = pData.m_BtnPlaceRewardShowTime;
-            m_Data.m_PopPlaceRewardTime = pData.m_PopPlaceRewardTime;
+            m_Data.m_BtnPlaceRewardClickTime = pData.PlaceRewardClickTime;
+            m_Data.m_BtnPlaceRewardShowTime = pData.PlaceRewardShowTime;
+            m_Data.m_PopPlaceRewardTime = pData.PlaceRewardPopTime;
 
-            //装备
-            EquipManager.Ins.Init(pData.m_WeaponList, pData.m_ArmorList, pData.m_WeaponOnID, pData.m_ClothesOnID);
-            //伙伴
-            PartnerManager.Ins.Init(pData.m_PartnerList, pData.m_PartnerOnList);
-            //技能
-            SkillManager.Ins.Init(pData.m_SkillList, pData.m_SkillOnList);
-            //引擎
-            EngineManager.Ins.Init(pData.m_EngineList, pData.m_EngineOnId, pData.m_EngineGetId);
-            //抽卡
-            ShopManager.Ins.Init(pData);
-            //任务
-            TaskManager.Ins.Init(pData);
-            //副本
-            CopyManager.Ins.Init(pData);
-            //考古
-            MiningManager.Ins.Init(pData);
-            //开放剧情
-            LockStoryManager.Ins.Init(pData.m_LockStoryList);
-            //考古研究
-            ResearchManager.Ins.Init(pData.m_ResearchList, pData.m_ResearchEffectData);
+
+            try
+            {
+                //装备
+                EquipManager.Ins.Init(pData.WeaponList, pData.ArmorList, pData.WeaponOnID, pData.ArmorOnID);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+
+            try
+            {
+                //伙伴
+                PartnerManager.Ins.Init(pData.PartnerList, pData.PartnerOnList);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+
+            try
+            {
+                //技能
+                SkillManager.Ins.Init(pData.SkillList, pData.SkillOnList);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+
+            try
+            {
+                //引擎
+                EngineManager.Ins.Init(pData.EngineList, pData.EngineOnId, pData.EngineGetId);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+
+            try
+            {
+                //抽卡
+                ShopManager.Ins.Init(pData);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+
+            try
+            {
+                //任务
+                TaskManager.Ins.Init(pData);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+
+            try
+            {
+                //副本
+                CopyManager.Ins.Init(pData);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+
+            try
+            {
+                //考古
+                MiningManager.Ins.Init(pData);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+
+            try
+            {
+                //开放剧情
+                LockStoryManager.Ins.Init(pData.LockStoryList);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+
+            try
+            {
+                //考古研究
+                ResearchManager.Ins.Init(pData.ResearchList, pData.ResearchEffectData);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+
+            try
+            {
+                //淬炼
+                QuenchingManager.Ins.Init(pData.QuenchingList);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+
+
+            try
+            {
+                //战利品
+                SpoilManager.Ins.Init(pData);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+
+            try
+            {
+                //舱室
+                RoomManager.Ins.Init(pData);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+
+
+            try
+            {
+                //英雄
+                RoleManager.Ins.Init(pData.RoleList, pData.RoleOnId);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+
+
+            try
+            {
+                BigBoomRedDotManager.Ins.Init();
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+
 
             //通知其他逻辑 成功获取玩家基础数据 登录成功
             EventManager.Call(LogicEvent.LoginSuccess);
 
-            Debug.LogError("上次登录时间 : " + LastGameDate);
+            Debug.LogError("上次登录UTC时间 : " + TimeHelper.GetUtcDateTime(LastGameDate));
         }
 
         #region 数据接口
 
-        //是否第一次登录
-        public bool IsFirstLogin
-        {
-            get => m_Data.m_IsFirstLogin;
-            set => m_Data.m_IsFirstLogin = value;
-        }
-
         //上次游戏时间
-        public DateTime LastGameDate
-        {
-            get => m_Data.m_LastGameDate;
-            set => m_Data.m_LastGameDate = value;
-        }
+        public long LastGameDate => m_Data.m_LastGameDate;
 
         //游戏币
         public BigDouble Coin
@@ -108,7 +234,7 @@ namespace Logic.Data
             {
                 m_Data.m_Coin = value;
                 EventManager.Call(LogicEvent.CoinChanged);
-                EventManager.Call(LogicEvent.SyncUserData);
+                EventManager.Call(LogicEvent.SyncUserData, SyncDataType.CoinData);
             }
         }
 
@@ -134,6 +260,17 @@ namespace Logic.Data
             }
         }
 
+        public BigDouble Trophy
+        {
+            get => m_Data.m_Trophy;
+            set
+            {
+                m_Data.m_Trophy = value;
+                EventManager.Call(LogicEvent.TropyChanged);
+                EventManager.Call(LogicEvent.SyncUserData, SyncDataType.TrophyData);
+            }
+        }
+
         //钢铁
         public int Iron
         {
@@ -141,14 +278,51 @@ namespace Logic.Data
             set
             {
                 m_Data.m_Iron = value;
-                EventManager.Call(LogicEvent.EngineIronUpdate);
+                EventManager.Call(LogicEvent.EngineIronChanged);
             }
         }
 
+        //英雄升级蘑菇
+        public int MushRoom
+        {
+            get => m_Data.m_MushRoom;
+            set
+            {
+                m_Data.m_MushRoom = value;
+                EventManager.Call(LogicEvent.RoleMushRoomChanged);
+            }
+        }
+
+        //英雄突破矿石
+        public int BreakOre
+        {
+            get => m_Data.m_BreakOre;
+            set
+            {
+                m_Data.m_BreakOre = value;
+                EventManager.Call(LogicEvent.RoleBreakOreChanged);
+            }
+        }
+
+        //自动攻击
         public bool AutoSkill
         {
             get => m_Data.m_AutoSkill;
             set => m_Data.m_AutoSkill = value;
+        }
+
+        //音乐
+        public bool Music
+        {
+            get => m_Data.m_IsMusicOn;
+            set => m_Data.m_IsMusicOn = value;
+        }
+
+        //音效
+        public bool Sound
+        {
+            get => m_Data.m_IsSoundOn;
+            set => m_Data.m_IsSoundOn = value;
         }
 
         //GJJ攻击力等级
@@ -158,7 +332,7 @@ namespace Logic.Data
             set
             {
                 m_Data.m_GJJAtkLevel = value;
-                EventManager.Call(LogicEvent.SyncUserData);
+                EventManager.Call(LogicEvent.SyncUserData, SyncDataType.RoomData);
             }
         }
 
@@ -169,7 +343,7 @@ namespace Logic.Data
             set
             {
                 m_Data.m_GJJHPLevel = value;
-                EventManager.Call(LogicEvent.SyncUserData);
+                EventManager.Call(LogicEvent.SyncUserData, SyncDataType.RoomData);
             }
         }
 
@@ -180,7 +354,7 @@ namespace Logic.Data
             set
             {
                 m_Data.m_GJJHPRecoverLevel = value;
-                EventManager.Call(LogicEvent.SyncUserData);
+                EventManager.Call(LogicEvent.SyncUserData, SyncDataType.RoomData);
             }
         }
 
@@ -191,7 +365,7 @@ namespace Logic.Data
             set
             {
                 m_Data.m_GJJCriticalLevel = value;
-                EventManager.Call(LogicEvent.SyncUserData);
+                EventManager.Call(LogicEvent.SyncUserData, SyncDataType.RoomData);
             }
         }
 
@@ -202,7 +376,7 @@ namespace Logic.Data
             set
             {
                 m_Data.m_GJJCriticalDamageLevel = value;
-                EventManager.Call(LogicEvent.SyncUserData);
+                EventManager.Call(LogicEvent.SyncUserData, SyncDataType.RoomData);
             }
         }
 
@@ -213,7 +387,7 @@ namespace Logic.Data
             set
             {
                 m_Data.m_GJJAtkSpeedLevel = value;
-                EventManager.Call(LogicEvent.SyncUserData);
+                EventManager.Call(LogicEvent.SyncUserData, SyncDataType.RoomData);
             }
         }
 
@@ -224,7 +398,7 @@ namespace Logic.Data
             set
             {
                 m_Data.m_GJJDoubleHitLevel = value;
-                EventManager.Call(LogicEvent.SyncUserData);
+                EventManager.Call(LogicEvent.SyncUserData, SyncDataType.RoomData);
             }
         }
 
@@ -235,7 +409,7 @@ namespace Logic.Data
             set
             {
                 m_Data.m_GJJTripletHitLevel = value;
-                EventManager.Call(LogicEvent.SyncUserData);
+                EventManager.Call(LogicEvent.SyncUserData, SyncDataType.RoomData);
             }
         }
 
@@ -247,7 +421,7 @@ namespace Logic.Data
             {
                 m_Data.m_CurLevelID = value;
                 EventManager.Call(LogicEvent.Fight_LevelChanged);
-                EventManager.Call(LogicEvent.SyncUserData);
+                EventManager.Call(LogicEvent.SyncUserData, SyncDataType.LevelData);
                 TaskManager.Ins.DoTaskUpdate(TaskType.TT_1001, CurLevelID);
             }
         }
@@ -260,7 +434,7 @@ namespace Logic.Data
             {
                 m_Data.m_CurLevelNode = value;
                 EventManager.Call(LogicEvent.Fight_LevelNodeChanged);
-                EventManager.Call(LogicEvent.SyncUserData);
+                EventManager.Call(LogicEvent.SyncUserData, SyncDataType.LevelData);
             }
         }
 
@@ -271,7 +445,7 @@ namespace Logic.Data
             set
             {
                 m_Data.m_LevelState = value;
-                EventManager.Call(LogicEvent.SyncUserData);
+                EventManager.Call(LogicEvent.SyncUserData, SyncDataType.LevelData);
             }
         }
 
@@ -279,21 +453,33 @@ namespace Logic.Data
         public long BtnPlaceRewardClickTime
         {
             get => m_Data.m_BtnPlaceRewardClickTime;
-            set => m_Data.m_BtnPlaceRewardClickTime = value;
+            set
+            {
+                m_Data.m_BtnPlaceRewardClickTime = value;
+                EventManager.Call(LogicEvent.SyncUserData, SyncDataType.PlaceReward);
+            }
         }
 
         // 放置奖励按钮显示时间
         public float BtnPlaceRewardShowTime
         {
             get => m_Data.m_BtnPlaceRewardShowTime;
-            set => m_Data.m_BtnPlaceRewardShowTime = value;
+            set
+            {
+                m_Data.m_BtnPlaceRewardShowTime = value;
+                EventManager.Call(LogicEvent.SyncUserData, SyncDataType.PlaceReward);
+            }
         }
 
         // 放置奖励页面每日主动弹出时间
-        public string PopPlaceRewardTime
+        public int PopPlaceRewardTime
         {
             get => m_Data.m_PopPlaceRewardTime;
-            set => m_Data.m_PopPlaceRewardTime = value;
+            set
+            {
+                m_Data.m_PopPlaceRewardTime = value;
+                EventManager.Call(LogicEvent.SyncUserData, SyncDataType.PlaceReward);
+            }
         }
 
         #endregion

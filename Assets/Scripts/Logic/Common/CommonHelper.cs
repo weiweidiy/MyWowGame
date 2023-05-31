@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Configs;
 using Framework.Helper;
 
 namespace Logic.Common
@@ -11,23 +10,24 @@ namespace Logic.Common
     public static class CommonHelper
     {
         /// <summary>
-        /// 加权计算返回值
+        /// 根据组权重获取组Id
         /// </summary>
         /// <param name="weight"></param>
         /// <returns></returns>
-        public static int GetWeightIndex(int[] weight)
+        public static int GetWeightIndex(List<int> weight)
         {
             // 总权值
             var maxWeight = weight.Sum();
             // 随机权值
             var randomWeight = RandomHelper.Range(1, maxWeight + 1);
-            // 返回值
-            var indexValue = 0;
-            var j = weight.Length;
+            // 权值区间
+            var weightValue = 0;
+            var j = weight.Count;
+
             for (var i = 0; i < j; i++)
             {
-                indexValue += weight[i];
-                if (randomWeight <= indexValue)
+                weightValue += weight[i];
+                if (randomWeight <= weightValue)
                 {
                     return i;
                 }
@@ -37,29 +37,14 @@ namespace Logic.Common
         }
 
         /// <summary>
-        /// 根据groupID返回ItemID，ItemMinCount,ItemMaxCount
+        /// 根据组权重获取组Id
         /// </summary>
-        /// <param name="groupID"></param>
+        /// <param name="group"></param>
+        /// <param name="weight"></param>
         /// <returns></returns>
-        public static List<int> GetItemDetails(int groupID)
+        public static int GetIdFromWeight(List<int> group, List<int> weight)
         {
-            var groupData = GroupCfg.GetData(groupID);
-            // 返回ItemID
-            var itemId = groupData.ItemID;
-            var itemWeight = groupData.ItemWight;
-
-            // 返回ItemMinCount
-            var itemMinCount = groupData.ItemMinCount;
-            // 返回ItemMaxCount
-            var itemMaxCount = groupData.ItemMaxCount;
-            var weightIndex = GetWeightIndex(itemWeight.ToArray());
-            var list = new List<int>
-            {
-                itemId[weightIndex],
-                itemMinCount[weightIndex],
-                itemMaxCount[weightIndex]
-            };
-            return list;
+            return group[GetWeightIndex(weight)];
         }
     }
 }

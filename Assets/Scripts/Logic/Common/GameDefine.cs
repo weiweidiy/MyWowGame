@@ -61,29 +61,6 @@ namespace Logic.Common
 
         #region 关卡基础配置相关
 
-        // //关卡攻击力基础值
-        // public static int LevelBaseAtk;
-        // //攻击力成长系数
-        // public static int LevelAtkGrow;
-        // //关卡攻击体验系数
-        // public static int LevelAtkExp;
-        // //关卡体力基础值
-        // public static int LevelBaseHP;
-        // //关卡体力成长系数
-        // public static int LevelHPGrow;
-        // //关卡体力体验系数
-        // public static int LevelHPExp;
-        // //关卡掉落基础值
-        // public static int LevelBaseDrop;
-        // //关卡掉落成长系数
-        // public static int LevelDropGrow;
-        // //关卡掉落体验系数
-        // public static int LevelDropExp;
-        // //关卡普通怪物最小数量
-        // public static int LevelMinMonster;
-        // //关卡普通怪物最大数量
-        // public static int LevelMaxMonster;
-        //关卡默认波次数
         public static int LevelDefaultWave;
 
         //章节默认关卡数
@@ -146,6 +123,10 @@ namespace Logic.Common
         public static int CopyDiamondSpawnInterval;
         public static int CopyOilConstValue; //公式常量
         public static float CopyOilBossAtkConstValue; //Boss攻击常量
+        public static int CopyTrophyTime;
+        public static float CopyTrophyMoveSpeedMult;
+        public static int CopyTrophySpawnInterval; //刷怪间隔
+        public static int CopyTrophyCount;
 
         #endregion
 
@@ -159,6 +140,28 @@ namespace Logic.Common
 
         public static int MaxEngineCount; // 玩家引擎数量初始上限
         public static int EngineFormulaId; // 引擎强化公式ID
+
+        #endregion
+
+        #region 淬炼相关配置
+
+        public static int DJProbabilityF;
+        public static int DJProbabilityE;
+        public static int DJProbabilityD;
+        public static int DJProbabilityC;
+        public static int DJProbabilityB;
+        public static int DJProbabilityA;
+        public static int DJProbabilityS;
+        public static int DJProbabilitySS;
+
+        #endregion
+
+        #region 英雄系统相关
+
+        public static int RoleAttrMaxLevel;
+        public static int RoleMushRoomExp;
+        public static int RoleBreakSpecialMaterial;
+        public static int RoleBreakEveryLevel;
 
         #endregion
 
@@ -184,17 +187,6 @@ namespace Logic.Common
             GJJBaseTripletHit = GameDefineCfg.GetData(15).IntValue;
             GJJTripletHitGrow = GameDefineCfg.GetData(16).IntValue;
 
-            // LevelBaseAtk = GameDefineCfg.GetData(100).IntValue;
-            // LevelAtkGrow = GameDefineCfg.GetData(101).IntValue;
-            // LevelAtkExp = GameDefineCfg.GetData(102).IntValue;
-            // LevelBaseHP = GameDefineCfg.GetData(103).IntValue;
-            // LevelHPGrow = GameDefineCfg.GetData(104).IntValue;
-            // LevelHPExp = GameDefineCfg.GetData(105).IntValue;
-            // LevelBaseDrop = GameDefineCfg.GetData(106).IntValue;
-            // LevelDropGrow = GameDefineCfg.GetData(107).IntValue;
-            // LevelDropExp = GameDefineCfg.GetData(108).IntValue;
-            // LevelMinMonster = GameDefineCfg.GetData(109).IntValue;
-            // LevelMaxMonster = GameDefineCfg.GetData(110).IntValue;
             LevelDefaultWave = GameDefineCfg.GetData(111).IntValue;
             ChapterDefaultLevel = GameDefineCfg.GetData(112).IntValue;
             LevelDefaultNodeNum = GameDefineCfg.GetData(113).IntValue;
@@ -223,8 +215,23 @@ namespace Logic.Common
             CopyDiamondMoveSpeedMult = GameDefineCfg.GetData(605).floatValue;
             CopyDiamondSpawnInterval = GameDefineCfg.GetData(606).IntValue;
             CopyCoinTime = GameDefineCfg.GetData(611).IntValue;
+
+            CopyTrophyTime = GameDefineCfg.GetData(631).IntValue; //战利品副本战斗时限
+            CopyTrophyCount = GameDefineCfg.GetData(632).IntValue;
+            CopyTrophyMoveSpeedMult = GameDefineCfg.GetData(635).floatValue;
+            CopyTrophySpawnInterval = GameDefineCfg.GetData(636).IntValue;
+
             CopyOilConstValue = GameDefineCfg.GetData(641).IntValue;
             CopyOilBossAtkConstValue = GameDefineCfg.GetData(642).floatValue;
+
+            DJProbabilityF = GameDefineCfg.GetData(650).IntValue;
+            DJProbabilityE = GameDefineCfg.GetData(651).IntValue;
+            DJProbabilityD = GameDefineCfg.GetData(652).IntValue;
+            DJProbabilityC = GameDefineCfg.GetData(653).IntValue;
+            DJProbabilityB = GameDefineCfg.GetData(654).IntValue;
+            DJProbabilityA = GameDefineCfg.GetData(655).IntValue;
+            DJProbabilityS = GameDefineCfg.GetData(656).IntValue;
+            DJProbabilitySS = GameDefineCfg.GetData(657).IntValue;
 
             MaxHammerCount = GameDefineCfg.GetData(701).IntValue;
             AddHammerTime = GameDefineCfg.GetData(703).IntValue;
@@ -234,6 +241,11 @@ namespace Logic.Common
 
             MaxEngineCount = GameDefineCfg.GetData(800).IntValue;
             EngineFormulaId = GameDefineCfg.GetData(801).IntValue;
+
+            RoleAttrMaxLevel = GameDefineCfg.GetData(901).IntValue;
+            RoleMushRoomExp = GameDefineCfg.GetData(902).IntValue;
+            RoleBreakSpecialMaterial = GameDefineCfg.GetData(903).IntValue;
+            RoleBreakEveryLevel = GameDefineCfg.GetData(904).IntValue;
         }
     }
 }

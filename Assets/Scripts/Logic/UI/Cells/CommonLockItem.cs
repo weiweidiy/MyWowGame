@@ -68,7 +68,7 @@ namespace Logic.UI.Cells
             if (lockStoryMap.Count == 0) return;
             foreach (var gameLockStoryData in LockStoryManager.Ins.LockStoryMap)
             {
-                if (gameLockStoryData.Key == (int)m_LockType && gameLockStoryData.Value == (int)LockState.Unlock)
+                if (gameLockStoryData.Key == (int)m_LockType && gameLockStoryData.Value == 1)
                 {
                     this.gameObject.Hide();
                 }
@@ -87,9 +87,9 @@ namespace Logic.UI.Cells
 
         private void OnUpdateLockState(int eventId, object data)
         {
-            var (lockType, lockState) = (ValueTuple<LockType, LockState>)data;
+            var (lockType, lockState) = (ValueTuple<LockType, int>)data;
 
-            if (lockType != m_LockType || lockState != LockState.Unlock) return;
+            if (lockType != m_LockType || lockState != 1) return;
 
             // TODO:解锁动画
             m_LockBg.DOFade(0, 2f).OnComplete(() => { this.gameObject.Hide(); });

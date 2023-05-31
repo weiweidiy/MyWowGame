@@ -17,6 +17,7 @@ namespace Logic.UI.UICopy
             
             CopyManager.Ins.StopCopyTimer();
             Hide();
+            UIManager.Ins.Show<UICopy>();
             UIManager.Ins.Show<UIMainLeft>();
             UIManager.Ins.Show<UIMainRight>();
         }

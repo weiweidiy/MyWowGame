@@ -29,7 +29,7 @@ namespace Logic.Manager
             PartnerMap = new Dictionary<int, GamePartnerData>(64);
             foreach (var _Data in pDataPartnerList)
             {
-                PartnerMap.Add(_Data.m_PartnerID, _Data);
+                PartnerMap.Add(_Data.PartnerID, _Data);
             }
 
             PartnerOnList = pDataPartnerOnList;
@@ -42,35 +42,35 @@ namespace Logic.Manager
 
         public void OnPartnerOn(S2C_PartnerOn pMsg)
         {
-            PartnerOnList[pMsg.m_Index] = pMsg.m_PartnerID;
+            PartnerOnList[pMsg.Index] = pMsg.PartnerID;
             EventManager.Call(LogicEvent.PartnerOn, pMsg);
         }
 
         public void OnPartnerOff(S2C_PartnerOff pMsg)
         {
-            PartnerOnList[pMsg.m_Index] = 0;
+            PartnerOnList[pMsg.Index] = 0;
             EventManager.Call(LogicEvent.PartnerOff, pMsg);
         }
 
         public async void OnPartnerIntensify(S2C_PartnerIntensify pMsg)
         {
             var _TaskNeedCount = 0;
-            foreach (var upgradeData in pMsg.m_PartnerList)
+            foreach (var upgradeData in pMsg.PartnerList)
             {
-                var _Data = GetPartnerData(upgradeData.m_PartnerData.m_PartnerID);
+                var _Data = GetPartnerData(upgradeData.PartnerData.PartnerID);
                 if (_Data != null)
                 {
-                    _Data.m_Level = upgradeData.m_PartnerData.m_Level;
-                    _Data.m_Count = upgradeData.m_PartnerData.m_Count;
+                    _Data.Level = upgradeData.PartnerData.Level;
+                    _Data.Count = upgradeData.PartnerData.Count;
                 }
 
-                _TaskNeedCount += upgradeData.m_PartnerData.m_Level - upgradeData.m_OldLevel;
+                _TaskNeedCount += upgradeData.PartnerData.Level - upgradeData.OldLevel;
             }
 
             TaskManager.Ins.DoTaskUpdate(TaskType.TT_9004, _TaskNeedCount);
 
-            if (pMsg.m_IsAuto)
-                await UIManager.Ins.OpenUI<UIUpgradedInfo>(pMsg.m_PartnerList);
+            if (pMsg.IsAuto)
+                await UIManager.Ins.OpenUI<UIUpgradedInfo>(pMsg.PartnerList);
             else
                 EventManager.Call(LogicEvent.PartnerUpgraded);
 
@@ -81,16 +81,16 @@ namespace Logic.Manager
 
         public void OnPartnerListUpdate(S2C_PartnerListUpdate pMsg)
         {
-            foreach (var _Data in pMsg.m_PartnerList)
+            foreach (var _Data in pMsg.PartnerList)
             {
-                var _PData = GetPartnerData(_Data.m_PartnerID);
+                var _PData = GetPartnerData(_Data.PartnerID);
                 if (_PData != null)
                 {
-                    _PData.m_Level = _Data.m_Level;
-                    _PData.m_Count = _Data.m_Count;
+                    _PData.Level = _Data.Level;
+                    _PData.Count = _Data.Count;
                 }
                 else
-                    PartnerMap.Add(_Data.m_PartnerID, _Data);
+                    PartnerMap.Add(_Data.PartnerID, _Data);
             }
 
             EventManager.Call(LogicEvent.PartnerListChanged);
@@ -105,6 +105,20 @@ namespace Logic.Manager
         public GamePartnerData GetPartnerData(int pPartnerID)
         {
             return PartnerMap.TryGetValue(pPartnerID, out var _Data) ? _Data : null;
+        }
+
+        /// <summary>
+        /// 获取所有的partner
+        /// </summary>
+        /// <returns></returns>
+        public List<GamePartnerData> GetAllPartners()
+        {
+            var result = new List<GamePartnerData>();
+            foreach(var key in PartnerMap.Keys)
+            {
+                result.Add(PartnerMap[key]);
+            }
+            return result;
         }
 
         //伙伴是否可以上阵
@@ -179,7 +193,7 @@ namespace Logic.Manager
         //当前数量
         public int CurCount(int pPartnerID)
         {
-            return PartnerMap.TryGetValue(pPartnerID, out var _Data) ? _Data.m_Count : 0;
+            return PartnerMap.TryGetValue(pPartnerID, out var _Data) ? _Data.Count : 0;
         }
 
         //升级需要的数量
@@ -189,7 +203,7 @@ namespace Logic.Manager
                 return PartnerLvlUpCfg.GetData(1).Cost;
 
             var _Data = GetPartnerData(pPartnerID);
-            return _Data.m_Level > 10 ? PartnerLvlUpCfg.GetData(10).Cost : PartnerLvlUpCfg.GetData(_Data.m_Level).Cost;
+            return _Data.Level > 10 ? PartnerLvlUpCfg.GetData(10).Cost : PartnerLvlUpCfg.GetData(_Data.Level).Cost;
         }
 
         //是否可以升级
@@ -198,10 +212,10 @@ namespace Logic.Manager
             if (!IsHave(pPartnerID)) return false;
 
             var _Data = GetPartnerData(pPartnerID);
-            var _NeedCount = _Data.m_Level > 10
+            var _NeedCount = _Data.Level > 10
                 ? PartnerLvlUpCfg.GetData(10).Cost
-                : PartnerLvlUpCfg.GetData(_Data.m_Level).Cost;
-            return _Data.m_Count >= _NeedCount;
+                : PartnerLvlUpCfg.GetData(_Data.Level).Cost;
+            return _Data.Count >= _NeedCount;
         }
 
         //是否有可以升级
@@ -209,10 +223,10 @@ namespace Logic.Manager
         {
             foreach (var partnerData in PartnerMap.Values)
             {
-                var _NeedCount = partnerData.m_Level > 10
+                var _NeedCount = partnerData.Level > 10
                     ? PartnerLvlUpCfg.GetData(10).Cost
-                    : PartnerLvlUpCfg.GetData(partnerData.m_Level).Cost;
-                if (partnerData.m_Count >= _NeedCount)
+                    : PartnerLvlUpCfg.GetData(partnerData.Level).Cost;
+                if (partnerData.Count >= _NeedCount)
                     return true;
             }
 
@@ -224,7 +238,7 @@ namespace Logic.Manager
         {
             var _Level = 1;
             if (IsHave(pPartnerID))
-                _Level = GetPartnerData(pPartnerID).m_Level;
+                _Level = GetPartnerData(pPartnerID).Level;
 
             var _CfgData = PartnerCfg.GetData(pPartnerID);
             return _CfgData.HasAdditionBase + (_Level - 1) * _CfgData.HasAdditionGrow;
@@ -238,7 +252,7 @@ namespace Logic.Manager
             {
                 var _CfgData = PartnerCfg.GetData(_MapData.Key);
                 var _GameData = _MapData.Value;
-                _AllEffect += (_CfgData.HasAdditionBase + (_GameData.m_Level - 1) * _CfgData.HasAdditionGrow);
+                _AllEffect += (_CfgData.HasAdditionBase + (_GameData.Level - 1) * _CfgData.HasAdditionGrow);
             }
 
             AllHaveEffect = _AllEffect;
@@ -254,7 +268,7 @@ namespace Logic.Manager
             m_CanDoOnCount--;
             NetworkManager.Ins.SendMsg(new C2S_PartnerOn()
             {
-                m_PartnerID = pPartner,
+                PartnerID = pPartner,
             });
         }
 
@@ -263,7 +277,7 @@ namespace Logic.Manager
             m_CanDoOnCount++;
             NetworkManager.Ins.SendMsg(new C2S_PartnerOff()
             {
-                m_PartnerID = pPartner,
+                PartnerID = pPartner,
             });
         }
 
@@ -271,8 +285,8 @@ namespace Logic.Manager
         {
             NetworkManager.Ins.SendMsg(new C2S_PartnerIntensify()
             {
-                m_PartnerID = pPartner,
-                m_IsAuto = pIsAuto,
+                PartnerID = pPartner,
+                IsAuto = pIsAuto,
             });
         }
 

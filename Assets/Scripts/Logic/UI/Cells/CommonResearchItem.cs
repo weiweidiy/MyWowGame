@@ -6,6 +6,7 @@ using Framework.EventKit;
 using Framework.Extension;
 using Logic.Common;
 using Logic.Manager;
+using Logic.UI.Common;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,16 +16,19 @@ namespace Logic.UI.Cells
     public class CommonResearchItem : MonoBehaviour
     {
         [Header("研究数据")] public int m_ResearchId;
+        public string m_ResPath { get; private set; }
         public int m_ResearchLevel { get; private set; }
         public int m_ResearchMaxLevel { get; private set; }
         public int m_IsResearching { get; private set; }
         public long m_researchTimeStamp { get; private set; }
-        public ResearchType m_ResearchType { get; private set; }
+        public AttributeType m_ResearchType { get; private set; }
         public DigResearchData m_ResearchData { get; private set; }
         public AttributeData m_AttributeData { get; private set; }
 
         [Header("研究父节点")] public List<CommonResearchItem> m_ParentNode;
+
         // [Header("研究子节点")] public List<CommonResearchItem> m_ChildNode;
+        [Header("研究状态线")] public GameObject[] m_CompleteLine;
 
         [Header("研究状态")] public ResearchState m_ResearchState;
         public GameObject m_UnLockState, m_MinState, m_MiddleState, m_MaxState;
@@ -32,6 +36,7 @@ namespace Logic.UI.Cells
         public GameObject m_Researching;
         public Image m_CanProcess;
         public TextMeshProUGUI m_ProcessText;
+        [Header("研究Icon")] public Image m_Icon;
 
         // 逻辑属性
         public Action<CommonResearchItem> m_ClickItem;
@@ -51,19 +56,31 @@ namespace Logic.UI.Cells
         {
             m_ResearchData = ResearchManager.Ins.GetResearchData(m_ResearchId);
             var attributeId = m_ResearchData.ResearchAttrGroup;
-            m_ResearchType = (ResearchType)attributeId;
+            var resId = m_ResearchData.ResID;
+            m_ResPath = ResearchManager.Ins.GetResData(resId).Res;
+            m_ResearchType = (AttributeType)ResearchManager.Ins.GetAttributeData(attributeId).Type;
             m_AttributeData = ResearchManager.Ins.GetAttributeData(attributeId);
             if (ResearchManager.Ins.ResearchMap.ContainsKey(m_ResearchId))
             {
                 var gameResearchData = ResearchManager.Ins.ResearchMap[m_ResearchId];
-                m_ResearchLevel = gameResearchData.m_ResearchLevel;
-                m_IsResearching = gameResearchData.m_IsResearching;
-                m_researchTimeStamp = gameResearchData.m_researchTimeStamp;
+                m_ResearchLevel = gameResearchData.ResearchLevel;
+                m_IsResearching = gameResearchData.IsResearching;
+                m_researchTimeStamp = gameResearchData.ResearchTimeStamp;
             }
 
             m_ResearchMaxLevel = m_ResearchData.LvlMax;
+            UpdateResearchIcon(m_ResPath);
             UpdateResearchState(m_ResearchLevel);
             UpdateResearchTime();
+        }
+
+        /// <summary>
+        /// 更新研究Icon
+        /// </summary>
+        /// <param name="resPath"></param>
+        private void UpdateResearchIcon(string resPath)
+        {
+            UICommonHelper.LoadIcon(m_Icon, resPath);
         }
 
         //更新研究状态
@@ -96,6 +113,7 @@ namespace Logic.UI.Cells
                 m_MinState.Hide();
                 m_MiddleState.Hide();
                 m_MaxState.Show();
+                RefreshCompleteLineState();
             }
             else
             {
@@ -104,6 +122,16 @@ namespace Logic.UI.Cells
                 m_MinState.Hide();
                 m_MiddleState.Show();
                 m_MaxState.Hide();
+            }
+        }
+
+        private void RefreshCompleteLineState()
+        {
+            if (m_CompleteLine.Length == 0) return;
+
+            foreach (var completeLine in m_CompleteLine)
+            {
+                completeLine.Show();
             }
         }
 

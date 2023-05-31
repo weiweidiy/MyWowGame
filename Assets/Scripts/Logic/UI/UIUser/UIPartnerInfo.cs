@@ -54,9 +54,9 @@ namespace Logic.UI.UIUser
             if (IsHave)
                 m_GamePartnerData = PartnerManager.Ins.GetPartnerData(_PartnerID);
             else
-                m_GamePartnerData = new GamePartnerData { m_PartnerID = _PartnerID, m_Level = 1, m_Count = 0 }; //没有按1级算
+                m_GamePartnerData = new GamePartnerData { PartnerID = _PartnerID, Level = 1, Count = 0 }; //没有按1级算
 
-            var itemData = ItemCfg.GetData(m_GamePartnerData.m_PartnerID);
+            var itemData = ItemCfg.GetData(m_GamePartnerData.PartnerID);
             UICommonHelper.LoadIcon(m_Icon, itemData.Res);
             UICommonHelper.LoadQuality(m_Quality, m_PartnerData.Quality);
             m_QualityText.text = UICommonHelper.GetQualityShowText(m_PartnerData.Quality);
@@ -101,9 +101,9 @@ namespace Logic.UI.UIUser
         private void UpdatePartnerInfo()
         {
             m_PartnerName.text = m_PartnerData.PartnerName;
-            m_Level.text = "LV" + m_GamePartnerData.m_Level;
+            m_Level.text = "LV" + m_GamePartnerData.Level;
             m_PartnerCD.text = m_PartnerData.AtkSpeed + "秒";
-            m_PartnerATK.text = ((m_PartnerData.AtkBase + (m_GamePartnerData.m_Level - 1) * m_PartnerData.AtkGrow) *
+            m_PartnerATK.text = ((m_PartnerData.AtkBase + (m_GamePartnerData.Level - 1) * m_PartnerData.AtkGrow) *
                                  Formula.GetGJJAtk())
                 .ToUIString();
 

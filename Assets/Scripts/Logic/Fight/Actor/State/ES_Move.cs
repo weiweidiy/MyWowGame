@@ -33,15 +33,16 @@ namespace Logic.Fight.Actor.State
                 pContext.m_SM.ToAttack();
                 return;
             }
-            
+
             //朝向目标移动
-            Move();
+            float deltaTime = pContext.m_TimeLine ? pContext.m_TimeLine.deltaTime : Time.deltaTime;
+            Move(deltaTime);
         }
 
-        private void Move()
+        private void Move(float deltaTime)
         {
             //TODO 这里是通用直线移动, 如果有特殊处理 这里可以回调Owner 让它自己处理移动
-            float _FinalSpeed = m_StateData.m_Owner.m_MoveSpeed * Time.deltaTime;
+            float _FinalSpeed = m_StateData.m_Owner.m_MoveSpeed * deltaTime;// Time.deltaTime;
             var _Dir = Vector2.left; //默认向左边移动
             m_StateData.m_Owner.transform.Translate(_Dir * _FinalSpeed, Space.World);
         }

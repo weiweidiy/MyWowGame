@@ -55,5 +55,8 @@ namespace Configs
         //体力成长
         public int HPGrow;
 
+        //ResID
+        public int ResID;
+
     }
 }

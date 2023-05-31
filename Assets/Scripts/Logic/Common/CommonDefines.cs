@@ -14,6 +14,7 @@ namespace Logic.Common
         DiamondCopy = 1, //钻石副本
         CoinCopy = 2, //金币副本
         OilCopy = 3, //原油副本
+        TrophyCopy = 4, //功勋副本
     }
 
     /// <summary>
@@ -38,7 +39,8 @@ namespace Logic.Common
 
         ToDiamondCopy = 10, //钻石副本
         ToCoinCopy = 11, //金币副本
-        ToOilCopy = 12, //引擎副本
+        ToOilCopy = 12, //原油副本
+        ToTrophyCopy = 13, //战利品副本
     }
 
     /// <summary>
@@ -93,16 +95,30 @@ namespace Logic.Common
     /// <summary>
     /// 房间类型
     /// </summary>RoomType
-    public enum RoomType
+    public enum AttributeType
     {
-        ATK, //攻击
-        HP, //血量
-        HPRecover, //血量恢复
-        Critical, //暴击
-        CriticalDamage, //暴击伤害
-        Speed, //攻击速度
-        DoubleHit, //双连击
-        TripletHit, //三连击
+        [LabelText("攻击")] ATK = 11,
+        [LabelText("血量")] HP = 12,
+        [LabelText("血量恢复")] HPRecover = 13,
+        [LabelText("攻击速度")] Speed = 14,
+        [LabelText("暴击")] Critical = 15,
+        [LabelText("暴击伤害")] CriticalDamage = 16,
+        [LabelText("双连击")] DoubleHit = 17,
+        [LabelText("三连击")] TripletHit = 18,
+        [LabelText("闪避率")] EvasionRate = 19,
+        [LabelText("同伴伤害")] CompanionDamage = 20,
+        [LabelText("同伴攻击速度")] CompanionASPD = 21,
+        [LabelText("技能伤害")] SkillDamage = 22,
+        [LabelText("技能冷却减少")] SkillCooldown = 23,
+        [LabelText("获得金币量")] GoldObtain = 24,
+        [LabelText("对Boss伤害量")] BossDamageAmount = 25,
+        [LabelText("战斗时长")] BattleDuration = 26,
+        [LabelText("体力恢复上限")] HPRecoverEverySecond = 28,
+        [LabelText("多连射")] MultipleShot = 29,
+        [LabelText("矿锤拥有上限增加")] HammerLimit = 30,
+        [LabelText("矿石获得量增加")] MineObtainAmount = 31,
+        [LabelText("矿锤补充速度增加")] HammerRecoverSpeed = 32,
+        [LabelText("研究速度增加")] ResearchSpeed = 33,
     }
 
     /// <summary>
@@ -367,34 +383,6 @@ namespace Logic.Common
 
     #endregion
 
-    #region 引擎相关
-
-    /// <summary>
-    /// 随机属性
-    /// </summary>
-    public enum EngineAttrType
-    {
-        None,
-        ATK = 11, //攻击力
-        HP = 12, //体力
-        HPRecover = 13, //体力恢复
-        ASPD = 14, //攻击速度
-        CriticalHitChance = 15, //暴击率
-        CriticalHitDamage = 16, //暴击伤害
-        DoubleHit = 17, //二连击率
-        TripleHit = 18, //三连击率
-        EvasionRate = 19, //闪避率
-        CompanionDamage = 20, //同伴攻击伤害
-        CompanionASPD = 21, //同伴攻击速度
-        SkillDamage = 22, //技能伤害
-        SkillCooldown = 23, //技能冷却减少
-        GoldObtain = 24, //获得金币量
-        BossDamageAmount = 25, //对Boss伤害量
-        BattleDuration = 26, //战斗时长
-    }
-
-    #endregion
-
     #region 开放功能相关
 
     /// <summary>
@@ -425,11 +413,12 @@ namespace Logic.Common
         LT_2000 = 2000, //装备引擎(引擎系统开启)
         LT_2100 = 2100, //钻石副本
         LT_2200 = 2200, //金币副本
-        LT_2300 = 2300, //功勋副本
+        LT_2300 = 2300, //战利品副本
         LT_2400 = 2400, //原油副本
         LT_2500 = 2500, //改造副本
         LT_2600 = 2600, //考古玩法
         LT_2601 = 2601, //考古研究
+        LT_2611 = 2611, //司机系统
         LT_2700 = 2700, //召唤装备
         LT_2800 = 2800, //召唤技能
         LT_2900 = 2900, //召唤兽人
@@ -440,31 +429,13 @@ namespace Logic.Common
         LT_3400 = 3400, //统领页签
         LT_3500 = 3500, //技能页签
         LT_3600 = 3600, //伙伴页签
-    }
-
-    /// <summary>
-    /// 开放解锁状态
-    /// </summary>
-    public enum LockState
-    {
-        Lock = 0, //未解锁
-        Unlock = 1, //解锁
+        LT_3700 = 3700, //战利品页签
+        LT_3800 = 3800, //淬炼页签
     }
 
     #endregion
 
     #region 考古研究相关
-
-    public enum ResearchType
-    {
-        None,
-        [LabelText("攻击力增加")] IncreaseATK = 41001,
-        [LabelText("体力增加")] IncreaseHP = 42001,
-        [LabelText("矿锤拥有上限增加")] IncreaseHammerLimit = 43001,
-        [LabelText("矿石获得量增加")] IncreaseMineObtainAmount = 44001,
-        [LabelText("矿锤补充速度增加")] IncreaseHammerRecoverSpeed = 45001,
-        [LabelText("研究速度增加")] IncreaseResearchSpeed = 46001,
-    }
 
     public enum ResearchState
     {
@@ -478,6 +449,19 @@ namespace Logic.Common
     {
         TimeComplete,
         DiamondComplete,
+    }
+
+    #endregion
+
+    #region 淬炼相关
+
+    public enum QuenchingType
+    {
+        Do = 1,
+        Re = 2,
+        Mi = 3,
+        Fa = 4,
+        Sol = 5,
     }
 
     #endregion

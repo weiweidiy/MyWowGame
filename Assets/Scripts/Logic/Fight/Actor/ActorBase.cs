@@ -1,4 +1,5 @@
 using System;
+using Chronos;
 using Framework.Helper;
 using Logic.Common;
 using Sirenix.OdinInspector;
@@ -21,6 +22,8 @@ namespace Logic.Fight.Actor
         [LabelText("坐标偏移量")] public float OffsetY = 0.5f;
         
         protected Vector3 m_OffsetY;
+
+        protected Timeline m_TimeLine;
         protected virtual void Awake()
         {
             m_OffsetY = new Vector3(0, OffsetY, 0);
@@ -29,6 +32,12 @@ namespace Logic.Fight.Actor
             m_Health.OnDeath.AddListener(OnDead);
             
             m_Animator = GetComponentInChildren<Animator>();
+
+            m_TimeLine = GetComponent<Timeline>();
+            if(m_TimeLine != null)
+            {
+                m_TimeLine.globalClockKey = "Battle";
+            }
         }
 
         #region 逻辑接口
@@ -79,7 +88,7 @@ namespace Logic.Fight.Actor
             m_Animator.SetTrigger(AniTrigger.ToMove);
         }
         
-        public void PlayAttack()
+        public virtual void PlayAttack()
         {
             m_Animator.SetTrigger(AniTrigger.ToAtk);
         }

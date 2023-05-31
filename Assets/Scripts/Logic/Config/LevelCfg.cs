@@ -98,5 +98,15 @@ namespace Configs
         //怪物掉落权重
         public List<int> DropWight;
 
+        /*
+        Administrator:
+场景类型
+1-99配置：从Scene表读取组
+100： 从Scene表1-99中随机一个
+
+        */
+        //普通怪怪场景
+        public int MonsterScenes;
+
     }
 }

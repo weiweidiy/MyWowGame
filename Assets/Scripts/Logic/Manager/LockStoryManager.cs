@@ -28,11 +28,11 @@ namespace Logic.Manager
 
             foreach (var gameLockStoryData in lockStoryList)
             {
-                LockStoryMap.Add(gameLockStoryData.m_LockType, gameLockStoryData.m_LockState);
+                LockStoryMap.Add(gameLockStoryData.LockType, gameLockStoryData.LockState);
 
                 // 更新技能和伙伴可上阵数量
-                SkillManager.Ins.UpdateCanDoOnCount(gameLockStoryData.m_LockType);
-                PartnerManager.Ins.UpdateCanDoOnCount(gameLockStoryData.m_LockType);
+                SkillManager.Ins.UpdateCanDoOnCount(gameLockStoryData.LockType);
+                PartnerManager.Ins.UpdateCanDoOnCount(gameLockStoryData.LockType);
             }
         }
 
@@ -166,15 +166,20 @@ namespace Logic.Manager
                     break;
                 case 65:
                     listLockType.Add(LockType.LT_2300);
+                    listLockType.Add(LockType.LT_3700);
                     break;
                 case 71:
                     listLockType.Add(LockType.LT_1100);
+                    break;
+                case 73:
+                    listLockType.Add(LockType.LT_2611);
                     break;
                 case 85:
                     listLockType.Add(LockType.LT_1700);
                     break;
                 case 90:
                     listLockType.Add(LockType.LT_2400);
+                    listLockType.Add(LockType.LT_3800);
                     break;
                 case 101:
                     listLockType.Add(LockType.LT_1200);
@@ -191,18 +196,17 @@ namespace Logic.Manager
             }
 
             // 如何listLockType有值则进行判断和更新
-            const int lockStateId = (int)LockState.Unlock;
             foreach (var lockTypeId in listLockType.Select(lockType => (int)lockType))
             {
                 if (LockStoryMap.ContainsKey(lockTypeId)) return;
-                LockStoryMap.Add(lockTypeId, (int)LockState.Unlock);
+                LockStoryMap.Add(lockTypeId, 1);
 
                 // 更新技能和伙伴可上阵数量
                 SkillManager.Ins.UpdateCanDoOnCount(lockTypeId);
                 PartnerManager.Ins.UpdateCanDoOnCount(lockTypeId);
 
                 //解锁剧情
-                UpdateStory(lockTypeId, lockStateId);
+                UpdateStory(lockTypeId, 1);
             }
         }
 
@@ -216,7 +220,7 @@ namespace Logic.Manager
             /*
              * 解锁开放
              */
-            var data = ((LockType)lockTypeId, (LockState)lockStateId);
+            var data = ((LockType)lockTypeId, lockStateId);
             EventManager.Call(LogicEvent.UpdateLockState, data);
         }
 
@@ -247,10 +251,10 @@ namespace Logic.Manager
 
             NetworkManager.Ins.SendMsg(new C2S_UpdateLockStoryData()
             {
-                m_LockStoryData = new GameLockStoryData()
+                LockStoryData = new GameLockStoryData()
                 {
-                    m_LockType = lockTypeId,
-                    m_LockState = lockStateId,
+                    LockType = lockTypeId,
+                    LockState = lockStateId,
                 }
             });
         }
@@ -291,10 +295,9 @@ namespace Logic.Manager
         public bool IsLockTypeUnlock(LockType lockType)
         {
             var lockTypeId = (int)lockType;
-            const int lockStateId = (int)LockState.Unlock;
 
             if (!LockStoryMap.ContainsKey(lockTypeId)) return false;
-            return LockStoryMap[lockTypeId] == lockStateId;
+            return LockStoryMap[lockTypeId] == 1;
         }
 
         #endregion

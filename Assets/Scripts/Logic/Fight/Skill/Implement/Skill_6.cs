@@ -42,9 +42,8 @@ namespace Logic.Fight.Skill.Implement
 
         public override void OnSkillReset()
         {
-            OnStopSkill();
-            
             m_SM.ToIdle();
+            OnStopSkill();
         }
         
         //public override bool NeedSearchTarget()

@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Framework.EventKit;
 using Framework.GameFSM;
 using Logic.Common;
@@ -16,15 +17,17 @@ namespace Networks.State
         {
         }
 
-        public override void Enter(NetworkStateData pContext)
+        public override async void Enter(NetworkStateData pContext)
         {
+            NetworkManager.Ins.ShowHold();
             m_ContextData = pContext;
             
             pContext.m_WebSocket = new WebSocket(pContext.m_ServerAddr);
 
             pContext.m_WebSocket.OnOpen += Socket_OnOpen;
             pContext.m_WebSocket.OnError += Socket_OnError;
-            
+
+            await UniTask.DelayFrame(10);
             pContext.m_WebSocket.ConnectAsync();
         }
 
@@ -37,6 +40,7 @@ namespace Networks.State
         {
             pContext.m_WebSocket.OnOpen -= Socket_OnOpen;
             pContext.m_WebSocket.OnError -= Socket_OnError;
+            NetworkManager.Ins.HideHold();
         }
         
         //链接成功

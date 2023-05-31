@@ -18,10 +18,18 @@ namespace Logic.UI.Common
             Ins = this;
         }
 
-        [LabelText("品质背景")] public Sprite[] m_ItemQualityBg;
+        [LabelText("装备品质")] public Sprite[] m_ItemQualityBg;
+
+        [LabelText("技能品质")] public Sprite[] m_SkillQuality;
+
+        [LabelText("伙伴品质")] public Sprite[] m_PartnerQuality;
 
         [LabelText("装备类型")] public Sprite[] m_EquipType;
 
         [LabelText("考古道具类型")] public Sprite[] m_MiningType;
+
+        [LabelText("按钮状态")] public Sprite[] m_ButtonState;
+
+        [LabelText("品质")] public Sprite[] m_QuenchingQuality;
     }
 }

@@ -32,5 +32,8 @@ namespace Configs
         //Item资源
         public string Res;
 
+        //ItemShow资源
+        public string ResShow;
+
     }
 }

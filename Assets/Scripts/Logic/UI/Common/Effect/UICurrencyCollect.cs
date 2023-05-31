@@ -23,10 +23,10 @@ namespace Logic.UI.Common.Effect
 
             var random_x = Random.Range(-0.5f, 0.5f);
             var random_y = Random.Range(-0.1f, 0.7f);
-            
+
             _Paths[0] = _startPos1 + new Vector3(random_x, random_y, 0);
             _Paths[1] = _endPos;
-            
+
             transform.DOPath(_Paths, pTime, PathType.CatmullRom).SetEase(Ease.InCubic).OnComplete(() =>
             {
                 FightObjPool.Ins.Recycle(gameObject);
@@ -34,15 +34,13 @@ namespace Logic.UI.Common.Effect
                 GameDataManager.Ins.Coin += pDropCoin;
             });
         }
-        
+
         public void OnSpawn()
         {
-            
         }
 
         public void OnRecycle()
         {
-            
         }
     }
 }

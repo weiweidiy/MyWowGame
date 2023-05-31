@@ -10,6 +10,7 @@
         ConnectSuccess = 100, //连接成功
         ConnectFailed, //连接失败
         ConnectLost, //连接丢失
+        CloseHoldUI, //关闭UIHold
 
         LoginSuccess, //登录成功
         LoginFailed, //登录失败
@@ -41,6 +42,7 @@
         //Fight_Cancel,   //取消当前战斗
         Fight_Switch, //遇到Boss/副本SplashUI 切换战斗
         Fight_MapMove, //背景 移动
+        Fight_MapMoveBack,
         Fight_MapStop, //背景 停止
 
         Fight_LevelTypeChanged,
@@ -57,7 +59,10 @@
         Fight_ShowOilBossHpBar, //显示原油副本Boss血条
         Fight_OilBossHpChanged, //Boss血条变化
         Fight_OilBossLevelChanged, //Boss等级变化
-        
+        Fight_CopyTrophyCountChanged, //战利品副本进度变化
+
+
+        Fight_MapChanged, //地图场景改变
 
         #endregion
 
@@ -65,8 +70,12 @@
 
         CoinChanged, //游戏币变化
         DiamondChanged, //元宝变化
-        OilChanged,   //原油变化
+        OilChanged, //原油变化
+        TropyChanged, //战利品变化
         CopyKeyChanged, // 副本钥匙变化
+        EngineIronChanged, //引擎分解强化材料变化
+        RoleMushRoomChanged, //英雄升级材料变化
+        RoleBreakOreChanged, //英雄突破材料变化
 
         //技能
         SkillListChanged, //技能变化
@@ -97,7 +106,6 @@
         EngineGet, //引擎获得
         EngineRemove, //引擎分解
         EngineIntensify, //引擎强化
-        EngineIronUpdate, //引擎分解强化材料变化
         EngineOn, //引擎装备
         EngineOff, //引擎解除
         EngineAllEffectUpdate, //引擎属性总加成变化
@@ -108,6 +116,7 @@
 
         ShowTips, //显示Tips
         ShowFightSwitch, //战斗切换UI
+        ShowObtain, //显示通用的获得界面
 
         #endregion
 
@@ -160,12 +169,43 @@
 
         #endregion
 
+        #region 舱室解锁
+        RoomUnlocked,  //舱室解锁了
+        #endregion
+
         #region 研究相关
 
         OnUpdateResearchTime, //正在研究
         OnResearching, //研究完成
         ResearchLevelChanged, //研究等级变化
         ResearchCompleteEffectUpdate, //研究属性总加成变化
+
+        #endregion
+
+        #region 淬炼相关
+
+        OnQuenching, // 正在淬炼
+        QuenchingEffectUpdate,
+
+        #endregion
+
+        #region 战利品相关
+
+        OnSpoilDraw,
+        OnSpoilSlotUnlock,
+        OnSpoilEquipChanged,
+        OnSpoilUpgrade,
+
+        #endregion
+
+        #region 英雄相关
+
+        RoleListChanged, //英雄列表变化
+        RoleOn, //英雄换上
+        RoleOff, //英雄换下
+        RoleIntensify, //英雄升级
+        RoleBreak,
+        RoleEffectUpdate, //英雄属性变化
 
         #endregion
     }

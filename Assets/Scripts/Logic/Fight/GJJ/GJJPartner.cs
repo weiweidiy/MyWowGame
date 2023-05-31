@@ -27,10 +27,14 @@ namespace Logic.Fight.GJJ
         public int m_PartnerId;
         //枪口位置
         public Transform m_MuzzlePos;
+        ////枪口文本位置
+        //public Transform m_MuzzleTextPos;
         //子弹预制体
         public GameObject m_BulletPrefab;
         //枪口特效预制体
         public GameObject m_MuzzleEffectPrefab;
+        //枪口文本特效预制体
+        public GameObject m_MuzzleTextEffectPrefab;
         
         private PartnerData m_PartnerData;
         private GamePartnerData m_GamePartnerData;
@@ -109,7 +113,7 @@ namespace Logic.Fight.GJJ
         
         private BigDouble GetPartnerATK()
         {
-            return (m_PartnerData.AtkBase + (m_GamePartnerData.m_Level - 1) * m_PartnerData.AtkGrow) * Formula.GetGJJAtk();
+            return (m_PartnerData.AtkBase + (m_GamePartnerData.Level - 1) * m_PartnerData.AtkGrow) * Formula.GetGJJAtk();
         }
         
         #region 动画
@@ -124,11 +128,14 @@ namespace Logic.Fight.GJJ
         public virtual void OnAni_Attack()
         {
             var _MuzzleObj = FightObjPool.Ins.Spawn(m_MuzzleEffectPrefab);
+            var _MuzzleTextObj = FightObjPool.Ins.Spawn(m_MuzzleTextEffectPrefab);
             var position = m_MuzzlePos.position;
             //var rotation = m_MuzzlePos.rotation;
             
             _MuzzleObj.transform.position = position;
+            _MuzzleTextObj.transform.position = position + new Vector3(0.1f,0.2f,0f);
             RotateToDir(m_TargetPos, _MuzzleObj);
+            //RotateToDir(m_TargetPos, _MuzzleTextObj);
             //_MuzzleObj.transform.rotation = rotation;
 
             var _BulletObj = FightObjPool.Ins.Spawn(m_BulletPrefab).GetComponent<NormalBullet>();

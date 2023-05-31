@@ -16,6 +16,7 @@ namespace DummyServer
             pDB.m_DiamondCopyData = new GameCopyData();
             pDB.m_CoinCopyData = new GameCopyData();
             pDB.m_OilCopyData = new GameCopyOilData();
+            pDB.m_TropyCopyData = new GameCopyData();
         }
 
         #region 消息处理
@@ -24,7 +25,7 @@ namespace DummyServer
         {
             var _Msg = new S2C_EnterCopy
             {
-                m_LevelType = pMsg.m_LevelType
+                LevelType = pMsg.LevelType
             };
             SendMsg(_Msg);
         }
@@ -33,69 +34,74 @@ namespace DummyServer
         {
             var _Msg = new S2C_ExitCopy
             {
-                m_LevelType = pMsg.m_LevelType
+                LevelType = pMsg.LevelType
             };
-            if (pMsg.m_LevelType == (int)LevelType.DiamondCopy)
+            if (pMsg.LevelType == (int)LevelType.DiamondCopy)
             {
-                m_DB.m_DiamondCopyData.m_KeyCount--;
-                m_DB.m_DiamondCopyData.m_Level++;
-                _Msg.m_KeyCount = m_DB.m_DiamondCopyData.m_KeyCount;
-                _Msg.m_Level = m_DB.m_DiamondCopyData.m_Level;
-                _Msg.m_RewardCount = CopyManager.Ins.GetCopyDiamondReward(m_DB.m_DiamondCopyData.m_Level - 1);
-                m_DB.m_Diamond += _Msg.m_RewardCount;
-                SendMsg(new S2C_DiamondUpdate(){m_Diamond = m_DB.m_Diamond});
+                m_DB.m_DiamondCopyData.KeyCount--;
+                m_DB.m_DiamondCopyData.Level++;
+                _Msg.KeyCount = m_DB.m_DiamondCopyData.KeyCount;
+                _Msg.Level = m_DB.m_DiamondCopyData.Level;
+                _Msg.RewardCount = CopyManager.Ins.GetCopyDiamondReward(m_DB.m_DiamondCopyData.Level - 1);
+                m_DB.m_Diamond += _Msg.RewardCount;
+                SendMsg(new S2C_DiamondUpdate(){Diamond = m_DB.m_Diamond});
             }
-            else if (pMsg.m_LevelType == (int)LevelType.CoinCopy) //金币在客户端更新
+            else if (pMsg.LevelType == (int)LevelType.CoinCopy) //金币在客户端更新
             {
-                m_DB.m_CoinCopyData.m_KeyCount--;
-                m_DB.m_CoinCopyData.m_Level++;
-                _Msg.m_KeyCount = m_DB.m_CoinCopyData.m_KeyCount;
-                _Msg.m_Level = m_DB.m_CoinCopyData.m_Level;
+                m_DB.m_CoinCopyData.KeyCount--;
+                m_DB.m_CoinCopyData.Level++;
+                _Msg.KeyCount = m_DB.m_CoinCopyData.KeyCount;
+                _Msg.Level = m_DB.m_CoinCopyData.Level;
                 //_Msg.m_RewardCount = 100;
             }
-            else if (pMsg.m_LevelType == (int)LevelType.OilCopy)
+            else if (pMsg.LevelType == (int)LevelType.OilCopy)
             {
-                //更新原油副本相关数据
-                if(BigDouble.Parse(pMsg.m_CurTotalDamage) > BigDouble.Parse(m_DB.m_OilCopyData.m_BestDamageRecord))
-                {
-                    m_DB.m_OilCopyData.m_BestDamageRecord = pMsg.m_CurTotalDamage;
-                }
-                if(pMsg.m_CurBossLevel > m_DB.m_OilCopyData.m_BestLevelRecord)
-                {
-                    m_DB.m_OilCopyData.m_BestLevelRecord = pMsg.m_CurBossLevel;
-                }
+                //更新原油副本相关数据 
+                //to do:服务器没有大数字库，不能解析，要改成客户端判断并同步数据,发过来的一定是最大的记录
+                //if(BigDouble.Parse(pMsg.CurTotalDamage) > BigDouble.Parse(m_DB.m_OilCopyData.BestDamageRecord))
+                //{
+                //保存最高伤害记录
+                m_DB.m_OilCopyData.BestDamageRecord = pMsg.CurTotalDamage;
+                //}
+                //if(pMsg.CurBossLevel > m_DB.m_OilCopyData.BestLevelRecord)
+                //{
+                    //保存最高等级记录
+                m_DB.m_OilCopyData.BestLevelRecord = pMsg.CurBossLevel;
+                //}
 
-                m_DB.m_OilCopyData.m_KeyCount--;
-                _Msg.m_KeyCount = m_DB.m_OilCopyData.m_KeyCount;
-                _Msg.m_Level = m_DB.m_OilCopyData.m_Level;
-                _Msg.m_CurBossLevel = m_DB.m_OilCopyData.m_BestLevelRecord;
-                _Msg.m_CurTotalDamage = m_DB.m_OilCopyData.m_BestDamageRecord;
+                m_DB.m_OilCopyData.KeyCount--;
+                _Msg.KeyCount = m_DB.m_OilCopyData.KeyCount;
+                _Msg.Level = m_DB.m_OilCopyData.Level;
+                _Msg.CurBossLevel = m_DB.m_OilCopyData.BestLevelRecord;
+                _Msg.CurTotalDamage = m_DB.m_OilCopyData.BestDamageRecord;
 
 
                 //原油结算奖励             
-                var copyCfg = CopyOilCfg.GetData(pMsg.m_CurBossLevel);
+                var copyCfg = CopyOilCfg.GetData(pMsg.CurBossLevel);
                 if (copyCfg == null)
                     copyCfg = CopyOilCfg.GetData(0);
 
-                int oilValue = copyCfg.RewardOilBase + pMsg.m_CurBossLevel * (copyCfg.RewardOilGrow + copyCfg.RewardOilExp);
+                int oilValue = copyCfg.RewardOilBase + pMsg.CurBossLevel * (copyCfg.RewardOilGrow + copyCfg.RewardOilExp);
                 //更新DB
                 UpdateOil(oilValue);
 
-                SendMsg(new S2C_OilUpdate() { m_Oil = oilValue });
-                
-
-
-              //装备道具结算奖励               
-                var tuple = GetOilCopyRewards(pMsg.m_CurBossLevel);
+              //装备道具结算奖励，item1 = itemID  , item2 = 数量               
+                var tuple = GetOilCopyRewards(pMsg.CurBossLevel);
                 for (int i = 0; i < tuple.Item1.Count; i++)
                 {
                     //更新DB
                     UpdateEquipData(tuple.Item1[i], tuple.Item2[i]);
                 }
 
-                SendMsg(new S2C_OilCopyReward() {m_Oil = oilValue, m_LstRewardId = tuple.Item1, m_LstRewardCount = tuple.Item2 });
-                
-
+                SendMsg(new S2C_OilCopyReward() {Oil = oilValue, LstRewardId = tuple.Item1, LstRewardCount = tuple.Item2 });
+            }
+            else if(pMsg.LevelType == (int)LevelType.TrophyCopy)
+            {
+                //和金币副本一样，在客户端计算
+                m_DB.m_TropyCopyData.KeyCount--;
+                m_DB.m_TropyCopyData.Level++;
+                _Msg.KeyCount = m_DB.m_TropyCopyData.KeyCount;
+                _Msg.Level = m_DB.m_TropyCopyData.Level;
             }
 
             DummyDB.Save(m_DB);
@@ -104,19 +110,22 @@ namespace DummyServer
         
         public void On_C2S_UpdateCopyKeyCount(C2S_UpdateCopyKeyCount pMsg)
         {
-            if (m_DB.m_DiamondCopyData.m_KeyCount < 2)
-                m_DB.m_DiamondCopyData.m_KeyCount = 2;
-            if (m_DB.m_CoinCopyData.m_KeyCount < 2)
-                m_DB.m_CoinCopyData.m_KeyCount = 2;
-            if (m_DB.m_OilCopyData.m_KeyCount < 2)
-                m_DB.m_OilCopyData.m_KeyCount = 2;
+            if (m_DB.m_DiamondCopyData.KeyCount < 2)
+                m_DB.m_DiamondCopyData.KeyCount = 2;
+            if (m_DB.m_CoinCopyData.KeyCount < 2)
+                m_DB.m_CoinCopyData.KeyCount = 2;
+            if (m_DB.m_OilCopyData.KeyCount < 2)
+                m_DB.m_OilCopyData.KeyCount = 2;
+            if (m_DB.m_TropyCopyData.KeyCount < 2)
+                m_DB.m_TropyCopyData.KeyCount = 2;
 
             DummyDB.Save(m_DB);
             SendMsg(new S2C_UpdateCopyKeyCount
             {
-                m_CoinKeyCount = m_DB.m_CoinCopyData.m_KeyCount,
-                m_DiamondKeyCount = m_DB.m_DiamondCopyData.m_KeyCount,
-                m_OilKeyCount = m_DB.m_OilCopyData.m_KeyCount
+                CoinKeyCount = m_DB.m_CoinCopyData.KeyCount,
+                DiamondKeyCount = m_DB.m_DiamondCopyData.KeyCount,
+                OilKeyCount = m_DB.m_OilCopyData.KeyCount,
+                TrophyKeyCount = m_DB.m_TropyCopyData.KeyCount
             }) ;
         }
 
@@ -140,7 +149,7 @@ namespace DummyServer
                 groupIdList.Add(groupId);
             }
 
-            return BoxRewardGeneraterHelper.GenerateByGroups(groupIdList);
+            return GroupRewardGeneraterHelper.GenerateByGroups(groupIdList);
         }
 
         #endregion

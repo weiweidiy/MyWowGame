@@ -20,6 +20,14 @@ namespace Configs
         //形象ID
         public int ID;
 
+        /*
+        Administrator:
+100000+关卡id
+普通怪随机组
+
+200000+关卡id
+精英怪随机组
+        */
         //形象组ID
         public int ResGroupId;
 

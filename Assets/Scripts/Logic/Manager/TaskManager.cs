@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Configs;
 using Framework.EventKit;
 using Framework.Extension;
+using Framework.Helper;
 using Logic.Common;
 using Logic.Data;
 using Networks;
@@ -17,21 +18,22 @@ namespace Logic.Manager
     {
         public GameTaskData m_MainTaskData { get; private set; }
         public TaskData m_MainTaskCfg { get; private set; }
-        
+
         public int m_MainTaskCount { get; private set; }
         public List<GameTaskData> m_DailyTaskList { get; private set; }
-        
+
         public void Init(S2C_Login pLoginData)
         {
-            m_MainTaskData = pLoginData.m_CurMainTask;
-            m_MainTaskCount = pLoginData.m_MainTaskCount;
-            m_DailyTaskList = pLoginData.m_DailyTaskList;
-            
-            m_MainTaskCfg = TaskCfg.GetData(m_MainTaskData.m_TaskID);
-            
+            m_MainTaskData = pLoginData.CurMainTask;
+            m_MainTaskCount = pLoginData.MainTaskCount;
+            m_DailyTaskList = pLoginData.DailyTaskList;
+
+            m_MainTaskCfg = TaskCfg.GetData(m_MainTaskData.TaskID);
+
             //已经跨天 重置每日任务
             //TODO 临时在客户端实现
-            if(GameDataManager.Ins.LastGameDate.Day != DateTime.Now.Day)
+            var day = TimeHelper.GetUtcDateTime(GameDataManager.Ins.LastGameDate).Day;
+            if (day != DateTime.UtcNow.Day)
             {
                 m_DailyTaskList.Clear();
                 NetworkManager.Ins.SendMsg(new C2S_RequestDailyTaskList());
@@ -40,14 +42,20 @@ namespace Logic.Manager
             StartTimer();
         }
 
+        public GameTaskData GetDailyTask(int taskId)
+        {
+            return m_DailyTaskList.Find(p => p.TaskID == taskId);
+        }
+
         #region 定时器
+
         private void StartTimer()
         {
             DateTime now = DateTime.Now;
             DateTime midnight = DateTime.Today.AddDays(1);
             TimeSpan timeLeft = midnight - now;
             int secondsLeft = (int)timeLeft.TotalSeconds;
-        
+
             Timer.Register(secondsLeft, () =>
             {
                 NetworkManager.Ins.SendMsg(new C2S_RequestDailyTaskList());
@@ -64,54 +72,58 @@ namespace Logic.Manager
                 OnTimeUp();
             }, null, false, true);
         }
+
         #endregion
 
         #region 消息处理
 
         public void OnUpdateTaskState(S2C_UpdateTaskState pMsg)
         {
-            switch (pMsg.m_IsMain)
+            switch (pMsg.IsMain)
             {
                 case true:
-                    m_MainTaskData.m_TaskState = pMsg.m_TaskState;
+                    m_MainTaskData.TaskState = pMsg.TaskState;
                     break;
                 case false:
-                    var _TaskData = m_DailyTaskList.Find(p => p.m_TaskID == pMsg.m_TaskID);
+                    var _TaskData = m_DailyTaskList.Find(p => p.TaskID == pMsg.TaskID);
                     if (_TaskData != null)
                     {
-                        _TaskData.m_TaskState = pMsg.m_TaskState;
+                        _TaskData.TaskState = pMsg.TaskState;
                     }
+
                     break;
             }
-            EventManager.Call(LogicEvent.TaskStateChanged, pMsg.m_TaskID);
+
+            EventManager.Call(LogicEvent.TaskStateChanged, pMsg.TaskID);
         }
-        
+
         public void OnUpdateMainTask(S2C_UpdateMainTask pMsg)
         {
-            m_MainTaskData = pMsg.m_TaskData;
-            m_MainTaskCount = pMsg.m_MainTaskCount;
-            m_MainTaskCfg = TaskCfg.GetData(m_MainTaskData.m_TaskID);
-            EventManager.Call(LogicEvent.MainTaskChanged);
+            m_MainTaskData = pMsg.TaskData;
+            m_MainTaskCount = pMsg.MainTaskCount;
+            m_MainTaskCfg = TaskCfg.GetData(m_MainTaskData.TaskID);
+            EventManager.Call(LogicEvent.MainTaskChanged, m_MainTaskData);
         }
-        
+
         public void OnUpdateDailyTask(S2C_UpdateDailyTask pMsg)
         {
-            var _TaskData = m_DailyTaskList.Find(p => p.m_TaskID == pMsg.m_TaskID);
+            var _TaskData = m_DailyTaskList.Find(p => p.TaskID == pMsg.TaskID);
             if (_TaskData != null)
             {
-                _TaskData.m_TaskState = (int)TaskState.Done;
+                _TaskData.TaskState = (int)TaskState.Done;
             }
-            EventManager.Call(LogicEvent.DailyTaskChanged, pMsg.m_TaskID);
+
+            EventManager.Call(LogicEvent.DailyTaskChanged, pMsg.TaskID);
         }
-        
+
         public void OnRequestDailyTaskList(S2C_RequestDailyTaskList pMsg)
         {
-            m_DailyTaskList = pMsg.m_DailyTaskList;
+            m_DailyTaskList = pMsg.DailyTaskList;
             EventManager.Call(LogicEvent.DailyTaskListUpdate);
         }
 
         #endregion
-        
+
         //任务检查点回调
         public void DoTaskUpdate(TaskType pType, long pProcess = 1)
         {
@@ -130,50 +142,50 @@ namespace Logic.Manager
                     case TaskType.TT_2002:
                     case TaskType.TT_5001:
                         if (pProcess > m_MainTaskCfg.TargetBaseCount)
-                            m_MainTaskData.m_TaskProcess = (int)pProcess;
+                            m_MainTaskData.TaskProcess = (int)pProcess;
                         break;
                     case TaskType.TT_4001:
                     case TaskType.TT_4002:
                     case TaskType.TT_4003:
-                        m_MainTaskData.m_TaskProcess = (int)pProcess;
+                        m_MainTaskData.TaskProcess = (int)pProcess;
                         break;
                     default:
-                        m_MainTaskData.m_TaskProcess += pProcess;
+                        m_MainTaskData.TaskProcess += pProcess;
                         break;
                 }
-                
+
                 EventManager.Call(LogicEvent.MainTaskProcessChanged);
-                
+
                 //没有完成的任务 需要同步任务进度保存
-                if(m_MainTaskData.m_TaskState != (int)TaskState.Complete)
+                if (m_MainTaskData.TaskState != (int)TaskState.Complete)
                 {
                     NetworkManager.Ins.SendMsg(new C2S_UpdateTaskProcess
                     {
-                        m_IsMain = true, m_TaskID = m_MainTaskData.m_TaskID, m_Process = m_MainTaskData.m_TaskProcess
+                        IsMain = true, TaskID = m_MainTaskData.TaskID, Process = m_MainTaskData.TaskProcess
                     });
                 }
             }
         }
-        
+
         private void UpdateDaily(TaskType pType, long pProcess = 1)
         {
             foreach (var gameTaskData in m_DailyTaskList)
             {
-                var _TaskCfg = TaskCfg.GetData(gameTaskData.m_TaskID);
-                if(_TaskCfg.TaskType != (int)pType)
+                var _TaskCfg = TaskCfg.GetData(gameTaskData.TaskID);
+                if (_TaskCfg.TaskType != (int)pType)
                     continue;
-                if(gameTaskData.m_TaskState != (int)TaskState.Process)
+                if (gameTaskData.TaskState != (int)TaskState.Process)
                     continue;
-                
-                gameTaskData.m_TaskProcess += pProcess;
-                
-                EventManager.Call(LogicEvent.DailyTaskProcessChanged, gameTaskData.m_TaskID);
-            
-                if(gameTaskData.m_TaskState != (int)TaskState.Complete)
+
+                gameTaskData.TaskProcess += pProcess;
+
+                EventManager.Call(LogicEvent.DailyTaskProcessChanged, gameTaskData.TaskID);
+
+                if (gameTaskData.TaskState != (int)TaskState.Complete)
                 {
                     NetworkManager.Ins.SendMsg(new C2S_UpdateTaskProcess
                     {
-                        m_IsMain = false, m_TaskID = gameTaskData.m_TaskID, m_Process = gameTaskData.m_TaskProcess
+                        IsMain = false, TaskID = gameTaskData.TaskID, Process = gameTaskData.TaskProcess
                     });
                 }
             }

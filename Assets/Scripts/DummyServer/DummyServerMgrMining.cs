@@ -30,10 +30,10 @@ namespace DummyServer
                 return;
             }
 
-            m_DB.m_MiningData.m_GearCount += pGear;
-            if (m_DB.m_MiningData.m_GearCount >= GetEngineCostGear())
+            m_DB.m_MiningData.GearCount += pGear;
+            if (m_DB.m_MiningData.GearCount >= GetEngineCostGear())
             {
-                m_DB.m_MiningData.m_GearCount -= GetEngineCostGear();
+                m_DB.m_MiningData.GearCount -= GetEngineCostGear();
                 UpdateGetEngine();
             }
         }
@@ -52,18 +52,18 @@ namespace DummyServer
             switch ((MiningType)miningDataType)
             {
                 case MiningType.Hammer:
-                    m_DB.m_MiningData.m_HammerCount += count;
+                    m_DB.m_MiningData.HammerCount += count;
                     break;
                 case MiningType.Bomb:
-                    m_DB.m_MiningData.m_BombCount += count;
+                    m_DB.m_MiningData.BombCount += count;
                     break;
                 case MiningType.Scope:
-                    m_DB.m_MiningData.m_ScopeCount += count;
+                    m_DB.m_MiningData.ScopeCount += count;
                     break;
                 case MiningType.CopperMine:
                 case MiningType.SilverMine:
                 case MiningType.GoldMine:
-                    m_DB.m_MiningData.m_MineCount += count;
+                    m_DB.m_MiningData.MineCount += count;
                     break;
             }
 
@@ -80,25 +80,28 @@ namespace DummyServer
             switch ((MiningType)miningDataType)
             {
                 case MiningType.Gear:
-                    UpdateGear(20); //TODO: Delete测试使用
-                    // UpdateGear(count);
+                    // UpdateGear(20); //TODO: Delete测试使用
+                    UpdateGear(count);
                     break;
                 case MiningType.CopperMine:
                 case MiningType.SilverMine:
                 case MiningType.GoldMine:
-                    m_DB.m_MiningData.m_MineCount += count;
+                    m_DB.m_MiningData.MineCount += count;
                     break;
                 case MiningType.Hammer:
-                    m_DB.m_MiningData.m_HammerCount += count;
+                    m_DB.m_MiningData.HammerCount += count;
                     break;
                 case MiningType.Bomb:
-                    m_DB.m_MiningData.m_BombCount += count;
+                    m_DB.m_MiningData.BombCount += count;
                     break;
                 case MiningType.Scope:
-                    m_DB.m_MiningData.m_ScopeCount += count;
+                    m_DB.m_MiningData.ScopeCount += count;
                     break;
                 case MiningType.Door:
-                    m_DB.m_MiningData.m_FloorCount += count;
+                    m_DB.m_MiningData.FloorCount += count;
+                    break;
+                case MiningType.Honor:
+                    UpdateMushRoom(count);
                     break;
             }
 
@@ -109,8 +112,8 @@ namespace DummyServer
         {
             SendMsg(new S2C_UpdateMiningData()
             {
-                m_MiningDataType = miningDataType,
-                m_MiningData = m_DB.m_MiningData,
+                MiningDataType = miningDataType,
+                MiningData = m_DB.m_MiningData,
             });
 
             DummyDB.Save(m_DB);

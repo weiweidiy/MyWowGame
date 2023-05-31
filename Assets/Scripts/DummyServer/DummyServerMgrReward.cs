@@ -15,9 +15,10 @@ namespace DummyServer
             return (ItemType)ItemCfg.GetData(pRewardID).Type;
         }
 
-        public void OnMiningReward(MiningType treasureType)
+        public void OnMiningReward(int treasureType)
         {
-            switch (treasureType)
+            var type = (MiningType)treasureType;
+            switch (type)
             {
                 case MiningType.WeaponTreasure:
                 case MiningType.ArmorTreasure:
@@ -40,19 +41,20 @@ namespace DummyServer
             }
         }
 
-        private void TreasureReward(MiningType treasureType)
+        private void TreasureReward(int treasureType)
         {
-            var groupId = (int)treasureType;
+            var type = (MiningType)treasureType;
+            var groupId = treasureType;
             var itemDetails = GetItemDetails(groupId);
             var itemID = itemDetails[0];
             var count = RandomHelper.Range(itemDetails[1], itemDetails[2] + 1);
-            switch (treasureType)
+            switch (type)
             {
                 case MiningType.CopperMine:
                 case MiningType.SilverMine:
                 case MiningType.GoldMine:
                     // 矿石获得量增加 %
-                    var researchMineObtainAmount = m_DB.m_ResearchEffectData.researchMineObtainAmount;
+                    var researchMineObtainAmount = m_DB.m_ResearchEffectData.ResearchMineObtainAmount;
                     count = (int)(count * (1 + researchMineObtainAmount));
                     OnIncreaseMiningData((int)treasureType, count);
                     break;
@@ -74,15 +76,15 @@ namespace DummyServer
 
             SendMsg(new S2C_MiningReward()
             {
-                m_TreasureType = treasureType,
-                m_RewardId = itemID,
-                m_RewardCount = count,
+                TreasureType = treasureType,
+                RewardId = itemID,
+                RewardCount = count,
             });
         }
 
-        private void EquipTreasureReward(MiningType treasureType)
+        private void EquipTreasureReward(int treasureType)
         {
-            var groupId = (int)treasureType;
+            var groupId = treasureType;
             var itemDetails = GetItemDetails(groupId);
             var itemID = itemDetails[0];
             var count = RandomHelper.Range(itemDetails[1], itemDetails[2] + 1);
@@ -91,9 +93,9 @@ namespace DummyServer
 
             SendMsg(new S2C_MiningReward()
             {
-                m_TreasureType = treasureType,
-                m_RewardId = itemID,
-                m_RewardCount = count,
+                TreasureType = treasureType,
+                RewardId = itemID,
+                RewardCount = count,
             });
         }
 
@@ -115,9 +117,9 @@ namespace DummyServer
                     //更新武器数据
                     var weaponData = m_DB.m_WeaponList.Find(pData =>
                     {
-                        if (pData.m_EquipID == itemID)
+                        if (pData.EquipID == itemID)
                         {
-                            pData.m_Count += count;
+                            pData.Count += count;
                             return true;
                         }
 
@@ -126,22 +128,22 @@ namespace DummyServer
 
                     if (weaponData == null)
                     {
-                        m_DB.m_WeaponList.Add(new GameEquipData { m_EquipID = itemID, m_Count = count, m_Level = 1 });
+                        m_DB.m_WeaponList.Add(new GameEquipData { EquipID = itemID, Count = count, Level = 1 });
                     }
 
                     SendMsg(new S2C_EquipListUpdate()
                     {
-                        m_WeaponList = m_DB.m_WeaponList,
-                        m_ArmorList = m_DB.m_ArmorList
+                        WeaponList = m_DB.m_WeaponList,
+                        ArmorList = m_DB.m_ArmorList
                     });
                     break;
                 case ItemType.Armor:
                     //更新防具数据
                     var armorData = m_DB.m_ArmorList.Find(pData =>
                     {
-                        if (pData.m_EquipID == itemID)
+                        if (pData.EquipID == itemID)
                         {
-                            pData.m_Count += count;
+                            pData.Count += count;
                             return true;
                         }
 
@@ -150,13 +152,13 @@ namespace DummyServer
 
                     if (armorData == null)
                     {
-                        m_DB.m_ArmorList.Add(new GameEquipData { m_EquipID = itemID, m_Count = count, m_Level = 1 });
+                        m_DB.m_ArmorList.Add(new GameEquipData { EquipID = itemID, Count = count, Level = 1 });
                     }
 
                     SendMsg(new S2C_EquipListUpdate()
                     {
-                        m_WeaponList = m_DB.m_WeaponList,
-                        m_ArmorList = m_DB.m_ArmorList
+                        WeaponList = m_DB.m_WeaponList,
+                        ArmorList = m_DB.m_ArmorList
                     });
 
                     break;
@@ -164,9 +166,9 @@ namespace DummyServer
                     //更新技能数据
                     var gameSkillData = m_DB.m_SkillList.Find(pData =>
                     {
-                        if (pData.m_SkillID == itemID)
+                        if (pData.SkillID == itemID)
                         {
-                            pData.m_Count += count;
+                            pData.Count += count;
                             return true;
                         }
 
@@ -175,12 +177,12 @@ namespace DummyServer
 
                     if (gameSkillData == null)
                     {
-                        m_DB.m_SkillList.Add(new GameSkillData { m_SkillID = itemID, m_Count = count, m_Level = 1 });
+                        m_DB.m_SkillList.Add(new GameSkillData { SkillID = itemID, Count = count, Level = 1 });
                     }
 
                     SendMsg(new S2C_SkillListUpdate()
                     {
-                        m_SkillList = m_DB.m_SkillList
+                        SkillList = m_DB.m_SkillList
                     });
 
                     break;
@@ -188,9 +190,9 @@ namespace DummyServer
                     //更新伙伴数据
                     var gamePartnerData = m_DB.m_PartnerList.Find(pData =>
                     {
-                        if (pData.m_PartnerID == itemID)
+                        if (pData.PartnerID == itemID)
                         {
-                            pData.m_Count += count;
+                            pData.Count += count;
                             return true;
                         }
 
@@ -200,12 +202,12 @@ namespace DummyServer
                     if (gamePartnerData == null)
                     {
                         m_DB.m_PartnerList.Add(new GamePartnerData
-                            { m_PartnerID = itemID, m_Count = count, m_Level = 1 });
+                            { PartnerID = itemID, Count = count, Level = 1 });
                     }
 
                     SendMsg(new S2C_PartnerListUpdate()
                     {
-                        m_PartnerList = m_DB.m_PartnerList
+                        PartnerList = m_DB.m_PartnerList
                     });
 
                     break;
@@ -296,8 +298,8 @@ namespace DummyServer
 
             SendMsg(new S2C_PlaceReward()
             {
-                m_PlaceRewardId = m_TempRewardId,
-                m_PlaceRewardCount = m_TempRewardCount,
+                PlaceRewardId = m_TempRewardId,
+                PlaceRewardCount = m_TempRewardCount,
             });
         }
 

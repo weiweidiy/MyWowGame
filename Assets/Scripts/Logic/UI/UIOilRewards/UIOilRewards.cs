@@ -29,7 +29,7 @@ namespace Logic.UI.UIPlaceRewards
 
         private void OnBtnConfirmClick()
         {
-            Hide();
+            Close();
         }
 
         public override void OnShow()
@@ -45,12 +45,12 @@ namespace Logic.UI.UIPlaceRewards
             
             var result = data as S2C_OilCopyReward;
 
-            m_Oil.text = result.m_Oil.ToString();
+            m_Oil.text = result.Oil.ToString();
             var delay = new WaitForSeconds(0.02f);
-            for (var i = 0; i < result.m_LstRewardId.Count; i++)
+            for (var i = 0; i < result.LstRewardId.Count; i++)
             {
                 var placeRewardItem = Instantiate(m_CommonPlaceRewardItem, m_CommonPlaceRewardRoot);
-                placeRewardItem.Init(result.m_LstRewardId[i], result.m_LstRewardCount[i]);
+                placeRewardItem.Init(result.LstRewardId[i], result.LstRewardCount[i]);
                 placeRewardItem.m_Click += OnClick;
                 placeRewardItem.Show();
 

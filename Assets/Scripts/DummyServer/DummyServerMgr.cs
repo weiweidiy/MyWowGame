@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Globalization;
 using Framework.Extension;
+using Framework.Helper;
 using Logic.Common;
 using Networks;
 using UnityEngine;
@@ -34,9 +34,9 @@ namespace DummyServer
         {
             var _Msg = MessageProcess.Decode(pByteMsg);
 
-            Debug.Log($"===> Dummy-ReceiveMsg : [{_Msg.m_MsgType}]");
+            //Debug.Log($"===> Dummy-ReceiveMsg : [{_Msg.MsgType}]");
 
-            switch (_Msg.m_MsgType)
+            switch (_Msg.MsgType)
             {
                 case NetWorkMsgType.C2S_Login:
                     On_C2S_Login();
@@ -45,8 +45,29 @@ namespace DummyServer
                     // 临时增加客户端向服务器请求GM数据功能
                     UpdateGMAccount();
                     break;
-                case NetWorkMsgType.C2S_SyncPlayerData:
-                    On_C2S_SyncPlayerData(_Msg as C2S_SyncPlayerData);
+                case NetWorkMsgType.C2S_SyncCoin:
+                    var _C2S_SyncCoin = _Msg as C2S_SyncCoin;
+                    m_DB.m_Coin = _C2S_SyncCoin.Coin;
+                    //Debug.LogError("=====RECEIVE : C2S_SyncCoin=====");
+                    DummyDB.Save(m_DB);
+                    break;
+                case NetWorkMsgType.C2S_SyncTrophy:
+                    var _C2S_SyncTrophy = _Msg as C2S_SyncTrophy;
+                    m_DB.m_Trophy = _C2S_SyncTrophy.Trophy;
+                    //Debug.LogError("=====RECEIVE : C2S_SyncTrophy=====");
+                    DummyDB.Save(m_DB);
+                    break;
+                case NetWorkMsgType.C2S_SyncRoomData:
+                    On_C2S_SyncRoomData(_Msg as C2S_SyncRoomData);
+                    break;
+                case NetWorkMsgType.C2S_SyncSettingData:
+                    On_C2S_SyncSettingData(_Msg as C2S_SyncSettingData);
+                    break;
+                case NetWorkMsgType.C2S_SyncLevelData:
+                    On_C2S_SyncLevelData(_Msg as C2S_SyncLevelData);
+                    break;
+                case NetWorkMsgType.C2S_SyncPlaceRewardData:
+                    On_C2S_SyncPlaceRewardData(_Msg as C2S_SyncPlaceRewardData);
                     break;
                 case NetWorkMsgType.C2S_EquipOn:
                     On_C2S_EquipOn(_Msg as C2S_EquipOn);
@@ -132,13 +153,38 @@ namespace DummyServer
                 case NetWorkMsgType.C2S_Researching:
                     On_C2S_Researching(_Msg as C2S_Researching);
                     break;
+                case NetWorkMsgType.C2S_QuenchingLock:
+                    On_C2S_QuenchingLock(_Msg as C2S_QuenchingLock);
+                    break;
+                case NetWorkMsgType.C2S_Quenching:
+                    On_C2S_Quenching(_Msg as C2S_Quenching);
+                    break;
+                case NetWorkMsgType.C2S_SpoilDraw:
+                    On_C2S_SpoilDraw(_Msg as C2S_SpoilDraw);
+                    break;
+                case NetWorkMsgType.C2S_SpoilEquip:
+                    On_C2S_SpoilEquip(_Msg as C2S_SpoilEquip);
+                    break;
+                case NetWorkMsgType.C2S_SpoilUpgrade:
+                    On_C2S_SpoilUpgrade(_Msg as C2S_SpoilUpgrade);
+                    break;
+                case NetWorkMsgType.C2S_RoleOn:
+                    On_C2S_RoleOn(_Msg as C2S_RoleOn);
+                    break;
+                case NetWorkMsgType.C2S_RoleIntensify:
+                    On_C2S_RoleIntensify(_Msg as C2S_RoleIntensify);
+                    break;
+                case NetWorkMsgType.C2S_RoleBreak:
+                    On_C2S_RoleBreak(_Msg as C2S_RoleBreak);
+                    break;
                 default:
                 {
-                    Debug.LogError(_Msg.m_MsgType);
+                    Debug.LogError(_Msg.MsgType);
                     throw new ArgumentOutOfRangeException();
                 }
             }
         }
+
 
         #region 消息处理
 
@@ -159,225 +205,276 @@ namespace DummyServer
              */
             var _Data = new S2C_Login()
             {
-                m_IsFirstLogin = m_DB.m_IsFirstLogin,
-                m_LastGameDate = m_DB.m_LastGameDate,
+                LastGameDate = m_DB.m_LastGameDate,
 
-                m_Coin = m_DB.m_Coin,
-                m_Diamond = m_DB.m_Diamond,
-                m_Iron = m_DB.m_Iron,
-                m_Oil = m_DB.m_Oil,
+                Coin = m_DB.m_Coin,
+                Diamond = m_DB.m_Diamond,
+                Iron = m_DB.m_Iron,
+                Oil = m_DB.m_Oil,
+                Trophy = m_DB.m_Trophy,
+                MushRoom = m_DB.m_MushRoom,
+                BreakOre = m_DB.m_BreakOre,
 
-                m_GJJAtkLevel = m_DB.m_GJJAtkLevel,
-                m_GJJHPLevel = m_DB.m_GJJHPLevel,
-                m_GJJHPRecoverLevel = m_DB.m_GJJHPRecoverLevel,
-                m_GJJCriticalLevel = m_DB.m_GJJCriticalLevel,
-                m_GJJCriticalDamageLevel = m_DB.m_GJJCriticalDamageLevel,
-                m_GJJAtkSpeedLevel = m_DB.m_GJJAtkSpeedLevel,
-                m_GJJDoubleHitLevel = m_DB.m_GJJDoubleHitLevel,
-                m_GJJTripletHitLevel = m_DB.m_GJJTripletHitLevel,
+                GJJAtkLevel = m_DB.m_GJJAtkLevel,
+                GJJHPLevel = m_DB.m_GJJHPLevel,
+                GJJHPRecoverLevel = m_DB.m_GJJHPRecoverLevel,
+                GJJCriticalLevel = m_DB.m_GJJCriticalLevel,
+                GJJCriticalDamageLevel = m_DB.m_GJJCriticalDamageLevel,
+                GJJAtkSpeedLevel = m_DB.m_GJJAtkSpeedLevel,
+                GJJDoubleHitLevel = m_DB.m_GJJDoubleHitLevel,
+                GJJTripletHitLevel = m_DB.m_GJJTripletHitLevel,
 
-                m_AutoSkill = m_DB.m_AutoSkill,
-                m_IsMusicOn = m_DB.m_IsMusicOn,
-                m_IsSoundOn = m_DB.m_IsSoundOn,
+                AutoSkill = m_DB.m_AutoSkill,
+                IsMusicOn = m_DB.m_IsMusicOn,
+                IsSoundOn = m_DB.m_IsSoundOn,
 
-                m_CurLevelID = m_DB.m_CurLevelID,
-                m_CurLevelNode = m_DB.m_CurLevelNode,
-                m_CurLevelState = m_DB.m_CurLevelState,
+                CurLevelID = m_DB.m_CurLevelID,
+                CurLevelNode = m_DB.m_CurLevelNode,
+                CurLevelState = m_DB.m_CurLevelState,
 
-                m_BtnPlaceRewardClickTime = m_DB.m_BtnPlaceRewardClickTime,
-                m_BtnPlaceRewardShowTime = m_DB.m_BtnPlaceRewardShowTime,
-                m_PopPlaceRewardTime = m_DB.m_PopPlaceRewardTime,
+                PlaceRewardClickTime = m_DB.m_BtnPlaceRewardClickTime,
+                PlaceRewardShowTime = m_DB.m_BtnPlaceRewardShowTime,
+                PlaceRewardPopTime = m_DB.m_PopPlaceRewardTime,
 
-                m_WeaponOnID = m_DB.m_WeaponOnID,
-                m_ClothesOnID = m_DB.m_ArmorOnID,
-                m_EngineOnId = m_DB.m_EngineOnId,
-                m_EngineGetId = m_DB.m_EngineGetId,
+                WeaponOnID = m_DB.m_WeaponOnID,
+                ArmorOnID = m_DB.m_ArmorOnID,
+                EngineOnId = m_DB.m_EngineOnId,
+                EngineGetId = m_DB.m_EngineGetId,
 
-                m_MainTaskCount = m_DB.m_MainTaskCount,
+                MainTaskCount = m_DB.m_MainTaskCount,
+
+                RoleOnId = m_DB.m_RoleOnId,
             };
 
-            _Data.m_PartnerOnList.AddRange(m_DB.m_PartnerOnList);
-            _Data.m_SkillOnList.AddRange(m_DB.m_SkillOnList);
+            _Data.PartnerOnList.AddRange(m_DB.m_PartnerOnList);
+            _Data.SkillOnList.AddRange(m_DB.m_SkillOnList);
 
             //!!! 引用类型 深拷贝 !!!
 
             foreach (var partnerData in m_DB.m_PartnerList)
             {
-                _Data.m_PartnerList.Add(partnerData.Clone());
+                _Data.PartnerList.Add(partnerData.Clone());
             }
 
             foreach (var data in m_DB.m_WeaponList)
             {
-                _Data.m_WeaponList.Add(data.Clone());
+                _Data.WeaponList.Add(data.Clone());
             }
 
             foreach (var data in m_DB.m_ArmorList)
             {
-                _Data.m_ArmorList.Add(data.Clone());
+                _Data.ArmorList.Add(data.Clone());
             }
 
             foreach (var skillData in m_DB.m_SkillList)
             {
-                _Data.m_SkillList.Add(skillData.Clone());
+                _Data.SkillList.Add(skillData.Clone());
             }
 
             foreach (var engineData in m_DB.m_EngineList)
             {
-                _Data.m_EngineList.Add(engineData.Clone());
+                _Data.EngineList.Add(engineData.Clone());
             }
 
             // 抽卡
-            _Data.m_ShopSkillData = m_DB.m_ShopSkillData.Clone();
-            _Data.m_ShopPartnerData = m_DB.m_ShopPartnerData.Clone();
-            _Data.m_ShopEquipData = m_DB.m_ShopEquipData.Clone();
+            _Data.ShopSkillData = m_DB.m_ShopSkillData.Clone();
+            _Data.ShopPartnerData = m_DB.m_ShopPartnerData.Clone();
+            _Data.ShopEquipData = m_DB.m_ShopEquipData.Clone();
 
             //任务
-            _Data.m_CurMainTask = m_DB.m_CurMainTask.Clone();
+            _Data.CurMainTask = m_DB.m_CurMainTask.Clone();
             foreach (var _Task in m_DB.m_DailyTaskList)
             {
-                _Data.m_DailyTaskList.Add(_Task.Clone());
+                _Data.DailyTaskList.Add(_Task.Clone());
             }
 
             //副本
-            _Data.m_DiamondCopyData = m_DB.m_DiamondCopyData.Clone();
-            _Data.m_CoinCopyData = m_DB.m_CoinCopyData.Clone();
-            _Data.m_OilCopyData = m_DB.m_OilCopyData.Clone();
+            _Data.DiamondCopyData = m_DB.m_DiamondCopyData.Clone();
+            _Data.CoinCopyData = m_DB.m_CoinCopyData.Clone();
+            _Data.OilCopyData = m_DB.m_OilCopyData.Clone();
+            _Data.TrophyCopyData = m_DB.m_TropyCopyData.Clone();
 
             //考古
-            _Data.m_MiningData = m_DB.m_MiningData.Clone();
+            _Data.MiningData = m_DB.m_MiningData.Clone();
 
             //开放剧情
             foreach (var lockStoryData in m_DB.m_LockStoryList)
             {
-                _Data.m_LockStoryList.Add(lockStoryData.Clone());
+                _Data.LockStoryList.Add(lockStoryData.Clone());
             }
 
             //考古研究
             foreach (var researchData in m_DB.m_ResearchList)
             {
-                _Data.m_ResearchList.Add(researchData.Clone());
+                _Data.ResearchList.Add(researchData.Clone());
             }
 
-            _Data.m_ResearchEffectData = m_DB.m_ResearchEffectData.Clone();
+            _Data.ResearchEffectData = m_DB.m_ResearchEffectData.Clone();
+
+            //淬炼数据
+            foreach (var quenchingData in m_DB.m_QuenchingList)
+            {
+                _Data.QuenchingList.Add(quenchingData.Clone());
+            }
+
+
+            //战利品数据
+            _Data.SpoilDrawProgress = m_DB.m_SpoilDrawProgress;
+            _Data.SpoilSlotsUnlockData.AddRange(m_DB.m_SpoilSlotsUnlockData);
+            foreach (var item in m_DB.m_SpoilSlotsData)
+            {
+                _Data.SpoilSlotsData.Add(item.Clone());
+            }
+
+            foreach (var item in m_DB.m_SpoilsData)
+            {
+                _Data.SpoilsData.Add(item.Clone());
+            }
+
+
+            //英雄
+            foreach (var roleData in m_DB.m_RoleList)
+            {
+                _Data.RoleList.Add(roleData.Clone());
+            }
+
 
             SendMsg(_Data);
         }
 
-        private void On_C2S_SyncPlayerData(C2S_SyncPlayerData pMsg)
+        private void On_C2S_SyncRoomData(C2S_SyncRoomData pMsg)
         {
-            m_DB.m_Coin = pMsg.m_Coin;
+            m_DB.m_GJJAtkLevel = pMsg.GJJAtkLevel;
+            m_DB.m_GJJHPLevel = pMsg.GJJHPLevel;
+            m_DB.m_GJJHPRecoverLevel = pMsg.GJJHPRecoverLevel;
+            m_DB.m_GJJCriticalLevel = pMsg.GJJCriticalLevel;
+            m_DB.m_GJJCriticalDamageLevel = pMsg.GJJCriticalDamageLevel;
+            m_DB.m_GJJAtkSpeedLevel = pMsg.GJJAtkSpeedLevel;
+            m_DB.m_GJJDoubleHitLevel = pMsg.GJJDoubleHitLevel;
+            m_DB.m_GJJTripletHitLevel = pMsg.GJJTripletHitLevel;
 
-            m_DB.m_GJJAtkLevel = pMsg.m_GJJAtkLevel;
-            m_DB.m_GJJHPLevel = pMsg.m_GJJHPLevel;
-            m_DB.m_GJJHPRecoverLevel = pMsg.m_GJJHPRecoverLevel;
-            m_DB.m_GJJCriticalLevel = pMsg.m_GJJCriticalLevel;
-            m_DB.m_GJJCriticalDamageLevel = pMsg.m_GJJCriticalDamageLevel;
-            m_DB.m_GJJAtkSpeedLevel = pMsg.m_GJJAtkSpeedLevel;
-            m_DB.m_GJJDoubleHitLevel = pMsg.m_GJJDoubleHitLevel;
-            m_DB.m_GJJTripletHitLevel = pMsg.m_GJJTripletHitLevel;
-
-            m_DB.m_AutoSkill = pMsg.m_AutoSkill;
-
-            m_DB.m_CurLevelID = pMsg.m_CurLevelID;
-            m_DB.m_CurLevelNode = pMsg.m_CurLevelNode;
-            m_DB.m_CurLevelState = pMsg.m_CurLevelState;
-
-            m_DB.m_BtnPlaceRewardClickTime = pMsg.m_BtnPlaceRewardClickTime;
-            m_DB.m_BtnPlaceRewardShowTime = pMsg.m_BtnPlaceRewardShowTime;
-            m_DB.m_PopPlaceRewardTime = pMsg.m_PopPlaceRewardTime;
-
+            //Debug.LogError("=====RECEIVE : C2S_SyncRoomData=====");
             DummyDB.Save(m_DB);
-            Debug.Log("                                  === SAVE PLAYER DATA ===");
+        }
+
+        private void On_C2S_SyncSettingData(C2S_SyncSettingData pMsg)
+        {
+            m_DB.m_AutoSkill = pMsg.AutoSkill;
+            m_DB.m_IsMusicOn = pMsg.IsMusicOn;
+            m_DB.m_IsSoundOn = pMsg.IsSoundOn;
+
+            //Debug.LogError("=====RECEIVE : C2S_SyncSettingData=====");
+            DummyDB.Save(m_DB);
+        }
+
+        private void On_C2S_SyncLevelData(C2S_SyncLevelData pMsg)
+        {
+            m_DB.m_CurLevelID = pMsg.CurLevelID;
+            m_DB.m_CurLevelNode = pMsg.CurLevelNode;
+            m_DB.m_CurLevelState = pMsg.CurLevelState;
+
+            //Debug.LogError("=====RECEIVE : C2S_SyncLevelData=====");
+            DummyDB.Save(m_DB);
+        }
+
+        private void On_C2S_SyncPlaceRewardData(C2S_SyncPlaceRewardData pMsg)
+        {
+            m_DB.m_BtnPlaceRewardClickTime = pMsg.PlaceRewardClickTime;
+            m_DB.m_BtnPlaceRewardShowTime = pMsg.PlaceRewardShowTime;
+            m_DB.m_PopPlaceRewardTime = pMsg.PlaceRewardPopTime;
+
+            //Debug.LogError("=====RECEIVE : C2S_SyncPlaceRewardData=====");
+            DummyDB.Save(m_DB);
         }
 
         private void On_C2S_EquipOn(C2S_EquipOn pMsg)
         {
-            DoEquipOn(pMsg.m_EquipID, pMsg.m_Type);
+            DoEquipOn(pMsg.EquipID, pMsg.Type);
         }
 
         private void On_C2S_EquipIntensify(C2S_EquipIntensify pMsg)
         {
-            if (pMsg.m_IsAuto)
-                EquipIntensifyAuto(pMsg.m_Type);
+            if (pMsg.IsAuto)
+                EquipIntensifyAuto(pMsg.Type);
             else
-                EquipIntensify(pMsg.m_EquipID, pMsg.m_Type);
+                EquipIntensify(pMsg.EquipID, pMsg.Type);
         }
 
         private void On_C2S_PartnerOn(C2S_PartnerOn pMsg)
         {
-            DoPartnerOn(pMsg.m_PartnerID);
+            DoPartnerOn(pMsg.PartnerID);
         }
 
         private void On_C2S_PartnerOff(C2S_PartnerOff pMsg)
         {
-            DoPartnerOff(pMsg.m_PartnerID);
+            DoPartnerOff(pMsg.PartnerID);
         }
 
         private void On_C2S_PartnerIntensify(C2S_PartnerIntensify pMsg)
         {
-            if (pMsg.m_IsAuto)
+            if (pMsg.IsAuto)
                 PartnerIntensifyAuto();
             else
-                PartnerIntensify(pMsg.m_PartnerID);
+                PartnerIntensify(pMsg.PartnerID);
         }
 
         private void On_C2S_SkillOn(C2S_SkillOn pMsg)
         {
-            DoSkillOn(pMsg.m_SkillID);
+            DoSkillOn(pMsg.SkillID);
         }
 
         private void On_C2S_SkillOff(C2S_SkillOff pMsg)
         {
-            DoSkillOff(pMsg.m_SkillID);
+            DoSkillOff(pMsg.SkillID);
         }
 
         private void On_C2S_SkillIntensify(C2S_SkillIntensify pMsg)
         {
-            if (pMsg.m_IsAuto)
+            if (pMsg.IsAuto)
                 SkillIntensifyAuto();
             else
-                SkillIntensify(pMsg.m_SkillID);
+                SkillIntensify(pMsg.SkillID);
         }
 
         private void On_C2S_EngineIntensify(C2S_EngineIntensify pMsg)
         {
-            DoEngineIntensify(pMsg.m_EngineIntensifyId);
+            DoEngineIntensify(pMsg.EngineId);
         }
 
         private void On_C2S_EngineRemove(C2S_EngineRemove pMsg)
         {
-            DoEngineRemove(pMsg.m_EngineRemoveId);
+            DoEngineRemove(pMsg.EngineId);
         }
 
         private void On_C2S_EngineOn(C2S_EngineOn pMsg)
         {
-            DoEngineOn(pMsg.m_EngineOnId);
+            DoEngineOn(pMsg.EngineId);
         }
 
         private void On_C2S_EngineOff(C2S_EngineOff pMsg)
         {
-            DoEngineOff(pMsg.m_EngineOffId);
+            DoEngineOff(pMsg.EngineId);
         }
 
         private void On_C2S_DrawCard(C2S_DrawCard pMsg)
         {
-            switch ((DrawCardType)pMsg.m_DrawCardType)
+            switch ((DrawCardType)pMsg.DrawCardType)
             {
                 case DrawCardType.Skill:
-                    OnDrawSkill(pMsg.m_DrawCardCostType);
+                    OnDrawSkill(pMsg.DrawCardCostType);
                     break;
                 case DrawCardType.Partner:
-                    OnDrawPartner(pMsg.m_DrawCardCostType);
+                    OnDrawPartner(pMsg.DrawCardCostType);
                     break;
                 case DrawCardType.Equip:
-                    OnDrawEquip(pMsg.m_DrawCardCostType);
+                    OnDrawEquip(pMsg.DrawCardCostType);
                     break;
             }
         }
 
         private void On_C2S_UpdateDrawCardData(C2S_UpdateDrawCardData pMsg)
         {
-            switch ((DrawCardType)pMsg.m_DrawCardType)
+            switch ((DrawCardType)pMsg.DrawCardType)
             {
                 case DrawCardType.Skill:
                     OnUpdateGameShopSkillData();
@@ -393,12 +490,12 @@ namespace DummyServer
 
         public void On_C2S_MiningReward(C2S_MiningReward pMsg)
         {
-            OnMiningReward(pMsg.m_TreasureType);
+            OnMiningReward(pMsg.TreasureType);
         }
 
         public void On_C2S_PlaceReward(C2S_PlaceReward pMsg)
         {
-            OnPlaceReward(pMsg.m_PlaceRewardCount);
+            OnPlaceReward(pMsg.PlaceRewardCount);
         }
 
         public void On_C2S_GetPlaceReward(C2S_GetPlaceReward pMsg)
@@ -413,14 +510,14 @@ namespace DummyServer
 
         public void On_C2S_UpdateMiningData(C2S_UpdateMiningData pMsg)
         {
-            var miningUpdateType = (MiningUpdateType)pMsg.m_UpdateType;
+            var miningUpdateType = (MiningUpdateType)pMsg.UpdateType;
             switch (miningUpdateType)
             {
                 case MiningUpdateType.Reduce:
-                    OnReduceMiningData(pMsg.m_MiningDataType);
+                    OnReduceMiningData(pMsg.MiningDataType);
                     break;
                 case MiningUpdateType.Increase:
-                    OnIncreaseMiningData(pMsg.m_MiningDataType);
+                    OnIncreaseMiningData(pMsg.MiningDataType);
                     break;
             }
         }
@@ -440,6 +537,48 @@ namespace DummyServer
             OnResearching(pMsg);
         }
 
+        public void On_C2S_QuenchingLock(C2S_QuenchingLock pMsg)
+        {
+            OnQuenchingLock(pMsg);
+        }
+
+        public void On_C2S_Quenching(C2S_Quenching pMsg)
+        {
+            OnQuenching(pMsg);
+        }
+
+
+        private void On_C2S_SpoilDraw(C2S_SpoilDraw pMsg)
+        {
+            OnC2S_SpoilDraw(pMsg);
+        }
+
+        private void On_C2S_SpoilEquip(C2S_SpoilEquip pMsg)
+        {
+            OnC2S_SpoilEquip(pMsg);
+        }
+
+        private void On_C2S_SpoilUpgrade(C2S_SpoilUpgrade pMsg)
+        {
+            OnC2S_SpoilUpgrade(pMsg);
+        }
+
+
+        public void On_C2S_RoleOn(C2S_RoleOn pMsg)
+        {
+            DoRoleOn(pMsg.RoleId);
+        }
+
+        public void On_C2S_RoleIntensify(C2S_RoleIntensify pMsg)
+        {
+            DoRoleIntensify(pMsg.RoleId);
+        }
+
+        public void On_C2S_RoleBreak(C2S_RoleBreak pMsg)
+        {
+            DoRoleBreak(pMsg.RoleId);
+        }
+
         #endregion
 
         private void SendMsg(object pMsg)
@@ -455,14 +594,14 @@ namespace DummyServer
         {
             m_DB.m_Diamond += pDiamond;
             DummyDB.Save(m_DB);
-            SendMsg(new S2C_DiamondUpdate { m_Diamond = m_DB.m_Diamond });
+            SendMsg(new S2C_DiamondUpdate { Diamond = m_DB.m_Diamond });
         }
 
         public void UpdateOil(int pOil)
         {
             m_DB.m_Oil += pOil;
             DummyDB.Save(m_DB);
-            SendMsg(new S2C_OilUpdate { m_Oil = m_DB.m_Oil });
+            SendMsg(new S2C_OilUpdate { Oil = m_DB.m_Oil });
         }
 
         /// <summary>
@@ -473,7 +612,7 @@ namespace DummyServer
         {
             m_DB.m_Iron += pIron;
             DummyDB.Save(m_DB);
-            SendMsg(new S2C_EngineIronUpdate { m_Iron = m_DB.m_Iron });
+            SendMsg(new S2C_EngineIronUpdate { Iron = m_DB.m_Iron });
         }
 
         /// <summary>
@@ -481,17 +620,38 @@ namespace DummyServer
         /// </summary>
         public void UpdateKey(int pKey)
         {
-            m_DB.m_CoinCopyData.m_KeyCount += pKey;
-            m_DB.m_DiamondCopyData.m_KeyCount += pKey;
-            m_DB.m_OilCopyData.m_KeyCount += pKey;
+            m_DB.m_CoinCopyData.KeyCount += pKey;
+            m_DB.m_DiamondCopyData.KeyCount += pKey;
+            m_DB.m_OilCopyData.KeyCount += pKey;
+            m_DB.m_TropyCopyData.KeyCount += pKey;
             DummyDB.Save(m_DB);
             SendMsg(new S2C_UpdateCopyKeyCount
             {
-                m_CoinKeyCount = m_DB.m_CoinCopyData.m_KeyCount,
-                m_DiamondKeyCount = m_DB.m_DiamondCopyData.m_KeyCount,
-                m_OilKeyCount = m_DB.m_OilCopyData.m_KeyCount
-                
+                CoinKeyCount = m_DB.m_CoinCopyData.KeyCount,
+                DiamondKeyCount = m_DB.m_DiamondCopyData.KeyCount,
+                OilKeyCount = m_DB.m_OilCopyData.KeyCount,
+                TrophyKeyCount = m_DB.m_TropyCopyData.KeyCount
             });
+        }
+
+        /// <summary>
+        /// 更新英雄升级材料
+        /// </summary>
+        public void UpdateMushRoom(int pMushRoom)
+        {
+            m_DB.m_MushRoom += pMushRoom;
+            DummyDB.Save(m_DB);
+            SendMsg(new S2C_MushRoomUpdate { MushRoom = m_DB.m_MushRoom });
+        }
+
+        /// <summary>
+        /// 更新英雄突破材料
+        /// </summary>
+        public void UpdateBreakOre(int pBreakOre)
+        {
+            m_DB.m_BreakOre += pBreakOre;
+            DummyDB.Save(m_DB);
+            SendMsg(new S2C_BreakOreUpdate() { BreakOre = m_DB.m_BreakOre });
         }
 
         private void UpdateGMAccount()
@@ -503,6 +663,9 @@ namespace DummyServer
             OnIncreaseMiningData((int)MiningType.Bomb, 100); //增加考古炸弹数量
             OnIncreaseMiningData((int)MiningType.Scope, 100); //增加透视镜数量
             UpdateKey(100); //增加副本钥匙数量
+            UpdateOil(10000); //增加原油数量
+            UpdateMushRoom(100); //增加英雄升级材料
+            UpdateBreakOre(1000); //增加英雄突破材料
         }
 
         /// <summary>
@@ -511,7 +674,7 @@ namespace DummyServer
         public void DummyOnExitGame()
         {
             m_DB.m_IsFirstLogin = false;
-            m_DB.m_LastGameDate = DateTime.Now.ToString(CultureInfo.InvariantCulture);
+            m_DB.m_LastGameDate = TimeHelper.GetUnixTimeStamp();
             DummyDB.Save(m_DB);
         }
 

@@ -35,6 +35,12 @@ namespace Configs
         //奖励item类型
         public List<int> RewardType;
 
+        /*
+        Administrator:
+概率出现方式
+随机出去之后,从池中删除
+
+        */
         //奖励权重
         public List<int> RewardWeight;
 

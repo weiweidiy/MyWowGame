@@ -130,7 +130,7 @@ namespace Logic.UI.Cells
 
         private void SendMsgC2SMiningReward(MiningType treasureType)
         {
-            RewardManager.Ins.SendMsgC2SMiningReward(treasureType);
+            RewardManager.Ins.SendMsgC2SMiningReward((int)treasureType);
         }
     }
 }

@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using Framework.Core;
 using Framework.EventKit;
 using Framework.Extension;
+using Framework.UI;
 using Logic.Common;
 using Logic.Data;
 using Logic.Manager;
+using Logic.UI.Common;
+using Logic.UI.UINet;
 using Networks.State;
 using UnityEngine;
 
@@ -75,6 +78,11 @@ namespace Networks
             ProcessMsg();
         }
 
+        private void OnDestroy()
+        {
+            Release();
+        }
+
         public void Release()
         {
             m_SM?.Release();
@@ -85,11 +93,13 @@ namespace Networks
             return GameCore.Ins.UseDummyServer;
         }
 
+        public static long ClientMsgId = 0;
         /// <summary>
         /// 发送消息
         /// </summary>
-        public void SendMsg(object pMsg)
+        public void SendMsg(MessageHead pMsg)
         {
+            pMsg.MsgID = ++ClientMsgId;
             var _ByteMsg = MessageProcess.Encode(pMsg);
 
             if (InDummyMode())
@@ -102,19 +112,10 @@ namespace Networks
             }
         }
 
-        // /// <summary>
-        // /// 发送消息 - 特殊情况 立刻发送
-        // /// </summary>
-        // public void SendMsgImmediately(object pMsg)
-        // {
-        //     var _ByteMsg = MessageProcess.Encode(pMsg);
-        //     m_StateData._Dummy.SendMsgToServerImmediately(_ByteMsg);
-        // }
-
         public void OnReceiveMsg(byte[] pMsg)
         {
             var _Msg = MessageProcess.Decode(pMsg);
-            Debug.Log($"===> Client-ReceiveMsg : [{_Msg.m_MsgType}]");
+            //Debug.Log($"===> Client-ReceiveMsg : [{_Msg.MsgType}]");
             m_MsgList.Enqueue(_Msg);
         }
 
@@ -126,8 +127,22 @@ namespace Networks
 
         public void OnConnectFailed()
         {
+            m_SM.Release();
+            m_SM = null;
+            HideHold();
+            UIMsgBox.ShowMsgBox(1, "提示", "连接服务器失败\n请检查网络");
             //通知其他逻辑 链接服务器失败
             EventManager.Call(LogicEvent.ConnectFailed);
+        }
+
+        public async void ShowHold()
+        {
+            await UIManager.Ins.OpenUI<UINetHolding>();
+        }
+
+        public void HideHold()
+        {
+            EventManager.Call(LogicEvent.CloseHoldUI);
         }
 
         //消息处理
@@ -142,7 +157,7 @@ namespace Networks
 
         private void ProcessMsg(MessageHead pMsg)
         {
-            switch (pMsg.m_MsgType)
+            switch (pMsg.MsgType)
             {
                 case NetWorkMsgType.S2C_Login:
                 {
@@ -151,13 +166,13 @@ namespace Networks
                     break;
                 case NetWorkMsgType.S2C_DiamondUpdate:
                 {
-                    GameDataManager.Ins.Diamond = ((S2C_DiamondUpdate)pMsg).m_Diamond;
+                    GameDataManager.Ins.Diamond = ((S2C_DiamondUpdate)pMsg).Diamond;
                 }
                     break;
                 case NetWorkMsgType.S2C_OilUpdate:
-                    {
-                        GameDataManager.Ins.Oil = ((S2C_OilUpdate)pMsg).m_Oil;
-                    }
+                {
+                    GameDataManager.Ins.Oil = ((S2C_OilUpdate)pMsg).Oil;
+                }
                     break;
                 case NetWorkMsgType.S2C_EquipOn:
                 {
@@ -172,10 +187,15 @@ namespace Networks
                 case NetWorkMsgType.S2C_EquipIntensify:
                 {
                     var _Msg = pMsg as S2C_EquipIntensify;
-                    if (_Msg.m_Type == ItemType.Weapon)
-                        EquipManager.Ins.OnWeaponIntensify(_Msg.m_EquipList, _Msg.m_IsAuto);
-                    else if (_Msg.m_Type == ItemType.Armor)
-                        EquipManager.Ins.OnArmorIntensify(_Msg.m_EquipList, _Msg.m_IsAuto);
+                    var type = (ItemType)_Msg.Type;
+                    if (type == ItemType.Weapon)
+                    {
+                        EquipManager.Ins.OnWeaponIntensify(_Msg.EquipList, _Msg.IsAuto);
+                    }
+                    else if (type == ItemType.Armor)
+                    {
+                        EquipManager.Ins.OnArmorIntensify(_Msg.EquipList, _Msg.IsAuto);
+                    }
                 }
                     break;
                 case NetWorkMsgType.S2C_EquipListUpdate:
@@ -235,7 +255,7 @@ namespace Networks
                     break;
                 case NetWorkMsgType.S2C_EngineIronUpdate:
                 {
-                    GameDataManager.Ins.Iron = ((S2C_EngineIronUpdate)pMsg).m_Iron;
+                    GameDataManager.Ins.Iron = ((S2C_EngineIronUpdate)pMsg).Iron;
                 }
                     break;
                 case NetWorkMsgType.S2C_EngineOn:
@@ -274,9 +294,9 @@ namespace Networks
                 }
                     break;
                 case NetWorkMsgType.S2C_OilCopyReward:
-                    {
-                        RewardManager.Ins.On_S2C_OilCopyReward(pMsg as S2C_OilCopyReward);
-                    }
+                {
+                    RewardManager.Ins.On_S2C_OilCopyReward(pMsg as S2C_OilCopyReward);
+                }
                     break;
                 case NetWorkMsgType.S2C_UpdateMiningData:
                 {
@@ -328,9 +348,64 @@ namespace Networks
                     ResearchManager.Ins.OnResearching(pMsg as S2C_Researching);
                 }
                     break;
+                case NetWorkMsgType.S2C_SpoilDraw:
+                {
+                    SpoilManager.Ins.OnSpoilDrawResult(pMsg as S2C_SpoilDraw);
+                    break;
+                }
+                case NetWorkMsgType.S2C_SpoilSlotUnlock:
+                {
+                    SpoilManager.Ins.OnSpoilSlotUnlock(pMsg as S2C_SpoilSlotUnlock);
+                    break;
+                }
+                case NetWorkMsgType.S2C_SpoilEquip:
+                {
+                    SpoilManager.Ins.OnSpoilEquip(pMsg as S2C_SpoilEquip);
+                    break;
+                }
+                case NetWorkMsgType.S2C_SpoilUpgrade:
+                {
+                    SpoilManager.Ins.OnSpoilUpgrade(pMsg as S2C_SpoilUpgrade);
+                    break;
+                }
+                case NetWorkMsgType.S2C_RoleOn:
+                {
+                    RoleManager.Ins.OnRoleOn(pMsg as S2C_RoleOn);
+                }
+                    break;
+                case NetWorkMsgType.S2C_RoleOff:
+                {
+                    RoleManager.Ins.OnRoleOff(pMsg as S2C_RoleOff);
+                }
+                    break;
+                case NetWorkMsgType.S2C_RoleIntensify:
+                {
+                    RoleManager.Ins.OnRoleIntensify(pMsg as S2C_RoleIntensify);
+                }
+                    break;
+                case NetWorkMsgType.S2C_RoleBreak:
+                {
+                    RoleManager.Ins.OnRoleBreak(pMsg as S2C_RoleBreak);
+                }
+                    break;
+                case NetWorkMsgType.S2C_RoleListUpdate:
+                {
+                    RoleManager.Ins.OnRoleListUpdate(pMsg as S2C_RoleListUpdate);
+                }
+                    break;
+                case NetWorkMsgType.S2C_MushRoomUpdate:
+                {
+                    GameDataManager.Ins.MushRoom = ((S2C_MushRoomUpdate)pMsg).MushRoom;
+                }
+                    break;
+                case NetWorkMsgType.S2C_BreakOreUpdate:
+                {
+                    GameDataManager.Ins.BreakOre = ((S2C_BreakOreUpdate)pMsg).BreakOre;
+                }
+                    break;
                 default:
                 {
-                    Debug.LogError(pMsg.m_MsgType);
+                    Debug.LogError(pMsg.MsgType);
                     throw new ArgumentOutOfRangeException();
                 }
             }

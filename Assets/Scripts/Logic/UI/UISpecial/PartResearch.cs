@@ -44,7 +44,7 @@ namespace Logic.UI.UISpecial
 
         private void Refresh()
         {
-            m_Number.text = MiningManager.Ins.m_MiningData.m_MineCount.ToString();
+            m_Number.text = MiningManager.Ins.m_MiningData.MineCount.ToString();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
-using BreakInfinity;
 using Logic.Common;
+using UnityEngine.Serialization;
 
 namespace Networks
 {
@@ -19,9 +19,9 @@ namespace Networks
 
         public GameEquipData(GameEquipData pData)
         {
-            m_EquipID = pData.m_EquipID;
-            m_Level = pData.m_Level;
-            m_Count = pData.m_Count;
+            EquipID = pData.EquipID;
+            Level = pData.Level;
+            Count = pData.Count;
         }
 
         public GameEquipData Clone()
@@ -29,16 +29,16 @@ namespace Networks
             return new GameEquipData(this);
         }
 
-        public int m_EquipID; //装备ID
-        public int m_Level; //装备等级
-        public int m_Count; //当前数量
+        public int EquipID; //装备ID
+        public int Level; //装备等级
+        public int Count; //当前数量
     }
 
     [Serializable]
     public class GameEquipUpgradeData
     {
-        public GameEquipData m_EquipData;
-        public int m_OldLevel;
+        public GameEquipData EquipData;
+        public int OldLevel;
     }
 
     [Serializable]
@@ -50,9 +50,9 @@ namespace Networks
 
         public GameSkillData(GameSkillData pData)
         {
-            m_SkillID = pData.m_SkillID;
-            m_Level = pData.m_Level;
-            m_Count = pData.m_Count;
+            SkillID = pData.SkillID;
+            Level = pData.Level;
+            Count = pData.Count;
         }
 
         public GameSkillData Clone()
@@ -60,16 +60,16 @@ namespace Networks
             return new GameSkillData(this);
         }
 
-        public int m_SkillID; //技能ID
-        public int m_Level; //技能等级
-        public int m_Count; //当前数量
+        public int SkillID; //技能ID
+        public int Level; //技能等级
+        public int Count; //当前数量
     }
 
     [Serializable]
     public class GameSkillUpgradeData
     {
-        public GameSkillData m_SkillData;
-        public int m_OldLevel;
+        public GameSkillData SkillData;
+        public int OldLevel;
     }
 
     [Serializable]
@@ -81,9 +81,9 @@ namespace Networks
 
         public GamePartnerData(GamePartnerData pData)
         {
-            m_PartnerID = pData.m_PartnerID;
-            m_Level = pData.m_Level;
-            m_Count = pData.m_Count;
+            PartnerID = pData.PartnerID;
+            Level = pData.Level;
+            Count = pData.Count;
         }
 
         public GamePartnerData Clone()
@@ -91,28 +91,28 @@ namespace Networks
             return new GamePartnerData(this);
         }
 
-        public int m_PartnerID; //伙伴ID
-        public int m_Level; //伙伴等级
-        public int m_Count; //当前数量
+        public int PartnerID; //伙伴ID
+        public int Level; //伙伴等级
+        public int Count; //当前数量
     }
 
     [Serializable]
     public class GamePartnerUpgradeData
     {
-        public GamePartnerData m_PartnerData;
-        public int m_OldLevel;
+        public GamePartnerData PartnerData;
+        public int OldLevel;
     }
 
     // 引擎数据
     [Serializable]
     public class GameEngineData
     {
-        public int m_Id; //引擎Id
-        public int m_TypeId; //引擎TypeId
-        public int m_IsGet; // 引擎是否获取 0/1
-        public int m_AttrId; // 引擎随机属性Id
-        public int m_Level; // 引擎等级
-        public int m_Reform; // 引擎改造次数
+        public int Id; //引擎Id
+        public int TypeId; //引擎TypeId
+        public int IsGet; // 引擎是否获取 0/1
+        public int AttrId; // 引擎随机属性Id
+        public int Level; // 引擎等级
+        public int Reform; // 引擎改造次数
 
         public GameEngineData()
         {
@@ -120,12 +120,12 @@ namespace Networks
 
         public GameEngineData(GameEngineData pData)
         {
-            m_Id = pData.m_Id;
-            m_TypeId = pData.m_TypeId;
-            m_IsGet = pData.m_IsGet;
-            m_AttrId = pData.m_AttrId;
-            m_Level = pData.m_Level;
-            m_Reform = pData.m_Reform;
+            Id = pData.Id;
+            TypeId = pData.TypeId;
+            IsGet = pData.IsGet;
+            AttrId = pData.AttrId;
+            Level = pData.Level;
+            Reform = pData.Reform;
         }
 
         public GameEngineData Clone()
@@ -138,9 +138,9 @@ namespace Networks
     [Serializable]
     public class GameTaskData
     {
-        public int m_TaskID; //任务ID
-        public long m_TaskProcess; //任务进度
-        public int m_TaskState; //任务是否领取状态
+        public int TaskID; //任务ID
+        public long TaskProcess; //任务进度
+        public int TaskState; //任务是否领取状态
 
         public GameTaskData()
         {
@@ -148,9 +148,9 @@ namespace Networks
 
         public GameTaskData(GameTaskData pData)
         {
-            m_TaskID = pData.m_TaskID;
-            m_TaskState = pData.m_TaskState;
-            m_TaskProcess = pData.m_TaskProcess;
+            TaskID = pData.TaskID;
+            TaskState = pData.TaskState;
+            TaskProcess = pData.TaskProcess;
         }
 
         public GameTaskData Clone()
@@ -163,10 +163,10 @@ namespace Networks
     [Serializable]
     public class GameShopSkillData
     {
-        public int m_ID; // 卡池id
-        public int m_Level; // 卡池等级
-        public int m_Exp; // 卡池经验
-        public int m_TotalExp; //卡池累计经验值
+        public int ID; // 卡池id
+        public int Level; // 卡池等级
+        public int Exp; // 卡池经验
+        public int TotalExp; //卡池累计经验值
 
         public GameShopSkillData()
         {
@@ -174,10 +174,10 @@ namespace Networks
 
         public GameShopSkillData(GameShopSkillData pData)
         {
-            m_ID = pData.m_ID;
-            m_Level = pData.m_Level;
-            m_Exp = pData.m_Exp;
-            m_TotalExp = pData.m_TotalExp;
+            ID = pData.ID;
+            Level = pData.Level;
+            Exp = pData.Exp;
+            TotalExp = pData.TotalExp;
         }
 
         public GameShopSkillData Clone()
@@ -189,10 +189,10 @@ namespace Networks
     [Serializable]
     public class GameShopPartnerData
     {
-        public int m_ID; // 卡池id
-        public int m_Level; // 卡池等级
-        public int m_Exp; // 卡池经验
-        public int m_TotalExp; //卡池累计经验值
+        public int ID; // 卡池id
+        public int Level; // 卡池等级
+        public int Exp; // 卡池经验
+        public int TotalExp; //卡池累计经验值
 
         public GameShopPartnerData()
         {
@@ -200,10 +200,10 @@ namespace Networks
 
         public GameShopPartnerData(GameShopPartnerData pData)
         {
-            m_ID = pData.m_ID;
-            m_Level = pData.m_Level;
-            m_Exp = pData.m_Exp;
-            m_TotalExp = pData.m_TotalExp;
+            ID = pData.ID;
+            Level = pData.Level;
+            Exp = pData.Exp;
+            TotalExp = pData.TotalExp;
         }
 
         public GameShopPartnerData Clone()
@@ -215,10 +215,10 @@ namespace Networks
     [Serializable]
     public class GameShopEquipData
     {
-        public int m_ID; // 卡池id
-        public int m_Level; // 卡池等级
-        public int m_Exp; // 卡池经验
-        public int m_TotalExp; //卡池累计经验值
+        public int ID; // 卡池id
+        public int Level; // 卡池等级
+        public int Exp; // 卡池经验
+        public int TotalExp; //卡池累计经验值
 
         public GameShopEquipData()
         {
@@ -226,10 +226,10 @@ namespace Networks
 
         public GameShopEquipData(GameShopEquipData pData)
         {
-            m_ID = pData.m_ID;
-            m_Level = pData.m_Level;
-            m_Exp = pData.m_Exp;
-            m_TotalExp = pData.m_TotalExp;
+            ID = pData.ID;
+            Level = pData.Level;
+            Exp = pData.Exp;
+            TotalExp = pData.TotalExp;
         }
 
         public GameShopEquipData Clone()
@@ -242,19 +242,19 @@ namespace Networks
     [Serializable]
     public class GameCopyData
     {
-        public int m_Level; //当前等级
-        public int m_KeyCount; //当前钥匙数量
+        public int Level; //当前等级
+        public int KeyCount; //当前钥匙数量
 
         public GameCopyData()
         {
-            m_Level = 1;
-            m_KeyCount = 2;
+            Level = 1;
+            KeyCount = 2;
         }
 
         public GameCopyData(GameCopyData pData)
         {
-            m_Level = pData.m_Level;
-            m_KeyCount = pData.m_KeyCount;
+            Level = pData.Level;
+            KeyCount = pData.KeyCount;
         }
 
         public GameCopyData Clone()
@@ -263,21 +263,22 @@ namespace Networks
         }
     }
 
+    [Serializable]
     public class GameCopyOilData : GameCopyData
     {
-        public string m_BestDamageRecord;
-        public int m_BestLevelRecord;
+        public string BestDamageRecord;
+        public int BestLevelRecord;
 
-        public GameCopyOilData():base()
+        public GameCopyOilData() : base()
         {
         }
 
         public GameCopyOilData(GameCopyOilData pData)
         {
-            m_KeyCount = pData.m_KeyCount;
-            m_Level = pData.m_Level;
-            m_BestDamageRecord = pData.m_BestDamageRecord;
-            m_BestLevelRecord = pData.m_BestLevelRecord;
+            KeyCount = pData.KeyCount;
+            Level = pData.Level;
+            BestDamageRecord = pData.BestDamageRecord;
+            BestLevelRecord = pData.BestLevelRecord;
         }
 
         public GameCopyOilData Clone()
@@ -290,31 +291,31 @@ namespace Networks
     [Serializable]
     public class GameMiningData
     {
-        public int m_GearCount; // 引擎零件
-        public int m_HammerCount; // 矿锤数量
-        public int m_MineCount; // 矿石数量
-        public int m_BombCount; // 炸弹数量
-        public int m_ScopeCount; // 透视镜数量
-        public int m_FloorCount; // 层数
+        public int GearCount; // 引擎零件
+        public int HammerCount; // 矿锤数量
+        public int MineCount; // 矿石数量
+        public int BombCount; // 炸弹数量
+        public int ScopeCount; // 透视镜数量
+        public int FloorCount; // 层数
 
         public GameMiningData()
         {
-            m_GearCount = 0;
-            m_HammerCount = GameDefine.MaxHammerCount;
-            m_MineCount = 0;
-            m_BombCount = 0;
-            m_ScopeCount = 0;
-            m_FloorCount = 1;
+            GearCount = 0;
+            HammerCount = GameDefine.MaxHammerCount;
+            MineCount = 0;
+            BombCount = 0;
+            ScopeCount = 0;
+            FloorCount = 1;
         }
 
         public GameMiningData(GameMiningData pData)
         {
-            m_GearCount = pData.m_GearCount;
-            m_HammerCount = pData.m_HammerCount;
-            m_MineCount = pData.m_MineCount;
-            m_BombCount = pData.m_BombCount;
-            m_ScopeCount = pData.m_ScopeCount;
-            m_FloorCount = pData.m_FloorCount;
+            GearCount = pData.GearCount;
+            HammerCount = pData.HammerCount;
+            MineCount = pData.MineCount;
+            BombCount = pData.BombCount;
+            ScopeCount = pData.ScopeCount;
+            FloorCount = pData.FloorCount;
         }
 
         public GameMiningData Clone()
@@ -327,8 +328,8 @@ namespace Networks
     [Serializable]
     public class GameLockStoryData
     {
-        public int m_LockType; // Lock表Id
-        public int m_LockState; // 是否已经开放
+        public int LockType; // Lock表Id
+        public int LockState; // 是否已经开放
 
         public GameLockStoryData()
         {
@@ -336,8 +337,8 @@ namespace Networks
 
         public GameLockStoryData(GameLockStoryData pData)
         {
-            m_LockType = pData.m_LockType;
-            m_LockState = pData.m_LockState;
+            LockType = pData.LockType;
+            LockState = pData.LockState;
         }
 
         public GameLockStoryData Clone()
@@ -350,10 +351,10 @@ namespace Networks
     [Serializable]
     public class GameResearchData
     {
-        public int m_ResearchId; //研究Id
-        public int m_ResearchLevel; //研究等级
-        public int m_IsResearching; //是否在研究 0 false 1 true
-        public long m_researchTimeStamp; //研究完成时间戳
+        public int ResearchId; //研究Id
+        public int ResearchLevel; //研究等级
+        public int IsResearching; //是否在研究 0 false 1 true
+        public long ResearchTimeStamp; //研究完成时间戳
 
         public GameResearchData()
         {
@@ -361,10 +362,10 @@ namespace Networks
 
         public GameResearchData(GameResearchData pData)
         {
-            m_ResearchId = pData.m_ResearchId;
-            m_ResearchLevel = pData.m_ResearchLevel;
-            m_IsResearching = pData.m_IsResearching;
-            m_researchTimeStamp = pData.m_researchTimeStamp;
+            ResearchId = pData.ResearchId;
+            ResearchLevel = pData.ResearchLevel;
+            IsResearching = pData.IsResearching;
+            ResearchTimeStamp = pData.ResearchTimeStamp;
         }
 
         public GameResearchData Clone()
@@ -374,38 +375,150 @@ namespace Networks
     }
 
     //考古研究属性
+    [Serializable]
     public class GameResearchEffectData
     {
-        public float researchATK; // 攻击力增加%
-        public float researchHP; //体力增加%
-        public float researchHammerLimit; //矿锤拥有上限增加
-        public float researchMineObtainAmount; //矿石获得量增加%
-        public float researchHammerRecoverSpeed; //矿锤补充速度增加%
-        public float researchSpeed; //研究速度增加%
+        public float ResearchATK; // 攻击力增加%
+        public float ResearchHP; //体力增加%
+        public float ResearchHammerLimit; //矿锤拥有上限增加
+        public float ResearchMineObtainAmount; //矿石获得量增加%
+        public float ResearchHammerRecoverSpeed; //矿锤补充速度增加%
+        public float ResearchSpeed; //研究速度增加%
 
         public GameResearchEffectData()
         {
-            researchATK = 0;
-            researchHP = 0;
-            researchHammerLimit = 0;
-            researchMineObtainAmount = 0;
-            researchHammerRecoverSpeed = 0;
-            researchSpeed = 0;
+            ResearchATK = 0;
+            ResearchHP = 0;
+            ResearchHammerLimit = 0;
+            ResearchMineObtainAmount = 0;
+            ResearchHammerRecoverSpeed = 0;
+            ResearchSpeed = 0;
         }
 
         public GameResearchEffectData(GameResearchEffectData pData)
         {
-            researchATK = pData.researchATK;
-            researchHP = pData.researchHP;
-            researchHammerLimit = pData.researchHammerLimit;
-            researchMineObtainAmount = pData.researchMineObtainAmount;
-            researchHammerRecoverSpeed = pData.researchHammerRecoverSpeed;
-            researchSpeed = pData.researchSpeed;
+            ResearchATK = pData.ResearchATK;
+            ResearchHP = pData.ResearchHP;
+            ResearchHammerLimit = pData.ResearchHammerLimit;
+            ResearchMineObtainAmount = pData.ResearchMineObtainAmount;
+            ResearchHammerRecoverSpeed = pData.ResearchHammerRecoverSpeed;
+            ResearchSpeed = pData.ResearchSpeed;
         }
 
         public GameResearchEffectData Clone()
         {
             return new GameResearchEffectData(this);
+        }
+    }
+
+    [Serializable]
+    public class GameQuenchingData
+    {
+        public int QuenchingId;
+        public int AttributeId;
+        public int MelodyId;
+        public int UnlockType;
+
+        public GameQuenchingData()
+        {
+            UnlockType = 1;
+        }
+
+        public GameQuenchingData(GameQuenchingData pData)
+        {
+            QuenchingId = pData.QuenchingId;
+            AttributeId = pData.AttributeId;
+            MelodyId = pData.MelodyId;
+            UnlockType = pData.UnlockType;
+        }
+
+        public GameQuenchingData Clone()
+        {
+            return new GameQuenchingData(this);
+        }
+    }
+
+
+    /// <summary>
+    /// 战利品槽位数据
+    /// </summary>
+    [Serializable]
+    public class SpoilSlotData
+    {
+        public int SlotId;
+        public int SpoilId;
+
+        public SpoilSlotData()
+        {
+        }
+
+        public SpoilSlotData(SpoilSlotData pData)
+        {
+            SlotId = pData.SlotId;
+            SpoilId = pData.SpoilId;
+        }
+
+        public SpoilSlotData Clone()
+        {
+            return new SpoilSlotData(this);
+        }
+    }
+
+    /// <summary>
+    /// 战利品数据
+    /// </summary>
+    [Serializable]
+    public class SpoilData
+    {
+        public int SpoilId;
+        public int Level;
+
+        public SpoilData()
+        {
+        }
+
+        public SpoilData(SpoilData pData)
+        {
+            SpoilId = pData.SpoilId;
+            Level = pData.Level;
+        }
+
+        public SpoilData Clone()
+        {
+            return new SpoilData(this);
+        }
+    }
+
+    //英雄
+    [Serializable]
+    public class GameRoleData
+    {
+        public int RoleID; //英雄ID
+        public int RoleLevel; //英雄等级
+        public int RoleExp; //英雄经验
+        public int RoleBreakLevel; //英雄突破等级
+        public bool RoleBreakState; //英雄突破按钮状态
+
+        public GameRoleData()
+        {
+            RoleExp = 0;
+            RoleLevel = 1;
+            RoleBreakLevel = 0;
+            RoleBreakState = false;
+        }
+
+        public GameRoleData(GameRoleData pData)
+        {
+            RoleID = pData.RoleID;
+            RoleLevel = pData.RoleLevel;
+            RoleExp = pData.RoleExp;
+            RoleBreakLevel = pData.RoleBreakLevel;
+            RoleBreakState = pData.RoleBreakState;
+        }
+
+        public GameRoleData Clone()
+        {
+            return new GameRoleData(this);
         }
     }
 }

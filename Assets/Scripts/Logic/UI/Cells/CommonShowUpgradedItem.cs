@@ -30,31 +30,31 @@ namespace Logic.UI.Cells
         public void InitBySkill(GameSkillUpgradeData pData)
         {
             m_ItemType = ItemType.Skill;
-            var itemData = ItemCfg.GetData(pData.m_SkillData.m_SkillID);
-            var skillData = SkillCfg.GetData(pData.m_SkillData.m_SkillID);
+            var itemData = ItemCfg.GetData(pData.SkillData.SkillID);
+            var skillData = SkillCfg.GetData(pData.SkillData.SkillID);
             UICommonHelper.LoadIcon(m_Icon, itemData.Res);
             UICommonHelper.LoadQuality(m_Quality, skillData.Quality);
 
-            m_OldLevel.text = pData.m_OldLevel.ToString();
-            m_NewLevel.text = pData.m_SkillData.m_Level.ToString();
+            m_OldLevel.text = pData.OldLevel.ToString();
+            m_NewLevel.text = pData.SkillData.Level.ToString();
         }
 
         public void InitByPartner(GamePartnerUpgradeData pData)
         {
             m_ItemType = ItemType.Skill;
-            var itemData = ItemCfg.GetData(pData.m_PartnerData.m_PartnerID);
-            var partnerData = PartnerCfg.GetData(pData.m_PartnerData.m_PartnerID);
+            var itemData = ItemCfg.GetData(pData.PartnerData.PartnerID);
+            var partnerData = PartnerCfg.GetData(pData.PartnerData.PartnerID);
             UICommonHelper.LoadIcon(m_Icon, itemData.Res);
             UICommonHelper.LoadQuality(m_Quality, partnerData.Quality);
 
-            m_OldLevel.text = pData.m_OldLevel.ToString();
-            m_NewLevel.text = pData.m_PartnerData.m_Level.ToString();
+            m_OldLevel.text = pData.OldLevel.ToString();
+            m_NewLevel.text = pData.PartnerData.Level.ToString();
         }
 
         public void InitByEquip(GameEquipUpgradeData pData)
         {
-            var equipData = EquipCfg.GetData(pData.m_EquipData.m_EquipID);
-            var itemData = ItemCfg.GetData(pData.m_EquipData.m_EquipID);
+            var equipData = EquipCfg.GetData(pData.EquipData.EquipID);
+            var itemData = ItemCfg.GetData(pData.EquipData.EquipID);
             switch ((ItemType)equipData.EquipType)
             {
                 case ItemType.Weapon:
@@ -72,8 +72,8 @@ namespace Logic.UI.Cells
             UICommonHelper.LoadIcon(m_Icon, itemData.Res);
             UICommonHelper.LoadQuality(m_Quality, equipData.Quality);
 
-            m_OldLevel.text = pData.m_OldLevel.ToString();
-            m_NewLevel.text = pData.m_EquipData.m_Level.ToString();
+            m_OldLevel.text = pData.OldLevel.ToString();
+            m_NewLevel.text = pData.EquipData.Level.ToString();
         }
     }
 }

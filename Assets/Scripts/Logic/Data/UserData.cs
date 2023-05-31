@@ -12,8 +12,7 @@ namespace Logic.Data
     {
         #region 公用逻辑数据
 
-        public bool m_IsFirstLogin = true; //是否是第一次登录
-        public DateTime m_LastGameDate; //上次登录时间
+        public long m_LastGameDate; //上次登录时间
 
         #endregion
 
@@ -23,6 +22,9 @@ namespace Logic.Data
         public long m_Diamond; //金币
         public int m_Iron; //钢铁
         public int m_Oil; //原油
+        public BigDouble m_Trophy; //战利品
+        public int m_MushRoom; //英雄升级蘑菇
+        public int m_BreakOre; //英雄突破矿石
 
         #endregion
 
@@ -59,7 +61,7 @@ namespace Logic.Data
 
         public long m_BtnPlaceRewardClickTime; //放置奖励按钮点击时间戳
         public float m_BtnPlaceRewardShowTime; // 放置奖励按钮显示时间
-        public string m_PopPlaceRewardTime; // 放置奖励页面每日主动弹出时间
+        public int m_PopPlaceRewardTime; // 放置奖励页面每日主动弹出时间
 
         #endregion
     }

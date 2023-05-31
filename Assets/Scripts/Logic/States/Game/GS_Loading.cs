@@ -8,6 +8,7 @@ using Logic.Data;
 using Logic.UI.UILoading;
 using Logic.UI.UILogin;
 using Networks;
+using UnityEngine;
 
 namespace Logic.States.Game
 {
@@ -31,11 +32,11 @@ namespace Logic.States.Game
             //加载配置表
             await ConfigManager.Ins.LoadAllConfigs();
             
-            //加载本地数据
-            LocalSaveManager.Ins.Load();
-            
             //服务器登录
-            NetworkManager.Ins.SendMsg(new C2S_Login());
+            NetworkManager.Ins.SendMsg(new C2S_Login()
+            {
+                AccountID = LocalSaveManager.Ins.LocalData.Account
+            });
             
             await UniTask.Delay(1000);
         }

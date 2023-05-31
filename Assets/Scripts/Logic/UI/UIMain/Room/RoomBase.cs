@@ -1,5 +1,4 @@
-﻿using System;
-using BreakInfinity;
+﻿using BreakInfinity;
 using Framework.EventKit;
 using Framework.Extension;
 using Logic.Common;
@@ -19,7 +18,9 @@ namespace Logic.UI.UIMain.Room
     {
         private EventGroup m_EventGroup = new();
 
-        [LabelText("房间类型")] public RoomType m_RoomType; //房间类型
+        [LabelText("房间Id")] public int m_RoomId;
+
+        [LabelText("房间类型")] public AttributeType m_RoomType; //房间类型
 
         [LabelText("房间等级")] public TextMeshProUGUI m_RoomLevel; //房间等级
 
@@ -29,6 +30,10 @@ namespace Logic.UI.UIMain.Room
 
         [LabelText("消耗节点")] public GameObject m_CostNode;
         [LabelText("满级节点")] public GameObject m_MaxNode;
+
+
+        [LabelText("伙伴进入点")] public GameObject[] m_RoomPartnerSpawnPoint;
+        [LabelText("房间边缘点")] public GameObject m_RoomEdgePoint; //房间边缘点
 
         public ButtonEx m_Btn;
         public TextMeshProUGUI m_BtnText;
@@ -42,7 +47,7 @@ namespace Logic.UI.UIMain.Room
             m_Btn.onClick.AddListener(OnClickUpgrade);
             m_Btn.onLongClick.AddListener(OnClickUpgrade);
 
-            if (m_RoomType == RoomType.ATK)
+            if (m_RoomType == AttributeType.ATK)
             {
                 m_EventGroup.Register(LogicEvent.SkillAllEffectUpdate, (i, o) => ShowAddEffect());
                 m_EventGroup.Register(LogicEvent.PartnerAllEffectUpdate, (i, o) => ShowAddEffect());
@@ -50,13 +55,16 @@ namespace Logic.UI.UIMain.Room
                 m_EventGroup.Register(LogicEvent.EquipAllHPEffectUpdate, (i, o) => ShowAddEffect());
             }
 
-            if (m_RoomType == RoomType.HP)
+            if (m_RoomType == AttributeType.HP)
             {
                 m_EventGroup.Register(LogicEvent.EquipAllHPEffectUpdate, (i, o) => ShowAddEffect());
             }
 
             m_EventGroup.Register(LogicEvent.EngineAllEffectUpdate, (i, o) => ShowAddEffect());
             m_EventGroup.Register(LogicEvent.ResearchCompleteEffectUpdate, (i, o) => ShowAddEffect());
+            m_EventGroup.Register(LogicEvent.QuenchingEffectUpdate, (i, o) => ShowAddEffect());
+            m_EventGroup.Register(LogicEvent.OnSpoilDraw, (i, o) => { ShowAddEffect(); });
+            m_EventGroup.Register(LogicEvent.OnSpoilUpgrade, (i, o) => { ShowAddEffect(); });
         }
 
         private void OnDestroy()
@@ -73,21 +81,21 @@ namespace Logic.UI.UIMain.Room
         {
             switch (m_RoomType)
             {
-                case RoomType.ATK:
+                case AttributeType.ATK:
                     return GameDataManager.Ins.GJJAtkLevel;
-                case RoomType.HP:
+                case AttributeType.HP:
                     return GameDataManager.Ins.GJJHPLevel;
-                case RoomType.HPRecover:
+                case AttributeType.HPRecover:
                     return GameDataManager.Ins.GJJHPRecoverLevel;
-                case RoomType.Critical:
+                case AttributeType.Critical:
                     return GameDataManager.Ins.GJJCriticalLevel;
-                case RoomType.CriticalDamage:
+                case AttributeType.CriticalDamage:
                     return GameDataManager.Ins.GJJCriticalDamageLevel;
-                case RoomType.Speed:
+                case AttributeType.Speed:
                     return GameDataManager.Ins.GJJAtkSpeedLevel;
-                case RoomType.DoubleHit:
+                case AttributeType.DoubleHit:
                     return GameDataManager.Ins.GJJDoubleHitLevel;
-                case RoomType.TripletHit:
+                case AttributeType.TripletHit:
                     return GameDataManager.Ins.GJJTripletHitLevel;
             }
 
@@ -103,21 +111,21 @@ namespace Logic.UI.UIMain.Room
         {
             switch (m_RoomType)
             {
-                case RoomType.ATK:
+                case AttributeType.ATK:
                     return false;
-                case RoomType.HP:
+                case AttributeType.HP:
                     return false;
-                case RoomType.HPRecover:
+                case AttributeType.HPRecover:
                     return false;
-                case RoomType.Critical:
+                case AttributeType.Critical:
                     return false;
-                case RoomType.CriticalDamage:
+                case AttributeType.CriticalDamage:
                     return false;
-                case RoomType.Speed:
+                case AttributeType.Speed:
                     return false;
-                case RoomType.DoubleHit:
+                case AttributeType.DoubleHit:
                     return false;
-                case RoomType.TripletHit:
+                case AttributeType.TripletHit:
                     return false;
             }
 
@@ -133,29 +141,29 @@ namespace Logic.UI.UIMain.Room
         {
             switch (m_RoomType)
             {
-                case RoomType.ATK:
+                case AttributeType.ATK:
                     m_RoomEffect.text = Formula.GetGJJAtk().ToUIString();
                     break;
-                case RoomType.HP:
+                case AttributeType.HP:
                     m_RoomEffect.text = Formula.GetGJJHP().ToUIString();
                     break;
-                case RoomType.HPRecover:
+                case AttributeType.HPRecover:
                     m_RoomEffect.text = Formula.GetGJJHPRecover().ToUIString();
                     break;
-                case RoomType.Critical:
-                    m_RoomEffect.text = (Formula.GetGJJCritical() * 100).ToString("F2") + "%";
+                case AttributeType.Critical:
+                    m_RoomEffect.text = (Formula.GetGJJCritical() * 100) + "%";
                     break;
-                case RoomType.CriticalDamage:
+                case AttributeType.CriticalDamage:
                     m_RoomEffect.text = (Formula.GetGJJCriticalDamage() * 100).ToUIStringFloat() + "%";
                     break;
-                case RoomType.Speed:
+                case AttributeType.Speed:
                     m_RoomEffect.text = Formula.GetGJJAtkSpeed().ToString("F2") + "";
                     break;
-                case RoomType.DoubleHit:
-                    m_RoomEffect.text = Formula.GetGJJAtkSpeed().ToString("F2") + "";
+                case AttributeType.DoubleHit:
+                    m_RoomEffect.text = Formula.GetGJJDoubleHit() + "%";
                     break;
-                case RoomType.TripletHit:
-                    m_RoomEffect.text = Formula.GetGJJTripletHit() + "";
+                case AttributeType.TripletHit:
+                    m_RoomEffect.text = Formula.GetGJJTripletHit() + "%";
                     break;
             }
         }
@@ -221,7 +229,7 @@ namespace Logic.UI.UIMain.Room
                 return;
             if (!IsCanUpgrade())
             {
-                EventManager.Call(LogicEvent.ShowTips, "金币不足");
+                // EventManager.Call(LogicEvent.ShowTips, "金币不足");
                 return;
             }
 
@@ -237,35 +245,35 @@ namespace Logic.UI.UIMain.Room
         {
             switch (m_RoomType)
             {
-                case RoomType.ATK:
+                case AttributeType.ATK:
                     GameDataManager.Ins.GJJAtkLevel++;
                     TaskManager.Ins.DoTaskUpdate(TaskType.TT_3001, 1);
                     break;
-                case RoomType.HP:
+                case AttributeType.HP:
                     GameDataManager.Ins.GJJHPLevel++;
                     TaskManager.Ins.DoTaskUpdate(TaskType.TT_3002, 1);
                     break;
-                case RoomType.HPRecover:
+                case AttributeType.HPRecover:
                     GameDataManager.Ins.GJJHPRecoverLevel++;
                     TaskManager.Ins.DoTaskUpdate(TaskType.TT_3003, 1);
                     break;
-                case RoomType.Critical:
+                case AttributeType.Critical:
                     GameDataManager.Ins.GJJCriticalLevel++;
                     TaskManager.Ins.DoTaskUpdate(TaskType.TT_3004, 1);
                     break;
-                case RoomType.CriticalDamage:
+                case AttributeType.CriticalDamage:
                     GameDataManager.Ins.GJJCriticalDamageLevel++;
                     TaskManager.Ins.DoTaskUpdate(TaskType.TT_3005, 1);
                     break;
-                case RoomType.Speed:
+                case AttributeType.Speed:
                     GameDataManager.Ins.GJJAtkSpeedLevel++;
                     TaskManager.Ins.DoTaskUpdate(TaskType.TT_3006, 1);
                     break;
-                case RoomType.DoubleHit:
+                case AttributeType.DoubleHit:
                     GameDataManager.Ins.GJJDoubleHitLevel++;
                     TaskManager.Ins.DoTaskUpdate(TaskType.TT_3007, 1);
                     break;
-                case RoomType.TripletHit:
+                case AttributeType.TripletHit:
                     GameDataManager.Ins.GJJTripletHitLevel++;
                     TaskManager.Ins.DoTaskUpdate(TaskType.TT_3008, 1);
                     break;

@@ -33,7 +33,7 @@ namespace Logic.UI.UIMining
             switch (m_TreasureType)
             {
                 case MiningType.Bomb:
-                    if (MiningManager.Ins.m_MiningData.m_BombCount <= 0)
+                    if (MiningManager.Ins.m_MiningData.BombCount <= 0)
                     {
                         eventData.pointerDrag = null;
                         EventManager.Call(LogicEvent.ShowTips, "没有足够的炸弹");
@@ -42,7 +42,7 @@ namespace Logic.UI.UIMining
 
                     break;
                 case MiningType.Scope:
-                    if (MiningManager.Ins.m_MiningData.m_ScopeCount <= 0)
+                    if (MiningManager.Ins.m_MiningData.ScopeCount <= 0)
                     {
                         eventData.pointerDrag = null;
                         EventManager.Call(LogicEvent.ShowTips, "没有足够的透视镜");

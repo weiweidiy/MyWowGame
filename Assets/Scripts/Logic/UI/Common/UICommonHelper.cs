@@ -27,11 +27,48 @@ namespace Logic.UI.Common
         }
 
         /// <summary>
-        /// 加载品质框资源
+        /// 加载Icon资源 可等待
         /// </summary>
+        /// <param name="pImage"></param>
+        /// <param name="pIconPath"></param>
+        /// <returns></returns>
+        public static async UniTask<bool> LoadIconAsync(Image pImage, string pIconPath)
+        {
+            var _Handle = YooAssets.LoadAssetAsync<Sprite>(pIconPath);
+            await _Handle.ToUniTask();
+            pImage.sprite = _Handle.AssetObject as Sprite;
+            return true;
+        }
+
+
+        /// <summary>
+        /// 加载装备品质框资源
+        /// </summary>
+        /// <param name="pImage"></param>
+        /// <param name="pQuality"></param>
         public static void LoadQuality(Image pImage, int pQuality)
         {
             pImage.sprite = UICommonSprites.Ins.m_ItemQualityBg[pQuality];
+        }
+
+        /// <summary>
+        /// 加载技能品质框资源
+        /// </summary>
+        /// <param name="pImage"></param>
+        /// <param name="pQuality"></param>
+        public static void LoadSkillQuality(Image pImage, int pQuality)
+        {
+            pImage.sprite = UICommonSprites.Ins.m_SkillQuality[pQuality];
+        }
+
+        /// <summary>
+        /// 加载伙伴品质框资源
+        /// </summary>
+        /// <param name="pImage"></param>
+        /// <param name="pQuality"></param>
+        public static void LoadPartnerQuality(Image pImage, int pQuality)
+        {
+            pImage.sprite = UICommonSprites.Ins.m_PartnerQuality[pQuality];
         }
 
         public static string GetQualityShowText(int pQuality)
@@ -147,6 +184,17 @@ namespace Logic.UI.Common
             {
                 throw new ArgumentOutOfRangeException(nameof(treasureType), treasureType, null);
             }
+        }
+
+        /// <summary>
+        /// 淬炼系统品质
+        /// 0-F 1-E 2-D 3-C 4-B 5-A 6-S 7-SS
+        /// </summary>
+        /// <param name="pImage"></param>
+        /// <param name="qualityType"></param>
+        public static void LoadQuenchingQuality(Image pImage, int qualityType)
+        {
+            pImage.sprite = UICommonSprites.Ins.m_QuenchingQuality[qualityType];
         }
     }
 }

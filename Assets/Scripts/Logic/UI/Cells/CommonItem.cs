@@ -3,6 +3,7 @@ using Configs;
 using Framework.EventKit;
 using Framework.Extension;
 using Logic.Common;
+using Logic.Common.RedDot;
 using Logic.Manager;
 using Logic.UI.Common;
 using Networks;
@@ -35,6 +36,10 @@ namespace Logic.UI.Cells
         public EventGroup m_EventGroup = new();
         public Action<CommonItem> m_ClickCB;
 
+        public BigBoomCellRedDotMono m_RedDot;
+        [ReadOnly] int m_Id;
+
+
         private void OnDestroy()
         {
             m_EventGroup.Release();
@@ -52,8 +57,17 @@ namespace Logic.UI.Cells
         [NonSerialized] public SkillData m_SkillData;
         private GameSkillData m_GameSkillData;
 
+
+        private void Awake()
+        {
+            Debug.Assert(m_RedDot != null, "RedDotMono 引用丢失，请修正");
+        }
+
         public void InitBySkill(SkillData pData)
         {
+            //Debug.LogError("InitBySkill");
+            
+
             m_ItemType = ItemType.Skill;
             m_ItemData = ItemCfg.GetData(pData.ID);
             m_SkillData = pData;
@@ -66,13 +80,13 @@ namespace Logic.UI.Cells
             m_EventGroup.Register(LogicEvent.SkillListChanged, (i, o) => { UpdateSkillInfo(); });
             m_EventGroup.Register(LogicEvent.SkillOn, (i, o) =>
             {
-                var _SkillId = ((S2C_SkillOn)o).m_SkillID;
+                var _SkillId = ((S2C_SkillOn)o).SkillID;
                 if (_SkillId == m_SkillData.ID)
                     m_IsOn.Show();
             });
             m_EventGroup.Register(LogicEvent.SkillOff, (i, o) =>
             {
-                var _SkillId = ((S2C_SkillOff)o).m_SkillID;
+                var _SkillId = ((S2C_SkillOff)o).SkillID;
                 if (_SkillId == m_SkillData.ID)
                     m_IsOn.Hide();
             });
@@ -87,7 +101,7 @@ namespace Logic.UI.Cells
                 m_Lock.Hide();
                 m_Mask.Hide();
                 m_GameSkillData = SkillManager.Ins.GetSkillData(m_SkillData.ID);
-                m_Level.text = "LV" + m_GameSkillData.m_Level;
+                m_Level.text = "LV" + m_GameSkillData.Level;
             }
             else
             {
@@ -149,13 +163,13 @@ namespace Logic.UI.Cells
             m_EventGroup.Register(LogicEvent.PartnerListChanged, (i, o) => { UpdatePartnerInfo(); });
             m_EventGroup.Register(LogicEvent.PartnerOn, (i, o) =>
             {
-                var _PartnerId = ((S2C_PartnerOn)o).m_PartnerID;
+                var _PartnerId = ((S2C_PartnerOn)o).PartnerID;
                 if (_PartnerId == m_PartnerData.ID)
                     m_IsOn.Show();
             });
             m_EventGroup.Register(LogicEvent.PartnerOff, (i, o) =>
             {
-                var _PartnerId = ((S2C_PartnerOff)o).m_PartnerID;
+                var _PartnerId = ((S2C_PartnerOff)o).PartnerID;
                 if (_PartnerId == m_PartnerData.ID)
                     m_IsOn.Hide();
             });
@@ -170,7 +184,7 @@ namespace Logic.UI.Cells
                 m_Lock.Hide();
                 m_Mask.Hide();
                 m_GamePartnerData = PartnerManager.Ins.GetPartnerData(m_PartnerData.ID);
-                m_Level.text = "LV" + m_GamePartnerData.m_Level;
+                m_Level.text = "LV" + m_GamePartnerData.Level;
             }
             else
             {
@@ -221,21 +235,31 @@ namespace Logic.UI.Cells
 
         public void InitByEquip(EquipData pData)
         {
+            //Debug.LogError("InitByEquip");
             m_EquipType = (ItemType)pData.EquipType;
             m_ItemData = ItemCfg.GetData(pData.ID);
+            m_Id = pData.ID;
             switch (m_EquipType)
             {
                 case ItemType.Weapon:
                     m_ItemType = ItemType.Weapon;
+
+                    //红点设置
+                    m_RedDot?.AddInteresting(RedDotKey.EquipWeaponEquipable);
+
                     break;
                 case ItemType.Armor:
                     m_ItemType = ItemType.Armor;
+
+                    m_RedDot?.AddInteresting(RedDotKey.EquipArmorEquipable);
                     break;
                 case ItemType.Engine:
                     break;
                 case ItemType.Toy:
                     break;
             }
+            //Debug.LogError("InitByEquip");
+            m_RedDot.Uid = pData.ID.ToString();
 
             m_EquipData = pData;
 
@@ -247,16 +271,18 @@ namespace Logic.UI.Cells
             m_EventGroup.Register(LogicEvent.EquipListChanged, (i, o) => { UpdateEquipInfo(); });
             m_EventGroup.Register(LogicEvent.EquipOn, (i, o) =>
             {
-                var _EquipID = ((S2C_EquipOn)o).m_EquipID;
+                var _EquipID = ((S2C_EquipOn)o).EquipID;
                 if (_EquipID == m_EquipData.ID)
                     m_IsOn.Show();
             });
             m_EventGroup.Register(LogicEvent.EquipOff, (i, o) =>
             {
-                var _EquipID = ((S2C_EquipOff)o).m_EquipID;
+                var _EquipID = ((S2C_EquipOff)o).EquipID;
                 if (_EquipID == m_EquipData.ID)
                     m_IsOn.Hide();
             });
+
+
         }
 
         private void UpdateEquipInfo()
@@ -268,7 +294,7 @@ namespace Logic.UI.Cells
                 m_Lock.Hide();
                 m_Mask.Hide();
                 m_GameEquipData = EquipManager.Ins.GetEquipData(m_EquipData.ID, m_EquipType);
-                m_Level.text = "LV" + m_GameEquipData.m_Level;
+                m_Level.text = "LV" + m_GameEquipData.Level;
             }
             else
             {
@@ -303,6 +329,11 @@ namespace Logic.UI.Cells
             m_CanProcess.fillAmount = _Process;
 
             m_TextProcess.text = _CurCount + "/" + _NeedCount;
+
+            //更新红点uid
+            //m_RedDot.Uid = m_EquipData.ID.ToString();
+
+            m_Id = m_EquipData.ID;
         }
 
         #endregion

@@ -134,9 +134,9 @@ MonoBehaviour:
   m_InsID: 0
   OffsetY: 0.5
   m_HPCtrl: {fileID: 3922754327004818680}
-  MoveSpeed: 1.3
+  MoveSpeed: 1.57
   TargetPosX: -1.5
-  AttackRange: 2.5
+  AttackRange: 3.9
   m_Attack:
     mantissa: 0
     exponent: 0
@@ -627,13 +627,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4035202980115341806}
     m_Modifications:
+    - target: {fileID: 255807804845656445, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 2313874603843258738, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 3852805172422318554, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852805172422318554, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
+      propertyPath: m_DrawMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718013569475578051, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5718013569475578051, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
       propertyPath: m_Size.x
-      value: 1.27
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718013569475578051, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
+      propertyPath: m_DrawMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718013569475578051, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7228788573886431633, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
       propertyPath: m_Name
@@ -653,11 +677,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9022087922317628106, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9022087922317628106, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9022087922317628106, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
       propertyPath: m_LocalPosition.x

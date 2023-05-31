@@ -34,7 +34,7 @@ namespace Framework.Extension
 			DoubleClick = 1 << 6,
 		}
 
-		//[SerializeField] private EventType m_EventType = EventType.Click;
+		[SerializeField] private EventType m_EventType = EventType.Click;
 
 		/// <summary>
 		/// 长按判定时间

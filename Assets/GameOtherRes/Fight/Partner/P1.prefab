@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262445305466742252}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.655, y: 0.01, z: 0}
+  m_LocalPosition: {x: 1.096, y: -0.059, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -151,7 +151,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Index: 0
+  m_AttackThreshold: 4.5
   m_PartnerId: 0
-  m_MuzzlePos: {fileID: 3410525185492871999}
+  m_MuzzlePos: {fileID: 6081966619149847098}
   m_BulletPrefab: {fileID: 1022691708801192542, guid: 0bfda2315ec496e4b92e36ca64134b9e, type: 3}
   m_MuzzleEffectPrefab: {fileID: 2227962438465797554, guid: bfd86156f00be1e49a6f85c5c324a7a0, type: 3}
+  m_MuzzleTextEffectPrefab: {fileID: 2587335974019803131, guid: a7d6c24abb05ee14a8e272dc18a78bd6, type: 3}

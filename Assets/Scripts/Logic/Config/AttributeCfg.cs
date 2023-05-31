@@ -35,5 +35,14 @@ namespace Configs
         //属性值
         public float Value;
 
+        //描述
+        public string Des;
+
+        //品质
+        public int Quality;
+
+        //资源
+        public int Res;
+
     }
 }

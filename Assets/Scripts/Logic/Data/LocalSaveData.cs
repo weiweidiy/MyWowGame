@@ -10,6 +10,9 @@ namespace Logic.Data
     [Serializable]
     public class LocalSaveData
     {
+        public string Account; //账号
+        
+        
         #region 静态操作接口
         
         public static string GetSaveKey()

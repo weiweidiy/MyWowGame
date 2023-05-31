@@ -2,23 +2,23 @@
   "AllData":{
   "0":  {
     "ID":0,
-    "AtkBase":50,
+    "AtkBase":700000000,
     "AtkGrow":50,
     "AtkFeel":1,
-    "HPBase":56133,
-    "HPGrow":369600,
-    "HpFeel":369600,
-    "DropBase":20,
-    "DropGrow":20,
-    "DropFeel":1,
+    "HPBase":500000000,
+    "HPGrow":60000000,
+    "HpFeel":500000000,
+    "DropBase":12000,
+    "DropGrow":1,
+    "DropFeel":10,
     "HangUpCount":10,
-    "MinCount":4,
+    "MinCount":8,
     "MaxCount":10,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -34,33 +34,34 @@
          ],
     "DropWight":[
             20,30,60
-         ]
+         ],
+    "MonsterScenes":100
    },
   "1":  {
     "ID":1,
     "AtkBase":10,
-    "AtkGrow":5,
+    "AtkGrow":1,
     "AtkFeel":1,
-    "HPBase":400,
-    "HPGrow":500,
+    "HPBase":500,
+    "HPGrow":300,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":100,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
     "MinCount":1,
     "MaxCount":1,
-    "EliteMinCount":0,
-    "EliteMaxCount":0,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
          ],
     "SpawnType":[
-            1,1,3,3,5
+            1,1,1,1,5
          ],
     "AtkWight":[
             10,30,60
@@ -70,33 +71,34 @@
          ],
     "DropWight":[
             40,60,100
-         ]
+         ],
+    "MonsterScenes":1
    },
   "2":  {
     "ID":2,
     "AtkBase":10,
-    "AtkGrow":5,
+    "AtkGrow":2,
     "AtkFeel":1,
-    "HPBase":400,
-    "HPGrow":500,
+    "HPBase":1000,
+    "HPGrow":1,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":200,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":1,
-    "MaxCount":1,
-    "EliteMinCount":0,
-    "EliteMaxCount":0,
+    "MinCount":2,
+    "MaxCount":2,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
          ],
     "SpawnType":[
-            1,1,3,3,5
+            1,1,1,1,5
          ],
     "AtkWight":[
             10,30,60
@@ -105,34 +107,35 @@
             50,55,70
          ],
     "DropWight":[
-            39,59,99
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "3":  {
     "ID":3,
     "AtkBase":10,
-    "AtkGrow":5,
+    "AtkGrow":2,
     "AtkFeel":1,
-    "HPBase":400,
-    "HPGrow":500,
+    "HPBase":6000,
+    "HPGrow":2000,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":500,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":9,
+    "MinCount":3,
+    "MaxCount":3,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
          ],
     "SpawnType":[
-            1,1,3,3,5
+            1,1,1,1,5
          ],
     "AtkWight":[
             10,30,60
@@ -141,28 +144,29 @@
             50,55,70
          ],
     "DropWight":[
-            38,58,98
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "4":  {
     "ID":4,
     "AtkBase":10,
-    "AtkGrow":5,
+    "AtkGrow":4,
     "AtkFeel":1,
-    "HPBase":400,
-    "HPGrow":500,
+    "HPBase":8000,
+    "HPGrow":1,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":800,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":3,
+    "MaxCount":3,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -177,28 +181,29 @@
             50,80,100
          ],
     "DropWight":[
-            37,57,97
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "5":  {
     "ID":5,
     "AtkBase":10,
     "AtkGrow":5,
     "AtkFeel":1,
-    "HPBase":400,
-    "HPGrow":500,
+    "HPBase":10000,
+    "HPGrow":1,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":1000,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
     "MinCount":4,
-    "MaxCount":10,
+    "MaxCount":4,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -213,28 +218,29 @@
             50,80,100
          ],
     "DropWight":[
-            36,56,96
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "6":  {
     "ID":6,
     "AtkBase":10,
-    "AtkGrow":5,
+    "AtkGrow":9,
     "AtkFeel":1,
-    "HPBase":1400,
-    "HPGrow":1750,
+    "HPBase":25000,
+    "HPGrow":5000,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":1100,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":5,
+    "MaxCount":5,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -249,28 +255,29 @@
             50,80,100
          ],
     "DropWight":[
-            35,55,95
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "7":  {
     "ID":7,
     "AtkBase":10,
-    "AtkGrow":5,
+    "AtkGrow":7,
     "AtkFeel":1,
-    "HPBase":1400,
-    "HPGrow":1750,
+    "HPBase":30000,
+    "HPGrow":1,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":1200,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":5,
+    "MaxCount":5,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -285,28 +292,29 @@
             50,80,100
          ],
     "DropWight":[
-            34,54,94
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "8":  {
     "ID":8,
     "AtkBase":10,
-    "AtkGrow":5,
+    "AtkGrow":8,
     "AtkFeel":1,
-    "HPBase":1400,
-    "HPGrow":1750,
+    "HPBase":40000,
+    "HPGrow":1,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":1300,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":5,
+    "MaxCount":5,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -321,28 +329,29 @@
             50,80,100
          ],
     "DropWight":[
-            33,53,93
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "9":  {
     "ID":9,
     "AtkBase":10,
-    "AtkGrow":5,
+    "AtkGrow":9,
     "AtkFeel":1,
-    "HPBase":4200,
-    "HPGrow":5250,
+    "HPBase":90000,
+    "HPGrow":2000,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":1500,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":5,
+    "MaxCount":5,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -357,34 +366,35 @@
             50,80,100
          ],
     "DropWight":[
-            32,52,92
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "10":  {
     "ID":10,
     "AtkBase":10,
-    "AtkGrow":5,
+    "AtkGrow":9,
     "AtkFeel":1,
-    "HPBase":4200,
-    "HPGrow":5250,
+    "HPBase":1800000,
+    "HPGrow":20000,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":1800,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":5,
+    "MaxCount":5,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
          ],
     "SpawnType":[
-            1,1,3,3,5
+            1,1,3,3,4
          ],
     "AtkWight":[
             10,30,60
@@ -393,28 +403,29 @@
             50,80,100
          ],
     "DropWight":[
-            31,51,91
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "11":  {
     "ID":11,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":45,
+    "AtkGrow":11,
     "AtkFeel":1,
-    "HPBase":8400,
-    "HPGrow":10500,
+    "HPBase":181000,
+    "HPGrow":20000,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":1500,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":5,
+    "MaxCount":5,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -429,28 +440,29 @@
             50,80,100
          ],
     "DropWight":[
-            30,50,90
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "12":  {
     "ID":12,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":45,
+    "AtkGrow":12,
     "AtkFeel":1,
-    "HPBase":8400,
-    "HPGrow":10500,
+    "HPBase":182000,
+    "HPGrow":21000,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":1600,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":5,
+    "MaxCount":5,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -465,28 +477,29 @@
             50,80,100
          ],
     "DropWight":[
-            29,49,89
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "13":  {
     "ID":13,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":45,
+    "AtkGrow":13,
     "AtkFeel":1,
-    "HPBase":8400,
-    "HPGrow":10500,
+    "HPBase":183000,
+    "HPGrow":22000,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":1700,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":5,
+    "MaxCount":5,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -501,28 +514,29 @@
             50,80,100
          ],
     "DropWight":[
-            28,48,88
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "14":  {
     "ID":14,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":45,
+    "AtkGrow":14,
     "AtkFeel":1,
-    "HPBase":8400,
-    "HPGrow":10500,
+    "HPBase":184000,
+    "HPGrow":23000,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":1800,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":6,
+    "MaxCount":6,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -537,28 +551,29 @@
             50,80,100
          ],
     "DropWight":[
-            27,47,87
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "15":  {
     "ID":15,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":45,
+    "AtkGrow":15,
     "AtkFeel":1,
-    "HPBase":8400,
-    "HPGrow":10500,
+    "HPBase":185000,
+    "HPGrow":24000,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":1900,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":6,
+    "MaxCount":6,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -573,28 +588,29 @@
             50,80,100
          ],
     "DropWight":[
-            26,46,86
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "16":  {
     "ID":16,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":45,
+    "AtkGrow":16,
     "AtkFeel":1,
-    "HPBase":8400,
-    "HPGrow":10500,
+    "HPBase":186000,
+    "HPGrow":25000,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2000,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":6,
+    "MaxCount":6,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -609,28 +625,29 @@
             50,80,100
          ],
     "DropWight":[
-            25,45,85
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "17":  {
     "ID":17,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":45,
+    "AtkGrow":17,
     "AtkFeel":1,
-    "HPBase":8400,
-    "HPGrow":10500,
+    "HPBase":187000,
+    "HPGrow":26000,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2100,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":7,
+    "MaxCount":7,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -645,28 +662,29 @@
             50,80,100
          ],
     "DropWight":[
-            24,44,84
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "18":  {
     "ID":18,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":45,
+    "AtkGrow":18,
     "AtkFeel":1,
-    "HPBase":8400,
-    "HPGrow":10500,
+    "HPBase":188000,
+    "HPGrow":27000,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2200,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":7,
+    "MaxCount":7,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -681,28 +699,29 @@
             50,80,100
          ],
     "DropWight":[
-            23,43,83
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "19":  {
     "ID":19,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":45,
+    "AtkGrow":19,
     "AtkFeel":1,
-    "HPBase":9240,
-    "HPGrow":11550,
+    "HPBase":189000,
+    "HPGrow":28000,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2300,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":7,
+    "MaxCount":7,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -717,28 +736,29 @@
             50,80,100
          ],
     "DropWight":[
-            22,42,82
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "20":  {
     "ID":20,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":202,
+    "AtkGrow":20,
     "AtkFeel":1,
-    "HPBase":9240,
-    "HPGrow":23100,
+    "HPBase":1800000,
+    "HPGrow":20000,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2500,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":7,
+    "MaxCount":7,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -753,28 +773,29 @@
             50,80,100
          ],
     "DropWight":[
-            21,41,81
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "21":  {
     "ID":21,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":202,
+    "AtkGrow":21,
     "AtkFeel":1,
-    "HPBase":9240,
-    "HPGrow":23100,
+    "HPBase":183600,
+    "HPGrow":20400,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2520,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -789,28 +810,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,40,80
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "22":  {
     "ID":22,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":202,
+    "AtkGrow":22,
     "AtkFeel":1,
-    "HPBase":9240,
-    "HPGrow":23100,
+    "HPBase":187272,
+    "HPGrow":20808,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2540,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -825,28 +847,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,39,79
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "23":  {
     "ID":23,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":202,
+    "AtkGrow":23,
     "AtkFeel":1,
-    "HPBase":9240,
-    "HPGrow":23100,
+    "HPBase":191017,
+    "HPGrow":21224,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2560,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -861,28 +884,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,38,78
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "24":  {
     "ID":24,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":202,
+    "AtkGrow":24,
     "AtkFeel":1,
-    "HPBase":9240,
-    "HPGrow":23100,
+    "HPBase":194837,
+    "HPGrow":21648,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2580,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -897,28 +921,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,37,77
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "25":  {
     "ID":25,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":202,
+    "AtkGrow":25,
     "AtkFeel":1,
-    "HPBase":9240,
-    "HPGrow":23100,
+    "HPBase":198733,
+    "HPGrow":22080,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2600,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -933,28 +958,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,36,76
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "26":  {
     "ID":26,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":202,
+    "AtkGrow":26,
     "AtkFeel":1,
-    "HPBase":9240,
-    "HPGrow":23100,
+    "HPBase":202707,
+    "HPGrow":22521,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2620,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -969,28 +995,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,35,75
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "27":  {
     "ID":27,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":202,
+    "AtkGrow":27,
     "AtkFeel":1,
-    "HPBase":9240,
-    "HPGrow":23100,
+    "HPBase":206761,
+    "HPGrow":22971,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2640,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1005,28 +1032,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,34,74
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "28":  {
     "ID":28,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":202,
+    "AtkGrow":28,
     "AtkFeel":1,
-    "HPBase":9240,
-    "HPGrow":23100,
+    "HPBase":210896,
+    "HPGrow":23430,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2660,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1041,28 +1069,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,33,73
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "29":  {
     "ID":29,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":202,
+    "AtkGrow":29,
     "AtkFeel":1,
-    "HPBase":9240,
-    "HPGrow":23100,
+    "HPBase":215113,
+    "HPGrow":23898,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2680,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1077,28 +1106,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,32,72
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "30":  {
     "ID":30,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":909,
+    "AtkGrow":30,
     "AtkFeel":1,
-    "HPBase":9240,
-    "HPGrow":23100,
+    "HPBase":2700000,
+    "HPGrow":30000,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2700,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1113,28 +1143,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,31,71
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "31":  {
     "ID":31,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":909,
+    "AtkGrow":31,
     "AtkFeel":1,
-    "HPBase":9240,
-    "HPGrow":23100,
+    "HPBase":329122,
+    "HPGrow":36563,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2720,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1149,28 +1180,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,70
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "32":  {
     "ID":32,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":909,
+    "AtkGrow":32,
     "AtkFeel":1,
-    "HPBase":9240,
-    "HPGrow":23100,
+    "HPBase":335704,
+    "HPGrow":37294,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2740,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1185,28 +1217,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,69
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "33":  {
     "ID":33,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":909,
+    "AtkGrow":33,
     "AtkFeel":1,
-    "HPBase":9240,
-    "HPGrow":23100,
+    "HPBase":342418,
+    "HPGrow":38039,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2760,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1221,28 +1254,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,68
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "34":  {
     "ID":34,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":909,
+    "AtkGrow":34,
     "AtkFeel":1,
-    "HPBase":9240,
-    "HPGrow":23100,
+    "HPBase":349266,
+    "HPGrow":38799,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2780,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1257,28 +1291,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,67
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "35":  {
     "ID":35,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":909,
+    "AtkGrow":35,
     "AtkFeel":1,
-    "HPBase":9240,
-    "HPGrow":23100,
+    "HPBase":356251,
+    "HPGrow":39574,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2800,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1293,28 +1328,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,66
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "36":  {
     "ID":36,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":909,
+    "AtkGrow":36,
     "AtkFeel":1,
-    "HPBase":9240,
-    "HPGrow":23100,
+    "HPBase":363376,
+    "HPGrow":40365,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2820,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1329,28 +1365,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,65
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "37":  {
     "ID":37,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":909,
+    "AtkGrow":37,
     "AtkFeel":1,
-    "HPBase":9240,
-    "HPGrow":23100,
+    "HPBase":370643,
+    "HPGrow":41172,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2840,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1365,28 +1402,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,64
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "38":  {
     "ID":38,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":909,
+    "AtkGrow":38,
     "AtkFeel":1,
-    "HPBase":9240,
-    "HPGrow":23100,
+    "HPBase":378055,
+    "HPGrow":41995,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2860,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1401,28 +1439,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,63
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "39":  {
     "ID":39,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":909,
+    "AtkGrow":39,
     "AtkFeel":1,
-    "HPBase":9240,
-    "HPGrow":23100,
+    "HPBase":385616,
+    "HPGrow":42834,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2880,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1437,28 +1476,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,62
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "40":  {
     "ID":40,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":4090,
+    "AtkGrow":40,
     "AtkFeel":1,
-    "HPBase":9240,
-    "HPGrow":23100,
+    "HPBase":4050000,
+    "HPGrow":45000,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2900,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1473,28 +1513,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,61
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "41":  {
     "ID":41,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":4090,
+    "AtkGrow":41,
     "AtkFeel":1,
-    "HPBase":11088,
-    "HPGrow":46200,
+    "HPBase":589992,
+    "HPGrow":65536,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2920,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1509,28 +1550,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "42":  {
     "ID":42,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":4090,
+    "AtkGrow":42,
     "AtkFeel":1,
-    "HPBase":11088,
-    "HPGrow":46200,
+    "HPBase":601791,
+    "HPGrow":66846,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2940,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1545,28 +1587,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "43":  {
     "ID":43,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":4090,
+    "AtkGrow":43,
     "AtkFeel":1,
-    "HPBase":11088,
-    "HPGrow":46200,
+    "HPBase":613826,
+    "HPGrow":68182,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2960,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1581,28 +1624,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "44":  {
     "ID":44,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":4090,
+    "AtkGrow":44,
     "AtkFeel":1,
-    "HPBase":11088,
-    "HPGrow":46200,
+    "HPBase":626102,
+    "HPGrow":69545,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":2980,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1617,28 +1661,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "45":  {
     "ID":45,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":4090,
+    "AtkGrow":45,
     "AtkFeel":1,
-    "HPBase":11088,
-    "HPGrow":46200,
+    "HPBase":638624,
+    "HPGrow":70935,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3000,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1653,28 +1698,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "46":  {
     "ID":46,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":4090,
+    "AtkGrow":46,
     "AtkFeel":1,
-    "HPBase":11088,
-    "HPGrow":46200,
+    "HPBase":651396,
+    "HPGrow":72353,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3020,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1689,28 +1735,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "47":  {
     "ID":47,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":4090,
+    "AtkGrow":47,
     "AtkFeel":1,
-    "HPBase":11088,
-    "HPGrow":46200,
+    "HPBase":664423,
+    "HPGrow":73800,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3040,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1725,28 +1772,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "48":  {
     "ID":48,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":4090,
+    "AtkGrow":48,
     "AtkFeel":1,
-    "HPBase":11088,
-    "HPGrow":46200,
+    "HPBase":677711,
+    "HPGrow":75276,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3060,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1761,28 +1809,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "49":  {
     "ID":49,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":4090,
+    "AtkGrow":49,
     "AtkFeel":1,
-    "HPBase":11088,
-    "HPGrow":46200,
+    "HPBase":691265,
+    "HPGrow":76781,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3080,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1797,28 +1846,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "50":  {
     "ID":50,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":18405,
+    "AtkGrow":50,
     "AtkFeel":1,
-    "HPBase":11088,
-    "HPGrow":46200,
+    "HPBase":6075000,
+    "HPGrow":67500,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3100,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1833,28 +1883,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "51":  {
     "ID":51,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":18405,
+    "AtkGrow":51,
     "AtkFeel":1,
-    "HPBase":16632,
-    "HPGrow":92400,
+    "HPBase":1057634,
+    "HPGrow":117474,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3120,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1869,28 +1920,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "52":  {
     "ID":52,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":18405,
+    "AtkGrow":52,
     "AtkFeel":1,
-    "HPBase":16632,
-    "HPGrow":92400,
+    "HPBase":1078786,
+    "HPGrow":119823,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3140,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1905,28 +1957,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "53":  {
     "ID":53,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":18405,
+    "AtkGrow":53,
     "AtkFeel":1,
-    "HPBase":16632,
-    "HPGrow":92400,
+    "HPBase":1100361,
+    "HPGrow":122219,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3160,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1941,28 +1994,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "54":  {
     "ID":54,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":18405,
+    "AtkGrow":54,
     "AtkFeel":1,
-    "HPBase":16632,
-    "HPGrow":92400,
+    "HPBase":1122368,
+    "HPGrow":124663,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3180,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -1977,28 +2031,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "55":  {
     "ID":55,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":18405,
+    "AtkGrow":55,
     "AtkFeel":1,
-    "HPBase":16632,
-    "HPGrow":92400,
+    "HPBase":1144815,
+    "HPGrow":127156,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3200,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2013,28 +2068,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "56":  {
     "ID":56,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":18405,
+    "AtkGrow":56,
     "AtkFeel":1,
-    "HPBase":16632,
-    "HPGrow":92400,
+    "HPBase":1167711,
+    "HPGrow":129699,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3220,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2049,28 +2105,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "57":  {
     "ID":57,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":18405,
+    "AtkGrow":57,
     "AtkFeel":1,
-    "HPBase":16632,
-    "HPGrow":92400,
+    "HPBase":1191065,
+    "HPGrow":132292,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3240,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2085,28 +2142,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "58":  {
     "ID":58,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":18405,
+    "AtkGrow":58,
     "AtkFeel":1,
-    "HPBase":16632,
-    "HPGrow":92400,
+    "HPBase":1214886,
+    "HPGrow":134937,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3260,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2121,28 +2179,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "59":  {
     "ID":59,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":18405,
+    "AtkGrow":59,
     "AtkFeel":1,
-    "HPBase":16632,
-    "HPGrow":92400,
+    "HPBase":1239183,
+    "HPGrow":137635,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3280,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2157,28 +2216,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "60":  {
     "ID":60,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":82822,
+    "AtkGrow":60,
     "AtkFeel":1,
-    "HPBase":16632,
-    "HPGrow":92400,
+    "HPBase":9112500,
+    "HPGrow":101250,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3300,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2193,28 +2253,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "61":  {
     "ID":61,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":82822,
+    "AtkGrow":61,
     "AtkFeel":1,
-    "HPBase":16632,
-    "HPGrow":92400,
+    "HPBase":1895949,
+    "HPGrow":210581,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3320,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2229,28 +2290,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "62":  {
     "ID":62,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":82822,
+    "AtkGrow":62,
     "AtkFeel":1,
-    "HPBase":16632,
-    "HPGrow":92400,
+    "HPBase":1933867,
+    "HPGrow":214792,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3340,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2265,28 +2327,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "63":  {
     "ID":63,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":82822,
+    "AtkGrow":63,
     "AtkFeel":1,
-    "HPBase":16632,
-    "HPGrow":92400,
+    "HPBase":1972544,
+    "HPGrow":219087,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3360,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2301,28 +2364,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "64":  {
     "ID":64,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":82822,
+    "AtkGrow":64,
     "AtkFeel":1,
-    "HPBase":16632,
-    "HPGrow":92400,
+    "HPBase":2011994,
+    "HPGrow":223468,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3380,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2337,28 +2401,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "65":  {
     "ID":65,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":82822,
+    "AtkGrow":65,
     "AtkFeel":1,
-    "HPBase":16632,
-    "HPGrow":92400,
+    "HPBase":2052233,
+    "HPGrow":227937,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3400,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2373,28 +2438,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "66":  {
     "ID":66,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":82822,
+    "AtkGrow":66,
     "AtkFeel":1,
-    "HPBase":16632,
-    "HPGrow":92400,
+    "HPBase":2093277,
+    "HPGrow":232495,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3420,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2409,28 +2475,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "67":  {
     "ID":67,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":82822,
+    "AtkGrow":67,
     "AtkFeel":1,
-    "HPBase":16632,
-    "HPGrow":92400,
+    "HPBase":2135142,
+    "HPGrow":237144,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3440,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2445,28 +2512,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "68":  {
     "ID":68,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":82822,
+    "AtkGrow":68,
     "AtkFeel":1,
-    "HPBase":16632,
-    "HPGrow":92400,
+    "HPBase":2177844,
+    "HPGrow":241886,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3460,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2481,28 +2549,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "69":  {
     "ID":69,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":82822,
+    "AtkGrow":69,
     "AtkFeel":1,
-    "HPBase":16632,
-    "HPGrow":92400,
+    "HPBase":2221400,
+    "HPGrow":246723,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3480,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2517,28 +2586,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "70":  {
     "ID":70,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":372699,
+    "AtkGrow":70,
     "AtkFeel":1,
-    "HPBase":16632,
-    "HPGrow":92400,
+    "HPBase":13668750,
+    "HPGrow":377485,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3500,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2553,28 +2623,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "71":  {
     "ID":71,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":372699,
+    "AtkGrow":71,
     "AtkFeel":1,
-    "HPBase":24948,
-    "HPGrow":184800,
+    "HPBase":3398742,
+    "HPGrow":377485,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3520,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2589,28 +2660,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "72":  {
     "ID":72,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":372699,
+    "AtkGrow":72,
     "AtkFeel":1,
-    "HPBase":24948,
-    "HPGrow":184800,
+    "HPBase":3466716,
+    "HPGrow":385034,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3540,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2625,28 +2697,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "73":  {
     "ID":73,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":372699,
+    "AtkGrow":73,
     "AtkFeel":1,
-    "HPBase":24948,
-    "HPGrow":184800,
+    "HPBase":3536050,
+    "HPGrow":392734,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3560,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2661,28 +2734,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "74":  {
     "ID":74,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":372699,
+    "AtkGrow":74,
     "AtkFeel":1,
-    "HPBase":24948,
-    "HPGrow":184800,
+    "HPBase":3606771,
+    "HPGrow":400588,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3580,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2697,28 +2771,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "75":  {
     "ID":75,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":372699,
+    "AtkGrow":75,
     "AtkFeel":1,
-    "HPBase":24948,
-    "HPGrow":184800,
+    "HPBase":3678906,
+    "HPGrow":408599,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3600,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2733,28 +2808,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "76":  {
     "ID":76,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":372699,
+    "AtkGrow":76,
     "AtkFeel":1,
-    "HPBase":24948,
-    "HPGrow":184800,
+    "HPBase":3752484,
+    "HPGrow":416770,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3620,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2769,28 +2845,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "77":  {
     "ID":77,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":372699,
+    "AtkGrow":77,
     "AtkFeel":1,
-    "HPBase":24948,
-    "HPGrow":184800,
+    "HPBase":3827533,
+    "HPGrow":425105,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3640,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2805,28 +2882,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "78":  {
     "ID":78,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":372699,
+    "AtkGrow":78,
     "AtkFeel":1,
-    "HPBase":24948,
-    "HPGrow":184800,
+    "HPBase":3904083,
+    "HPGrow":433607,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3660,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2841,28 +2919,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "79":  {
     "ID":79,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":372699,
+    "AtkGrow":79,
     "AtkFeel":1,
-    "HPBase":24948,
-    "HPGrow":184800,
+    "HPBase":3982164,
+    "HPGrow":442279,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3680,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2877,28 +2956,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "80":  {
     "ID":80,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":1677145,
+    "AtkGrow":80,
     "AtkFeel":1,
-    "HPBase":24948,
-    "HPGrow":184800,
+    "HPBase":20503125,
+    "HPGrow":676686,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3700,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2913,28 +2993,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "81":  {
     "ID":81,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":1677145,
+    "AtkGrow":81,
     "AtkFeel":1,
-    "HPBase":24948,
-    "HPGrow":184800,
+    "HPBase":6092710,
+    "HPGrow":676686,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3720,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2949,28 +3030,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "82":  {
     "ID":82,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":1677145,
+    "AtkGrow":82,
     "AtkFeel":1,
-    "HPBase":24948,
-    "HPGrow":184800,
+    "HPBase":6214564,
+    "HPGrow":690219,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3740,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -2985,28 +3067,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "83":  {
     "ID":83,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":1677145,
+    "AtkGrow":83,
     "AtkFeel":1,
-    "HPBase":24948,
-    "HPGrow":184800,
+    "HPBase":6338855,
+    "HPGrow":704023,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3760,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -3021,28 +3104,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "84":  {
     "ID":84,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":1677145,
+    "AtkGrow":84,
     "AtkFeel":1,
-    "HPBase":24948,
-    "HPGrow":184800,
+    "HPBase":6465632,
+    "HPGrow":718103,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3780,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -3057,28 +3141,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "85":  {
     "ID":85,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":1677145,
+    "AtkGrow":85,
     "AtkFeel":1,
-    "HPBase":24948,
-    "HPGrow":184800,
+    "HPBase":6594944,
+    "HPGrow":732465,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3800,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -3093,28 +3178,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "86":  {
     "ID":86,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":1677145,
+    "AtkGrow":86,
     "AtkFeel":1,
-    "HPBase":24948,
-    "HPGrow":184800,
+    "HPBase":6726842,
+    "HPGrow":747114,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3820,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -3129,28 +3215,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "87":  {
     "ID":87,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":1677145,
+    "AtkGrow":87,
     "AtkFeel":1,
-    "HPBase":24948,
-    "HPGrow":184800,
+    "HPBase":6861378,
+    "HPGrow":762056,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3840,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -3165,28 +3252,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "88":  {
     "ID":88,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":1677145,
+    "AtkGrow":88,
     "AtkFeel":1,
-    "HPBase":24948,
-    "HPGrow":184800,
+    "HPBase":6998605,
+    "HPGrow":777297,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3860,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -3201,28 +3289,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "89":  {
     "ID":89,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":1677145,
+    "AtkGrow":89,
     "AtkFeel":1,
-    "HPBase":24948,
-    "HPGrow":184800,
+    "HPBase":7138577,
+    "HPGrow":792842,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3880,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -3237,28 +3326,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "90":  {
     "ID":90,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":7547152,
+    "AtkGrow":90,
     "AtkFeel":1,
-    "HPBase":24948,
-    "HPGrow":184800,
+    "HPBase":30754687,
+    "HPGrow":1015029,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3900,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -3273,28 +3363,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "91":  {
     "ID":91,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":7547152,
+    "AtkGrow":91,
     "AtkFeel":1,
-    "HPBase":37422,
-    "HPGrow":369600,
+    "HPBase":10922022,
+    "HPGrow":1213048,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3920,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -3309,28 +3400,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "92":  {
     "ID":92,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":7547152,
+    "AtkGrow":92,
     "AtkFeel":1,
-    "HPBase":37422,
-    "HPGrow":369600,
+    "HPBase":11140462,
+    "HPGrow":1237308,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3940,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -3345,28 +3437,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "93":  {
     "ID":93,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":7547152,
+    "AtkGrow":93,
     "AtkFeel":1,
-    "HPBase":37422,
-    "HPGrow":369600,
+    "HPBase":11363271,
+    "HPGrow":1262054,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3960,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -3381,28 +3474,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "94":  {
     "ID":94,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":7547152,
+    "AtkGrow":94,
     "AtkFeel":1,
-    "HPBase":37422,
-    "HPGrow":369600,
+    "HPBase":11590536,
+    "HPGrow":1287295,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":3980,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -3417,28 +3511,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "95":  {
     "ID":95,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":7547152,
+    "AtkGrow":95,
     "AtkFeel":1,
-    "HPBase":37422,
-    "HPGrow":369600,
+    "HPBase":11822346,
+    "HPGrow":1313040,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":4000,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -3453,28 +3548,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "96":  {
     "ID":96,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":7547152,
+    "AtkGrow":96,
     "AtkFeel":1,
-    "HPBase":37422,
-    "HPGrow":369600,
+    "HPBase":12058792,
+    "HPGrow":1339300,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":4020,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -3489,28 +3585,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "97":  {
     "ID":97,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":7547152,
+    "AtkGrow":97,
     "AtkFeel":1,
-    "HPBase":37422,
-    "HPGrow":369600,
+    "HPBase":12299967,
+    "HPGrow":1366086,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":4040,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -3525,28 +3622,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "98":  {
     "ID":98,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":7547152,
+    "AtkGrow":98,
     "AtkFeel":1,
-    "HPBase":37422,
-    "HPGrow":369600,
+    "HPBase":12545966,
+    "HPGrow":1393407,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":4060,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -3561,28 +3659,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "99":  {
     "ID":99,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":7547152,
+    "AtkGrow":99,
     "AtkFeel":1,
-    "HPBase":37422,
-    "HPGrow":369600,
+    "HPBase":12796885,
+    "HPGrow":1421275,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":4080,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -3597,28 +3696,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "100":  {
     "ID":100,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":33962184,
+    "AtkGrow":100,
     "AtkFeel":1,
-    "HPBase":37422,
-    "HPGrow":369600,
+    "HPBase":46132030,
+    "HPGrow":2174550,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":4100,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -3633,28 +3733,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "101":  {
     "ID":101,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":33962184,
+    "AtkGrow":101,
     "AtkFeel":1,
-    "HPBase":37422,
-    "HPGrow":369600,
+    "HPBase":19579233,
+    "HPGrow":2174550,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":4120,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -3669,28 +3770,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "102":  {
     "ID":102,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":33962184,
+    "AtkGrow":102,
     "AtkFeel":1,
-    "HPBase":37422,
-    "HPGrow":369600,
+    "HPBase":19970817,
+    "HPGrow":2218041,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":4140,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -3705,28 +3807,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "103":  {
     "ID":103,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":33962184,
+    "AtkGrow":103,
     "AtkFeel":1,
-    "HPBase":37422,
-    "HPGrow":369600,
+    "HPBase":20370233,
+    "HPGrow":2262401,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":4160,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":8,
+    "MaxCount":8,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -3741,28 +3844,29 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
    },
   "104":  {
     "ID":104,
-    "AtkBase":10,
-    "AtkGrow":5,
+    "AtkBase":33962184,
+    "AtkGrow":104,
     "AtkFeel":1,
-    "HPBase":37422,
-    "HPGrow":369600,
+    "HPBase":20777637,
+    "HPGrow":2307649,
     "HpFeel":5,
-    "DropBase":20,
-    "DropGrow":20,
+    "DropBase":4180,
+    "DropGrow":1,
     "DropFeel":1,
     "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":10,
+    "MinCount":9,
+    "MaxCount":9,
     "EliteMinCount":1,
     "EliteMaxCount":1,
     "BOSSCount":1,
     "HPAdds":[
-            0.5,0.7,0.9,1,1
+            0.8,0.9,0.95,1,1
          ],
     "AtkAdds":[
             1,1,1,1,1
@@ -3777,8 +3881,1711 @@
             50,80,100
          ],
     "DropWight":[
-            20,30,60
-         ]
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "105":  {
+    "ID":105,
+    "AtkBase":33962184,
+    "AtkGrow":105,
+    "AtkFeel":1,
+    "HPBase":21193189,
+    "HPGrow":2353801,
+    "HpFeel":5,
+    "DropBase":4200,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "106":  {
+    "ID":106,
+    "AtkBase":33962184,
+    "AtkGrow":106,
+    "AtkFeel":1,
+    "HPBase":21617052,
+    "HPGrow":2400877,
+    "HpFeel":5,
+    "DropBase":4220,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "107":  {
+    "ID":107,
+    "AtkBase":33962184,
+    "AtkGrow":107,
+    "AtkFeel":1,
+    "HPBase":22049393,
+    "HPGrow":2448894,
+    "HpFeel":5,
+    "DropBase":4240,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "108":  {
+    "ID":108,
+    "AtkBase":33962184,
+    "AtkGrow":108,
+    "AtkFeel":1,
+    "HPBase":22490380,
+    "HPGrow":2497871,
+    "HpFeel":5,
+    "DropBase":4260,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "109":  {
+    "ID":109,
+    "AtkBase":33962184,
+    "AtkGrow":109,
+    "AtkFeel":1,
+    "HPBase":22940187,
+    "HPGrow":2547828,
+    "HpFeel":5,
+    "DropBase":4280,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":8,
+    "MaxCount":8,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "110":  {
+    "ID":110,
+    "AtkBase":152829828,
+    "AtkGrow":110,
+    "AtkFeel":1,
+    "HPBase":69198045,
+    "HPGrow":3898176,
+    "HpFeel":5,
+    "DropBase":4300,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":8,
+    "MaxCount":8,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "111":  {
+    "ID":111,
+    "AtkBase":152829828,
+    "AtkGrow":111,
+    "AtkFeel":1,
+    "HPBase":35098485,
+    "HPGrow":3898176,
+    "HpFeel":5,
+    "DropBase":4320,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":8,
+    "MaxCount":8,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "112":  {
+    "ID":112,
+    "AtkBase":152829828,
+    "AtkGrow":112,
+    "AtkFeel":1,
+    "HPBase":35800454,
+    "HPGrow":3976139,
+    "HpFeel":5,
+    "DropBase":4340,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":8,
+    "MaxCount":8,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "113":  {
+    "ID":113,
+    "AtkBase":152829828,
+    "AtkGrow":113,
+    "AtkFeel":1,
+    "HPBase":36516463,
+    "HPGrow":4055661,
+    "HpFeel":5,
+    "DropBase":4360,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "114":  {
+    "ID":114,
+    "AtkBase":152829828,
+    "AtkGrow":114,
+    "AtkFeel":1,
+    "HPBase":37246792,
+    "HPGrow":4136774,
+    "HpFeel":5,
+    "DropBase":4380,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "115":  {
+    "ID":115,
+    "AtkBase":152829828,
+    "AtkGrow":115,
+    "AtkFeel":1,
+    "HPBase":37991727,
+    "HPGrow":4219509,
+    "HpFeel":5,
+    "DropBase":4400,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "116":  {
+    "ID":116,
+    "AtkBase":152829828,
+    "AtkGrow":116,
+    "AtkFeel":1,
+    "HPBase":38751561,
+    "HPGrow":4303899,
+    "HpFeel":5,
+    "DropBase":4420,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "117":  {
+    "ID":117,
+    "AtkBase":152829828,
+    "AtkGrow":117,
+    "AtkFeel":1,
+    "HPBase":39526592,
+    "HPGrow":4389976,
+    "HpFeel":5,
+    "DropBase":4440,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "118":  {
+    "ID":118,
+    "AtkBase":152829828,
+    "AtkGrow":118,
+    "AtkFeel":1,
+    "HPBase":40317123,
+    "HPGrow":4477775,
+    "HpFeel":5,
+    "DropBase":4460,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":8,
+    "MaxCount":8,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "119":  {
+    "ID":119,
+    "AtkBase":152829828,
+    "AtkGrow":119,
+    "AtkFeel":1,
+    "HPBase":41123465,
+    "HPGrow":4567330,
+    "HpFeel":5,
+    "DropBase":4480,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":8,
+    "MaxCount":8,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "120":  {
+    "ID":120,
+    "AtkBase":687734226,
+    "AtkGrow":120,
+    "AtkFeel":1,
+    "HPBase":103797067,
+    "HPGrow":4567330,
+    "HpFeel":5,
+    "DropBase":4500,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":8,
+    "MaxCount":8,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "121":  {
+    "ID":121,
+    "AtkBase":687734226,
+    "AtkGrow":121,
+    "AtkFeel":1,
+    "HPBase":62918900,
+    "HPGrow":6988014,
+    "HpFeel":5,
+    "DropBase":4520,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":8,
+    "MaxCount":8,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "122":  {
+    "ID":122,
+    "AtkBase":687734226,
+    "AtkGrow":122,
+    "AtkFeel":1,
+    "HPBase":64177278,
+    "HPGrow":7127774,
+    "HpFeel":5,
+    "DropBase":4540,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "123":  {
+    "ID":123,
+    "AtkBase":687734226,
+    "AtkGrow":123,
+    "AtkFeel":1,
+    "HPBase":65460823,
+    "HPGrow":7270329,
+    "HpFeel":5,
+    "DropBase":4560,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "124":  {
+    "ID":124,
+    "AtkBase":687734226,
+    "AtkGrow":124,
+    "AtkFeel":1,
+    "HPBase":66770039,
+    "HPGrow":7415735,
+    "HpFeel":5,
+    "DropBase":4580,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "125":  {
+    "ID":125,
+    "AtkBase":687734226,
+    "AtkGrow":125,
+    "AtkFeel":1,
+    "HPBase":68105439,
+    "HPGrow":7564049,
+    "HpFeel":5,
+    "DropBase":4600,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "126":  {
+    "ID":126,
+    "AtkBase":687734226,
+    "AtkGrow":126,
+    "AtkFeel":1,
+    "HPBase":69467547,
+    "HPGrow":7715329,
+    "HpFeel":5,
+    "DropBase":4620,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "127":  {
+    "ID":127,
+    "AtkBase":687734226,
+    "AtkGrow":127,
+    "AtkFeel":1,
+    "HPBase":70856897,
+    "HPGrow":7869635,
+    "HpFeel":5,
+    "DropBase":4640,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":8,
+    "MaxCount":8,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "128":  {
+    "ID":128,
+    "AtkBase":687734226,
+    "AtkGrow":128,
+    "AtkFeel":1,
+    "HPBase":72274034,
+    "HPGrow":8027027,
+    "HpFeel":5,
+    "DropBase":4660,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":8,
+    "MaxCount":8,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "129":  {
+    "ID":129,
+    "AtkBase":687734226,
+    "AtkGrow":129,
+    "AtkFeel":1,
+    "HPBase":73719514,
+    "HPGrow":8187567,
+    "HpFeel":5,
+    "DropBase":4680,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":8,
+    "MaxCount":8,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "130":  {
+    "ID":130,
+    "AtkBase":687734226,
+    "AtkGrow":130,
+    "AtkFeel":1,
+    "HPBase":155695600,
+    "HPGrow":8187567,
+    "HpFeel":5,
+    "DropBase":4700,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":8,
+    "MaxCount":8,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "131":  {
+    "ID":131,
+    "AtkBase":687734226,
+    "AtkGrow":131,
+    "AtkFeel":1,
+    "HPBase":112790856,
+    "HPGrow":12526977,
+    "HpFeel":5,
+    "DropBase":4720,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "132":  {
+    "ID":132,
+    "AtkBase":687734226,
+    "AtkGrow":132,
+    "AtkFeel":1,
+    "HPBase":115046673,
+    "HPGrow":12777516,
+    "HpFeel":5,
+    "DropBase":4740,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "133":  {
+    "ID":133,
+    "AtkBase":687734226,
+    "AtkGrow":133,
+    "AtkFeel":1,
+    "HPBase":117347606,
+    "HPGrow":13033066,
+    "HpFeel":5,
+    "DropBase":4760,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "134":  {
+    "ID":134,
+    "AtkBase":687734226,
+    "AtkGrow":134,
+    "AtkFeel":1,
+    "HPBase":119694558,
+    "HPGrow":13293727,
+    "HpFeel":5,
+    "DropBase":4780,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "135":  {
+    "ID":135,
+    "AtkBase":687734226,
+    "AtkGrow":135,
+    "AtkFeel":1,
+    "HPBase":122088449,
+    "HPGrow":13559601,
+    "HpFeel":5,
+    "DropBase":4800,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "136":  {
+    "ID":136,
+    "AtkBase":687734226,
+    "AtkGrow":136,
+    "AtkFeel":1,
+    "HPBase":124530217,
+    "HPGrow":13830793,
+    "HpFeel":5,
+    "DropBase":4820,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":8,
+    "MaxCount":8,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "137":  {
+    "ID":137,
+    "AtkBase":687734226,
+    "AtkGrow":137,
+    "AtkFeel":1,
+    "HPBase":127020821,
+    "HPGrow":14107408,
+    "HpFeel":5,
+    "DropBase":4840,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":8,
+    "MaxCount":8,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "138":  {
+    "ID":138,
+    "AtkBase":687734226,
+    "AtkGrow":138,
+    "AtkFeel":1,
+    "HPBase":129561237,
+    "HPGrow":14389556,
+    "HpFeel":5,
+    "DropBase":4860,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":8,
+    "MaxCount":8,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "139":  {
+    "ID":139,
+    "AtkBase":687734226,
+    "AtkGrow":139,
+    "AtkFeel":1,
+    "HPBase":132152461,
+    "HPGrow":14677347,
+    "HpFeel":5,
+    "DropBase":4880,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":8,
+    "MaxCount":8,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "140":  {
+    "ID":140,
+    "AtkBase":687734226,
+    "AtkGrow":140,
+    "AtkFeel":1,
+    "HPBase":233543400,
+    "HPGrow":14677347,
+    "HpFeel":5,
+    "DropBase":4900,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "141":  {
+    "ID":141,
+    "AtkBase":687734226,
+    "AtkGrow":141,
+    "AtkFeel":1,
+    "HPBase":202193264,
+    "HPGrow":22456340,
+    "HpFeel":5,
+    "DropBase":4920,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "142":  {
+    "ID":142,
+    "AtkBase":687734226,
+    "AtkGrow":142,
+    "AtkFeel":1,
+    "HPBase":206237129,
+    "HPGrow":22905466,
+    "HpFeel":5,
+    "DropBase":4940,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "143":  {
+    "ID":143,
+    "AtkBase":687734226,
+    "AtkGrow":143,
+    "AtkFeel":1,
+    "HPBase":210361871,
+    "HPGrow":23363575,
+    "HpFeel":5,
+    "DropBase":4960,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "144":  {
+    "ID":144,
+    "AtkBase":687734226,
+    "AtkGrow":144,
+    "AtkFeel":1,
+    "HPBase":214569108,
+    "HPGrow":23830846,
+    "HpFeel":5,
+    "DropBase":4980,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "145":  {
+    "ID":145,
+    "AtkBase":687734226,
+    "AtkGrow":145,
+    "AtkFeel":1,
+    "HPBase":218860490,
+    "HPGrow":24307462,
+    "HpFeel":5,
+    "DropBase":5000,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":8,
+    "MaxCount":8,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "146":  {
+    "ID":146,
+    "AtkBase":687734226,
+    "AtkGrow":146,
+    "AtkFeel":1,
+    "HPBase":223237699,
+    "HPGrow":24793611,
+    "HpFeel":5,
+    "DropBase":5020,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":8,
+    "MaxCount":8,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "147":  {
+    "ID":147,
+    "AtkBase":687734226,
+    "AtkGrow":147,
+    "AtkFeel":1,
+    "HPBase":227702452,
+    "HPGrow":25289483,
+    "HpFeel":5,
+    "DropBase":5040,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":8,
+    "MaxCount":8,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "148":  {
+    "ID":148,
+    "AtkBase":687734226,
+    "AtkGrow":148,
+    "AtkFeel":1,
+    "HPBase":232256501,
+    "HPGrow":25795272,
+    "HpFeel":5,
+    "DropBase":5060,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":8,
+    "MaxCount":8,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "149":  {
+    "ID":149,
+    "AtkBase":687734226,
+    "AtkGrow":149,
+    "AtkFeel":1,
+    "HPBase":236901631,
+    "HPGrow":26311177,
+    "HpFeel":5,
+    "DropBase":5080,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
+   },
+  "150":  {
+    "ID":150,
+    "AtkBase":687734226,
+    "AtkGrow":150,
+    "AtkFeel":1,
+    "HPBase":350315100,
+    "HPGrow":26311177,
+    "HpFeel":5,
+    "DropBase":5100,
+    "DropGrow":1,
+    "DropFeel":1,
+    "HangUpCount":10,
+    "MinCount":9,
+    "MaxCount":9,
+    "EliteMinCount":1,
+    "EliteMaxCount":1,
+    "BOSSCount":1,
+    "HPAdds":[
+            0.8,0.9,0.95,1,1
+         ],
+    "AtkAdds":[
+            1,1,1,1,1
+         ],
+    "SpawnType":[
+            1,1,3,3,5
+         ],
+    "AtkWight":[
+            10,30,60
+         ],
+    "HPWight":[
+            50,80,100
+         ],
+    "DropWight":[
+            40,60,100
+         ],
+    "MonsterScenes":1
    }
   }
 }

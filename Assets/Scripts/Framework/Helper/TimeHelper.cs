@@ -1,99 +1,45 @@
 using System;
-using System.Globalization;
 using System.Text;
 
 namespace Framework.Helper
 {
+    /*
+     *
+     * !!!! 任何时候使用到时间戳 Datetime 必须是UTC时间 才能参与运算
+     * !!!! 如果计算公式不牵扯时间戳 可以使用当前时间
+     * 
+     */
     public static class TimeHelper
     {
-        private static DateTime m_UTCDateTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        private static DateTime m_1970_01_01 = new(1970, 1, 1);
 
-        /// <summary>
-        /// 获取当前的时间的Unity时间戳
-        /// </summary>
-        /// <returns></returns>
+        //获取时间戳
         public static long GetUnixTimeStamp()
         {
-            return (long)(DateTime.Now - m_UTCDateTime).TotalSeconds;
+            return DateTimeOffset.UtcNow.ToUnixTimeSeconds();
         }
 
-        /// <summary>
-        /// 获得当前DateTime的Unity时间戳(从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数，不考虑闰秒。)
-        /// </summary>
-        /// <param name="utcTime"></param>
-        /// <returns></returns>
-        public static long GetUnixTimeStamp(DateTime utcTime)
+        //获取目标时间点的时间戳
+        public static long GetUnixTimeStamp(DateTime pTargetDateTime) //这个时间必须是UTC时间 使用DateTime.UtcNow获取!
         {
-            return (long)(utcTime - m_UTCDateTime).TotalSeconds;
+            return (long)(pTargetDateTime - m_1970_01_01).TotalSeconds;
         }
 
-        /// <summary>
-        /// 获取当前DateTime与上一个时间戳的差值
-        /// </summary>
-        /// <param name="nextDateTime"></param>
-        /// <param name="lastUnixTimeStamp"></param>
-        /// <returns></returns>
-        public static int GetSecondBetweenUnixTimeStamp(DateTime nextDateTime, long lastUnixTimeStamp)
+        //获取差值
+        public static int GetBetween(DateTime pLastDateTime, long pStartTimeStamp)
         {
-            return (int)(GetUnixTimeStamp(nextDateTime) - lastUnixTimeStamp);
+            return (int)(GetUnixTimeStamp(pLastDateTime) - pStartTimeStamp);
         }
 
-        /// <summary>
-        /// 获取两个DateTime之间的时间戳的差值
-        /// </summary>
-        /// <param name="nextDateTime"></param>
-        /// <param name="lastDateTime"></param>
-        /// <returns></returns>
-        public static int GetSecondBetweenUnixTimeStamp(DateTime nextDateTime, DateTime lastDateTime)
+        public static int GetBetween(DateTime pLastDateTime, DateTime pStartDateTime)
         {
-            return (int)(GetUnixTimeStamp(nextDateTime) - GetUnixTimeStamp(lastDateTime));
+            return (int)(GetUnixTimeStamp(pLastDateTime) - GetUnixTimeStamp(pStartDateTime));
         }
 
-        /// <summary>
-        /// 将当前时间戳转换成DateTime
-        /// </summary>
-        /// <param name="unixTimeStamp"></param>
-        /// <returns></returns>
-        public static DateTime GetDateTime(long unixTimeStamp)
+        // 获取当前时间戳的UtcDateTime值
+        public static DateTime GetUtcDateTime(long pTimeStamp)
         {
-            return m_UTCDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
-        }
-
-        /// <summary>
-        /// 获取当前DateTime.Today的String值
-        /// </summary>
-        /// <returns></returns>
-        public static string GetDateTimeTodayString()
-        {
-            return DateTime.Today.ToString(CultureInfo.InvariantCulture);
-        }
-
-        /// <summary>
-        /// 获取当前DateTime.Now的String值
-        /// </summary>
-        /// <returns></returns>
-        public static string GetDateTimeNowString()
-        {
-            return DateTime.Now.ToString(CultureInfo.InvariantCulture);
-        }
-
-        /// <summary>
-        /// 获取昨天DateTime.Today的String值
-        /// </summary>
-        /// <returns></returns>
-        public static string GetDateTimeYesterdayString()
-        {
-            return DateTime.Today.AddDays(-1).ToString(CultureInfo.InvariantCulture);
-        }
-
-        /// <summary>
-        /// 将Sting类型的DateTime转换成DateTime
-        /// </summary>
-        /// <param name="dateTime"></param>
-        /// <returns></returns>
-        public static DateTime GetStringDateTime(string dateTime)
-        {
-            return DateTime.Parse(dateTime);
+            return DateTimeOffset.FromUnixTimeSeconds(pTimeStamp).UtcDateTime;
         }
 
         /*

@@ -21,21 +21,21 @@ namespace Logic.UI.UICopy
 
         public override void OnShow()
         {
-            m_KeyCount.text = $"{CopyManager.Ins.m_OilCopyData.m_KeyCount}/2";
+            m_KeyCount.text = $"{CopyManager.Ins.m_OilCopyData.KeyCount}/2";
 
             BigDouble bestDamage = 0;
-            if (CopyManager.Ins.m_OilCopyData.m_BestDamageRecord != "")
+            if (CopyManager.Ins.m_OilCopyData.BestDamageRecord != "")
             {
-                bestDamage = BigDouble.Parse(CopyManager.Ins.m_OilCopyData.m_BestDamageRecord);
+                bestDamage = BigDouble.Parse(CopyManager.Ins.m_OilCopyData.BestDamageRecord);
             }
 
-            m_BestDamageRecord.text = $"{"最高记录：" +bestDamage}";
-            m_BestLevelRecord.text = $"{CopyManager.Ins.m_OilCopyData.m_BestLevelRecord}";
+            m_BestDamageRecord.text =$"最高记录：<color=#2CEC3C>{bestDamage.ToUIString()} </color>";
+            m_BestLevelRecord.text = $"{CopyManager.Ins.m_OilCopyData.BestLevelRecord}";
         }
 
         public void OnClickEnter()
         {
-            int _KeyCount = CopyManager.Ins.m_OilCopyData.m_KeyCount;
+            int _KeyCount = CopyManager.Ins.m_OilCopyData.KeyCount;
 
             if (_KeyCount <= 0)
             {

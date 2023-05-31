@@ -37,7 +37,17 @@ namespace Logic.UI.Cells
         private SkillData m_SkillData;
         private GameSkillData m_GameSkillData;
         private ItemData m_ItemData;
-        
+
+        /// <summary>
+        /// 是否允许打开技能配置界面
+        /// </summary>
+        public bool CanConfig { get; set; }
+
+        private void Awake()
+        {
+            CanConfig = true;
+        }
+
         private void OnEnable()
         {
             m_EventGroup.Register(LogicEvent.SkillOn, OnSkillOn).
@@ -152,12 +162,16 @@ namespace Logic.UI.Cells
 
         public void OnClickSkill()
         {
+            if (m_SkillData == null && !CanConfig)
+                return;
+
             if (m_SkillData == null)
             {
                 UIUser.UIUser.m_OpenType = UserPageType.Skill;
                 UIBottomMenu.Ins.ClickBtn(BottomBtnType.User);
                 return;
             }
+                
 
             if (GameDataManager.Ins.AutoSkill)
                 return;
@@ -174,7 +188,7 @@ namespace Logic.UI.Cells
         private void OnSkillOn(int i, object o)
         {
             var _Data = o as S2C_SkillOn;
-            if(_Data.m_Index != m_Index) return;
+            if(_Data.Index != m_Index) return;
 
             Refresh();
             m_IsDisable = true;
@@ -183,7 +197,7 @@ namespace Logic.UI.Cells
         private void OnSkillOff(int i, object o)
         {
             var _Data = o as S2C_SkillOff;
-            if(_Data.m_Index != m_Index) return;
+            if(_Data.Index != m_Index) return;
 
             Refresh();
         }

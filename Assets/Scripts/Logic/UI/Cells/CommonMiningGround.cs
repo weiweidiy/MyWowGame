@@ -42,7 +42,7 @@ namespace Logic.UI.Cells
             m_GroundMask.Show();
             m_IsCanClick = true;
             m_IsDoorCanClick = false;
-            transform.DOPunchScale(new Vector3(1.1f, 1.1f, 1f), 0.02f * (m_ID + 1));
+            transform.DOPunchScale(new Vector3(1.1f, 1.1f, 1f), 0.05f * pId);
         }
 
         public void OnPointerDown(PointerEventData eventData)
@@ -82,7 +82,7 @@ namespace Logic.UI.Cells
                 return;
             }
 
-            if (MiningManager.Ins.m_MiningData.m_HammerCount <= 0)
+            if (MiningManager.Ins.m_MiningData.HammerCount <= 0)
             {
                 EventManager.Call(LogicEvent.ShowTips, "没有足够的矿锤");
             }

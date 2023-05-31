@@ -37,42 +37,41 @@ namespace DummyServer
 
             foreach (var research in m_DB.m_ResearchList)
             {
-                var researchData = DigResearchCfg.GetData(research.m_ResearchId);
-                var researchlevel = research.m_ResearchLevel;
+                var researchData = DigResearchCfg.GetData(research.ResearchId);
+                var researchLevel = research.ResearchLevel;
                 var attributeId = researchData.ResearchAttrGroup;
-                switch ((ResearchType)attributeId)
+                var attributeType = AttributeCfg.GetData(attributeId).Type;
+                switch ((AttributeType)attributeType)
                 {
-                    case ResearchType.None:
+                    case AttributeType.ATK:
+                        researchATK += researchLevel * researchData.ResearchGrow;
                         break;
-                    case ResearchType.IncreaseATK:
-                        researchATK += researchlevel * researchData.ResearchGrow;
+                    case AttributeType.HP:
+                        researchHP += researchLevel * researchData.ResearchGrow;
                         break;
-                    case ResearchType.IncreaseHP:
-                        researchHP += researchlevel * researchData.ResearchGrow;
+                    case AttributeType.HammerLimit:
+                        researchHammerLimit += researchLevel * researchData.ResearchGrow;
                         break;
-                    case ResearchType.IncreaseHammerLimit:
-                        researchHammerLimit += researchlevel * researchData.ResearchGrow;
+                    case AttributeType.MineObtainAmount:
+                        researchMineObtainAmount += researchLevel * researchData.ResearchGrow;
                         break;
-                    case ResearchType.IncreaseMineObtainAmount:
-                        researchMineObtainAmount += researchlevel * researchData.ResearchGrow;
+                    case AttributeType.HammerRecoverSpeed:
+                        researchHammerRecoverSpeed += researchLevel * researchData.ResearchGrow;
                         break;
-                    case ResearchType.IncreaseHammerRecoverSpeed:
-                        researchHammerRecoverSpeed += researchlevel * researchData.ResearchGrow;
-                        break;
-                    case ResearchType.IncreaseResearchSpeed:
-                        researchSpeed += researchlevel * researchData.ResearchGrow;
+                    case AttributeType.ResearchSpeed:
+                        researchSpeed += researchLevel * researchData.ResearchGrow;
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
             }
 
-            m_DB.m_ResearchEffectData.researchATK = researchATK / 100;
-            m_DB.m_ResearchEffectData.researchHP = researchHP / 100;
-            m_DB.m_ResearchEffectData.researchHammerLimit = researchHammerLimit;
-            m_DB.m_ResearchEffectData.researchMineObtainAmount = researchMineObtainAmount / 100;
-            m_DB.m_ResearchEffectData.researchHammerRecoverSpeed = researchHammerRecoverSpeed / 100;
-            m_DB.m_ResearchEffectData.researchSpeed = researchSpeed / 100;
+            m_DB.m_ResearchEffectData.ResearchATK = researchATK / 100;
+            m_DB.m_ResearchEffectData.ResearchHP = researchHP / 100;
+            m_DB.m_ResearchEffectData.ResearchHammerLimit = researchHammerLimit;
+            m_DB.m_ResearchEffectData.ResearchMineObtainAmount = researchMineObtainAmount / 100;
+            m_DB.m_ResearchEffectData.ResearchHammerRecoverSpeed = researchHammerRecoverSpeed / 100;
+            m_DB.m_ResearchEffectData.ResearchSpeed = researchSpeed / 100;
         }
 
         //考古研究矿石消耗
@@ -86,8 +85,8 @@ namespace DummyServer
         private float GetResearchTimeCost(int id, int level)
         {
             var researchData = DigResearchCfg.GetData(id);
-            var researchTimeCost = researchData.BaseCostTime + researchData.BaseCostTime * level;
-            var researchSpeed = 1 + m_DB.m_ResearchEffectData.researchSpeed; //研究速度增加 %
+            var researchTimeCost = researchData.BaseCostTime + researchData.GrowCostTime * level;
+            var researchSpeed = 1 + m_DB.m_ResearchEffectData.ResearchSpeed; //研究速度增加 %
             return researchTimeCost / researchSpeed;
         }
 
@@ -111,18 +110,18 @@ namespace DummyServer
 
         private void OnUpdateResearchTime(C2S_UpdateResearchTime pMsg)
         {
-            var researchId = pMsg.m_ResearchId;
+            var researchId = pMsg.ResearchId;
             var researchLevel = 0;
             // 考古研究完成时间戳
             long researchTimeStamp = 0;
             var gameResearchData = m_DB.m_ResearchList.Find(pData =>
             {
-                if (pData.m_ResearchId == researchId)
+                if (pData.ResearchId == researchId)
                 {
-                    researchLevel = pData.m_ResearchLevel;
-                    pData.m_IsResearching = 1;
+                    researchLevel = pData.ResearchLevel;
+                    pData.IsResearching = 1;
                     researchTimeStamp = GetResearchTimeStamp(researchId, researchLevel);
-                    pData.m_researchTimeStamp = researchTimeStamp;
+                    pData.ResearchTimeStamp = researchTimeStamp;
                     return true;
                 }
 
@@ -136,8 +135,8 @@ namespace DummyServer
                 m_DB.m_ResearchList.Add(
                     new GameResearchData()
                     {
-                        m_ResearchId = researchId, m_ResearchLevel = researchLevel, m_IsResearching = 1,
-                        m_researchTimeStamp = researchTimeStamp,
+                        ResearchId = researchId, ResearchLevel = researchLevel, IsResearching = 1,
+                        ResearchTimeStamp = researchTimeStamp,
                     });
             }
 
@@ -148,37 +147,37 @@ namespace DummyServer
 
             SendMsg(new S2C_UpdateResearchTime()
             {
-                m_ResearchId = researchId,
-                m_ResearchTimeStamp = researchTimeStamp,
+                ResearchId = researchId,
+                ResearchTimeStamp = researchTimeStamp,
             });
         }
 
         private void OnResearching(C2S_Researching pMsg)
         {
             //研究完成方式
-            var researchCompleteType = (ResearchCompleteType)pMsg.m_ResearchCompleteType;
+            var researchCompleteType = (ResearchCompleteType)pMsg.ResearchCompleteType;
 
             if (researchCompleteType == ResearchCompleteType.TimeComplete)
             {
-                var researchTimeStamp = m_DB.m_ResearchList.Find(pData => pData.m_ResearchId == pMsg.m_ResearchId)
-                    .m_researchTimeStamp;
+                var researchTimeStamp = m_DB.m_ResearchList.Find(pData => pData.ResearchId == pMsg.ResearchId)
+                    .ResearchTimeStamp;
                 if (TimeHelper.GetUnixTimeStamp() - researchTimeStamp < 0)
                 {
                     return;
                 }
             }
 
-            var researchId = pMsg.m_ResearchId;
+            var researchId = pMsg.ResearchId;
             var researchLevel = 0;
             var researchCostLevel = 0;
             var gameResearchData = m_DB.m_ResearchList.Find(pData =>
             {
-                if (pData.m_ResearchId == researchId)
+                if (pData.ResearchId == researchId)
                 {
-                    researchCostLevel = pData.m_ResearchLevel;
-                    pData.m_ResearchLevel++;
-                    researchLevel = pData.m_ResearchLevel;
-                    pData.m_IsResearching = 0; //已经完成研究
+                    researchCostLevel = pData.ResearchLevel;
+                    pData.ResearchLevel++;
+                    researchLevel = pData.ResearchLevel;
+                    pData.IsResearching = 0; //已经完成研究
                     return true;
                 }
 
@@ -199,10 +198,10 @@ namespace DummyServer
 
             SendMsg(new S2C_Researching()
             {
-                m_ResearchId = researchId,
-                m_ResearchLevel = researchLevel,
-                m_ResearchList = m_DB.m_ResearchList,
-                m_ResearchEffectData = m_DB.m_ResearchEffectData,
+                ResearchId = researchId,
+                ResearchLevel = researchLevel,
+                ResearchList = m_DB.m_ResearchList,
+                ResearchEffectData = m_DB.m_ResearchEffectData,
             });
         }
     }

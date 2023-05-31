@@ -21,7 +21,7 @@ namespace Logic.States.Fight
         
         public override void Enter(FightStateData pData)
         {
-            Debug.LogWarning("FS - FS_Standby ENTER");
+            //Debug.LogWarning("FS - FS_Standby ENTER");
             
             m_StateData = pData;
             //Dump();
@@ -65,6 +65,10 @@ namespace Logic.States.Fight
                     break;
                 case LevelType.OilCopy:
                     m_StateData.m_SM.ToFighting();
+                    break;
+                case LevelType.TrophyCopy:
+                    m_StateData.m_SM.ToFighting();
+                    EventManager.Call(LogicEvent.Fight_CopyTrophyCountChanged);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

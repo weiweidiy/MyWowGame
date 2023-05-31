@@ -939,13 +939,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2570109827944910629}
     m_Modifications:
+    - target: {fileID: 255807804845656445, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.498
+      objectReference: {fileID: 0}
     - target: {fileID: 2313874603843258738, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 3852805172422318554, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
+      propertyPath: m_Size.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852805172422318554, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
+      propertyPath: m_DrawMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5718013569475578051, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
       propertyPath: m_Size.x
-      value: 1.27
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718013569475578051, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
+      propertyPath: m_DrawMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718013569475578051, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7228788573886431633, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
       propertyPath: m_Name
@@ -965,11 +985,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9022087922317628106, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9022087922317628106, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9022087922317628106, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
       propertyPath: m_LocalPosition.x

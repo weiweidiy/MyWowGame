@@ -10,6 +10,7 @@ using Framework.UI;
 using Logic.Common;
 using Logic.Manager;
 using Logic.UI.Cells;
+using Logic.UI.Common;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -59,7 +60,7 @@ namespace Logic.UI.UIMining
             m_EventGroup.Register(LogicEvent.HideNineGrid, OnHideNineGrid);
             m_EventGroup.Register(LogicEvent.ShowMiningReward, OnShowMiningReward);
             m_EventGroup.Register(LogicEvent.MiningDataChanged, OnMiningDataChanged);
-            m_EventGroup.Register(LogicEvent.EngineGet, (i, o) => { OnEngineGet(); });
+            m_EventGroup.Register(LogicEvent.EngineGet, OnEngineGet);
             m_EventGroup.Register(LogicEvent.ResearchCompleteEffectUpdate, (i, o) => OnResearchCompleteEffectUpdate());
         }
 
@@ -74,16 +75,21 @@ namespace Logic.UI.UIMining
             m_ResearchHammerRecoverSpeed = ResearchManager.Ins.ResearchHammerRecoverSpeed;
         }
 
-        private void OnEngineGet()
+        private void OnEngineGet(int eventId,object data)
         {
-            // TODO: 播放获取引擎动画
-            m_CanProgress.Hide();
-            m_CantProgress.Show();
-            DOTween.Sequence(m_Engine.DOFade(1, 1f)).OnComplete(() =>
+            // 引擎获取弹出面板
+            var gameEngineData = EngineManager.Ins.EngineMap[(int)data];
+            var engineData = EngineManager.Ins.GetEngineData(gameEngineData.TypeId);
+            var resId = engineData.ResID;
+            var resPath = EngineManager.Ins.GetResData(resId).Res;
+            var engineName = engineData.Name;
+            var arg = new UICommonObtain.Args
             {
-                m_CanProgress.Show();
-                m_CantProgress.Hide();
-            });
+                title = "恭喜获得",
+                resPath = resPath,
+                name = engineName,
+            };
+            EventManager.Call(LogicEvent.ShowObtain, arg);
         }
 
         private void OnMiningDataChanged(int eventId, object data)
@@ -116,28 +122,28 @@ namespace Logic.UI.UIMining
 
         private void OnHammerChanged()
         {
-            m_HammerText.text = $"{MiningManager.Ins.m_MiningData.m_HammerCount}/{m_MaxHammerCount}";
+            m_HammerText.text = $"{MiningManager.Ins.m_MiningData.HammerCount}/{m_MaxHammerCount}";
             UpdateMiningTimer();
         }
 
         private void OnMineChanged()
         {
-            m_MineText.text = MiningManager.Ins.m_MiningData.m_MineCount.ToString();
+            m_MineText.text = MiningManager.Ins.m_MiningData.MineCount.ToString();
         }
 
         private void OnBombChanged()
         {
-            m_BombText.text = MiningManager.Ins.m_MiningData.m_BombCount.ToString();
+            m_BombText.text = MiningManager.Ins.m_MiningData.BombCount.ToString();
         }
 
         private void OnScopeChanged()
         {
-            m_ScopeText.text = MiningManager.Ins.m_MiningData.m_ScopeCount.ToString();
+            m_ScopeText.text = MiningManager.Ins.m_MiningData.ScopeCount.ToString();
         }
 
         private void OnFloorChanged()
         {
-            m_Floor.text = MiningManager.Ins.m_MiningData.m_FloorCount.ToString();
+            m_Floor.text = MiningManager.Ins.m_MiningData.FloorCount.ToString();
             // TODO: 切换层数特效
             HideAllMiningProp();
             UpdateCommonMiningGround();
@@ -147,8 +153,8 @@ namespace Logic.UI.UIMining
         private void OnGearChanged()
         {
             m_EngineText.text =
-                $"{MiningManager.Ins.m_MiningData.m_GearCount}/{EngineManager.Ins.curEngineGetIdGearCost}";
-            m_CanProgress.fillAmount = (float)MiningManager.Ins.m_MiningData.m_GearCount /
+                $"{MiningManager.Ins.m_MiningData.GearCount}/{EngineManager.Ins.curEngineGetIdGearCost}";
+            m_CanProgress.fillAmount = (float)MiningManager.Ins.m_MiningData.GearCount /
                                        EngineManager.Ins.curEngineGetIdGearCost;
         }
 
@@ -169,23 +175,24 @@ namespace Logic.UI.UIMining
         {
             var miningData = MiningManager.Ins.m_MiningData;
             var gearCost = EngineManager.Ins.curEngineGetIdGearCost;
-            m_Floor.text = miningData.m_FloorCount.ToString();
-            m_HammerText.text = $"{miningData.m_HammerCount}/{m_MaxHammerCount}";
-            m_MineText.text = miningData.m_MineCount.ToString();
-            m_BombText.text = miningData.m_BombCount.ToString();
-            m_ScopeText.text = miningData.m_ScopeCount.ToString();
-            m_EngineText.text = $"{miningData.m_GearCount}/{gearCost}";
-            m_CanProgress.fillAmount = (float)miningData.m_GearCount / gearCost;
+            m_Floor.text = miningData.FloorCount.ToString();
+            m_HammerText.text = $"{miningData.HammerCount}/{m_MaxHammerCount}";
+            m_MineText.text = miningData.MineCount.ToString();
+            m_BombText.text = miningData.BombCount.ToString();
+            m_ScopeText.text = miningData.ScopeCount.ToString();
+            m_EngineText.text = $"{miningData.GearCount}/{gearCost}";
+            m_CanProgress.fillAmount = (float)miningData.GearCount / gearCost;
         }
 
         private void OnShowMiningReward(int eventId, object data)
         {
             var (treasureType, rewardId, rewardCount) =
-                (ValueTuple<MiningType, int, int>)data;
-            var position = MiningManager.Ins.GetThreeMatchPosition(treasureType);
+                (ValueTuple<int, int, int>)data;
+            var type = (MiningType)treasureType;
+            var position = MiningManager.Ins.GetThreeMatchPosition(type);
             var rewardItem = Instantiate(m_CommonMiningReward, position, Quaternion.identity,
                 m_CommonMiningRewardRoot);
-            rewardItem.Init(treasureType, rewardId, rewardCount);
+            rewardItem.Init(type, rewardId, rewardCount);
             rewardItem.Show();
             rewardItem.transform.DOMoveY(rewardItem.transform.position.y + 1f, 0.5f)
                 .SetEase(Ease.OutQuad).OnComplete(() =>
@@ -261,7 +268,7 @@ namespace Logic.UI.UIMining
         private void UpdateMiningTimer()
         {
             // TODO:处理时间计算问题
-            if (MiningManager.Ins.m_MiningData.m_HammerCount < m_MaxHammerCount)
+            if (MiningManager.Ins.m_MiningData.HammerCount < m_MaxHammerCount)
             {
                 if (!m_IsTimerStart)
                 {
@@ -320,8 +327,8 @@ namespace Logic.UI.UIMining
              */
             MiningManager.Ins.Clear();
 
-            var pID = MiningManager.Ins.m_MiningData.m_FloorCount * 10;
-            if (MiningManager.Ins.m_MiningData.m_FloorCount > GameDefine.MiningLoopStartFloor)
+            var pID = MiningManager.Ins.m_MiningData.FloorCount * 10;
+            if (MiningManager.Ins.m_MiningData.FloorCount > GameDefine.MiningLoopStartFloor)
             {
                 var groupId = RandomHelper.Range(GameDefine.MiningLoopStartFloor + 1,
                     GameDefine.MiningLoopEndFloor + 1);

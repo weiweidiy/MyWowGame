@@ -3,89 +3,265 @@
   "4001":  {
     "ID":4001,
     "Quality":0,
-    "PartnerName":"大毛",
+    "PartnerName":"强哥",
     "HasAdditionBase":0.05,
     "HasAdditionGrow":0.012,
     "AtkBase":0.22,
     "AtkGrow":0.042,
     "AtkSpeed":1.8,
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            1,
+            1,
+            1,
+            10
+         ],
+    "Speed":[
+            10,
+            20
+         ],
+    "Patrol":10,
+    "LazyTime":20,
     "ResourceName":"Partner_001"
    },
   "4002":  {
     "ID":4002,
     "Quality":0,
-    "PartnerName":"二毛",
+    "PartnerName":"焦虑斯坦",
     "HasAdditionBase":0.05,
     "HasAdditionGrow":0.012,
     "AtkBase":0.2442,
     "AtkGrow":0.04662,
     "AtkSpeed":1.72,
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            1,
+            1,
+            10,
+            1
+         ],
+    "Speed":[
+            1,
+            2
+         ],
+    "Patrol":50,
+    "LazyTime":2,
     "ResourceName":"Partner_002"
    },
   "4003":  {
     "ID":4003,
     "Quality":0,
-    "PartnerName":"三毛",
+    "PartnerName":"厄布斯",
     "HasAdditionBase":0.05,
     "HasAdditionGrow":0.012,
     "AtkBase":0.271062,
     "AtkGrow":0.0517482,
     "AtkSpeed":1.63,
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            1,
+            10,
+            1,
+            1
+         ],
+    "Speed":[
+            10,
+            20
+         ],
+    "Patrol":10,
+    "LazyTime":20,
     "ResourceName":"Partner_003"
    },
   "4004":  {
     "ID":4004,
     "Quality":0,
-    "PartnerName":"四毛",
+    "PartnerName":"阿迪王",
     "HasAdditionBase":0.05,
     "HasAdditionGrow":0.012,
     "AtkBase":0.30087882,
     "AtkGrow":0.057440502,
     "AtkSpeed":1.55,
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            10,
+            1,
+            1,
+            1
+         ],
+    "Speed":[
+            1,
+            2
+         ],
+    "Patrol":50,
+    "LazyTime":2,
     "ResourceName":"Partner_004"
    },
   "4005":  {
     "ID":4005,
     "Quality":0,
-    "PartnerName":"五毛",
+    "PartnerName":"呆森",
     "HasAdditionBase":0.05,
     "HasAdditionGrow":0.012,
     "AtkBase":0.3339754902,
     "AtkGrow":0.06375895722,
     "AtkSpeed":1.46,
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            10,
+            1,
+            1,
+            1,
+            1
+         ],
+    "Speed":[
+            10,
+            20
+         ],
+    "Patrol":10,
+    "LazyTime":20,
     "ResourceName":"Partner_005"
    },
   "4006":  {
     "ID":4006,
     "Quality":0,
-    "PartnerName":"六毛",
+    "PartnerName":"哇啦哇啦",
     "HasAdditionBase":0.05,
     "HasAdditionGrow":0.012,
     "AtkBase":0.370712794122,
     "AtkGrow":0.0707724425142,
     "AtkSpeed":1.38,
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            10,
+            1,
+            1,
+            1,
+            1,
+            1
+         ],
+    "Speed":[
+            1,
+            2
+         ],
+    "Patrol":50,
+    "LazyTime":2,
     "ResourceName":"Partner_006"
    },
   "4007":  {
     "ID":4007,
     "Quality":1,
-    "PartnerName":"矿兽",
+    "PartnerName":"矿工",
     "HasAdditionBase":0.225,
     "HasAdditionGrow":0.054,
     "AtkBase":0.506,
     "AtkGrow":0.0966,
     "AtkSpeed":1.8,
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            1,
+            1,
+            1,
+            10
+         ],
+    "Speed":[
+            10,
+            20
+         ],
+    "Patrol":10,
+    "LazyTime":20,
     "ResourceName":"Partner_007"
    },
   "4008":  {
     "ID":4008,
     "Quality":1,
-    "PartnerName":"修兽",
+    "PartnerName":"修理工",
     "HasAdditionBase":0.225,
     "HasAdditionGrow":0.054,
     "AtkBase":0.56166,
     "AtkGrow":0.107226,
     "AtkSpeed":1.72,
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            1,
+            1,
+            10,
+            1
+         ],
+    "Speed":[
+            1,
+            2
+         ],
+    "Patrol":50,
+    "LazyTime":2,
     "ResourceName":"Partner_008"
    },
   "4009":  {
@@ -97,370 +273,1118 @@
     "AtkBase":0.6234426,
     "AtkGrow":0.11902086,
     "AtkSpeed":1.63,
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            1,
+            10,
+            1,
+            1
+         ],
+    "Speed":[
+            10,
+            20
+         ],
+    "Patrol":10,
+    "LazyTime":20,
     "ResourceName":"Partner_009"
    },
   "4010":  {
     "ID":4010,
     "Quality":1,
-    "PartnerName":"四棒",
+    "PartnerName":"狱霸",
     "HasAdditionBase":0.225,
     "HasAdditionGrow":0.054,
     "AtkBase":0.692021286,
     "AtkGrow":0.1321131546,
     "AtkSpeed":1.55,
-    "ResourceName":"Partner_010"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            10,
+            1,
+            1,
+            1
+         ],
+    "Speed":[
+            1,
+            2
+         ],
+    "Patrol":50,
+    "LazyTime":2,
+    "ResourceName":"Partner_013"
    },
   "4011":  {
     "ID":4011,
     "Quality":1,
-    "PartnerName":"五棒",
+    "PartnerName":"绿纳尔多",
     "HasAdditionBase":0.225,
     "HasAdditionGrow":0.054,
     "AtkBase":0.76814362746,
     "AtkGrow":0.146645601606,
     "AtkSpeed":1.46,
-    "ResourceName":"Partner_011"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            10,
+            1,
+            1,
+            1,
+            1
+         ],
+    "Speed":[
+            10,
+            20
+         ],
+    "Patrol":10,
+    "LazyTime":20,
+    "ResourceName":"Partner_014"
    },
   "4012":  {
     "ID":4012,
     "Quality":1,
-    "PartnerName":"六棒",
+    "PartnerName":"绿幽灵",
     "HasAdditionBase":0.225,
     "HasAdditionGrow":0.054,
     "AtkBase":0.8526394264806,
     "AtkGrow":0.16277661778266,
     "AtkSpeed":1.38,
-    "ResourceName":"Partner_012"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            10,
+            1,
+            1,
+            1,
+            1,
+            1
+         ],
+    "Speed":[
+            1,
+            2
+         ],
+    "Patrol":50,
+    "LazyTime":2,
+    "ResourceName":"Partner_015"
    },
   "4013":  {
     "ID":4013,
     "Quality":2,
-    "PartnerName":"狱兽",
+    "PartnerName":"西海岸",
     "HasAdditionBase":1.01,
     "HasAdditionGrow":0.243,
     "AtkBase":1.1638,
     "AtkGrow":0.22218,
     "AtkSpeed":1.8,
-    "ResourceName":"Partner_013"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            1,
+            1,
+            1,
+            10
+         ],
+    "Speed":[
+            10,
+            20
+         ],
+    "Patrol":10,
+    "LazyTime":20,
+    "ResourceName":"Partner_019"
    },
   "4014":  {
     "ID":4014,
     "Quality":2,
-    "PartnerName":"兽纳尔多",
+    "PartnerName":"三只耳",
     "HasAdditionBase":1.01,
     "HasAdditionGrow":0.243,
     "AtkBase":1.291818,
     "AtkGrow":0.2466198,
     "AtkSpeed":1.72,
-    "ResourceName":"Partner_014"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            1,
+            1,
+            10,
+            1
+         ],
+    "Speed":[
+            1,
+            2
+         ],
+    "Patrol":50,
+    "LazyTime":2,
+    "ResourceName":"Partner_020"
    },
   "4015":  {
     "ID":4015,
     "Quality":2,
-    "PartnerName":"幽灵",
+    "PartnerName":"蛆",
     "HasAdditionBase":1.01,
     "HasAdditionGrow":0.243,
     "AtkBase":1.43391798,
     "AtkGrow":0.273747978,
     "AtkSpeed":1.63,
-    "ResourceName":"Partner_015"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            1,
+            10,
+            1,
+            1
+         ],
+    "Speed":[
+            10,
+            20
+         ],
+    "Patrol":10,
+    "LazyTime":20,
+    "ResourceName":"Partner_021"
    },
   "4016":  {
     "ID":4016,
     "Quality":2,
-    "PartnerName":"四鬼",
+    "PartnerName":"乔萌",
     "HasAdditionBase":1.01,
     "HasAdditionGrow":0.243,
     "AtkBase":1.5916489578,
     "AtkGrow":0.30386025558,
     "AtkSpeed":1.55,
-    "ResourceName":"Partner_016"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            10,
+            1,
+            1,
+            1
+         ],
+    "Speed":[
+            1,
+            2
+         ],
+    "Patrol":50,
+    "LazyTime":2,
+    "ResourceName":"Partner_025"
    },
   "4017":  {
     "ID":4017,
     "Quality":2,
-    "PartnerName":"五鬼",
+    "PartnerName":"丑8怪",
     "HasAdditionBase":1.01,
     "HasAdditionGrow":0.243,
     "AtkBase":1.766730343158,
     "AtkGrow":0.3372848836938,
     "AtkSpeed":1.46,
-    "ResourceName":"Partner_017"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            10,
+            1,
+            1,
+            1,
+            1
+         ],
+    "Speed":[
+            10,
+            20
+         ],
+    "Patrol":10,
+    "LazyTime":20,
+    "ResourceName":"Partner_031"
    },
   "4018":  {
     "ID":4018,
     "Quality":2,
-    "PartnerName":"六鬼",
+    "PartnerName":"猫猫哥",
     "HasAdditionBase":1.01,
     "HasAdditionGrow":0.243,
     "AtkBase":1.96107068090538,
     "AtkGrow":0.374386220900118,
     "AtkSpeed":1.38,
-    "ResourceName":"Partner_018"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            10,
+            1,
+            1,
+            1,
+            1,
+            1
+         ],
+    "Speed":[
+            1,
+            2
+         ],
+    "Patrol":50,
+    "LazyTime":2,
+    "ResourceName":"Partner_037"
    },
   "4019":  {
     "ID":4019,
     "Quality":3,
-    "PartnerName":"丐溜子",
+    "PartnerName":"强哥",
     "HasAdditionBase":4.556,
     "HasAdditionGrow":1.0935,
     "AtkBase":2.67674,
     "AtkGrow":0.511014,
     "AtkSpeed":1.8,
-    "ResourceName":"Partner_019"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            1,
+            1,
+            1,
+            10
+         ],
+    "Speed":[
+            10,
+            20
+         ],
+    "Patrol":10,
+    "LazyTime":20,
+    "ResourceName":"Partner_001"
    },
   "4020":  {
     "ID":4020,
     "Quality":3,
-    "PartnerName":"泰木",
+    "PartnerName":"焦虑斯坦",
     "HasAdditionBase":4.556,
     "HasAdditionGrow":1.0935,
     "AtkBase":2.9711814,
     "AtkGrow":0.56722554,
     "AtkSpeed":1.72,
-    "ResourceName":"Partner_020"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            1,
+            1,
+            10,
+            1
+         ],
+    "Speed":[
+            1,
+            2
+         ],
+    "Patrol":50,
+    "LazyTime":2,
+    "ResourceName":"Partner_002"
    },
   "4021":  {
     "ID":4021,
     "Quality":3,
-    "PartnerName":"蛆",
+    "PartnerName":"厄布斯",
     "HasAdditionBase":4.556,
     "HasAdditionGrow":1.0935,
     "AtkBase":3.298011354,
     "AtkGrow":0.6296203494,
     "AtkSpeed":1.63,
-    "ResourceName":"Partner_021"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            1,
+            10,
+            1,
+            1
+         ],
+    "Speed":[
+            10,
+            20
+         ],
+    "Patrol":10,
+    "LazyTime":20,
+    "ResourceName":"Partner_003"
    },
   "4022":  {
     "ID":4022,
     "Quality":3,
-    "PartnerName":"四哥",
+    "PartnerName":"阿迪王",
     "HasAdditionBase":4.556,
     "HasAdditionGrow":1.0935,
     "AtkBase":3.66079260294,
     "AtkGrow":0.698878587834,
     "AtkSpeed":1.55,
-    "ResourceName":"Partner_022"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            10,
+            1,
+            1,
+            1
+         ],
+    "Speed":[
+            1,
+            2
+         ],
+    "Patrol":50,
+    "LazyTime":2,
+    "ResourceName":"Partner_004"
    },
   "4023":  {
     "ID":4023,
     "Quality":3,
-    "PartnerName":"五哥",
+    "PartnerName":"呆森",
     "HasAdditionBase":4.556,
     "HasAdditionGrow":1.0935,
     "AtkBase":4.0634797892634,
     "AtkGrow":0.77575523249574,
     "AtkSpeed":1.46,
-    "ResourceName":"Partner_023"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            10,
+            1,
+            1,
+            1,
+            1
+         ],
+    "Speed":[
+            10,
+            20
+         ],
+    "Patrol":10,
+    "LazyTime":20,
+    "ResourceName":"Partner_005"
    },
   "4024":  {
     "ID":4024,
     "Quality":3,
-    "PartnerName":"六哥",
+    "PartnerName":"哇啦哇啦",
     "HasAdditionBase":4.556,
     "HasAdditionGrow":1.0935,
     "AtkBase":4.51046256608238,
     "AtkGrow":0.861088308070272,
     "AtkSpeed":1.38,
-    "ResourceName":"Partner_024"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            10,
+            1,
+            1,
+            1,
+            1,
+            1
+         ],
+    "Speed":[
+            1,
+            2
+         ],
+    "Patrol":50,
+    "LazyTime":2,
+    "ResourceName":"Partner_006"
    },
   "4025":  {
     "ID":4025,
     "Quality":4,
-    "PartnerName":"兽塔纳",
+    "PartnerName":"矿工",
     "HasAdditionBase":20.5,
     "HasAdditionGrow":4.92075,
     "AtkBase":6.156502,
     "AtkGrow":1.1753322,
     "AtkSpeed":1.8,
-    "ResourceName":"Partner_025"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            1,
+            1,
+            1,
+            10
+         ],
+    "Speed":[
+            10,
+            20
+         ],
+    "Patrol":10,
+    "LazyTime":20,
+    "ResourceName":"Partner_007"
    },
   "4026":  {
     "ID":4026,
     "Quality":4,
-    "PartnerName":"二锤",
+    "PartnerName":"修理工",
     "HasAdditionBase":20.5,
     "HasAdditionGrow":4.92075,
     "AtkBase":6.83371722,
     "AtkGrow":1.304618742,
     "AtkSpeed":1.72,
-    "ResourceName":"Partner_026"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            1,
+            1,
+            10,
+            1
+         ],
+    "Speed":[
+            1,
+            2
+         ],
+    "Patrol":50,
+    "LazyTime":2,
+    "ResourceName":"Partner_008"
    },
   "4027":  {
     "ID":4027,
     "Quality":4,
-    "PartnerName":"三锤",
+    "PartnerName":"绿博",
     "HasAdditionBase":20.5,
     "HasAdditionGrow":4.92075,
     "AtkBase":7.5854261142,
     "AtkGrow":1.44812680362,
     "AtkSpeed":1.63,
-    "ResourceName":"Partner_027"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            1,
+            10,
+            1,
+            1
+         ],
+    "Speed":[
+            10,
+            20
+         ],
+    "Patrol":10,
+    "LazyTime":20,
+    "ResourceName":"Partner_009"
    },
   "4028":  {
     "ID":4028,
     "Quality":4,
-    "PartnerName":"四锤",
+    "PartnerName":"狱霸",
     "HasAdditionBase":20.5,
     "HasAdditionGrow":4.92075,
     "AtkBase":8.419822986762,
     "AtkGrow":1.6074207520182,
     "AtkSpeed":1.55,
-    "ResourceName":"Partner_028"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            10,
+            1,
+            1,
+            1
+         ],
+    "Speed":[
+            1,
+            2
+         ],
+    "Patrol":50,
+    "LazyTime":2,
+    "ResourceName":"Partner_013"
    },
   "4029":  {
     "ID":4029,
     "Quality":4,
-    "PartnerName":"五锤",
+    "PartnerName":"绿纳尔多",
     "HasAdditionBase":20.5,
     "HasAdditionGrow":4.92075,
     "AtkBase":9.34600351530582,
     "AtkGrow":1.7842370347402,
     "AtkSpeed":1.46,
-    "ResourceName":"Partner_029"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            10,
+            1,
+            1,
+            1,
+            1
+         ],
+    "Speed":[
+            10,
+            20
+         ],
+    "Patrol":10,
+    "LazyTime":20,
+    "ResourceName":"Partner_014"
    },
   "4030":  {
     "ID":4030,
     "Quality":4,
-    "PartnerName":"六锤",
+    "PartnerName":"绿幽灵",
     "HasAdditionBase":20.5,
     "HasAdditionGrow":4.92075,
     "AtkBase":10.3740639019895,
     "AtkGrow":1.98050310856162,
     "AtkSpeed":1.38,
-    "ResourceName":"Partner_030"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            10,
+            1,
+            1,
+            1,
+            1,
+            1
+         ],
+    "Speed":[
+            1,
+            2
+         ],
+    "Patrol":50,
+    "LazyTime":2,
+    "ResourceName":"Partner_015"
    },
   "4031":  {
     "ID":4031,
     "Quality":5,
-    "PartnerName":"小兽",
+    "PartnerName":"西海岸",
     "HasAdditionBase":92.264,
     "HasAdditionGrow":22.143375,
     "AtkBase":14.1599546,
     "AtkGrow":2.70326406,
     "AtkSpeed":1.8,
-    "ResourceName":"Partner_031"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            1,
+            1,
+            1,
+            10
+         ],
+    "Speed":[
+            10,
+            20
+         ],
+    "Patrol":10,
+    "LazyTime":20,
+    "ResourceName":"Partner_019"
    },
   "4032":  {
     "ID":4032,
     "Quality":5,
-    "PartnerName":"大傻",
+    "PartnerName":"三只耳",
     "HasAdditionBase":92.264,
     "HasAdditionGrow":22.143375,
     "AtkBase":15.717549606,
     "AtkGrow":3.0006231066,
     "AtkSpeed":1.72,
-    "ResourceName":"Partner_032"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            1,
+            1,
+            10,
+            1
+         ],
+    "Speed":[
+            1,
+            2
+         ],
+    "Patrol":50,
+    "LazyTime":2,
+    "ResourceName":"Partner_020"
    },
   "4033":  {
     "ID":4033,
     "Quality":5,
-    "PartnerName":"二傻",
+    "PartnerName":"蛆",
     "HasAdditionBase":92.264,
     "HasAdditionGrow":22.143375,
     "AtkBase":17.44648006266,
     "AtkGrow":3.330691648326,
     "AtkSpeed":1.63,
-    "ResourceName":"Partner_033"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            1,
+            10,
+            1,
+            1
+         ],
+    "Speed":[
+            10,
+            20
+         ],
+    "Patrol":10,
+    "LazyTime":20,
+    "ResourceName":"Partner_021"
    },
   "4034":  {
     "ID":4034,
     "Quality":5,
-    "PartnerName":"三傻",
+    "PartnerName":"乔萌",
     "HasAdditionBase":92.264,
     "HasAdditionGrow":22.143375,
     "AtkBase":19.3655928695526,
     "AtkGrow":3.69706772964186,
     "AtkSpeed":1.55,
-    "ResourceName":"Partner_034"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            10,
+            1,
+            1,
+            1
+         ],
+    "Speed":[
+            1,
+            2
+         ],
+    "Patrol":50,
+    "LazyTime":2,
+    "ResourceName":"Partner_025"
    },
   "4035":  {
     "ID":4035,
     "Quality":5,
-    "PartnerName":"四傻",
+    "PartnerName":"丑8怪",
     "HasAdditionBase":92.264,
     "HasAdditionGrow":22.143375,
     "AtkBase":21.4958080852034,
     "AtkGrow":4.10374517990247,
     "AtkSpeed":1.46,
-    "ResourceName":"Partner_035"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            10,
+            1,
+            1,
+            1,
+            1
+         ],
+    "Speed":[
+            10,
+            20
+         ],
+    "Patrol":10,
+    "LazyTime":20,
+    "ResourceName":"Partner_031"
    },
   "4036":  {
     "ID":4036,
     "Quality":5,
-    "PartnerName":"五傻",
+    "PartnerName":"猫猫哥",
     "HasAdditionBase":92.264,
     "HasAdditionGrow":22.143375,
     "AtkBase":23.8603469745758,
     "AtkGrow":4.55515714969174,
     "AtkSpeed":1.38,
-    "ResourceName":"Partner_036"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            10,
+            1,
+            1,
+            1,
+            1,
+            1
+         ],
+    "Speed":[
+            1,
+            2
+         ],
+    "Patrol":50,
+    "LazyTime":2,
+    "ResourceName":"Partner_037"
    },
   "4037":  {
     "ID":4037,
     "Quality":6,
-    "PartnerName":"兽王",
+    "PartnerName":"西海岸",
     "HasAdditionBase":415.188,
     "HasAdditionGrow":99.6451875,
     "AtkBase":32.56789558,
     "AtkGrow":6.217507338,
     "AtkSpeed":1.8,
-    "ResourceName":"Partner_037"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            1,
+            1,
+            1,
+            10
+         ],
+    "Speed":[
+            10,
+            20
+         ],
+    "Patrol":10,
+    "LazyTime":20,
+    "ResourceName":"Partner_019"
    },
   "4038":  {
     "ID":4038,
     "Quality":6,
-    "PartnerName":"二爷",
+    "PartnerName":"三只耳",
     "HasAdditionBase":415.188,
     "HasAdditionGrow":99.6451875,
     "AtkBase":36.1503640938,
     "AtkGrow":6.90143314518,
     "AtkSpeed":1.72,
-    "ResourceName":"Partner_038"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            1,
+            1,
+            10,
+            1
+         ],
+    "Speed":[
+            1,
+            2
+         ],
+    "Patrol":50,
+    "LazyTime":2,
+    "ResourceName":"Partner_020"
    },
   "4039":  {
     "ID":4039,
     "Quality":6,
-    "PartnerName":"三爷",
+    "PartnerName":"蛆",
     "HasAdditionBase":415.188,
     "HasAdditionGrow":99.6451875,
     "AtkBase":40.126904144118,
     "AtkGrow":7.6605907911498,
     "AtkSpeed":1.63,
-    "ResourceName":"Partner_039"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            1,
+            10,
+            1,
+            1
+         ],
+    "Speed":[
+            10,
+            20
+         ],
+    "Patrol":10,
+    "LazyTime":20,
+    "ResourceName":"Partner_021"
    },
   "4040":  {
     "ID":4040,
     "Quality":6,
-    "PartnerName":"四爷",
+    "PartnerName":"乔萌",
     "HasAdditionBase":415.188,
     "HasAdditionGrow":99.6451875,
     "AtkBase":44.540863599971,
     "AtkGrow":8.50325577817628,
     "AtkSpeed":1.55,
-    "ResourceName":"Partner_040"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            1,
+            10,
+            1,
+            1,
+            1
+         ],
+    "Speed":[
+            1,
+            2
+         ],
+    "Patrol":50,
+    "LazyTime":2,
+    "ResourceName":"Partner_025"
    },
   "4041":  {
     "ID":4041,
     "Quality":6,
-    "PartnerName":"五爷",
+    "PartnerName":"丑8怪",
     "HasAdditionBase":415.188,
     "HasAdditionGrow":99.6451875,
     "AtkBase":49.4403585959678,
     "AtkGrow":9.43861391377567,
     "AtkSpeed":1.46,
-    "ResourceName":"Partner_041"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            1,
+            10,
+            1,
+            1,
+            1,
+            1
+         ],
+    "Speed":[
+            10,
+            20
+         ],
+    "Patrol":10,
+    "LazyTime":20,
+    "ResourceName":"Partner_031"
    },
   "4042":  {
     "ID":4042,
     "Quality":6,
-    "PartnerName":"六爷",
+    "PartnerName":"猫猫哥",
     "HasAdditionBase":415.188,
     "HasAdditionGrow":99.6451875,
     "AtkBase":54.8787980415242,
     "AtkGrow":10.476861444291,
     "AtkSpeed":1.38,
-    "ResourceName":"Partner_042"
+    "Rooms":[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+         ],
+    "RoomWight":[
+            10,
+            1,
+            1,
+            1,
+            1,
+            1
+         ],
+    "Speed":[
+            1,
+            2
+         ],
+    "Patrol":50,
+    "LazyTime":2,
+    "ResourceName":"Partner_037"
    }
   }
 }

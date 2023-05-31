@@ -83,6 +83,8 @@ namespace Logic.Fight.Skill.Implement
             base.Ready(args);
 
             attacker.gameObject.SetActive(true);
+            m_CurrentTarget = null;
+            m_curEmitCount = 0;
         }
 
         /// <summary>

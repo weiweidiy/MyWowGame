@@ -112,7 +112,7 @@ namespace Logic.Fight
         //TODO 临时放到这里处理 退出游戏的情况
 
         private bool _IsFirstGame;
-        private string _LastGameDate;
+        private long _LastGameDate;
         private void OnApplicationPause(bool pauseStatus)
         {
             if (pauseStatus)

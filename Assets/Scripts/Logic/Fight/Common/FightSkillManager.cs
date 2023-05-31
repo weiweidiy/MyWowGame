@@ -150,7 +150,7 @@ namespace Logic.Fight.Common
             //    _SkillBase.Show();
             //    _SkillBase.OnSkillOn();
             //}
-            var pSkillId = _Para.m_SkillID;
+            var pSkillId = _Para.SkillID;
             if (!Existed(pSkillId))
             {
                 var _skillBase = await SpawnSkillObject(pSkillId);
@@ -173,7 +173,7 @@ namespace Logic.Fight.Common
             //_SkillBase.OnSkillReset();
             //    _SkillBase.Hide();
             //}
-            var pSkillId = _Para.m_SkillID;
+            var pSkillId = _Para.SkillID;
             if (Existed(pSkillId))
             {
                 RemoveSkillObject(pSkillId);

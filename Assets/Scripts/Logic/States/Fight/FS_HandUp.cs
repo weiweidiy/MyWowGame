@@ -21,7 +21,7 @@ namespace Logic.States.Fight
         
         public override void Enter(FightStateData pContext)
         {
-            Debug.LogWarning("FS - FS_HandUp ENTER");
+            //Debug.LogWarning("FS - FS_HandUp ENTER");
             
             m_StateData = pContext;
             

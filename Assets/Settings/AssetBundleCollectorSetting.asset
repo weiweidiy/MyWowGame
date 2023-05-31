@@ -93,6 +93,14 @@ MonoBehaviour:
         FilterRuleName: CollectPrefab
         AssetTags: 
         UserData: 
+      - CollectPath: Assets/GameRes/Player/RoomPartners
+        CollectorGUID: cc1d8ba7b14457847b549f3e54dc6260
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackSeparately
+        FilterRuleName: CollectPrefab
+        AssetTags: 
+        UserData: 
     - GroupName: Effect
       GroupDesc: "\u6548\u679C\u8868\u73B0"
       AssetTags: Effect
@@ -143,6 +151,78 @@ MonoBehaviour:
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 
+      - CollectPath: Assets/GameRes/Icons/Spoil
+        CollectorGUID: af8999a9b390acf4698c75adc5db63c4
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameRes/Icons/Research
+        CollectorGUID: db0d360b780448a4db6d0529b531c94e
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameRes/Icons/Driver
+        CollectorGUID: 4dd45c911ae5234438dd0dfbc3a49f9a
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameRes/Icons/DriverShow
+        CollectorGUID: ca5b5c04c3af3e545b4ccc277c1cfbb4
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameRes/Icons/DriverAttribute
+        CollectorGUID: ab68fc182f6826e47be1b84c6aef9c43
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameRes/Icons/DriverSkill
+        CollectorGUID: 9f220efee6d16a84d82257458acbd3ec
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameRes/Icons/Engine
+        CollectorGUID: 5ea1fe9fed9488f4f90ea9bcdea5f1d9
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameRes/Icons/PartnerShow
+        CollectorGUID: 51cb82f84fede0048bc4a6dc1693a590
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameRes/Icons/SkillShow
+        CollectorGUID: c07509717cbd0b94eb82c64aa9606a93
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
     - GroupName: Skills
       GroupDesc: "\u73A9\u5BB6\u6280\u80FD\u5BF9\u8C61"
       AssetTags: Skills
@@ -153,6 +233,19 @@ MonoBehaviour:
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackSeparately
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: SceneEvn
+      GroupDesc: "\u573A\u666F\u5730\u56FE"
+      AssetTags: SceneEvn
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/GameRes/Scene/SceneEnv
+        CollectorGUID: a572c9a02a53ccf42bc3ff6e5e265f81
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 

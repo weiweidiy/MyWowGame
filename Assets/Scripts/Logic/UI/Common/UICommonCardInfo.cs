@@ -101,7 +101,7 @@ namespace Logic.UI.Common
                     IsHave = EquipManager.Ins.IsHave(id, itemType);
                     m_GameEquipData = IsHave
                         ? EquipManager.Ins.GetEquipData(id, itemType)
-                        : new GameEquipData { m_EquipID = id, m_Level = 1, m_Count = 0 };
+                        : new GameEquipData { EquipID = id, Level = 1, Count = 0 };
                     UICommonHelper.LoadIcon(m_EquipIcon, m_ItemData.Res);
                     UICommonHelper.LoadQuality(m_EquipQuality, m_EquipData.Quality);
                     m_EquipQualityText.text = UICommonHelper.GetQualityShowText(m_EquipData.Quality);
@@ -114,7 +114,7 @@ namespace Logic.UI.Common
                     IsHave = SkillManager.Ins.IsHave(id);
                     m_GameSkillData = IsHave
                         ? SkillManager.Ins.GetSkillData(id)
-                        : new GameSkillData { m_SkillID = id, m_Level = 1, m_Count = 0 };
+                        : new GameSkillData { SkillID = id, Level = 1, Count = 0 };
                     UICommonHelper.LoadIcon(m_SkillIcon, m_ItemData.Res);
                     UICommonHelper.LoadQuality(m_SkillQuality, m_SkillData.Quality);
                     m_SkillQualityText.text = UICommonHelper.GetQualityShowText(m_SkillData.Quality);
@@ -127,7 +127,7 @@ namespace Logic.UI.Common
                     IsHave = PartnerManager.Ins.IsHave(id);
                     m_GamePartnerData = IsHave
                         ? PartnerManager.Ins.GetPartnerData(id)
-                        : new GamePartnerData() { m_PartnerID = id, m_Level = 1, m_Count = 0 };
+                        : new GamePartnerData() { PartnerID = id, Level = 1, Count = 0 };
                     UICommonHelper.LoadIcon(m_PartnerIcon, m_ItemData.Res);
                     UICommonHelper.LoadQuality(m_PartnerQuality, m_PartnerData.Quality);
                     m_PartnerQualityText.text = UICommonHelper.GetQualityShowText(m_PartnerData.Quality);
@@ -174,10 +174,10 @@ namespace Logic.UI.Common
         private void UpdateSkillInfo()
         {
             m_SkillName.text = m_SkillData.SkillName;
-            m_SkillLevel.text = "LV" + m_GameSkillData.m_Level;
+            m_SkillLevel.text = "LV" + m_GameSkillData.Level;
             m_SkillCD.text = m_SkillData.CD + "秒";
             m_SkillInfo.text = string.Format(m_SkillData.SkillDes,
-                m_SkillData.DamageBase + (m_GameSkillData.m_Level - 1) * m_SkillData.DamageGrow);
+                m_SkillData.DamageBase + (m_GameSkillData.Level - 1) * m_SkillData.DamageGrow);
 
             var curCount = SkillManager.Ins.CurCount(m_SkillData.ID);
             var needCount = SkillManager.Ins.UpgradeNeedCount(m_SkillData.ID);
@@ -209,9 +209,9 @@ namespace Logic.UI.Common
         private void UpdatePartnerInfo()
         {
             m_PartnerName.text = m_PartnerData.PartnerName;
-            m_PartnerLevel.text = "LV" + m_GamePartnerData.m_Level;
+            m_PartnerLevel.text = "LV" + m_GamePartnerData.Level;
             m_PartnerCD.text = m_PartnerData.AtkSpeed + "秒";
-            m_PartnerATK.text = ((m_PartnerData.AtkBase + (m_GamePartnerData.m_Level - 1) * m_PartnerData.AtkGrow) *
+            m_PartnerATK.text = ((m_PartnerData.AtkBase + (m_GamePartnerData.Level - 1) * m_PartnerData.AtkGrow) *
                                  Formula.GetGJJAtk())
                 .ToUIString();
 
@@ -245,7 +245,7 @@ namespace Logic.UI.Common
         private void UpdateEquipInfo(ItemType equipType)
         {
             m_EquipName.text = m_EquipData.EquipName;
-            m_EquipLevel.text = "LV" + m_GameEquipData.m_Level;
+            m_EquipLevel.text = "LV" + m_GameEquipData.Level;
 
             var curCount = EquipManager.Ins.CurCount(m_EquipData.ID, equipType);
             var needCount = EquipManager.Ins.NeedCount(m_EquipData.ID, equipType);

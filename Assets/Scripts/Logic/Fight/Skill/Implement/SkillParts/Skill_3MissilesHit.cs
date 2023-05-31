@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Logic.Fight.Skill.Implement.SkillParts
 {
@@ -10,12 +11,28 @@ namespace Logic.Fight.Skill.Implement.SkillParts
 
         public void PlayAni(Vector3 pPos)
         {
-            //transform.SetParent(FightManager.Ins.m_GroundNode);
+            transform.SetParent(FightManager.Ins.m_GroundNode);
             transform.position = pPos;
             m_Animator.enabled = true;
             m_Animator.SetTrigger(Play);
+            StartCoroutine(WaitDestroy(1f));
         }
-        
+
+        public void Destroy()
+        {
+            GameObject.Destroy(gameObject);
+        }
+
+
+        IEnumerator WaitDestroy(float interval)
+        {
+            yield return new WaitForSeconds(interval);
+            GameObject.Destroy(gameObject);
+        }
+
+        /// <summary>
+        /// 废弃，不用了
+        /// </summary>
         public void OnAniEnd()
         {
             m_Animator.enabled = false;

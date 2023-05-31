@@ -1,5 +1,6 @@
 using Framework.GameFSM;
 using Framework.UI;
+using Logic.Data;
 
 namespace Logic.States.Game
 {
@@ -15,6 +16,8 @@ namespace Logic.States.Game
         public override void Enter(GameStateData pContext)
         {
             var _ = UIManager.Ins;
+            //加载本地数据
+            LocalSaveManager.Ins.Load();
             GameSM.Ins.ToLogin();
         }
         

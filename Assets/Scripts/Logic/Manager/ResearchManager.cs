@@ -13,7 +13,15 @@ namespace Logic.Manager
     {
         public Dictionary<int, GameResearchData> ResearchMap { get; private set; }
 
-        //研究属性加成
+        /*
+         * 研究属性加成
+         * 研究攻击力增加
+         * 研究体力增加
+         * 研究矿锤拥有上限增加
+         * 研究矿石获得量增加
+         * 研究矿锤补充速度增加
+         * 研究速度增加
+         */
         public float ResearchATK { get; private set; }
         public float ResearchHP { get; private set; }
         public float ResearchHammerLimit { get; private set; }
@@ -26,7 +34,7 @@ namespace Logic.Manager
             ResearchMap = new Dictionary<int, GameResearchData>(64);
             foreach (var gameResearchData in researchList)
             {
-                ResearchMap.Add(gameResearchData.m_ResearchId, gameResearchData);
+                ResearchMap.Add(gameResearchData.ResearchId, gameResearchData);
             }
 
             UpdateAllResearchCompleteEffect(researchEffectData);
@@ -44,30 +52,6 @@ namespace Logic.Manager
         public BigDouble GetResearchHPAdd()
         {
             return ResearchHP;
-        }
-
-        //研究矿锤拥有上限增加
-        public float GetResearchHammerLimitAdd()
-        {
-            return ResearchHammerLimit;
-        }
-
-        //研究矿石获得量增加
-        public float GetResearchMineObtainAmountAdd()
-        {
-            return ResearchMineObtainAmount;
-        }
-
-        //研究矿锤补充速度增加
-        public float GetResearchHammerRecoverSpeedAdd()
-        {
-            return ResearchHammerRecoverSpeed;
-        }
-
-        //研究速度增加
-        public float GetResearchSpeedAdd()
-        {
-            return ResearchSpeed;
         }
 
         #endregion
@@ -95,6 +79,16 @@ namespace Logic.Manager
         }
 
         /// <summary>
+        /// 获取Res表数据
+        /// </summary>
+        /// <param name="rId"></param>
+        /// <returns></returns>
+        public ResData GetResData(int rId)
+        {
+            return ResCfg.GetData(rId);
+        }
+
+        /// <summary>
         /// 获取研究数据
         /// </summary>
         /// <param name="researchId"></param>
@@ -111,7 +105,7 @@ namespace Logic.Manager
         /// <returns></returns>
         public bool IsCanResearch(int cost)
         {
-            return MiningManager.Ins.m_MiningData.m_MineCount >= cost;
+            return MiningManager.Ins.m_MiningData.MineCount >= cost;
         }
 
         /// <summary>
@@ -129,12 +123,12 @@ namespace Logic.Manager
         /// </summary>
         private void UpdateAllResearchCompleteEffect(GameResearchEffectData researchEffectData)
         {
-            ResearchATK = researchEffectData.researchATK;
-            ResearchHP = researchEffectData.researchHP;
-            ResearchHammerLimit = researchEffectData.researchHammerLimit;
-            ResearchMineObtainAmount = researchEffectData.researchMineObtainAmount;
-            ResearchHammerRecoverSpeed = researchEffectData.researchHammerRecoverSpeed;
-            ResearchSpeed = researchEffectData.researchSpeed;
+            ResearchATK = researchEffectData.ResearchATK;
+            ResearchHP = researchEffectData.ResearchHP;
+            ResearchHammerLimit = researchEffectData.ResearchHammerLimit;
+            ResearchMineObtainAmount = researchEffectData.ResearchMineObtainAmount;
+            ResearchHammerRecoverSpeed = researchEffectData.ResearchHammerRecoverSpeed;
+            ResearchSpeed = researchEffectData.ResearchSpeed;
             EventManager.Call(LogicEvent.ResearchCompleteEffectUpdate);
         }
 
@@ -146,7 +140,7 @@ namespace Logic.Manager
         {
             NetworkManager.Ins.SendMsg(new C2S_UpdateResearchTime()
             {
-                m_ResearchId = pResearchId,
+                ResearchId = pResearchId,
             });
         }
 
@@ -154,8 +148,8 @@ namespace Logic.Manager
         {
             NetworkManager.Ins.SendMsg(new C2S_Researching()
             {
-                m_ResearchId = pResearchId,
-                m_ResearchCompleteType = researchCompleteType,
+                ResearchId = pResearchId,
+                ResearchCompleteType = researchCompleteType,
             });
         }
 
@@ -165,32 +159,32 @@ namespace Logic.Manager
 
         public void OnUpdateResearchTime(S2C_UpdateResearchTime pMsg)
         {
-            var data = (pMsg.m_ResearchId, pMsg.m_ResearchTimeStamp);
+            var data = (m_ResearchId: pMsg.ResearchId, m_ResearchTimeStamp: pMsg.ResearchTimeStamp);
             EventManager.Call(LogicEvent.OnUpdateResearchTime, data);
         }
 
         public void OnResearching(S2C_Researching pMsg)
         {
-            foreach (var gameResearchData in pMsg.m_ResearchList)
+            foreach (var gameResearchData in pMsg.ResearchList)
             {
                 //更新研究数据
-                var data = GetGameResearchData(gameResearchData.m_ResearchId);
+                var data = GetGameResearchData(gameResearchData.ResearchId);
                 if (data != null)
                 {
-                    data.m_ResearchId = gameResearchData.m_ResearchId;
-                    data.m_ResearchLevel = gameResearchData.m_ResearchLevel;
-                    data.m_IsResearching = gameResearchData.m_IsResearching;
-                    data.m_researchTimeStamp = gameResearchData.m_researchTimeStamp;
+                    data.ResearchId = gameResearchData.ResearchId;
+                    data.ResearchLevel = gameResearchData.ResearchLevel;
+                    data.IsResearching = gameResearchData.IsResearching;
+                    data.ResearchTimeStamp = gameResearchData.ResearchTimeStamp;
                 }
                 else
                 {
-                    ResearchMap.Add(gameResearchData.m_ResearchId, gameResearchData);
+                    ResearchMap.Add(gameResearchData.ResearchId, gameResearchData);
                 }
             }
 
-            UpdateAllResearchCompleteEffect(pMsg.m_ResearchEffectData);
+            UpdateAllResearchCompleteEffect(pMsg.ResearchEffectData);
 
-            var eventData = (pMsg.m_ResearchId, pMsg.m_ResearchLevel);
+            var eventData = (m_ResearchId: pMsg.ResearchId, m_ResearchLevel: pMsg.ResearchLevel);
             EventManager.Call(LogicEvent.OnResearching, eventData);
         }
 

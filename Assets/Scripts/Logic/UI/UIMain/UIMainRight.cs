@@ -22,7 +22,6 @@ namespace Logic.UI.UIMain
         public TextMeshProUGUI m_TaskName;
         public TextMeshProUGUI m_TaskContent;
         public TextMeshProUGUI m_TaskReward;
-        public GameObject m_TaskRedObj;
         public GameObject m_TaskBreathObj;
 
         private TaskData m_TaskData;
@@ -47,9 +46,8 @@ namespace Logic.UI.UIMain
             m_EventGroup.Register(LogicEvent.TaskStateChanged, (i, o) =>
             {
                 var _TaskID = (int)o;
-                if (_TaskID == m_GameTaskData.m_TaskID && m_GameTaskData.m_TaskState == (int)TaskState.Complete)
+                if (_TaskID == m_GameTaskData.TaskID && m_GameTaskData.TaskState == (int)TaskState.Complete)
                 {
-                    m_TaskRedObj.Show();
                     m_TaskBreathObj.Show();
                 }
             });
@@ -63,9 +61,9 @@ namespace Logic.UI.UIMain
             m_BtnPlaceRewards.onClick.AddListener(OnBtnPlaceRewardClick);
         }
 
-        public override void OnShow()
+        private void Start()
         {
-            UpdatePlaceRewardTime();
+            StartPlaceRewardTime();
         }
 
         #region 任务
@@ -73,28 +71,26 @@ namespace Logic.UI.UIMain
         private void UpdateMainTask()
         {
             m_GameTaskData = TaskManager.Ins.m_MainTaskData;
-            m_TaskData = TaskCfg.GetData(m_GameTaskData.m_TaskID);
+            m_TaskData = TaskCfg.GetData(m_GameTaskData.TaskID);
             m_TaskTypeData = TaskTypeCfg.GetData(m_TaskData.TaskType);
 
             m_TaskName.text = "任务 " + TaskManager.Ins.m_MainTaskCount;
             m_TaskContent.text = string.Format(m_TaskTypeData.TaskDes, GetTaskProgressStr());
             m_TaskReward.text = m_TaskData.RewardCountBase.ToString();
 
-            if (m_GameTaskData.m_TaskState == (int)TaskState.Complete)
+            if (m_GameTaskData.TaskState == (int)TaskState.Complete)
             {
-                m_TaskRedObj.Show();
                 m_TaskBreathObj.Show();
             }
             else
             {
-                m_TaskRedObj.Hide();
                 m_TaskBreathObj.Hide();
             }
         }
 
         private string GetTaskProgressStr()
         {
-            var _TaskProgress = m_GameTaskData.m_TaskProcess;
+            var _TaskProgress = m_GameTaskData.TaskProcess;
             var _TaskProgressMax = m_TaskData.TargetBaseCount;
 
             switch ((TaskType)m_TaskData.TaskType)
@@ -112,10 +108,10 @@ namespace Logic.UI.UIMain
 
         public void OnClickMainTask()
         {
-            if (m_GameTaskData.m_TaskState == (int)TaskState.Complete)
+            if (m_GameTaskData.TaskState == (int)TaskState.Complete)
             {
                 NetworkManager.Ins.SendMsg(
-                    new C2S_TaskGetReward { m_IsMain = true, m_TaskID = m_GameTaskData.m_TaskID });
+                    new C2S_TaskGetReward { IsMain = true, TaskID = m_GameTaskData.TaskID });
             }
             else
             {
@@ -132,10 +128,10 @@ namespace Logic.UI.UIMain
 
         #region 放置奖励
 
-        private void UpdatePlaceRewardTime()
+        private void StartPlaceRewardTime()
         {
             m_GameExitTime =
-                TimeHelper.GetSecondBetweenUnixTimeStamp(DateTime.Now, GameDataManager.Ins.LastGameDate);
+                TimeHelper.GetBetween(DateTime.UtcNow, GameDataManager.Ins.LastGameDate);
             StartShowPlaceRewardBtnTimer();
         }
 
@@ -171,7 +167,7 @@ namespace Logic.UI.UIMain
         /// </summary>
         private void PlaceRewardPop()
         {
-            if (TimeHelper.GetStringDateTime(GameDataManager.Ins.PopPlaceRewardTime) == DateTime.Today)
+            if (GameDataManager.Ins.PopPlaceRewardTime == DateTime.Today.Day)
             {
                 m_BtnPlaceRewards.Show();
             }
@@ -181,7 +177,7 @@ namespace Logic.UI.UIMain
                 if (UIBottomMenu.Ins.m_BottomBtnType == BottomBtnType.Home)
                 {
                     m_PlaceRewardPopTimer?.Cancel();
-                    GameDataManager.Ins.PopPlaceRewardTime = TimeHelper.GetDateTimeTodayString();
+                    GameDataManager.Ins.PopPlaceRewardTime = DateTime.Today.Day;
                     OnBtnPlaceRewardClick();
                 }
                 else

@@ -68,5 +68,16 @@ Group表格
         //BOSS血量成长比例
         public float BOSSHPGrowMultiple;
 
+        /*
+        Administrator:
+场景类型
+1-99配置：从Scene表读取组
+100： 从Scene表1-99中随机一个
+100+：副本BOSS场景
+
+        */
+        //Boss怪场景
+        public int BossScenes;
+
     }
 }

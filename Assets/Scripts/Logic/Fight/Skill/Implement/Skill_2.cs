@@ -50,11 +50,9 @@ namespace Logic.Fight.Skill.Implement
 
         private EnemyRange m_Range;
         private bool m_NeedSearch = true;
-        Enemy m_curEnemy = null;
 
         public override void OnFindTarget(Enemy pTarget)
         {
-            m_curEnemy = pTarget;
 
             m_NeedSearch = false;
             

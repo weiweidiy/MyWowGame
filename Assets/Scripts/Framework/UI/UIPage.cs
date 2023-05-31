@@ -34,7 +34,7 @@ namespace Framework.UI
         [TabGroup("背景层"), LabelText("是否添加背景")] public bool m_NeedMask = false;
 
         [TabGroup("背景层"), ShowIf("m_NeedMask"), LabelText("背景颜色")]
-        public Color m_MaskColor = new Color(0f, 0f, 0f, 200f / 255f);
+        private Color m_MaskColor = new Color(0f, 0f, 0f, 230f / 255f);
 
         private GameObject m_MaskObj;
         protected readonly EventGroup m_EventGroup = new();

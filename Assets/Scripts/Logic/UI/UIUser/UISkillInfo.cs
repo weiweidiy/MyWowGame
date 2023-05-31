@@ -54,7 +54,7 @@ namespace Logic.UI.UIUser
             if (IsHave)
                 m_GameSkillData = SkillManager.Ins.GetSkillData(_SkillID);
             else
-                m_GameSkillData = new GameSkillData { m_SkillID = _SkillID, m_Level = 1, m_Count = 0 }; //没有按1级算
+                m_GameSkillData = new GameSkillData { SkillID = _SkillID, Level = 1, Count = 0 }; //没有按1级算
 
             var itemData = ItemCfg.GetData(m_SkillData.ID);
             UICommonHelper.LoadIcon(m_Icon, itemData.Res);
@@ -101,10 +101,10 @@ namespace Logic.UI.UIUser
         private void UpdateSkillInfo()
         {
             m_SkillName.text = m_SkillData.SkillName;
-            m_Level.text = "LV" + m_GameSkillData.m_Level;
+            m_Level.text = "LV" + m_GameSkillData.Level;
             m_SkillCD.text = m_SkillData.CD + "秒";
             m_SkillInfo.text = string.Format(m_SkillData.SkillDes,
-                m_SkillData.DamageBase + (m_GameSkillData.m_Level - 1) * m_SkillData.DamageGrow);
+                m_SkillData.DamageBase + (m_GameSkillData.Level - 1) * m_SkillData.DamageGrow);
 
             var _CurCount = SkillManager.Ins.CurCount(m_SkillData.ID);
             var _NeedCount = SkillManager.Ins.UpgradeNeedCount(m_SkillData.ID);

@@ -19,7 +19,7 @@ namespace Logic.Manager
 
         public void Init(S2C_Login pMsg)
         {
-            m_MiningData = pMsg.m_MiningData;
+            m_MiningData = pMsg.MiningData;
         }
 
         /// <summary>
@@ -31,42 +31,42 @@ namespace Logic.Manager
         {
             var pMsg = new C2S_UpdateMiningData()
             {
-                m_MiningDataType = (int)miningDataType,
-                m_UpdateType = (int)miningUpdateType,
+                MiningDataType = (int)miningDataType,
+                UpdateType = (int)miningUpdateType,
             };
             NetworkManager.Ins.SendMsg(pMsg);
         }
 
         public void On_S2C_UpdateMiningData(S2C_UpdateMiningData pMsg)
         {
-            switch ((MiningType)pMsg.m_MiningDataType)
+            switch ((MiningType)pMsg.MiningDataType)
             {
                 case MiningType.Gear:
-                    m_MiningData.m_GearCount = pMsg.m_MiningData.m_GearCount;
+                    m_MiningData.GearCount = pMsg.MiningData.GearCount;
                     break;
                 case MiningType.Hammer:
-                    m_MiningData.m_HammerCount = pMsg.m_MiningData.m_HammerCount;
+                    m_MiningData.HammerCount = pMsg.MiningData.HammerCount;
                     break;
                 case MiningType.CopperMine:
                 case MiningType.SilverMine:
                 case MiningType.GoldMine:
-                    m_MiningData.m_MineCount = pMsg.m_MiningData.m_MineCount;
+                    m_MiningData.MineCount = pMsg.MiningData.MineCount;
                     break;
                 case MiningType.Bomb:
-                    m_MiningData.m_BombCount = pMsg.m_MiningData.m_BombCount;
+                    m_MiningData.BombCount = pMsg.MiningData.BombCount;
                     break;
                 case MiningType.Scope:
-                    m_MiningData.m_ScopeCount = pMsg.m_MiningData.m_ScopeCount;
+                    m_MiningData.ScopeCount = pMsg.MiningData.ScopeCount;
                     break;
                 case MiningType.Door:
                 {
-                    m_MiningData.m_FloorCount = pMsg.m_MiningData.m_FloorCount;
-                    TaskManager.Ins.DoTaskUpdate(TaskType.TT_5001, m_MiningData.m_FloorCount);
+                    m_MiningData.FloorCount = pMsg.MiningData.FloorCount;
+                    TaskManager.Ins.DoTaskUpdate(TaskType.TT_5001, m_MiningData.FloorCount);
                 }
                     break;
             }
 
-            EventManager.Call(LogicEvent.MiningDataChanged, pMsg.m_MiningDataType);
+            EventManager.Call(LogicEvent.MiningDataChanged, pMsg.MiningDataType);
         }
 
         #endregion

@@ -17,9 +17,9 @@ namespace DummyServer
 
         public void InitShop(DummyDB pDB)
         {
-            pDB.m_ShopSkillData = new GameShopSkillData { m_ID = 3001, m_Level = 1, m_Exp = 0, m_TotalExp = 0 };
-            pDB.m_ShopPartnerData = new GameShopPartnerData { m_ID = 4001, m_Level = 1, m_Exp = 0, m_TotalExp = 0 };
-            pDB.m_ShopEquipData = new GameShopEquipData { m_ID = 1001, m_Level = 1, m_Exp = 0, m_TotalExp = 0 };
+            pDB.m_ShopSkillData = new GameShopSkillData { ID = 3001, Level = 1, Exp = 0, TotalExp = 0 };
+            pDB.m_ShopPartnerData = new GameShopPartnerData { ID = 4001, Level = 1, Exp = 0, TotalExp = 0 };
+            pDB.m_ShopEquipData = new GameShopEquipData { ID = 1001, Level = 1, Exp = 0, TotalExp = 0 };
         }
 
         #endregion
@@ -160,19 +160,19 @@ namespace DummyServer
 
             GetSummonData(id);
             var data = m_DB.m_ShopEquipData;
-            data.m_Exp += count;
-            data.m_TotalExp += count;
-            if (data.m_Exp >= m_SummonData.LevelExp)
+            data.Exp += count;
+            data.TotalExp += count;
+            if (data.Exp >= m_SummonData.LevelExp)
             {
-                data.m_Level++;
-                data.m_ID++;
-                if (data.m_ID >= 1010)
+                data.Level++;
+                data.ID++;
+                if (data.ID >= 1010)
                 {
-                    data.m_Exp = 0;
+                    data.Exp = 0;
                 }
                 else
                 {
-                    data.m_Exp -= m_SummonData.LevelExp;
+                    data.Exp -= m_SummonData.LevelExp;
                 }
             }
 
@@ -183,11 +183,11 @@ namespace DummyServer
         {
             SendMsg(new S2C_UpdateDrawCardData()
             {
-                m_DrawCardType = (int)DrawCardType.Equip,
-                m_DrawCardId = m_DB.m_ShopEquipData.m_ID,
-                m_DrawCardLevel = m_DB.m_ShopEquipData.m_Level,
-                m_DarwCardExp = m_DB.m_ShopEquipData.m_Exp,
-                m_DrawCardTotalExp = m_DB.m_ShopEquipData.m_TotalExp
+                DrawCardType = (int)DrawCardType.Equip,
+                DrawCardId = m_DB.m_ShopEquipData.ID,
+                DrawCardLevel = m_DB.m_ShopEquipData.Level,
+                DrawCardExp = m_DB.m_ShopEquipData.Exp,
+                DrawCardTotalExp = m_DB.m_ShopEquipData.TotalExp
             });
         }
 
@@ -204,19 +204,19 @@ namespace DummyServer
 
             GetSummonData(id);
             var data = m_DB.m_ShopSkillData;
-            data.m_Exp += count;
-            data.m_TotalExp += count;
-            if (data.m_Exp >= m_SummonData.LevelExp)
+            data.Exp += count;
+            data.TotalExp += count;
+            if (data.Exp >= m_SummonData.LevelExp)
             {
-                data.m_Level++;
-                data.m_ID++;
-                if (data.m_ID >= 3010)
+                data.Level++;
+                data.ID++;
+                if (data.ID >= 3010)
                 {
-                    data.m_Exp = 0;
+                    data.Exp = 0;
                 }
                 else
                 {
-                    data.m_Exp -= m_SummonData.LevelExp;
+                    data.Exp -= m_SummonData.LevelExp;
                 }
             }
 
@@ -227,11 +227,11 @@ namespace DummyServer
         {
             SendMsg(new S2C_UpdateDrawCardData()
             {
-                m_DrawCardType = (int)DrawCardType.Skill,
-                m_DrawCardId = m_DB.m_ShopSkillData.m_ID,
-                m_DrawCardLevel = m_DB.m_ShopSkillData.m_Level,
-                m_DarwCardExp = m_DB.m_ShopSkillData.m_Exp,
-                m_DrawCardTotalExp = m_DB.m_ShopSkillData.m_TotalExp
+                DrawCardType = (int)DrawCardType.Skill,
+                DrawCardId = m_DB.m_ShopSkillData.ID,
+                DrawCardLevel = m_DB.m_ShopSkillData.Level,
+                DrawCardExp = m_DB.m_ShopSkillData.Exp,
+                DrawCardTotalExp = m_DB.m_ShopSkillData.TotalExp
             });
         }
 
@@ -248,19 +248,19 @@ namespace DummyServer
 
             GetSummonData(id);
             var data = m_DB.m_ShopPartnerData;
-            data.m_Exp += count;
-            data.m_TotalExp += count;
-            if (data.m_Exp >= m_SummonData.LevelExp)
+            data.Exp += count;
+            data.TotalExp += count;
+            if (data.Exp >= m_SummonData.LevelExp)
             {
-                data.m_Level++;
-                data.m_ID++;
-                if (data.m_ID >= 4010)
+                data.Level++;
+                data.ID++;
+                if (data.ID >= 4010)
                 {
-                    data.m_Exp = 0;
+                    data.Exp = 0;
                 }
                 else
                 {
-                    data.m_Exp -= m_SummonData.LevelExp;
+                    data.Exp -= m_SummonData.LevelExp;
                 }
             }
 
@@ -271,11 +271,11 @@ namespace DummyServer
         {
             SendMsg(new S2C_UpdateDrawCardData()
             {
-                m_DrawCardType = (int)DrawCardType.Partner,
-                m_DrawCardId = m_DB.m_ShopPartnerData.m_ID,
-                m_DrawCardLevel = m_DB.m_ShopPartnerData.m_Level,
-                m_DarwCardExp = m_DB.m_ShopPartnerData.m_Exp,
-                m_DrawCardTotalExp = m_DB.m_ShopPartnerData.m_TotalExp
+                DrawCardType = (int)DrawCardType.Partner,
+                DrawCardId = m_DB.m_ShopPartnerData.ID,
+                DrawCardLevel = m_DB.m_ShopPartnerData.Level,
+                DrawCardExp = m_DB.m_ShopPartnerData.Exp,
+                DrawCardTotalExp = m_DB.m_ShopPartnerData.TotalExp
             });
         }
 

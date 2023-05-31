@@ -33,15 +33,17 @@ namespace Logic.Fight.Common
         public BigDouble CurrentEnemyATK; //当前怪物攻击力
         public BigDouble CurrentEnemyHP; //当前怪物血量
         public BigDouble CurrentEnemyDrop; //当前怪物掉落金币
+        public Enemy.EnemyType EnemeyType; //怪物类型
         
         public SpawnData(){}
 
-        public SpawnData(string pEnemyRes, BigDouble pATK, BigDouble pHP, BigDouble pDrop)
+        public SpawnData(string pEnemyRes, BigDouble pATK, BigDouble pHP, BigDouble pDrop, Enemy.EnemyType pEenemyType= Enemy.EnemyType.Normal)
         {
             EnemyRes = pEnemyRes;
             CurrentEnemyATK = pATK;
             CurrentEnemyHP = pHP;
             CurrentEnemyDrop = pDrop;
+            EnemeyType = pEenemyType;
         }
     }
     
@@ -70,11 +72,13 @@ namespace Logic.Fight.Common
         private int m_SpawnInterval; //一般刷新
         private int m_SpawnIntervalCopyDiamond; //元宝副本
         private int m_SpawnIntervalHangUp; //挂机
+        private int m_SpawnIntervalCopyTrophy; //战利品副本
         private void Start()
         {
             m_SpawnInterval = GameDefine.NormalSpawnInterval;
             m_SpawnIntervalCopyDiamond = GameDefine.CopyDiamondSpawnInterval;
             m_SpawnIntervalHangUp = GameDefine.HangUpSpawnInterval;
+            m_SpawnIntervalCopyTrophy = GameDefine.CopyTrophySpawnInterval;
         }
 
         protected override void OnDestroy()
@@ -116,7 +120,7 @@ namespace Logic.Fight.Common
             m_IsSpawningEnemy = true;
             _CurrentMoveSpeedMult = 1f;
             var _BossRes = ResCfgEx.GetResGroup(CopyManager.Ins.GetCopyCoinBossID())[0];//  .(Formula.GetLevelResGroupID());
-            m_EnemySpawnQueue.Enqueue(new SpawnData(_BossRes, 0, CopyManager.Ins.GetCopyCoinBossHp(), 0));
+            m_EnemySpawnQueue.Enqueue(new SpawnData(_BossRes, 0, CopyManager.Ins.GetCopyCoinBossHp(), 0, Enemy.EnemyType.Boss));
             
             DoSpawnEnemy(m_SpawnInterval);
         }
@@ -137,7 +141,7 @@ namespace Logic.Fight.Common
             
             for (int i = 0; i < _Count; i++)
             {
-                m_EnemySpawnQueue.Enqueue(new SpawnData(_EList.Next(), _ATK, _HP, 0));    
+                m_EnemySpawnQueue.Enqueue(new SpawnData(_EList.Next(), _ATK, _HP, 0, Enemy.EnemyType.Boss));    
             }
             
             DoSpawnEnemy(m_SpawnIntervalCopyDiamond);
@@ -159,10 +163,32 @@ namespace Logic.Fight.Common
 
             for (int i = 0; i < _Count; i++)
             {
-                m_EnemySpawnQueue.Enqueue(new SpawnData(_EList.Next(), _ATK, _HP, 0));
+                m_EnemySpawnQueue.Enqueue(new SpawnData(_EList.Next(), _ATK, _HP, 0,Enemy.EnemyType.Boss));
             }
 
             DoSpawnEnemy(m_SpawnIntervalCopyDiamond);
+        }
+
+        /// <summary>
+        /// 开始刷新战利品怪物
+        /// </summary>
+        public void StartSpawnTrophyCopyEnemy()
+        {
+            m_IsSpawningEnemy = true;
+            _CurrentMoveSpeedMult = GameDefine.CopyTrophyMoveSpeedMult;
+            var _Count = CopyManager.Ins.GetCopyTrophyBossCount();
+
+            var _ATK = (CopyManager.Ins.GetCopyTrophyBossATK() / _Count).Ceiling();
+            var _HP = (CopyManager.Ins.GetCopyTrophyBossHp() / _Count).Ceiling();
+
+            var _EList = ResCfgEx.GetResGroup(CopyManager.Ins.GetCopyTrophyBossID());
+
+            for (int i = 0; i < _Count; i++)
+            {
+                m_EnemySpawnQueue.Enqueue(new SpawnData(_EList.Next(), _ATK, _HP, 0, Enemy.EnemyType.Boss));
+            }
+
+            DoSpawnEnemy(m_SpawnIntervalCopyTrophy);
         }
 
         
@@ -324,7 +350,22 @@ namespace Logic.Fight.Common
             {
                 var _EnemyData = m_EnemySpawnQueue.Dequeue();
                 var _EnemyInsID = ++m_EnemyInsIDIndex;
-                var _Enemy = await FightEnemySpawnManager.Ins.SpawnEnemy(_EnemyData.EnemyRes);
+
+                Enemy _Enemy = null;
+                switch (_EnemyData.EnemeyType)
+                {
+                    case Enemy.EnemyType.Elite:
+                    case Enemy.EnemyType.Normal:
+                        _Enemy = await FightEnemySpawnManager.Ins.SpawnEnemy(_EnemyData.EnemyRes);
+                        break;
+                    case Enemy.EnemyType.Boss:
+                        _Enemy = await FightEnemySpawnManager.Ins.SpawnEnemyBoss(_EnemyData.EnemyRes);
+                        break;
+                    default:
+                        Debug.LogError("EnemeyType还没有实现");
+                        break;
+                }
+ 
                 _Enemy.Init(_EnemyInsID, _EnemyData.CurrentEnemyHP, _EnemyData.CurrentEnemyATK, _EnemyData.CurrentEnemyDrop, _CurrentMoveSpeedMult);
                 
                 m_EnemyDic.Add(_EnemyInsID, _Enemy);
@@ -379,8 +420,9 @@ namespace Logic.Fight.Common
             var _EList = ResCfgEx.GetResGroup(Formula.GetLevelNormalResGroupID());
             for (int i = 0; i < _Count; i++)
             {
-                m_EnemySpawnQueue.Enqueue(new SpawnData(_EList.Next(), _ATK, _HP, _Drop));    
+                m_EnemySpawnQueue.Enqueue(new SpawnData(_EList.Next(), _ATK, _HP, _Drop, Enemy.EnemyType.Normal));    
             }
+
         }
         
         //精英怪
@@ -395,7 +437,7 @@ namespace Logic.Fight.Common
             var _EList = ResCfgEx.GetResGroup(Formula.GetLevelEliteResGroupID());
             for (int i = 0; i < _Count; i++)
             {
-                m_EnemySpawnQueue.Enqueue(new SpawnData(_EList.Next(), _ATK, _HP, _Drop));    
+                m_EnemySpawnQueue.Enqueue(new SpawnData(_EList.Next(), _ATK, _HP, _Drop, Enemy.EnemyType.Elite));    
             }
         }
         
@@ -407,7 +449,7 @@ namespace Logic.Fight.Common
             var _Drop = (pLevelData.DropWight[2] * 0.01 * Formula.GetLevelDrop()).Ceiling();
     
             var _BossRes = LevelResCfg.GetData((int)Formula.GetLevelResID()).BOSSRes;
-            m_EnemySpawnQueue.Enqueue(new SpawnData(_BossRes, _ATK, _HP, _Drop));
+            m_EnemySpawnQueue.Enqueue(new SpawnData(_BossRes, _ATK, _HP, _Drop,Enemy.EnemyType.Boss));
         }
         
         //挂机怪

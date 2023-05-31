@@ -22,8 +22,8 @@ namespace Logic.UI.Cells
         public Image m_Quality;
         public Image m_Icon;
         public TextMeshProUGUI m_Level;
+        public TextMeshProUGUI m_ItemName;
         public GameObject m_BKPlus;
-        public GameObject m_BKLock;
 
         public EventGroup m_EventGroup = new();
 
@@ -35,7 +35,7 @@ namespace Logic.UI.Cells
                 {
                     if (m_SkillData == null) return;
                     var m_GameSkillData = SkillManager.Ins.GetSkillData(m_SkillData.ID);
-                    m_Level.text = "LV" + m_GameSkillData.m_Level;
+                    m_Level.text = "LV" + m_GameSkillData.Level;
                 }
             });
 
@@ -45,7 +45,7 @@ namespace Logic.UI.Cells
                 {
                     if (m_PartnerData == null) return;
                     var m_GamePartnerData = PartnerManager.Ins.GetPartnerData(m_PartnerData.ID);
-                    m_Level.text = "LV" + m_GamePartnerData.m_Level;
+                    m_Level.text = "LV" + m_GamePartnerData.Level;
                 }
             });
         }
@@ -75,7 +75,6 @@ namespace Logic.UI.Cells
             m_Icon.Hide();
             m_Level.Hide();
             m_BKPlus.Show();
-            m_BKLock.SetActive(false);
             // 当技能或伙伴解除时点击上方CommonOnItem还会弹出相应信息处理
             m_ItemType = ItemType.None;
             m_SkillData = null;
@@ -91,17 +90,14 @@ namespace Logic.UI.Cells
             m_SkillData = pSkillData;
             m_ItemType = ItemType.Skill;
             var itemData = ItemCfg.GetData(m_SkillData.ID);
-            UICommonHelper.LoadIcon(m_Icon, itemData.Res);
-            m_Icon.Show();
-            UICommonHelper.LoadQuality(m_Quality, m_SkillData.Quality);
-            m_Quality.Show();
-
+            UICommonHelper.LoadIcon(m_Icon, itemData.ResShow);
+            UICommonHelper.LoadSkillQuality(m_Quality, m_SkillData.Quality);
             var m_GameSkillData = SkillManager.Ins.GetSkillData(m_SkillData.ID);
-            m_Level.text = "LV" + m_GameSkillData.m_Level;
+            m_Level.text = "LV" + m_GameSkillData.Level;
+            m_Icon.Show();
+            m_Quality.Show();
             m_Level.Show();
-
             m_BKPlus.SetActive(false);
-            m_BKLock.SetActive(false);
         }
 
         #endregion
@@ -115,17 +111,14 @@ namespace Logic.UI.Cells
             m_PartnerData = pPartnerData;
             m_ItemType = ItemType.Partner;
             var itemData = ItemCfg.GetData(m_PartnerData.ID);
-            UICommonHelper.LoadIcon(m_Icon, itemData.Res);
-            m_Icon.Show();
-            UICommonHelper.LoadQuality(m_Quality, m_PartnerData.Quality);
-            m_Quality.Show();
-
+            UICommonHelper.LoadIcon(m_Icon, itemData.ResShow);
+            UICommonHelper.LoadPartnerQuality(m_Quality, m_PartnerData.Quality);
             var m_GamePartnerData = PartnerManager.Ins.GetPartnerData(m_PartnerData.ID);
-            m_Level.text = "LV" + m_GamePartnerData.m_Level;
+            m_Level.text = "LV" + m_GamePartnerData.Level;
+            m_Icon.Show();
+            m_Quality.Show();
             m_Level.Show();
-
             m_BKPlus.SetActive(false);
-            m_BKLock.SetActive(false);
         }
 
         #endregion

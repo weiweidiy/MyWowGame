@@ -21,22 +21,31 @@ namespace Networks
         {
             var _Msg = Encoding.UTF8.GetString(pMsg);
             var _T = JsonMapper.ToObject<MessageHead>(_Msg);
-            switch (_T.m_MsgType)
+            switch (_T.MsgType)
             {
                 case NetWorkMsgType.C2S_Login:
                     return JsonMapper.ToObject<C2S_Login>(_Msg);
                 case NetWorkMsgType.S2C_Login:
-                    //Debug.LogError("Login MSG : " + _Msg);
                     Debug.LogError("Login Size : " + pMsg.Length);
                     return JsonMapper.ToObject<S2C_Login>(_Msg);
                 case NetWorkMsgType.C2S_GMAccount:
                     return JsonMapper.ToObject<C2S_GMAccount>(_Msg);
+                case NetWorkMsgType.C2S_SyncCoin:
+                    return JsonMapper.ToObject<C2S_SyncCoin>(_Msg);
+                case NetWorkMsgType.C2S_SyncTrophy:
+                    return JsonMapper.ToObject<C2S_SyncTrophy>(_Msg);
                 case NetWorkMsgType.S2C_DiamondUpdate:
                     return JsonMapper.ToObject<S2C_DiamondUpdate>(_Msg);
                 case NetWorkMsgType.S2C_OilUpdate:
                     return JsonMapper.ToObject<S2C_OilUpdate>(_Msg);
-                case NetWorkMsgType.C2S_SyncPlayerData:
-                    return JsonMapper.ToObject<C2S_SyncPlayerData>(_Msg);
+                case NetWorkMsgType.C2S_SyncRoomData:
+                    return JsonMapper.ToObject<C2S_SyncRoomData>(_Msg);
+                case NetWorkMsgType.C2S_SyncSettingData:
+                    return JsonMapper.ToObject<C2S_SyncSettingData>(_Msg);
+                case NetWorkMsgType.C2S_SyncLevelData:
+                    return JsonMapper.ToObject<C2S_SyncLevelData>(_Msg);
+                case NetWorkMsgType.C2S_SyncPlaceRewardData:
+                    return JsonMapper.ToObject<C2S_SyncPlaceRewardData>(_Msg);
                 case NetWorkMsgType.C2S_EquipOn:
                     return JsonMapper.ToObject<C2S_EquipOn>(_Msg);
                 case NetWorkMsgType.S2C_EquipOn:
@@ -159,8 +168,47 @@ namespace Networks
                     return JsonMapper.ToObject<C2S_Researching>(_Msg);
                 case NetWorkMsgType.S2C_Researching:
                     return JsonMapper.ToObject<S2C_Researching>(_Msg);
+                case NetWorkMsgType.C2S_QuenchingLock:
+                    return JsonMapper.ToObject<C2S_QuenchingLock>(_Msg);
+                case NetWorkMsgType.C2S_Quenching:
+                    return JsonMapper.ToObject<C2S_Quenching>(_Msg);
+                case NetWorkMsgType.C2S_SpoilDraw:
+                    return JsonMapper.ToObject<C2S_SpoilDraw>(_Msg);
+                case NetWorkMsgType.S2C_SpoilDraw:
+                    return JsonMapper.ToObject<S2C_SpoilDraw>(_Msg);
+                case NetWorkMsgType.S2C_SpoilSlotUnlock:
+                    return JsonMapper.ToObject<S2C_SpoilSlotUnlock>(_Msg);
+                case NetWorkMsgType.C2S_SpoilEquip:
+                    return JsonMapper.ToObject<C2S_SpoilEquip>(_Msg);
+                case NetWorkMsgType.S2C_SpoilEquip:
+                    return JsonMapper.ToObject<S2C_SpoilEquip>(_Msg);
+                case NetWorkMsgType.C2S_SpoilUpgrade:
+                    return JsonMapper.ToObject<C2S_SpoilUpgrade>(_Msg);
+                case NetWorkMsgType.S2C_SpoilUpgrade:
+                    return JsonMapper.ToObject<S2C_SpoilUpgrade>(_Msg);
+                case NetWorkMsgType.C2S_RoleOn:
+                    return JsonMapper.ToObject<C2S_RoleOn>(_Msg);
+                case NetWorkMsgType.S2C_RoleOn:
+                    return JsonMapper.ToObject<S2C_RoleOn>(_Msg);
+                case NetWorkMsgType.S2C_RoleOff:
+                    return JsonMapper.ToObject<S2C_RoleOff>(_Msg);
+                case NetWorkMsgType.C2S_RoleIntensify:
+                    return JsonMapper.ToObject<C2S_RoleIntensify>(_Msg);
+                case NetWorkMsgType.S2C_RoleIntensify:
+                    return JsonMapper.ToObject<S2C_RoleIntensify>(_Msg);
+                case NetWorkMsgType.C2S_RoleBreak:
+                    return JsonMapper.ToObject<C2S_RoleBreak>(_Msg);
+                case NetWorkMsgType.S2C_RoleBreak:
+                    return JsonMapper.ToObject<S2C_RoleBreak>(_Msg);
+                case NetWorkMsgType.S2C_RoleListUpdate:
+                    return JsonMapper.ToObject<S2C_RoleListUpdate>(_Msg);
+                case NetWorkMsgType.S2C_MushRoomUpdate:
+                    return JsonMapper.ToObject<S2C_MushRoomUpdate>(_Msg);
+                case NetWorkMsgType.S2C_BreakOreUpdate:
+                    return JsonMapper.ToObject<S2C_BreakOreUpdate>(_Msg);
+
                 default:
-                    throw new Exception($"MessageProcess 没有实现! 请实现一下! {_T.m_MsgType}");
+                    throw new Exception($"MessageProcess 没有实现! 请实现一下! {_T.MsgType}");
             }
         }
     }

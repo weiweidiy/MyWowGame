@@ -29,7 +29,7 @@ namespace Logic.States.Fight
 
         public override void Enter(FightStateData pContext)
         {
-            Debug.LogWarning("FS - FS_Over ENTER");
+            //Debug.LogWarning("FS - FS_Over ENTER");
 
             m_FSMData = pContext;
             EventManager.Call(LogicEvent.Fight_Over);
@@ -50,12 +50,17 @@ namespace Logic.States.Fight
             {
                 if (m_FSMData.m_IsWin)
                 {
-                    EventManager.Call(LogicEvent.Fight_Win);
+                    EventManager.Call(LogicEvent.Fight_Win, m_FSMData.m_LevelType);
                 }
                 else
                 {
-                    // 副本超时失败界面没有弹出
-                    EventManager.Call(LogicEvent.ShowFightSwitch, FightSwitchEvent.FallBack);
+                    //原油副本即使失败也不提示失败
+                    if(m_FSMData.m_LevelType != LevelType.OilCopy)
+                    {
+                        // 副本超时失败界面没有弹出
+                        EventManager.Call(LogicEvent.ShowFightSwitch, FightSwitchEvent.FallBack);
+                    }
+                    
                 }
 
                 yield return new WaitForSeconds(2f);
@@ -80,27 +85,32 @@ namespace Logic.States.Fight
             switch (m_FSMData.m_LevelType)
             {
                 case LevelType.NormalLevel:
-                {
-                    if (GameDataManager.Ins.LevelState == LevelState.Normal)
-                        OnNormalLevelFinished(pWasWin);
-                    else
-                        OnHandUpFinished(pWasWin);
-                }
+                    {
+                        if (GameDataManager.Ins.LevelState == LevelState.Normal)
+                            OnNormalLevelFinished(pWasWin);
+                        else
+                            OnHandUpFinished(pWasWin);
+                    }
                     break;
                 case LevelType.DiamondCopy:
-                {
-                    OnDiamondCopyFinished(pWasWin);
-                }
+                    {
+                        OnDiamondCopyFinished(pWasWin);
+                    }
                     break;
                 case LevelType.CoinCopy:
-                {
-                    OnCoinCopyFinished(pWasWin);
-                }
+                    {
+                        OnCoinCopyFinished(pWasWin);
+                    }
                     break;
                 case LevelType.OilCopy:
-                {
-                    OnOilCopyFinished(pWasWin);
-                }
+                    {
+                        OnOilCopyFinished(pWasWin);
+                    }
+                    break;
+                case LevelType.TrophyCopy:
+                    {
+                        OnTrophyCopyFinished(pWasWin);
+                    }
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -170,7 +180,7 @@ namespace Logic.States.Fight
                     CopyManager.Ins.StopCopyTimer();
                     NetworkManager.Ins.SendMsg(new C2S_ExitCopy
                     {
-                        m_LevelType = (int)levelType,
+                        LevelType = (int)levelType,
                     });
                     OnCopyExit(true, levelType);
                 }
@@ -194,7 +204,7 @@ namespace Logic.States.Fight
             if (pWasWin)
                 NetworkManager.Ins.SendMsg(new C2S_ExitCopy
                 {
-                    m_LevelType = (int)levelType,
+                    LevelType = (int)levelType,
                 });
 
             OnCopyExit(pWasWin, levelType);
@@ -207,13 +217,41 @@ namespace Logic.States.Fight
             CopyManager.Ins.StopCopyTimer();
             NetworkManager.Ins.SendMsg(new C2S_ExitCopy
             {
-                m_LevelType = (int)levelType,
-                m_CurBossLevel = CopyManager.Ins.CurBossLevel,
-                m_CurTotalDamage = CopyManager.Ins.CurTotalDamage.ToString()
+                LevelType = (int)levelType,
+                CurBossLevel = CopyManager.Ins.CurBossLevel,
+                CurTotalDamage = CopyManager.Ins.CurTotalDamage.ToString()
             });
 
             OnCopyExit(pWasWin, levelType);
         }
+
+        private void OnTrophyCopyFinished(bool pWasWin)
+        {
+            const LevelType levelType = LevelType.TrophyCopy;
+            if (pWasWin)
+            {
+                CopyManager.Ins.m_TrophyCopyCount++;
+                if (CopyManager.Ins.m_TrophyCopyCount > GameDefine.CopyTrophyCount) //副本结束
+                {
+                    CopyManager.Ins.StopCopyTimer();
+                    NetworkManager.Ins.SendMsg(new C2S_ExitCopy
+                    {
+                        LevelType = (int)levelType,
+                    });
+                    OnCopyExit(true, levelType);
+                }
+                else
+                {
+                    m_FSMData.m_SM.ToStandby();
+                }
+            }
+            else
+            {
+                CopyManager.Ins.StopCopyTimer();
+                OnCopyExit(true, levelType);
+            }
+        }
+
 
         private void OnCopyExit(bool pWasWin, LevelType levelType)
         {
@@ -226,7 +264,7 @@ namespace Logic.States.Fight
             {
                 UIManager.Ins.Show<UICopy>();
 
-                switch(levelType)
+                switch (levelType)
                 {
                     case LevelType.OilCopy:
                         //UIManager.Ins.Show<UIOilCopyEnter>();
@@ -234,9 +272,9 @@ namespace Logic.States.Fight
                     default:
                         UIManager.Ins.Show<UICopyEnter>(levelType);
                         break;
-                          
+
                 }
-                
+
             }
 
             m_FSMData.m_SM.ToSwitch(SwitchToType.ToNormalLevel);

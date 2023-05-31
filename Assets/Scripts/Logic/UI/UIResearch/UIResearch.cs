@@ -7,6 +7,7 @@ using Framework.UI;
 using Logic.Common;
 using Logic.Manager;
 using Logic.UI.Cells;
+using Logic.UI.Common;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,9 +26,11 @@ namespace Logic.UI.UIResearch
         public TextMeshProUGUI m_CurrentAttrText, m_NextAttrText, m_MaxAttrText;
         public GameObject m_CurrentAttr, m_NextAttr, m_MaxAttr;
         public GameObject m_UnLockState, m_MinState, m_MiddleState, m_MaxState;
+        public Image m_Icon;
         public Image m_CanProcess;
         public TextMeshProUGUI m_ProcessText;
         public TextMeshProUGUI m_ResearchCost;
+        public GameObject m_ResearchTime;
         public TextMeshProUGUI m_TimerText;
         [Header("研究按钮")] public GameObject m_BtnCantResearch;
         public GameObject m_BtnResearch, m_BtnResearchCan, m_BtnResearchCant;
@@ -58,7 +61,7 @@ namespace Logic.UI.UIResearch
 
         private void UpdateMineCount()
         {
-            m_MineCount.text = MiningManager.Ins.m_MiningData.m_MineCount.ToString();
+            m_MineCount.text = MiningManager.Ins.m_MiningData.MineCount.ToString();
             RefreshBtnResearch();
         }
 
@@ -98,7 +101,7 @@ namespace Logic.UI.UIResearch
             // 显示相关数据
             m_ResearchName.text = researchData.ResearchProject;
 
-            if ((ResearchType)attributeData.ID == ResearchType.IncreaseHammerLimit)
+            if ((AttributeType)attributeData.Type == AttributeType.HammerLimit)
             {
                 m_CurrentAttrText.text = $"{attributeData.Name}增加{curLevel * researchData.ResearchGrow}";
                 m_NextAttrText.text = $"{attributeData.Name}增加{nextLevel * researchData.ResearchGrow}";
@@ -124,6 +127,7 @@ namespace Logic.UI.UIResearch
             var maxLevel = cItem.m_ResearchMaxLevel;
             var state = cItem.m_ResearchState;
 
+            UICommonHelper.LoadIcon(m_Icon, cItem.m_ResPath);
             m_ProcessText.text = $"{level}/{maxLevel}";
             m_CanProcess.fillAmount = (float)level / maxLevel;
 
@@ -134,24 +138,28 @@ namespace Logic.UI.UIResearch
                     m_MinState.Hide();
                     m_MiddleState.Hide();
                     m_MaxState.Hide();
+                    m_ResearchTime.Hide();
                     break;
                 case ResearchState.Min:
                     m_UnLockState.Hide();
                     m_MinState.Show();
                     m_MiddleState.Hide();
                     m_MaxState.Hide();
+                    m_ResearchTime.Show();
                     break;
                 case ResearchState.Middle:
                     m_UnLockState.Hide();
                     m_MinState.Hide();
                     m_MiddleState.Show();
                     m_MaxState.Hide();
+                    m_ResearchTime.Show();
                     break;
                 case ResearchState.Max:
                     m_UnLockState.Hide();
                     m_MinState.Hide();
                     m_MiddleState.Hide();
                     m_MaxState.Show();
+                    m_ResearchTime.Hide();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -257,7 +265,7 @@ namespace Logic.UI.UIResearch
             m_ResearchTimer = Timer.Register(1f, () =>
             {
                 secondLeft--;
-                if (secondLeft <= 0)
+                if (secondLeft <= 0 && this.gameObject.activeSelf)
                 {
                     secondLeft = 0;
                     m_ResearchTimer.Cancel();
@@ -320,9 +328,20 @@ namespace Logic.UI.UIResearch
             var (id, level) = (ValueTuple<int, int>)data;
             m_ResearchMask.Hide();
             m_BtnResearch.Show();
-            //TODO:添加研究成功弹出面板
-            var researchProject = ResearchManager.Ins.GetResearchData(id).ResearchProject;
-            EventManager.Call(LogicEvent.ShowTips, $"已经完成{researchProject}研究");
+
+            //研究成功弹出面板
+            var researchData = ResearchManager.Ins.GetResearchData(id);
+            var resId = researchData.ResID;
+            var resPath = ResearchManager.Ins.GetResData(resId).Res;
+            var researchProject = researchData.ResearchProject;
+            var arg = new UICommonObtain.Args
+            {
+                title = "已经完成研究",
+                resPath = resPath,
+                name = researchProject,
+            };
+            EventManager.Call(LogicEvent.ShowObtain, arg);
+            // EventManager.Call(LogicEvent.ShowTips, $"已经完成{researchProject}研究");
         }
 
         private void OnResearchLevelChanged(int eventId, object data)

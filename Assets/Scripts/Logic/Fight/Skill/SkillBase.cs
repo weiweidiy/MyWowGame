@@ -158,7 +158,7 @@ namespace Logic.Fight.Skill
         
         public BigDouble GetSkillBaseDamage()
         {
-            return ((m_SkillData.DamageBase + (m_GameSkillData.m_Level - 1) * m_SkillData.DamageGrow )  )  ;
+            return ((m_SkillData.DamageBase + (m_GameSkillData.Level - 1) * m_SkillData.DamageGrow )  )  ;
         }
     }
 }

@@ -44,5 +44,8 @@ namespace Configs
         //研究成长消耗时间
         public int GrowCostTime;
 
+        //ResID
+        public int ResID;
+
     }
 }

@@ -47,7 +47,6 @@ namespace Logic.UI.UIUser
         public GameObject m_BtnCantSelectRemove;
         public GameObject m_EngineSelectRemoveNode;
         public Transform m_EngineRemoveRoot;
-        public TextMeshProUGUI m_EngineSelectIronCount;
         private List<CommonEngineItem> m_CurRemoveSelectItemList = new List<CommonEngineItem>();
         private CommonEngineItem m_CurRemoveSelectItem;
         private int m_RemoveSelectCount;
@@ -60,7 +59,7 @@ namespace Logic.UI.UIUser
         {
             m_EventGroup.Register(LogicEvent.EngineGet, OnEngineGet);
             m_EventGroup.Register(LogicEvent.EngineRemove, (i, o) => { OnEngineRemove(); });
-            m_EventGroup.Register(LogicEvent.EngineIronUpdate, (i, o) => { OnEngineIronUpdate(); });
+            m_EventGroup.Register(LogicEvent.EngineIronChanged, (i, o) => { OnEngineIronUpdate(); });
             m_EventGroup.Register(LogicEvent.EngineIntensify, (i, o) => OnEngineIntensify());
         }
 
@@ -83,14 +82,14 @@ namespace Logic.UI.UIUser
         {
             foreach (var gameEngineData in EngineManager.Ins.EngineMap)
             {
-                if (gameEngineData.Value.m_IsGet == 1)
+                if (gameEngineData.Value.IsGet == 1)
                 {
                     var engine = m_CommonEngineItem.Clone(Vector3.zero, m_EngineRoot, Quaternion.identity);
                     engine.Show();
                     var engineItem = engine.GetComponent<CommonEngineItem>();
                     engineItem.Init(gameEngineData.Value);
                     engineItem.m_ClickEngine += OnClickEngineItem;
-                    if (engineItem.m_GameEngineData.m_Id == EngineManager.Ins.curEngineOnId)
+                    if (engineItem.m_GameEngineData.Id == EngineManager.Ins.curEngineOnId)
                     {
                         engineItem.OnClickEngine();
                         m_Navigate = engineItem.GetComponent<RectTransform>();
@@ -106,18 +105,19 @@ namespace Logic.UI.UIUser
             var gameEngineData = m_CurSelectItem.m_GameEngineData;
             var engineData = m_CurSelectItem.m_EngineData;
             var attributeData = m_CurSelectItem.m_AttributeData;
-            var engineLevel = gameEngineData.m_Level;
-            var engineReform = gameEngineData.m_Reform;
+            var resData = m_CurSelectItem.m_ResData;
+            var engineLevel = gameEngineData.Level;
+            var engineReform = gameEngineData.Reform;
             m_ATKEffect.text = $"{engineData.HasAdditionATK + engineLevel * engineData.AttGrow}%";
             m_HPEffect.text = $"{engineData.HasAdditionHP + engineLevel * engineData.HPGrow}%";
-            m_AttrsReformCount.text = $"改造：{gameEngineData.m_Reform}/{engineData.ReformTime}次";
+            m_AttrsReformCount.text = $"改造：{gameEngineData.Reform}/{engineData.ReformTime}次";
             m_EngineName.text = engineData.Name;
-            // UICommonHelper.LoadIcon(m_Icon, itemData.Res);
+            UICommonHelper.LoadIcon(m_Icon, resData.Res);
             UICommonHelper.LoadQuality(m_Quality, engineData.Quality);
             m_QualityText.text = UICommonHelper.GetQualityShowText(engineData.Quality);
             m_SpecialAttrName.text = attributeData.Name;
             m_SpecialAttrEffect.text = $"{attributeData.Value}%";
-            m_EngineIronCost.text = $"-{Formula.GetEngineIntensifyCost(engineLevel, engineReform)}";
+            m_EngineIronCost.text = $"{Formula.GetEngineIntensifyCost(engineLevel, engineReform)}";
             m_EngineIronGet.text = $"+{Formula.GetEngineDecomposeGet(engineLevel, engineReform)}";
         }
 
@@ -139,6 +139,9 @@ namespace Logic.UI.UIUser
         private void UpdateEngineIron()
         {
             m_EngineIronCount.text = GameDataManager.Ins.Iron.ToString();
+            if (m_CurSelectItem == null) return;
+            RefreshBtnIntensify(Formula.GetEngineIntensifyCost(m_CurSelectItem.m_GameEngineData.Level,
+                m_CurSelectItem.m_GameEngineData.Reform));
         }
 
         /// <summary>
@@ -151,7 +154,7 @@ namespace Logic.UI.UIUser
             UpdateEngineSelectRemoveText();
             foreach (var gameEngineData in EngineManager.Ins.EngineMap)
             {
-                if (gameEngineData.Value.m_IsGet == 1)
+                if (gameEngineData.Value.IsGet == 1)
                 {
                     var engine = m_CommonEngineItem.Clone(Vector3.zero, m_EngineRemoveRoot, Quaternion.identity);
                     engine.Show();
@@ -212,12 +215,12 @@ namespace Logic.UI.UIUser
         {
             var gameEngineData = m_CurSelectItem.m_GameEngineData;
             var engineData = m_CurSelectItem.m_EngineData;
-            var engineId = gameEngineData.m_Id;
-            var engineLevel = gameEngineData.m_Level;
-            var engineReform = gameEngineData.m_Reform;
+            var engineId = gameEngineData.Id;
+            var engineLevel = gameEngineData.Level;
+            var engineReform = gameEngineData.Reform;
             var engineIronCost = Formula.GetEngineIntensifyCost(engineLevel, engineReform);
             var engineIronGet = Formula.GetEngineDecomposeGet(engineLevel, engineReform);
-            m_EngineIronCost.text = $"-{engineIronCost}";
+            m_EngineIronCost.text = $"{engineIronCost}";
             m_EngineIronGet.text = $"+{engineIronGet}";
             m_ATKEffect.text = $"{engineData.HasAdditionATK + engineLevel * engineData.AttGrow}%";
             m_HPEffect.text = $"{engineData.HasAdditionHP + engineLevel * engineData.HPGrow}%";
@@ -251,8 +254,8 @@ namespace Logic.UI.UIUser
             }
 
 
-            RefreshBtnIntensify(Formula.GetEngineIntensifyCost(m_CurSelectItem.m_GameEngineData.m_Level,
-                m_CurSelectItem.m_GameEngineData.m_Reform));
+            RefreshBtnIntensify(Formula.GetEngineIntensifyCost(m_CurSelectItem.m_GameEngineData.Level,
+                m_CurSelectItem.m_GameEngineData.Reform));
         }
 
 
@@ -263,8 +266,8 @@ namespace Logic.UI.UIUser
             m_CurRemoveSelectItem.UpdateRemoveSelected();
 
             var gameEngineData = m_CurRemoveSelectItem.m_GameEngineData;
-            var engineLevel = gameEngineData.m_Level;
-            var engineReform = gameEngineData.m_Reform;
+            var engineLevel = gameEngineData.Level;
+            var engineReform = gameEngineData.Reform;
             if (m_CurRemoveSelectItem.m_IsRemoveSelected)
             {
                 m_RemoveSelectCount++;
@@ -285,7 +288,7 @@ namespace Logic.UI.UIUser
 
         private bool IsSelectItemOn()
         {
-            return EngineManager.Ins.IsOn(m_CurSelectItem.m_GameEngineData.m_Id);
+            return EngineManager.Ins.IsOn(m_CurSelectItem.m_GameEngineData.Id);
         }
 
         // 清空所有选择
@@ -360,14 +363,14 @@ namespace Logic.UI.UIUser
         public void OnBtnClickEquipOn()
         {
             RefreshBtnEquipOn();
-            var engineId = m_CurSelectItem.m_GameEngineData.m_Id;
+            var engineId = m_CurSelectItem.m_GameEngineData.Id;
             EngineManager.Ins.DoEngineOn(engineId);
         }
 
         public void OnBtnClickEquipOff()
         {
             RefreshBtnEquipOff();
-            EngineManager.Ins.DoEngineOff(m_CurSelectItem.m_GameEngineData.m_Id);
+            EngineManager.Ins.DoEngineOff(m_CurSelectItem.m_GameEngineData.Id);
             if (!IsSelectItemOn())
             {
                 ClearSelectItem();
@@ -377,7 +380,7 @@ namespace Logic.UI.UIUser
         public void OnBtnClickEquipRemove()
         {
             if (m_CurSelectItem == null) return;
-            var engineId = m_CurSelectItem.m_GameEngineData.m_Id;
+            var engineId = m_CurSelectItem.m_GameEngineData.Id;
             if (!IsSelectItemOn())
             {
                 RemoveEngine(engineId);
@@ -394,9 +397,9 @@ namespace Logic.UI.UIUser
         {
             if (m_CurSelectItem == null) return;
             var engineData = m_CurSelectItem.m_GameEngineData;
-            var engineId = engineData.m_Id;
-            var engineLevel = engineData.m_Level;
-            var engineReform = engineData.m_Reform;
+            var engineId = engineData.Id;
+            var engineLevel = engineData.Level;
+            var engineReform = engineData.Reform;
             var engineIronCost = Formula.GetEngineIntensifyCost(engineLevel, engineReform);
             if (EngineManager.Ins.IsCanIntensify(engineIronCost))
             {
@@ -446,10 +449,10 @@ namespace Logic.UI.UIUser
             {
                 if (commonEngineItem.m_IsOn.activeSelf)
                 {
-                    EngineManager.Ins.DoEngineOff(commonEngineItem.m_GameEngineData.m_Id);
+                    EngineManager.Ins.DoEngineOff(commonEngineItem.m_GameEngineData.Id);
                 }
 
-                RemoveEngine(commonEngineItem.m_GameEngineData.m_Id);
+                RemoveEngine(commonEngineItem.m_GameEngineData.Id);
                 m_CurRemoveSelectItemList.Remove(commonEngineItem);
                 m_RemoveSelectCount--;
             }

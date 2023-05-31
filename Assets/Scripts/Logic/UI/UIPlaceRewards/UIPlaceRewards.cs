@@ -54,7 +54,7 @@ namespace Logic.UI.UIPlaceRewards
         {
             GameDataManager.Ins.BtnPlaceRewardClickTime = m_TempBtnPlaceRewardClickTime;
             // GameDataManager.Ins.Coin += m_PlaceRewardCoin;
-            CoinEffectMgr.Ins.StartEffect(m_CoinTransform.position, m_PlaceRewardCoin);
+            CoinEffectMgr.Ins.StartEffect(transform.position, m_PlaceRewardCoin);
             RewardManager.Ins.SendMsgC2SGetPlaceReward();
             DestroyPlaceRewardItemList();
             Hide();
@@ -79,7 +79,7 @@ namespace Logic.UI.UIPlaceRewards
         private void UpdatePlaceRewardTime()
         {
             var tempTime =
-                TimeHelper.GetSecondBetweenUnixTimeStamp(DateTime.Now, GameDataManager.Ins.BtnPlaceRewardClickTime);
+                TimeHelper.GetBetween(DateTime.UtcNow, GameDataManager.Ins.BtnPlaceRewardClickTime);
             var maxTime = GameDefine.PlaceRewardMaxTime * 60;
             var placeRewardTime = tempTime >= maxTime ? maxTime : tempTime;
             var placeRewardMinuteTime = placeRewardTime / 60;

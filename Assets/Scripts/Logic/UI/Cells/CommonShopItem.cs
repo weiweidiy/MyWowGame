@@ -137,22 +137,22 @@ namespace Logic.UI.Cells
             switch (m_DrawCardType)
             {
                 case DrawCardType.Skill:
-                    m_ID = ShopManager.Ins.m_ShopSkillData.m_ID;
-                    m_Level = ShopManager.Ins.m_ShopSkillData.m_Level;
-                    m_Exp = ShopManager.Ins.m_ShopSkillData.m_Exp;
-                    m_TotalExp = ShopManager.Ins.m_ShopSkillData.m_TotalExp;
+                    m_ID = ShopManager.Ins.m_ShopSkillData.ID;
+                    m_Level = ShopManager.Ins.m_ShopSkillData.Level;
+                    m_Exp = ShopManager.Ins.m_ShopSkillData.Exp;
+                    m_TotalExp = ShopManager.Ins.m_ShopSkillData.TotalExp;
                     break;
                 case DrawCardType.Partner:
-                    m_ID = ShopManager.Ins.m_ShopPartnerData.m_ID;
-                    m_Level = ShopManager.Ins.m_ShopPartnerData.m_Level;
-                    m_Exp = ShopManager.Ins.m_ShopPartnerData.m_Exp;
-                    m_TotalExp = ShopManager.Ins.m_ShopPartnerData.m_TotalExp;
+                    m_ID = ShopManager.Ins.m_ShopPartnerData.ID;
+                    m_Level = ShopManager.Ins.m_ShopPartnerData.Level;
+                    m_Exp = ShopManager.Ins.m_ShopPartnerData.Exp;
+                    m_TotalExp = ShopManager.Ins.m_ShopPartnerData.TotalExp;
                     break;
                 case DrawCardType.Equip:
-                    m_ID = ShopManager.Ins.m_ShopEquipData.m_ID;
-                    m_Level = ShopManager.Ins.m_ShopEquipData.m_Level;
-                    m_Exp = ShopManager.Ins.m_ShopEquipData.m_Exp;
-                    m_TotalExp = ShopManager.Ins.m_ShopEquipData.m_TotalExp;
+                    m_ID = ShopManager.Ins.m_ShopEquipData.ID;
+                    m_Level = ShopManager.Ins.m_ShopEquipData.Level;
+                    m_Exp = ShopManager.Ins.m_ShopEquipData.Exp;
+                    m_TotalExp = ShopManager.Ins.m_ShopEquipData.TotalExp;
                     break;
             }
 

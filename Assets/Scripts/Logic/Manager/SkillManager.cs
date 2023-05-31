@@ -30,7 +30,7 @@ namespace Logic.Manager
             SkillMap = new Dictionary<int, GameSkillData>(64);
             foreach (var _Data in pDataSkillList)
             {
-                SkillMap.Add(_Data.m_SkillID, _Data);
+                SkillMap.Add(_Data.SkillID, _Data);
             }
 
             SkillOnList = pDataSkillOnList;
@@ -43,35 +43,35 @@ namespace Logic.Manager
 
         public void OnSkillOn(S2C_SkillOn pMsg)
         {
-            SkillOnList[pMsg.m_Index] = pMsg.m_SkillID;
+            SkillOnList[pMsg.Index] = pMsg.SkillID;
             EventManager.Call(LogicEvent.SkillOn, pMsg);
         }
 
         public void OnSkillOff(S2C_SkillOff pMsg)
         {
-            SkillOnList[pMsg.m_Index] = 0;
+            SkillOnList[pMsg.Index] = 0;
             EventManager.Call(LogicEvent.SkillOff, pMsg);
         }
 
         public async void OnSkillIntensify(S2C_SkillIntensify pMsg)
         {
             var _TaskNeedCount = 0;
-            foreach (var skillUpgradeData in pMsg.m_SkillList)
+            foreach (var skillUpgradeData in pMsg.SkillList)
             {
-                var _Data = GetSkillData(skillUpgradeData.m_SkillData.m_SkillID);
+                var _Data = GetSkillData(skillUpgradeData.SkillData.SkillID);
                 if (_Data != null)
                 {
-                    _Data.m_Level = skillUpgradeData.m_SkillData.m_Level;
-                    _Data.m_Count = skillUpgradeData.m_SkillData.m_Count;
+                    _Data.Level = skillUpgradeData.SkillData.Level;
+                    _Data.Count = skillUpgradeData.SkillData.Count;
                 }
 
-                _TaskNeedCount += skillUpgradeData.m_SkillData.m_Level - skillUpgradeData.m_OldLevel;
+                _TaskNeedCount += skillUpgradeData.SkillData.Level - skillUpgradeData.OldLevel;
             }
 
             TaskManager.Ins.DoTaskUpdate(TaskType.TT_9003, _TaskNeedCount);
 
-            if (pMsg.m_IsAuto)
-                await UIManager.Ins.OpenUI<UIUpgradedInfo>(pMsg.m_SkillList);
+            if (pMsg.IsAuto)
+                await UIManager.Ins.OpenUI<UIUpgradedInfo>(pMsg.SkillList);
             else
                 EventManager.Call(LogicEvent.SkillUpgraded);
 
@@ -82,15 +82,15 @@ namespace Logic.Manager
 
         public void OnSkillListUpdate(S2C_SkillListUpdate pMsg)
         {
-            foreach (var _Data in pMsg.m_SkillList)
+            foreach (var _Data in pMsg.SkillList)
             {
-                var _SkillData = GetSkillData(_Data.m_SkillID);
+                var _SkillData = GetSkillData(_Data.SkillID);
                 if (_SkillData == null)
-                    SkillMap.Add(_Data.m_SkillID, _Data);
+                    SkillMap.Add(_Data.SkillID, _Data);
                 else
                 {
-                    _SkillData.m_Level = _Data.m_Level;
-                    _SkillData.m_Count = _Data.m_Count;
+                    _SkillData.Level = _Data.Level;
+                    _SkillData.Count = _Data.Count;
                 }
             }
 
@@ -181,7 +181,7 @@ namespace Logic.Manager
         //当前数量
         public int CurCount(int pSkillID)
         {
-            return SkillMap.TryGetValue(pSkillID, out var _Data) ? _Data.m_Count : 0;
+            return SkillMap.TryGetValue(pSkillID, out var _Data) ? _Data.Count : 0;
         }
 
         //升级需要的数量
@@ -190,7 +190,7 @@ namespace Logic.Manager
             if (!IsHave(pSkillID)) return SkillLvlUpCfg.GetData(1).Cost;
 
             var _Data = GetSkillData(pSkillID);
-            return _Data.m_Level > 10 ? SkillLvlUpCfg.GetData(10).Cost : SkillLvlUpCfg.GetData(_Data.m_Level).Cost;
+            return _Data.Level > 10 ? SkillLvlUpCfg.GetData(10).Cost : SkillLvlUpCfg.GetData(_Data.Level).Cost;
         }
 
         //技能是否可以升级
@@ -199,10 +199,10 @@ namespace Logic.Manager
             if (!IsHave(pSkillID)) return false;
 
             var _Data = GetSkillData(pSkillID);
-            var _NeedCount = _Data.m_Level > 10
+            var _NeedCount = _Data.Level > 10
                 ? SkillLvlUpCfg.GetData(10).Cost
-                : SkillLvlUpCfg.GetData(_Data.m_Level).Cost;
-            return _Data.m_Count >= _NeedCount;
+                : SkillLvlUpCfg.GetData(_Data.Level).Cost;
+            return _Data.Count >= _NeedCount;
         }
 
         //是否有技能可以升级
@@ -210,10 +210,10 @@ namespace Logic.Manager
         {
             foreach (var skillData in SkillMap.Values)
             {
-                var _NeedCount = skillData.m_Level > 10
+                var _NeedCount = skillData.Level > 10
                     ? SkillLvlUpCfg.GetData(10).Cost
-                    : SkillLvlUpCfg.GetData(skillData.m_Level).Cost;
-                if (skillData.m_Count >= _NeedCount)
+                    : SkillLvlUpCfg.GetData(skillData.Level).Cost;
+                if (skillData.Count >= _NeedCount)
                     return true;
             }
 
@@ -225,7 +225,7 @@ namespace Logic.Manager
         {
             var _Level = 1;
             if (IsHave(pSkillID))
-                _Level = GetSkillData(pSkillID).m_Level;
+                _Level = GetSkillData(pSkillID).Level;
 
             var _CfgData = SkillCfg.GetData(pSkillID);
             return _CfgData.HasAdditionBase + (_Level - 1) * _CfgData.HasAdditionGrow;
@@ -239,7 +239,7 @@ namespace Logic.Manager
             {
                 var _CfgData = SkillCfg.GetData(_MapData.Key);
                 var _GameData = _MapData.Value;
-                _AllEffect += (_CfgData.HasAdditionBase + (_GameData.m_Level - 1) * _CfgData.HasAdditionGrow);
+                _AllEffect += (_CfgData.HasAdditionBase + (_GameData.Level - 1) * _CfgData.HasAdditionGrow);
             }
 
             AllHaveEffect = _AllEffect;
@@ -264,7 +264,7 @@ namespace Logic.Manager
             m_CanDoOnCount--;
             NetworkManager.Ins.SendMsg(new C2S_SkillOn()
             {
-                m_SkillID = pSkillID,
+                SkillID = pSkillID,
             });
         }
 
@@ -273,7 +273,7 @@ namespace Logic.Manager
             m_CanDoOnCount++;
             NetworkManager.Ins.SendMsg(new C2S_SkillOff()
             {
-                m_SkillID = pSkillID,
+                SkillID = pSkillID,
             });
         }
 
@@ -281,8 +281,8 @@ namespace Logic.Manager
         {
             NetworkManager.Ins.SendMsg(new C2S_SkillIntensify()
             {
-                m_SkillID = pSkillID,
-                m_IsAuto = pIsAuto,
+                SkillID = pSkillID,
+                IsAuto = pIsAuto,
             });
         }
 

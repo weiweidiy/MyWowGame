@@ -99,14 +99,14 @@ namespace Logic.UI.UIUser
 
         private void OnSkillOn(int arg1, object arg2)
         {
-            var Index = ((S2C_SkillOn)arg2).m_Index;
+            var Index = ((S2C_SkillOn)arg2).Index;
             var _OnList = SkillManager.Ins.SkillOnList;
             m_OnItems[Index].InitBySkill(SkillCfg.GetData(_OnList[Index]));
         }
 
         private void OnSkillOff(int arg1, object arg2)
         {
-            var Index = ((S2C_SkillOff)arg2).m_Index;
+            var Index = ((S2C_SkillOff)arg2).Index;
             m_OnItems[Index].Reset();
         }
     }

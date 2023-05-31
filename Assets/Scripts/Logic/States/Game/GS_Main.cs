@@ -51,6 +51,7 @@ namespace Logic.States.Game
             await UIManager.Ins.OpenUI<UIRoom>();
             await UIManager.Ins.OpenUI<UIFight>();
             await UIManager.Ins.OpenUI<UICommonTips>();
+            await UIManager.Ins.OpenUI<UICommonObtain>();
             await UIManager.Ins.OpenUI<UIMainRight>();
             await UIManager.Ins.OpenUI<UIMainLeft>();
             await UIManager.Ins.OpenUI<UIMainCommon>();
