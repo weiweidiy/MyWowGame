@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4421063658563438678}
   - component: {fileID: 4202814797653256499}
   - component: {fileID: 7204705289200125240}
+  - component: {fileID: 6056425174197748088}
+  - component: {fileID: 8271154599031661662}
   m_Layer: 13
   m_Name: NormalMuzzleText
   m_TagString: Untagged
@@ -119,3 +121,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DelayTime: 1
+--- !u!114 &6056425174197748088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2587335974019803131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6090da511f8374135a15dd8655adcd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
+  _mode: 1
+  _globalClockKey: 
+  _rewindable: 0
+  _recordingDuration: 30
+--- !u!114 &8271154599031661662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2587335974019803131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9fdec4ff2bd044dbcd4aad1d46f3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  module: 2

@@ -104,6 +104,11 @@ namespace Logic.Common
         public static int PartnerMaxID;
         public static int WeaponMaxID;
         public static int ArmorMaxID;
+        public static int SkillMinID;
+        public static int PartnerMinID;
+        public static int WeaponMinID;
+        public static int ArmorMinID;
+        public static int CommonItemMaxLevel;
 
         #endregion
 
@@ -201,6 +206,11 @@ namespace Logic.Common
             PartnerMaxID = GameDefineCfg.GetData(301).IntValue;
             WeaponMaxID = GameDefineCfg.GetData(302).IntValue;
             ArmorMaxID = GameDefineCfg.GetData(303).IntValue;
+            SkillMinID = GameDefineCfg.GetData(310).IntValue;
+            PartnerMinID = GameDefineCfg.GetData(311).IntValue;
+            WeaponMinID = GameDefineCfg.GetData(312).IntValue;
+            ArmorMinID = GameDefineCfg.GetData(313).IntValue;
+            CommonItemMaxLevel = GameDefineCfg.GetData(320).IntValue;
 
             HangUpATKWight = GameDefineCfg.GetData(400).floatValue;
             HangUpHPWight = GameDefineCfg.GetData(401).floatValue;

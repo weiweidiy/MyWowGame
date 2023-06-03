@@ -58,5 +58,11 @@ namespace Configs
         //Prefab资源
         public string PrefabResName;
 
+        //技能合成ID
+        public int CombineID;
+
+        //技能合成数量
+        public int CombineNum;
+
     }
 }

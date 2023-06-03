@@ -114,10 +114,11 @@ namespace Logic.Manager
         public List<GamePartnerData> GetAllPartners()
         {
             var result = new List<GamePartnerData>();
-            foreach(var key in PartnerMap.Keys)
+            foreach (var key in PartnerMap.Keys)
             {
                 result.Add(PartnerMap[key]);
             }
+
             return result;
         }
 
@@ -206,6 +207,13 @@ namespace Logic.Manager
             return _Data.Level > 10 ? PartnerLvlUpCfg.GetData(10).Cost : PartnerLvlUpCfg.GetData(_Data.Level).Cost;
         }
 
+        //伙伴合成需要的数量
+        public int ComposeNeedCount(int pPartnerID)
+        {
+            var data = PartnerCfg.GetData(pPartnerID);
+            return data.CombineNum;
+        }
+
         //是否可以升级
         public bool CanUpgrade(int pPartnerID)
         {
@@ -231,6 +239,18 @@ namespace Logic.Manager
             }
 
             return false;
+        }
+
+        //伙伴是否满级
+        public bool IsMaxLevel(int pPartnerID)
+        {
+            var level = 1;
+            if (IsHave(pPartnerID))
+            {
+                level = GetPartnerData(pPartnerID).Level;
+            }
+
+            return level >= GameDefine.CommonItemMaxLevel;
         }
 
         //获取某个伙伴的拥有效果
@@ -288,6 +308,14 @@ namespace Logic.Manager
                 PartnerID = pPartner,
                 IsAuto = pIsAuto,
             });
+        }
+
+        public void DoCompose(int pPartnerId)
+        {
+            // NetworkManager.Ins.SendMsg(new C2S_PartnerCompose()
+            // {
+            //     PartnerId = pPartnerId,
+            // });
         }
 
         #endregion

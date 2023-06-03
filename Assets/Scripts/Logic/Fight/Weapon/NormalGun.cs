@@ -1,4 +1,5 @@
 using System;
+using Chronos;
 using Framework.Pool;
 using Logic.Common;
 using Logic.Fight.Actor;
@@ -22,9 +23,12 @@ namespace Logic.Fight.Weapon
         public GameObject m_MuzzleEffectPrefab;
         
         private Animator m_Animator;
+
+        Timeline m_TimeLine;
         private void Awake()
         {
             m_Animator = GetComponent<Animator>();
+            m_TimeLine = GetComponent<Timeline>();
         }
 
         private bool InStandBy = true;
@@ -55,10 +59,13 @@ namespace Logic.Fight.Weapon
 
         private void Update()
         {
+            Debug.Assert(m_TimeLine != null, "没有找到timeline" + gameObject.name);
+            float deltaTime = m_TimeLine ? m_TimeLine.deltaTime : Time.deltaTime;
+            deltaTime *= Time.timeScale;
             if (InStandBy)
             {
                 Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, 0));
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 3);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, deltaTime * 3);
                 return;
             }
             if (!IsInvalidTarget())
@@ -66,7 +73,7 @@ namespace Logic.Fight.Weapon
                 Vector2 direction = m_TargetPos - transform.position;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 10);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, deltaTime * 10);
             }
             
         }

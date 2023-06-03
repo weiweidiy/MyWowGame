@@ -27,7 +27,11 @@ namespace Logic.Fight.Skill.State
         private bool NeedSearch = false;
         public override void Update(SkillStateData pContext)
         {
-            m_DurationTime += Time.deltaTime;
+            //朝向目标移动
+            Debug.Assert(pContext.m_TimeLine != null, "没有找到timeline" + pContext.m_SkillBase.name);
+            float deltaTime = pContext.m_TimeLine ? pContext.m_TimeLine.deltaTime : Time.deltaTime;
+            deltaTime *= Time.timeScale;
+            m_DurationTime += deltaTime;
             if (m_DurationTime >= pContext.m_SkillBase.m_SkillData.DurationTime)
             {
                 //技能正常结束 才会调用这里

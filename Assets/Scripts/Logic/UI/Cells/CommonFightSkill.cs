@@ -1,4 +1,5 @@
 
+using Chronos;
 using Configs;
 using Framework.EventKit;
 using Framework.Extension;
@@ -38,6 +39,8 @@ namespace Logic.UI.Cells
         private GameSkillData m_GameSkillData;
         private ItemData m_ItemData;
 
+        Timeline m_TimeLine;
+
         /// <summary>
         /// 是否允许打开技能配置界面
         /// </summary>
@@ -46,6 +49,8 @@ namespace Logic.UI.Cells
         private void Awake()
         {
             CanConfig = true;
+
+            m_TimeLine = GetComponent<Timeline>();
         }
 
         private void OnEnable()
@@ -114,9 +119,12 @@ namespace Logic.UI.Cells
 
         private void Update()
         {
+            Debug.Assert(m_TimeLine != null, "没有找到timeline" + gameObject.name);
+            float deltaTime = m_TimeLine ? m_TimeLine.deltaTime : Time.deltaTime;
+            deltaTime *= Time.timeScale;
             if (m_IsDoing)
             {
-                m_CurTime += Time.deltaTime;
+                m_CurTime += deltaTime;
                 m_DoingMask.fillAmount = (m_SkillData.DurationTime - m_CurTime) / m_SkillData.DurationTime;
                 if (m_CurTime >= m_SkillData.DurationTime)
                 {
@@ -132,7 +140,7 @@ namespace Logic.UI.Cells
             {
                 if (m_SkillIcon.material != null)
                     m_SkillIcon.material = m_GrayMaterial;
-                m_CurTime += Time.deltaTime;
+                m_CurTime += deltaTime;
                 m_DisableMask.fillAmount = (m_SkillData.CD - m_CurTime) / m_SkillData.CD;
                 if (m_CurTime >= m_SkillData.CD)
                 {

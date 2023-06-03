@@ -159,6 +159,8 @@ GameObject:
   - component: {fileID: 4842922295181706473}
   - component: {fileID: 3842728808634181397}
   - component: {fileID: 6560804329579423426}
+  - component: {fileID: 8446506890164771647}
+  - component: {fileID: 2469160630828833168}
   m_Layer: 9
   m_Name: Skill_Pfb_3001
   m_TagString: Untagged
@@ -221,3 +223,33 @@ MonoBehaviour:
   m_MuzzlePos: {fileID: 3322410042315863924}
   m_BulletPrefab: {fileID: 2448331706743675507, guid: 0cf4cf844f8d6674d890922caba8afad, type: 3}
   m_MuzzleEffectPrefab: {fileID: 4315619768799119754, guid: dadce63470609e04584f25125ab950dd, type: 3}
+--- !u!114 &8446506890164771647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7169206188376072053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6090da511f8374135a15dd8655adcd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
+  _mode: 1
+  _globalClockKey: 
+  _rewindable: 0
+  _recordingDuration: 30
+--- !u!114 &2469160630828833168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7169206188376072053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9fdec4ff2bd044dbcd4aad1d46f3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  module: 2

@@ -34,16 +34,18 @@ namespace Logic.Fight.Common
         public BigDouble CurrentEnemyHP; //当前怪物血量
         public BigDouble CurrentEnemyDrop; //当前怪物掉落金币
         public Enemy.EnemyType EnemeyType; //怪物类型
+        public Enemy.PositionType PositionType; //位置类型
         
         public SpawnData(){}
 
-        public SpawnData(string pEnemyRes, BigDouble pATK, BigDouble pHP, BigDouble pDrop, Enemy.EnemyType pEenemyType= Enemy.EnemyType.Normal)
+        public SpawnData(string pEnemyRes, BigDouble pATK, BigDouble pHP, BigDouble pDrop, Enemy.EnemyType pEenemyType= Enemy.EnemyType.Normal, Enemy.PositionType positionType = Enemy.PositionType.Ground)
         {
             EnemyRes = pEnemyRes;
             CurrentEnemyATK = pATK;
             CurrentEnemyHP = pHP;
             CurrentEnemyDrop = pDrop;
             EnemeyType = pEenemyType;
+            PositionType = positionType;
         }
     }
     

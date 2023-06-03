@@ -178,13 +178,14 @@ namespace Logic.UI.Cells
             {
                 m_Researching.Hide();
                 m_ResearchLevel = level;
-                UpdateResearchState(m_ResearchLevel);
                 EventManager.Call(LogicEvent.ResearchLevelChanged, this);
             }
-            else
-            {
-                UpdateResearchState(m_ResearchLevel);
-            }
+
+            UpdateResearchState(m_ResearchLevel);
+            // else
+            // {
+            //     UpdateResearchState(m_ResearchLevel);
+            // }
         }
 
         private void OnDestroy()

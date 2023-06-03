@@ -1,4 +1,5 @@
 using Framework.GameFSM;
+using Logic.UI.Common;
 
 namespace Networks.State
 {
@@ -16,6 +17,7 @@ namespace Networks.State
             //TODO
             //开启重连 并记录次数
             //超过重试次数 退出到登录
+            UIMsgBox.ShowMsgBox(1, "警告", "网络中断\n请重新登录游戏");
         }
 
         public override void Update(NetworkStateData pContext)

@@ -66,7 +66,7 @@ namespace Logic.UI.Cells
         public void InitBySkill(SkillData pData)
         {
             //Debug.LogError("InitBySkill");
-            
+
 
             m_ItemType = ItemType.Skill;
             m_ItemData = ItemCfg.GetData(pData.ID);
@@ -120,26 +120,39 @@ namespace Logic.UI.Cells
 
             //升级节点
             m_ProcessNode.Show();
-            var _CurCount = SkillManager.Ins.CurCount(m_SkillData.ID);
-            var _NeedCount = SkillManager.Ins.UpgradeNeedCount(m_SkillData.ID);
-            if (_CurCount >= _NeedCount)
+            if (SkillManager.Ins.IsMaxLevel(m_SkillData.ID))
             {
-                m_CanUpgrade.Show();
+                //满级节点
+                m_CanUpgrade.Hide();
                 m_CantProcess.Hide();
                 m_CanProcess.Show();
+                m_CanProcess.fillAmount = 1;
+                m_TextProcess.text = "Max";
+                m_Level.text = "LV" + GameDefine.CommonItemMaxLevel;
             }
             else
             {
-                m_CanUpgrade.Hide();
-                m_CantProcess.Show();
-                m_CanProcess.Hide();
+                var _CurCount = SkillManager.Ins.CurCount(m_SkillData.ID);
+                var _NeedCount = SkillManager.Ins.UpgradeNeedCount(m_SkillData.ID);
+                if (_CurCount >= _NeedCount)
+                {
+                    m_CanUpgrade.Show();
+                    m_CantProcess.Hide();
+                    m_CanProcess.Show();
+                }
+                else
+                {
+                    m_CanUpgrade.Hide();
+                    m_CantProcess.Show();
+                    m_CanProcess.Hide();
+                }
+
+                float _Process = (float)_CurCount / _NeedCount;
+                m_CantProcess.fillAmount = _Process;
+                m_CanProcess.fillAmount = _Process;
+
+                m_TextProcess.text = _CurCount + "/" + _NeedCount;
             }
-
-            float _Process = (float)_CurCount / _NeedCount;
-            m_CantProcess.fillAmount = _Process;
-            m_CanProcess.fillAmount = _Process;
-
-            m_TextProcess.text = _CurCount + "/" + _NeedCount;
         }
 
         #endregion
@@ -203,26 +216,38 @@ namespace Logic.UI.Cells
 
             //升级节点
             m_ProcessNode.Show();
-            var _CurCount = PartnerManager.Ins.CurCount(m_PartnerData.ID);
-            var _NeedCount = PartnerManager.Ins.UpgradeNeedCount(m_PartnerData.ID);
-            if (_CurCount >= _NeedCount)
+            if (PartnerManager.Ins.IsMaxLevel(m_PartnerData.ID))
             {
-                m_CanUpgrade.Show();
+                //满级节点
+                m_CanUpgrade.Hide();
                 m_CantProcess.Hide();
                 m_CanProcess.Show();
+                m_CanProcess.fillAmount = 1;
+                m_TextProcess.text = "Max";
+                m_Level.text = "LV" + GameDefine.CommonItemMaxLevel;
             }
             else
             {
-                m_CanUpgrade.Hide();
-                m_CantProcess.Show();
-                m_CanProcess.Hide();
+                var _CurCount = PartnerManager.Ins.CurCount(m_PartnerData.ID);
+                var _NeedCount = PartnerManager.Ins.UpgradeNeedCount(m_PartnerData.ID);
+                if (_CurCount >= _NeedCount)
+                {
+                    m_CanUpgrade.Show();
+                    m_CantProcess.Hide();
+                    m_CanProcess.Show();
+                }
+                else
+                {
+                    m_CanUpgrade.Hide();
+                    m_CantProcess.Show();
+                    m_CanProcess.Hide();
+                }
+
+                float _Process = (float)_CurCount / _NeedCount;
+                m_CantProcess.fillAmount = _Process;
+                m_CanProcess.fillAmount = _Process;
+                m_TextProcess.text = _CurCount + "/" + _NeedCount;
             }
-
-            float _Process = (float)_CurCount / _NeedCount;
-            m_CantProcess.fillAmount = _Process;
-            m_CanProcess.fillAmount = _Process;
-
-            m_TextProcess.text = _CurCount + "/" + _NeedCount;
         }
 
         #endregion
@@ -258,6 +283,7 @@ namespace Logic.UI.Cells
                 case ItemType.Toy:
                     break;
             }
+
             //Debug.LogError("InitByEquip");
             m_RedDot.Uid = pData.ID.ToString();
 
@@ -281,8 +307,6 @@ namespace Logic.UI.Cells
                 if (_EquipID == m_EquipData.ID)
                     m_IsOn.Hide();
             });
-
-
         }
 
         private void UpdateEquipInfo()
@@ -309,26 +333,40 @@ namespace Logic.UI.Cells
 
             //升级节点
             m_ProcessNode.Show();
-            var _CurCount = EquipManager.Ins.CurCount(m_EquipData.ID, m_EquipType);
-            var _NeedCount = EquipManager.Ins.NeedCount(m_EquipData.ID, m_EquipType);
-            if (_CurCount >= _NeedCount)
+
+            if (EquipManager.Ins.IsMaxLevel(m_EquipData.ID, m_EquipType))
             {
-                m_CanUpgrade.Show();
+                //满级节点
+                m_CanUpgrade.Hide();
                 m_CantProcess.Hide();
                 m_CanProcess.Show();
+                m_CanProcess.fillAmount = 1;
+                m_TextProcess.text = "Max";
+                m_Level.text = "LV" + GameDefine.CommonItemMaxLevel;
             }
             else
             {
-                m_CanUpgrade.Hide();
-                m_CantProcess.Show();
-                m_CanProcess.Hide();
+                var _CurCount = EquipManager.Ins.CurCount(m_EquipData.ID, m_EquipType);
+                var _NeedCount = EquipManager.Ins.NeedCount(m_EquipData.ID, m_EquipType);
+                if (_CurCount >= _NeedCount)
+                {
+                    m_CanUpgrade.Show();
+                    m_CantProcess.Hide();
+                    m_CanProcess.Show();
+                }
+                else
+                {
+                    m_CanUpgrade.Hide();
+                    m_CantProcess.Show();
+                    m_CanProcess.Hide();
+                }
+
+                float _Process = (float)_CurCount / _NeedCount;
+                m_CantProcess.fillAmount = _Process;
+                m_CanProcess.fillAmount = _Process;
+
+                m_TextProcess.text = _CurCount + "/" + _NeedCount;
             }
-
-            float _Process = (float)_CurCount / _NeedCount;
-            m_CantProcess.fillAmount = _Process;
-            m_CanProcess.fillAmount = _Process;
-
-            m_TextProcess.text = _CurCount + "/" + _NeedCount;
 
             //更新红点uid
             //m_RedDot.Uid = m_EquipData.ID.ToString();

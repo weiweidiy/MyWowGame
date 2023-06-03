@@ -1,4 +1,5 @@
 ﻿
+using Chronos;
 using Framework.GameFSM;
 using Logic.Common;
 using Logic.Fight;
@@ -45,6 +46,7 @@ namespace Logic.States.Fight
     public class FightStateData
     {
         public FightSM m_SM;
+        public Timeline m_TimeLine;
 
         public readonly FS_Standby m_Standby = new (FightState.Standby);
         public readonly FS_Fighting m_Fighting = new (FightState.Fighting);

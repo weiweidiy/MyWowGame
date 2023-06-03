@@ -279,7 +279,7 @@ namespace Chronos
 
 				if (!Timekeeper.instance.HasClock(globalClockKey))
 				{
-					throw new ChronosException(string.Format("Missing global clock for timeline: '{0}'.", globalClockKey));
+					throw new ChronosException(string.Format("Missing global clock for timeline: '{0}'.", globalClockKey) + gameObject);
 				}
 
 				GlobalClock globalClock = Timekeeper.instance.Clock(globalClockKey);

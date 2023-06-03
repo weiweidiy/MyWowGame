@@ -73,5 +73,11 @@ namespace Configs
         //资源
         public string ResourceName;
 
+        //伙伴合成ID
+        public int CombineID;
+
+        //伙伴合成数量
+        public int CombineNum;
+
     }
 }

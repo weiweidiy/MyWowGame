@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7813768667101673663}
   - component: {fileID: 1024495475314656653}
+  - component: {fileID: 4879076774957807842}
+  - component: {fileID: 2056638735265945216}
   m_Layer: 11
   m_Name: NormalBullet
   m_TagString: Untagged
@@ -47,6 +49,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Speed: 35
   m_HitEffectPrefab: {fileID: 8342795419081189981, guid: 7af23453c5c9eba46b36b8f4ce5156a1, type: 3}
+--- !u!114 &4879076774957807842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022691708801192542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6090da511f8374135a15dd8655adcd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
+  _mode: 1
+  _globalClockKey: 
+  _rewindable: 1
+  _recordingDuration: 30
+--- !u!114 &2056638735265945216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022691708801192542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9fdec4ff2bd044dbcd4aad1d46f3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  module: 2
 --- !u!1 &2760147159334989270
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ using Framework.UI;
 using Logic.Common;
 using Logic.UI.UIUser;
 using Networks;
+using UnityEngine;
 
 namespace Logic.Manager
 {
@@ -30,6 +31,7 @@ namespace Logic.Manager
         /// 缓存当前最高攻击属性的武器id
         /// </summary>
         public int BestWeaponId { get; private set; }
+
         public int BestArmorId { get; private set; }
 
         public void Init(List<GameEquipData> pWeaponList, List<GameEquipData> pArmorList, int pDataWeaponOnID,
@@ -107,7 +109,6 @@ namespace Logic.Manager
 
             UpdateAllHaveATKEffect();
             EventManager.Call(LogicEvent.EquipListChanged, ItemType.Weapon);
-            
         }
 
         public async void OnArmorIntensify(List<GameEquipUpgradeData> pEquipList, bool pAuto)
@@ -134,7 +135,6 @@ namespace Logic.Manager
 
             UpdateAllHaveHPEffect();
             EventManager.Call(LogicEvent.EquipListChanged, ItemType.Armor);
-            
         }
 
         public void OnEquipListUpdate(S2C_EquipListUpdate pMsg)
@@ -171,7 +171,16 @@ namespace Logic.Manager
             UpdateAllHaveHPEffect();
             EventManager.Call(LogicEvent.EquipListChanged, ItemType.Weapon);
             EventManager.Call(LogicEvent.EquipListChanged, ItemType.Armor);
-            
+        }
+
+        // 装备合成
+        public void OnEquipCompose(S2S_EquipCompose pMsg)
+        {
+            Debug.LogError($"/Type------{pMsg.Type}------");
+            Debug.LogError($"/FromID------{pMsg.FromID}------");
+            Debug.LogError($"/FromCount------{pMsg.FromCount}------");
+            Debug.LogError($"/ToID------{pMsg.ToID}------");
+            Debug.LogError($"/ToCount------{pMsg.ToCount}------");
         }
 
         #endregion
@@ -217,6 +226,13 @@ namespace Logic.Manager
             return _Data.Level > 10 ? EquipLvlUpCfg.GetData(10).Cost : EquipLvlUpCfg.GetData(_Data.Level).Cost;
         }
 
+        //装备合成需要的数量
+        public int ComposeNeedCount(int pEquipID, ItemType pType)
+        {
+            var data = EquipCfg.GetData(pEquipID);
+            return data.EquipCombineNum;
+        }
+
         //装备是否可以升级
         public bool CanUpgrade(int pEquipID, ItemType pType)
         {
@@ -258,6 +274,18 @@ namespace Logic.Manager
             return false;
         }
 
+        //装备是否满级
+        public bool IsMaxLevel(int pEquipID, ItemType pType)
+        {
+            var level = 1;
+            if (IsHave(pEquipID, pType))
+            {
+                level = GetEquipData(pEquipID, pType).Level;
+            }
+
+            return level >= GameDefine.CommonItemMaxLevel;
+        }
+
         //获取某个装备的拥有效果
         public float GetHaveEffect(int pEquipID, ItemType pType)
         {
@@ -289,13 +317,13 @@ namespace Logic.Manager
                 var _GameData = _MapData.Value;
                 _AllEffect += (_CfgData.HasAdditionBase + (_GameData.Level - 1) * _CfgData.HasAdditionGrow);
                 var atk = GetEquipEffect(_MapData.Key, ItemType.Weapon);
-                if(atk > bestAtk)
+                if (atk > bestAtk)
                 {
                     bestAtk = atk;
                     BestWeaponId = _MapData.Key;
                 }
             }
-            
+
             AllHaveATKEffect = _AllEffect;
             EventManager.Call(LogicEvent.EquipAllATKEffectUpdate);
         }
@@ -311,7 +339,7 @@ namespace Logic.Manager
                 _AllEffect += (_CfgData.HasAdditionBase + (_GameData.Level - 1) * _CfgData.HasAdditionGrow);
 
                 var hp = GetEquipEffect(_MapData.Key, ItemType.Armor);
-                if(hp > bestHp)
+                if (hp > bestHp)
                 {
                     bestHp = hp;
                     BestArmorId = _MapData.Key;
@@ -365,6 +393,14 @@ namespace Logic.Manager
             NetworkManager.Ins.SendMsg(new C2S_EquipIntensify()
             {
                 EquipID = pEquipID, Type = pType, IsAuto = pIsAuto,
+            });
+        }
+
+        public void DoCompose(int pEquipID, int pType)
+        {
+            NetworkManager.Ins.SendMsg(new C2S_EquipCompose()
+            {
+                EquipID = pEquipID, Type = pType
             });
         }
 

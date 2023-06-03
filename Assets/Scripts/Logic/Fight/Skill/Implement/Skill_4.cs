@@ -157,7 +157,9 @@ namespace Logic.Fight.Skill.Implement
             {
                 var nextAttacker = GetAttacker(index + 1);
 
-                StartCoroutine(WaitSearching(nextAttacker));
+                //StartCoroutine(WaitSearching(nextAttacker));
+
+                DOTweenDelay(m_SearchDelay, 1, nextAttacker);
             }    
         }
 
@@ -181,6 +183,18 @@ namespace Logic.Fight.Skill.Implement
             yield return new WaitForSeconds(m_SearchDelay);
             atker.Search();
 
+        }
+
+        public void DOTweenDelay(float delayedTimer, int loopTimes, IAttacker atker)
+        {
+            float timer = 0;
+            //DOTwwen.To()中参数：前两个参数是固定写法，第三个是到达的最终值，第四个是渐变过程所用的时间
+            Tween t = DOTween.To(() => timer, x => timer = x, 1, delayedTimer).SetUpdate(UpdateType.Manual)
+                          .OnStepComplete(() =>
+                          {
+                              atker.Search();
+                          })
+                          .SetLoops(loopTimes);
         }
 
         /// <summary>

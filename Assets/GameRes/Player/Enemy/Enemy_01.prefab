@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 3610763931068369688}
   - component: {fileID: 4246152914816848035}
   - component: {fileID: 5991266665572292770}
+  - component: {fileID: -2425956808020397508}
+  - component: {fileID: 4533899050274889981}
   m_Layer: 9
   m_Name: Enemy_01
   m_TagString: Untagged
@@ -133,6 +135,34 @@ MonoBehaviour:
   _globalClockKey: 
   _rewindable: 0
   _recordingDuration: 30
+--- !u!114 &-2425956808020397508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5102513930928441062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9fdec4ff2bd044dbcd4aad1d46f3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  module: 2
+--- !u!114 &4533899050274889981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5102513930928441062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c0916d900d1c1a45a999fce3b99b539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spRenderers: []
+  factor: 0.8
+  duration: 0.2
 --- !u!1 &6150275767771041622
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,6 +201,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9063352977410867586}
     m_Modifications:
+    - target: {fileID: -9081433449718792559, guid: 9bd597b4d0f5ec4408b4b3c4a6dfea7f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 66376eaa826c1854193484631e1c3dcb, type: 2}
     - target: {fileID: -8991788883359945097, guid: 9bd597b4d0f5ec4408b4b3c4a6dfea7f, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -179,6 +213,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -8732854031289282943, guid: 9bd597b4d0f5ec4408b4b3c4a6dfea7f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 66376eaa826c1854193484631e1c3dcb, type: 2}
     - target: {fileID: -8653719598885068355, guid: 9bd597b4d0f5ec4408b4b3c4a6dfea7f, type: 3}
       propertyPath: m_Name
       value: Root
@@ -271,6 +309,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -6038187480404136336, guid: 9bd597b4d0f5ec4408b4b3c4a6dfea7f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 66376eaa826c1854193484631e1c3dcb, type: 2}
+    - target: {fileID: -5642894275382548474, guid: 9bd597b4d0f5ec4408b4b3c4a6dfea7f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 66376eaa826c1854193484631e1c3dcb, type: 2}
     - target: {fileID: -5559784385719379605, guid: 9bd597b4d0f5ec4408b4b3c4a6dfea7f, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -307,10 +353,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -4496100827722097064, guid: 9bd597b4d0f5ec4408b4b3c4a6dfea7f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 66376eaa826c1854193484631e1c3dcb, type: 2}
     - target: {fileID: -4017628095572725480, guid: 9bd597b4d0f5ec4408b4b3c4a6dfea7f, type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -3665231269285170288, guid: 9bd597b4d0f5ec4408b4b3c4a6dfea7f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 66376eaa826c1854193484631e1c3dcb, type: 2}
     - target: {fileID: -3484926005549318989, guid: 9bd597b4d0f5ec4408b4b3c4a6dfea7f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.1907258
@@ -343,6 +397,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -2926298239643482397, guid: 9bd597b4d0f5ec4408b4b3c4a6dfea7f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 66376eaa826c1854193484631e1c3dcb, type: 2}
     - target: {fileID: -2114717017327982363, guid: 9bd597b4d0f5ec4408b4b3c4a6dfea7f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.1488397
@@ -475,6 +533,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1625268029777959848, guid: 9bd597b4d0f5ec4408b4b3c4a6dfea7f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 66376eaa826c1854193484631e1c3dcb, type: 2}
     - target: {fileID: 2319998805419544334, guid: 9bd597b4d0f5ec4408b4b3c4a6dfea7f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.3176794
@@ -531,6 +593,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3260513623311538870, guid: 9bd597b4d0f5ec4408b4b3c4a6dfea7f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 66376eaa826c1854193484631e1c3dcb, type: 2}
     - target: {fileID: 3297364353584691495, guid: 9bd597b4d0f5ec4408b4b3c4a6dfea7f, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -627,6 +693,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6489565449210892079, guid: 9bd597b4d0f5ec4408b4b3c4a6dfea7f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 66376eaa826c1854193484631e1c3dcb, type: 2}
     - target: {fileID: 7701133784669383683, guid: 9bd597b4d0f5ec4408b4b3c4a6dfea7f, type: 3}
       propertyPath: m_Layer
       value: 9

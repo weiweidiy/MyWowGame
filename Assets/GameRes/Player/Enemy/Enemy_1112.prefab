@@ -2866,6 +2866,9 @@ GameObject:
   - component: {fileID: 7414509293069755657}
   - component: {fileID: 3172396733395002694}
   - component: {fileID: -3012960330934459491}
+  - component: {fileID: 4851530766946954230}
+  - component: {fileID: -1340736248035296012}
+  - component: {fileID: 6354770468338674504}
   m_Layer: 9
   m_Name: Enemy_1112
   m_TagString: Untagged
@@ -2954,6 +2957,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ActorID: 0
   m_InsID: 0
+  OffsetY: 0.5
   m_HPCtrl: {fileID: 8259485512535132485}
   MoveSpeed: 1
   TargetPosX: 0
@@ -2964,6 +2968,54 @@ MonoBehaviour:
   m_DropCoin:
     mantissa: 0
     exponent: 0
+  m_MuzzlePos: {fileID: 0}
+  m_BulletPrefab: {fileID: 0}
+  m_MuzzleEffectPrefab: {fileID: 0}
+--- !u!114 &4851530766946954230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7414509293069755656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6090da511f8374135a15dd8655adcd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
+  _mode: 1
+  _globalClockKey: 
+  _rewindable: 0
+  _recordingDuration: 30
+--- !u!114 &-1340736248035296012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7414509293069755656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9fdec4ff2bd044dbcd4aad1d46f3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  module: 2
+--- !u!114 &6354770468338674504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7414509293069755656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c0916d900d1c1a45a999fce3b99b539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spRenderers: []
+  factor: 0.8
+  duration: 0.2
 --- !u!1 &7462241477119019628
 GameObject:
   m_ObjectHideFlags: 0

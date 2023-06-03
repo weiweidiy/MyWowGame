@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Configs;
 using Framework.EventKit;
 using Framework.Extension;
-using Framework.Helper;
 using Logic.Common;
-using Logic.Data;
 using Networks;
-using UnityTimer;
 
 namespace Logic.Manager
 {
@@ -22,6 +18,8 @@ namespace Logic.Manager
         public int m_MainTaskCount { get; private set; }
         public List<GameTaskData> m_DailyTaskList { get; private set; }
 
+        private EventGroup m_EventGroup = new();
+
         public void Init(S2C_Login pLoginData)
         {
             m_MainTaskData = pLoginData.CurMainTask;
@@ -30,50 +28,20 @@ namespace Logic.Manager
 
             m_MainTaskCfg = TaskCfg.GetData(m_MainTaskData.TaskID);
 
-            //已经跨天 重置每日任务
-            //TODO 临时在客户端实现
-            var day = TimeHelper.GetUtcDateTime(GameDataManager.Ins.LastGameDate).Day;
-            if (day != DateTime.UtcNow.Day)
-            {
-                m_DailyTaskList.Clear();
-                NetworkManager.Ins.SendMsg(new C2S_RequestDailyTaskList());
-            }
+            //已经跨天 更新每日任务
+            m_EventGroup.Register(LogicEvent.TimeDayChanged, (i, o) => SendC2S_RequestDailyTaskList());
+        }
 
-            StartTimer();
+        public override void Dispose()
+        {
+            base.Dispose();
+            m_EventGroup.Release();
         }
 
         public GameTaskData GetDailyTask(int taskId)
         {
             return m_DailyTaskList.Find(p => p.TaskID == taskId);
         }
-
-        #region 定时器
-
-        private void StartTimer()
-        {
-            DateTime now = DateTime.Now;
-            DateTime midnight = DateTime.Today.AddDays(1);
-            TimeSpan timeLeft = midnight - now;
-            int secondsLeft = (int)timeLeft.TotalSeconds;
-
-            Timer.Register(secondsLeft, () =>
-            {
-                NetworkManager.Ins.SendMsg(new C2S_RequestDailyTaskList());
-                OnTimeUp();
-            }, null, false, true);
-        }
-
-        private void OnTimeUp()
-        {
-            var secondsLeft = 24 * 60 * 60;
-            Timer.Register(secondsLeft, () =>
-            {
-                NetworkManager.Ins.SendMsg(new C2S_RequestDailyTaskList());
-                OnTimeUp();
-            }, null, false, true);
-        }
-
-        #endregion
 
         #region 消息处理
 
@@ -123,6 +91,17 @@ namespace Logic.Manager
         }
 
         #endregion
+
+        #region 消息发送
+
+        /// <summary>
+        /// 已经跨天
+        /// 向服务器发送更新每日任务列表协议
+        /// </summary>
+        public void SendC2S_RequestDailyTaskList()
+        {
+            NetworkManager.Ins.SendMsg(new C2S_RequestDailyTaskList());
+        }
 
         //任务检查点回调
         public void DoTaskUpdate(TaskType pType, long pProcess = 1)
@@ -190,5 +169,7 @@ namespace Logic.Manager
                 }
             }
         }
+
+        #endregion
     }
 }

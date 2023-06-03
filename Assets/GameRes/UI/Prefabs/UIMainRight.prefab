@@ -714,8 +714,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   breathIgnorePause: 1
   breathDuration: 1
-  breathScale: 1.02
+  scaleOffset: 0.05
   breathAlpha: 0.9
+  m_BreathImage: {fileID: 4148570692258923700}
 --- !u!1 &5816134072683784798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,8 +1168,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   breathIgnorePause: 1
   breathDuration: 1
-  breathScale: 0.8
+  scaleOffset: 0.1
   breathAlpha: 0.9
+  m_BreathImage: {fileID: 5190126066126471398}
 --- !u!1001 &4813579429262352782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1179,6 +1181,10 @@ PrefabInstance:
     - target: {fileID: 811531465000328439, guid: f9f68778c1f36984ba5192f24c7d99ca, type: 3}
       propertyPath: breathScale
       value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991394810955084745, guid: f9f68778c1f36984ba5192f24c7d99ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2424824807752039318, guid: f9f68778c1f36984ba5192f24c7d99ca, type: 3}
       propertyPath: m_Name
@@ -1306,6 +1312,10 @@ PrefabInstance:
     - target: {fileID: 811531465000328439, guid: f9f68778c1f36984ba5192f24c7d99ca, type: 3}
       propertyPath: breathScale
       value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991394810955084745, guid: f9f68778c1f36984ba5192f24c7d99ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2424824807752039318, guid: f9f68778c1f36984ba5192f24c7d99ca, type: 3}
       propertyPath: m_Name

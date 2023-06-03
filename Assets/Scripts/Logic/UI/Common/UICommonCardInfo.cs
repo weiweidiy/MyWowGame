@@ -31,6 +31,7 @@ namespace Logic.UI.Common
         public GameObject m_PartnerDetailInfo;
         public GameObject m_EquipDetailInfo;
         private bool IsHave = false;
+        private bool IsMaxLevel = false;
 
         // 技能信息
         [Header("技能信息")] public Image m_SkillQuality;
@@ -105,6 +106,7 @@ namespace Logic.UI.Common
                     UICommonHelper.LoadIcon(m_EquipIcon, m_ItemData.Res);
                     UICommonHelper.LoadQuality(m_EquipQuality, m_EquipData.Quality);
                     m_EquipQualityText.text = UICommonHelper.GetQualityShowText(m_EquipData.Quality);
+                    IsMaxLevel = EquipManager.Ins.IsMaxLevel(id, itemType);
                     UpdateEquipInfo(itemType);
                     m_EquipDetailInfo.Show();
                     m_EquipDetailInfo.transform.DOScale(new Vector3(1, 1, 1), 0.2f);
@@ -118,6 +120,7 @@ namespace Logic.UI.Common
                     UICommonHelper.LoadIcon(m_SkillIcon, m_ItemData.Res);
                     UICommonHelper.LoadQuality(m_SkillQuality, m_SkillData.Quality);
                     m_SkillQualityText.text = UICommonHelper.GetQualityShowText(m_SkillData.Quality);
+                    IsMaxLevel = SkillManager.Ins.IsMaxLevel(id);
                     UpdateSkillInfo();
                     m_SkillDetailInfo.Show();
                     m_SkillDetailInfo.transform.DOScale(new Vector3(1, 1, 1), 0.2f);
@@ -131,6 +134,7 @@ namespace Logic.UI.Common
                     UICommonHelper.LoadIcon(m_PartnerIcon, m_ItemData.Res);
                     UICommonHelper.LoadQuality(m_PartnerQuality, m_PartnerData.Quality);
                     m_PartnerQualityText.text = UICommonHelper.GetQualityShowText(m_PartnerData.Quality);
+                    IsMaxLevel = PartnerManager.Ins.IsMaxLevel(id);
                     UpdatePartnerInfo();
                     m_PartnerDetailInfo.Show();
                     m_PartnerDetailInfo.transform.DOScale(new Vector3(1, 1, 1), 0.2f);
@@ -179,8 +183,19 @@ namespace Logic.UI.Common
             m_SkillInfo.text = string.Format(m_SkillData.SkillDes,
                 m_SkillData.DamageBase + (m_GameSkillData.Level - 1) * m_SkillData.DamageGrow);
 
+            var needCount = 0;
             var curCount = SkillManager.Ins.CurCount(m_SkillData.ID);
-            var needCount = SkillManager.Ins.UpgradeNeedCount(m_SkillData.ID);
+            if (IsMaxLevel)
+            {
+                needCount = SkillManager.Ins.ComposeNeedCount(m_SkillData.ID);
+                //服务器处理，客户端可以不处理
+                m_SkillLevel.text = "LV" + GameDefine.CommonItemMaxLevel;
+            }
+            else
+            {
+                needCount = SkillManager.Ins.UpgradeNeedCount(m_SkillData.ID);
+            }
+
             if (curCount >= needCount)
             {
                 m_SkillCantProcess.Hide();
@@ -215,8 +230,20 @@ namespace Logic.UI.Common
                                  Formula.GetGJJAtk())
                 .ToUIString();
 
+
+            var needCount = 0;
             var curCount = PartnerManager.Ins.CurCount(m_PartnerData.ID);
-            var needCount = PartnerManager.Ins.UpgradeNeedCount(m_PartnerData.ID);
+            if (IsMaxLevel)
+            {
+                needCount = PartnerManager.Ins.ComposeNeedCount(m_PartnerData.ID);
+                //服务器处理，客户端可以不处理
+                m_PartnerLevel.text = "LV" + GameDefine.CommonItemMaxLevel;
+            }
+            else
+            {
+                needCount = PartnerManager.Ins.UpgradeNeedCount(m_PartnerData.ID);
+            }
+
             if (curCount >= needCount)
             {
                 m_PartnerCantProcess.Hide();
@@ -247,8 +274,19 @@ namespace Logic.UI.Common
             m_EquipName.text = m_EquipData.EquipName;
             m_EquipLevel.text = "LV" + m_GameEquipData.Level;
 
+            var needCount = 0;
             var curCount = EquipManager.Ins.CurCount(m_EquipData.ID, equipType);
-            var needCount = EquipManager.Ins.NeedCount(m_EquipData.ID, equipType);
+            if (IsMaxLevel)
+            {
+                needCount = EquipManager.Ins.ComposeNeedCount(m_EquipData.ID, equipType);
+                //服务器处理，客户端可以不处理
+                m_EquipLevel.text = "LV" + GameDefine.CommonItemMaxLevel;
+            }
+            else
+            {
+                needCount = EquipManager.Ins.NeedCount(m_EquipData.ID, equipType);
+            }
+
             if (curCount >= needCount)
             {
                 m_EquipCantProcess.Hide();

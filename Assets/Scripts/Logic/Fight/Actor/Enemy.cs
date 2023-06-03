@@ -20,13 +20,19 @@ namespace Logic.Fight.Actor
     /// <summary>
     /// 怪物基类
     /// </summary>
-    public class Enemy : ActorBase, IPoolAssets, IDamagable
+    public class Enemy : ActorBase, IPoolAssets, IDamagable , IEventNotifier
     {
         public enum EnemyType
         {
             Normal, //普通小怪
             Elite,
             Boss
+        }
+
+        public enum PositionType
+        {
+            Ground, //地面
+            Sky, //空中
         }
 
         [LabelText("血条控制")] [ChildGameObjectsOnly]
@@ -135,6 +141,8 @@ namespace Logic.Fight.Actor
             if (FightManager.Ins.IsGJJDead())
                 return;
             FightDamageManager.Ins.ShowDamage(m_HPCtrl != null ? m_HPCtrl.transform : transform, pDamageData, true);
+
+            onEventRaise?.Invoke();
         }
 
         //是否到达攻击位置
@@ -163,6 +171,8 @@ namespace Logic.Fight.Actor
         }
 
         public Action OnAni_DeadCB;
+
+        public event Action onEventRaise;
 
         //死亡动画结束 回调
         public virtual void OnAni_Dead()

@@ -1,6 +1,7 @@
 
 using System;
 using BreakInfinity;
+using Chronos;
 using Configs;
 using Framework.EventKit;
 using Logic.Common;
@@ -30,15 +31,18 @@ namespace Logic.Fight.Skill
         public SkillData m_SkillData;
         [NonSerialized]
         public GameSkillData m_GameSkillData;
-        
+
         // //状态
         // private bool m_IsDoing = false;
         // private bool m_IsDisable = false;
         // private float m_CurTime = 0;
+        Timeline m_TimeLine;
 
         protected readonly EventGroup m_EventGroup = new();
         private void Awake()
         {
+            m_TimeLine = GetComponent<Timeline>();
+
             Init(m_SkillId);
             m_EventGroup.Register(LogicEvent.SkillReset, OnSkillReset); //战斗切换会重置技能
         }
@@ -66,6 +70,7 @@ namespace Logic.Fight.Skill
             {
                 m_SM = m_SM,
                 m_SkillBase = this,
+                m_TimeLine = m_TimeLine,
             };
             m_SM.Start(_StateData, _StateData.m_Idle);
         }

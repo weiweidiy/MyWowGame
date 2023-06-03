@@ -61,7 +61,7 @@ namespace Logic.UI.UIUser
                 view.onClicked += View_onClicked;
             }
 
-            m_BtnExchange.onClick.AddListener(() => { SpoilManager.Ins.SpoilDraw(); });
+            m_BtnExchange.onClick.AddListener(() => { SpoilManager.Ins.RequestSpoilDraw(); });
 
             m_OriginSprite = m_BtnExchange.image.sprite;
 

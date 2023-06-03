@@ -178,6 +178,7 @@ namespace Chronos
 				}
 
 				source.useAutoRandomSeed = false;
+				Debug.LogError(source.gameObject.name);
 				source.randomSeed = (uint)Random.Range(1, int.MaxValue);
 			}
 		}

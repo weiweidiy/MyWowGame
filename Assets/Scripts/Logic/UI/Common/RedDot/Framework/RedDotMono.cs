@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using Framework.Extension;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Logic.Common.RedDot
 {
-
     public abstract class RedDotMono : MonoBehaviour
     {
         [SerializeField] Image img;
@@ -30,7 +29,7 @@ namespace Logic.Common.RedDot
 
         private void Awake()
         {
-            img.enabled = false;
+            img.Hide();
             interesting = GetInterestingKeys();
         }
 
@@ -134,7 +133,7 @@ namespace Logic.Common.RedDot
         /// <param name="uid"></param>
         protected virtual void OnStatusUpdate(string type, RedDotInfo info, string uid)
         {
-            img.enabled = GetRedDotEnable(info);
+            img.gameObject.SetActive(GetRedDotEnable(info));
             txt.text = GetTextContent(info);
             int iconIndex = GetSpriteIndex(info);
             img.sprite = redDots[iconIndex];
@@ -144,6 +143,5 @@ namespace Logic.Common.RedDot
         {
             UnRegist();
         }
-
     }
 }

@@ -231,7 +231,7 @@ namespace Logic.Fight.GJJ
             foreach(var ctr in scrollUVController)
             {
                 ctr.SetSpeed(0);
-                DOTween.To(() => ctr.GetSpeed(), pValue => ctr.SetSpeed(pValue), ctr.targetSpeed, speedUp);
+                DOTween.To(() => ctr.GetSpeed(), pValue => ctr.SetSpeed(pValue), ctr.targetSpeed, speedUp).SetUpdate(UpdateType.Manual);
 
             }
            
@@ -244,7 +244,7 @@ namespace Logic.Fight.GJJ
         {
             foreach (var ctr in scrollUVController)
             {
-                DOTween.To(() => ctr.GetSpeed(), pValue => ctr.SetSpeed(pValue), 0, speedDown);
+                DOTween.To(() => ctr.GetSpeed(), pValue => ctr.SetSpeed(pValue), 0, speedDown).SetUpdate(UpdateType.Manual);
 
             }
 

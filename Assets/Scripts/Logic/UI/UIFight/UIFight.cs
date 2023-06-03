@@ -1,6 +1,7 @@
 using System;
 using BreakInfinity;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Framework.EventKit;
 using Framework.Extension;
 using Framework.Helper;
@@ -270,9 +271,11 @@ namespace Logic.UI.UIFight
                     m_SwitchNormal.Hide();
                     break;
                 case FightSwitchEvent.FallBack:
-                    await UniTask.Delay(500);
+                    //await UniTask.Delay(500);
+                    await UniTask.DelayFrame(1);
                     m_SwitchNode.Show();
                     m_SwitchFailed.Show();
+
                     break;
                 case FightSwitchEvent.NormalBoss:
                     //await UniTask.Delay(500); //不知道原先为什么要延迟，所以避免注释引发问题，仍然延迟了1帧
@@ -282,7 +285,8 @@ namespace Logic.UI.UIFight
                     m_ProcessNode.Hide();
                     break;
                 case FightSwitchEvent.NextLevel:
-                    await UniTask.Delay(500);
+                    //await UniTask.Delay(500);
+                    await UniTask.DelayFrame(1);
                     m_SwitchNode.Show();
                     m_SwitchSuccess.Show();
                     break;
@@ -292,6 +296,7 @@ namespace Logic.UI.UIFight
                     break;
             }
         }
+
 
         public void OnClickBtnFightStart()
         {

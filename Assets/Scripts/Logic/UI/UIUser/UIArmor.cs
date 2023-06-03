@@ -39,6 +39,7 @@ namespace Logic.UI.UIUser
         public GameObject m_BtnUpgrade;
         public GameObject m_BtnOn;
         public GameObject m_BtnOff;
+        public GameObject m_BtnCompose, m_BtnCanCompose, m_BtnCantCompose;
 
         public GameObject m_UpArrow;
         public TextMeshProUGUI m_UpEquipEffect;
@@ -136,28 +137,39 @@ namespace Logic.UI.UIUser
         }
 
         private bool IsHave = false;
+        private bool IsMaxLevel = false;
 
         private void UpdateEquip()
         {
             var _EquipData = m_CurSelectItem.m_EquipData;
             IsHave = EquipManager.Ins.IsHave(_EquipData.ID, ItemType.Armor);
             GameEquipData _GameEquipData = null;
-            if (IsHave)
-                _GameEquipData = EquipManager.Ins.GetEquipData(_EquipData.ID, ItemType.Armor);
-            else
-                _GameEquipData = new GameEquipData { EquipID = _EquipData.ID, Level = 1, Count = 0 }; //没有按1级算
+            _GameEquipData = IsHave
+                ? EquipManager.Ins.GetEquipData(_EquipData.ID, ItemType.Armor)
+                : new GameEquipData { EquipID = _EquipData.ID, Level = 1, Count = 0 }; //没有按1级算
 
             var itemData = ItemCfg.GetData(_GameEquipData.EquipID);
             UICommonHelper.LoadIcon(m_Icon, itemData.Res);
             UICommonHelper.LoadQuality(m_Quality, _EquipData.Quality);
             m_QualityText.text = UICommonHelper.GetQualityShowText(_EquipData.Quality);
-
             m_EquipName.text = _EquipData.EquipName;
+            //上方等级进度条
+            IsMaxLevel = EquipManager.Ins.IsMaxLevel(_EquipData.ID, ItemType.Armor);
             m_Level.text = "LV" + _GameEquipData.Level;
+            var needCount = 0;
+            var curCount = EquipManager.Ins.CurCount(_EquipData.ID, ItemType.Armor);
+            if (IsMaxLevel)
+            {
+                needCount = EquipManager.Ins.ComposeNeedCount(_EquipData.ID, ItemType.Armor);
+                //服务器处理，客户端可以不处理
+                m_Level.text = "LV" + GameDefine.CommonItemMaxLevel;
+            }
+            else
+            {
+                needCount = EquipManager.Ins.NeedCount(_EquipData.ID, ItemType.Armor);
+            }
 
-            var _CurCount = EquipManager.Ins.CurCount(_EquipData.ID, ItemType.Armor);
-            var _NeedCount = EquipManager.Ins.NeedCount(_EquipData.ID, ItemType.Armor);
-            if (_CurCount >= _NeedCount)
+            if (curCount >= needCount)
             {
                 m_CantProcess.Hide();
                 m_CanProcess.Show();
@@ -168,12 +180,11 @@ namespace Logic.UI.UIUser
                 m_CanProcess.Hide();
             }
 
-            float _Process = (float)_CurCount / _NeedCount;
-            m_CantProcess.fillAmount = _Process;
-            m_CanProcess.fillAmount = _Process;
-
-            m_TextProcess.text = _CurCount + "/" + _NeedCount;
-
+            var process = (float)curCount / needCount;
+            m_CantProcess.fillAmount = process;
+            m_CanProcess.fillAmount = process;
+            m_TextProcess.text = curCount + "/" + needCount;
+            //上方效果
             m_HaveEffect.text =
                 "+" + ((BigDouble)(EquipManager.Ins.GetHaveEffect(_EquipData.ID, ItemType.Armor) * 100f))
                 .ToUIStringFloat() + "%";
@@ -210,7 +221,20 @@ namespace Logic.UI.UIUser
             if (IsHave)
             {
                 m_NotHaveNode.Hide();
-                m_BtnUpgrade.Show();
+
+                //强化合成
+                if (IsMaxLevel)
+                {
+                    m_BtnUpgrade.Hide();
+                    m_BtnCompose.Show();
+                }
+                else
+                {
+                    m_BtnUpgrade.Show();
+                    m_BtnCompose.Hide();
+                }
+
+                //装配
                 if (EquipManager.Ins.CurArmorOnID == _EquipData.ID)
                 {
                     m_BtnOn.Hide();
@@ -228,6 +252,7 @@ namespace Logic.UI.UIUser
                 m_BtnUpgrade.Hide();
                 m_BtnOn.Hide();
                 m_BtnOff.Hide();
+                m_BtnCompose.Hide();
             }
         }
 
@@ -271,6 +296,22 @@ namespace Logic.UI.UIUser
                 EquipManager.Ins.DoIntensify(0, (int)ItemType.Armor, true);
             else
                 EventManager.Call(LogicEvent.ShowTips, "没有可升级的武器");
+        }
+
+        public void OnBtnComposeClick()
+        {
+            if (m_CurSelectItem == null) return;
+            if (!IsHave) return;
+            var equipData = m_CurSelectItem.m_EquipData;
+            var curCount = EquipManager.Ins.CurCount(equipData.ID, ItemType.Armor);
+            var needCount = EquipManager.Ins.ComposeNeedCount(equipData.ID, ItemType.Armor);
+            if (curCount < needCount)
+            {
+                EventManager.Call(LogicEvent.ShowTips, "合成所需数量不足");
+                return;
+            }
+
+            EquipManager.Ins.DoCompose(equipData.ID, (int)ItemType.Armor);
         }
 
         #endregion

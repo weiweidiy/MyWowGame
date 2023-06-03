@@ -2,6 +2,7 @@ using System;
 using Chronos;
 using Framework.Helper;
 using Logic.Common;
+using Logic.Manager;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -24,6 +25,7 @@ namespace Logic.Fight.Actor
         protected Vector3 m_OffsetY;
 
         protected Timeline m_TimeLine;
+
         protected virtual void Awake()
         {
             m_OffsetY = new Vector3(0, OffsetY, 0);
@@ -34,10 +36,6 @@ namespace Logic.Fight.Actor
             m_Animator = GetComponentInChildren<Animator>();
 
             m_TimeLine = GetComponent<Timeline>();
-            if(m_TimeLine != null)
-            {
-                m_TimeLine.globalClockKey = "Battle";
-            }
         }
 
         #region 逻辑接口

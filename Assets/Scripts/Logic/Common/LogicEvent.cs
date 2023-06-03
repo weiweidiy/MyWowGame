@@ -170,7 +170,9 @@
         #endregion
 
         #region 舱室解锁
-        RoomUnlocked,  //舱室解锁了
+
+        RoomUnlocked, //舱室解锁了
+
         #endregion
 
         #region 研究相关
@@ -206,6 +208,13 @@
         RoleIntensify, //英雄升级
         RoleBreak,
         RoleEffectUpdate, //英雄属性变化
+
+        #endregion
+
+        #region 时间相关
+
+        TimeNextDaySecondsChanged,
+        TimeDayChanged,
 
         #endregion
     }

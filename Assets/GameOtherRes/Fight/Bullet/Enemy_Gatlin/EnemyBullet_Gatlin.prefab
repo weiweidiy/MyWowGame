@@ -4825,6 +4825,8 @@ GameObject:
   - component: {fileID: 5498449246726862401}
   - component: {fileID: -6188747777990298285}
   - component: {fileID: -8925827066508587422}
+  - component: {fileID: 2417381820753803376}
+  - component: {fileID: -5045313992333923327}
   m_Layer: 11
   m_Name: EnemyBullet_Gatlin
   m_TagString: Untagged
@@ -9664,6 +9666,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Speed: 25
   m_HitEffectPrefab: {fileID: 8342795419081189981, guid: 14df93d783cb7c246bcee79e502488e6, type: 3}
+--- !u!114 &2417381820753803376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4256950044657942312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6090da511f8374135a15dd8655adcd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
+  _mode: 0
+  _globalClockKey: 
+  _rewindable: 0
+  _recordingDuration: 30
+--- !u!114 &-5045313992333923327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4256950044657942312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9fdec4ff2bd044dbcd4aad1d46f3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  module: 2
 --- !u!1 &6148349507059859615
 GameObject:
   m_ObjectHideFlags: 0

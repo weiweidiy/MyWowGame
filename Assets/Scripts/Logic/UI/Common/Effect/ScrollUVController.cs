@@ -1,3 +1,4 @@
+using Chronos;
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,14 +24,20 @@ public class ScrollUVController : MonoBehaviour
     float _uvX = 0f;
 
     // Start is called before the first frame update
+    Timeline m_TimeLine;
+
     void Awake()
     {
         _material = GetComponent<SpriteRenderer>().material;
+        m_TimeLine = GetComponent<Timeline>();
     }
 
     private void Update()
     {
-        _uvX += Time.deltaTime * curSpeed;
+        Debug.Assert(m_TimeLine != null, "√ª”–’“µΩtimeline" +gameObject);
+        float deltaTime = m_TimeLine ? m_TimeLine.deltaTime : Time.deltaTime;
+        deltaTime *= Time.timeScale;
+        _uvX += deltaTime * curSpeed;
         _material.SetFloat("_UVX", _uvX);
     }
 

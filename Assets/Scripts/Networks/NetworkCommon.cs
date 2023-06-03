@@ -102,6 +102,18 @@ namespace Networks
         public GamePartnerData PartnerData;
         public int OldLevel;
     }
+    
+    // 到达顶级以后 自动合成的数据
+    // 合成数据
+    [Serializable]
+    public class GameComposeData
+    {
+        public int FromID;   //合成者ID
+        public int ToID;     //合成后ID
+        public int ToAddCount; //合成新增数量
+        public int ToCount; //合成后数量
+    }
+    
 
     // 引擎数据
     [Serializable]
@@ -486,6 +498,28 @@ namespace Networks
         public SpoilData Clone()
         {
             return new SpoilData(this);
+        }
+    }
+
+    /// <summary>
+    /// 战利品突破数据
+    /// </summary>
+    public class SpoilBreakthroughData
+    {
+        public int SpoilId;
+        public int Count;//已突破的次数
+
+        public SpoilBreakthroughData() { }
+
+        public SpoilBreakthroughData(SpoilBreakthroughData pData)
+        {
+            SpoilId = pData.SpoilId;
+            Count = pData.Count;
+        }
+
+        public SpoilBreakthroughData Clone()
+        {
+            return new SpoilBreakthroughData(this);
         }
     }
 

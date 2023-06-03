@@ -28,7 +28,7 @@ namespace Networks
                 case NetWorkMsgType.S2C_Login:
                     Debug.LogError("Login Size : " + pMsg.Length);
                     return JsonMapper.ToObject<S2C_Login>(_Msg);
-                case NetWorkMsgType.C2S_GMAccount:
+                case NetWorkMsgType.C2S_GMCommand:
                     return JsonMapper.ToObject<C2S_GMAccount>(_Msg);
                 case NetWorkMsgType.C2S_SyncCoin:
                     return JsonMapper.ToObject<C2S_SyncCoin>(_Msg);
@@ -58,6 +58,10 @@ namespace Networks
                     return JsonMapper.ToObject<S2C_EquipIntensify>(_Msg);
                 case NetWorkMsgType.S2C_EquipListUpdate:
                     return JsonMapper.ToObject<S2C_EquipListUpdate>(_Msg);
+                case NetWorkMsgType.C2S_EquipCompose:
+                    return JsonMapper.ToObject<C2S_EquipCompose>(_Msg);
+                case NetWorkMsgType.S2S_EquipCompose:
+                    return JsonMapper.ToObject<S2S_EquipCompose>(_Msg);
                 case NetWorkMsgType.C2S_PartnerOn:
                     return JsonMapper.ToObject<C2S_PartnerOn>(_Msg);
                 case NetWorkMsgType.S2C_PartnerOn:
@@ -186,6 +190,10 @@ namespace Networks
                     return JsonMapper.ToObject<C2S_SpoilUpgrade>(_Msg);
                 case NetWorkMsgType.S2C_SpoilUpgrade:
                     return JsonMapper.ToObject<S2C_SpoilUpgrade>(_Msg);
+                case NetWorkMsgType.C2S_SpoilBreakthrough:
+                    return JsonMapper.ToObject<C2S_SpoilBreakthrough>(_Msg);
+                case NetWorkMsgType.S2C_SpoilBreakthrough:
+                    return JsonMapper.ToObject<S2C_SpoilBreakthrough>(_Msg);
                 case NetWorkMsgType.C2S_RoleOn:
                     return JsonMapper.ToObject<C2S_RoleOn>(_Msg);
                 case NetWorkMsgType.S2C_RoleOn:

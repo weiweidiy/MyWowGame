@@ -33,10 +33,10 @@ namespace Logic.Fight.Actor.State
                 pContext.m_SM.ToAttack();
                 return;
             }
-
             //朝向目标移动
+            Debug.Assert(pContext.m_TimeLine != null, "没有找到timeline" + pContext.m_Owner.name);
             float deltaTime = pContext.m_TimeLine ? pContext.m_TimeLine.deltaTime : Time.deltaTime;
-            Move(deltaTime);
+            Move(deltaTime * Time.timeScale);
         }
 
         private void Move(float deltaTime)

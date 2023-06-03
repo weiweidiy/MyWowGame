@@ -1,9 +1,7 @@
 using Cysharp.Threading.Tasks;
-using DummyServer;
 using Framework.Extension;
 using Framework.GameFSM;
 using Framework.UI;
-using Logic.Data;
 using Logic.Fight;
 using Logic.Manager;
 using Logic.UI.Common;
@@ -59,18 +57,8 @@ namespace Logic.States.Game
             //初始化某些游戏逻辑
             SingletonCreator.CreateSingleton<SyncUserDataManager>();
 
-            //
-            // await UIManager.Instance.OpenUI<UICommonSprites>();
-            // await UIManager.Instance.OpenUI<UICommonTips>();
-            // await UIManager.Instance.OpenUI<UIMainTop>();
-            // await UIManager.Instance.OpenUI<UIMain>();
-            // await UIManager.Instance.OpenUI<UIBottomMenu>();
-            //
-            // await UniTask.NextFrame();
-            // await UniTask.NextFrame();
-            // await UniTask.NextFrame();
-            //
-
+            //进入主场景后启动游戏时间相关逻辑
+            GameTimeManager.Ins.StartGameTimer();
 
             FightManager.Ins.m_IsInit = true; //FightManager挂在场景中 需要UI都打开之后 然后进行后续的逻辑
             LoadProcess = 1f;
@@ -82,6 +70,7 @@ namespace Logic.States.Game
 
         public override void Release(GameStateData pContext)
         {
+            
         }
     }
 }

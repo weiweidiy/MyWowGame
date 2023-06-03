@@ -1,5 +1,6 @@
 
 using System;
+using Chronos;
 using DummyServer;
 using Framework.EventKit;
 using Framework.Extension;
@@ -34,9 +35,13 @@ namespace Logic.Fight
         //当前关卡类型
         public LevelType CurLevelType => m_FSM.m_ContextData.m_LevelType;
 
+        public Timeline m_TimeLine;
+
         protected override void Awake()
         {
             base.Awake();
+
+            m_TimeLine = GetComponent<Timeline>();
         }
         
         private void Start()
@@ -45,6 +50,7 @@ namespace Logic.Fight
             m_FSMData = new FightStateData
             {
                 m_SM = m_FSM,
+                m_TimeLine = m_TimeLine,
             };
             
             if (GameDataManager.Ins.CurLevelNode == 5 && GameDataManager.Ins.LevelState == LevelState.Normal) 

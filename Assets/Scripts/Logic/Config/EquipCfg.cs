@@ -44,5 +44,11 @@ namespace Configs
         //资源
         public string ResourceName;
 
+        //装备合成ID
+        public int EquipCombineID;
+
+        //装备合成数量
+        public int EquipCombineNum;
+
     }
 }

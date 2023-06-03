@@ -160,7 +160,16 @@ namespace Logic.UI.UIUser
                 var weaponGameData = EquipManager.Ins.GetEquipData(curWeaponOnID, ItemType.Weapon);
                 UICommonHelper.LoadIcon(m_WIcon, itemData.Res);
                 UICommonHelper.LoadQuality(m_WQuality, weaponData.Quality);
-                m_WLevel.text = "Lv." + weaponGameData.Level;
+                if (EquipManager.Ins.IsMaxLevel(curWeaponOnID, ItemType.Weapon))
+                {
+                    //服务器处理，客户端可以不处理
+                    m_WLevel.text = "LV" + GameDefine.CommonItemMaxLevel;
+                }
+                else
+                {
+                    m_WLevel.text = "Lv." + weaponGameData.Level;
+                }
+
                 m_WeaponNode.Show();
             }
         }
@@ -181,7 +190,16 @@ namespace Logic.UI.UIUser
                 var armorGameData = EquipManager.Ins.GetEquipData(curArmorOnID, ItemType.Armor);
                 UICommonHelper.LoadIcon(m_AIcon, itemData.Res);
                 UICommonHelper.LoadQuality(m_AQuality, armorData.Quality);
-                m_ALevel.text = "Lv." + armorGameData.Level;
+                if (EquipManager.Ins.IsMaxLevel(curArmorOnID, ItemType.Armor))
+                {
+                    //服务器处理，客户端可以不处理
+                    m_ALevel.text = "LV" + GameDefine.CommonItemMaxLevel;
+                }
+                else
+                {
+                    m_ALevel.text = "Lv." + armorGameData.Level;
+                }
+
                 m_ArmorNode.Show();
             }
         }

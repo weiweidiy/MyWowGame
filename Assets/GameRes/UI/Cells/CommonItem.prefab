@@ -1223,6 +1223,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7872491908991102074}
     m_Modifications:
+    - target: {fileID: 1991394810955084745, guid: f9f68778c1f36984ba5192f24c7d99ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2424824807752039318, guid: f9f68778c1f36984ba5192f24c7d99ca, type: 3}
       propertyPath: m_Name
       value: CommonRedDot
@@ -1297,11 +1301,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6737527466824406186, guid: f9f68778c1f36984ba5192f24c7d99ca, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 15.5
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 6737527466824406186, guid: f9f68778c1f36984ba5192f24c7d99ca, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -15.5
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 6737527466824406186, guid: f9f68778c1f36984ba5192f24c7d99ca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

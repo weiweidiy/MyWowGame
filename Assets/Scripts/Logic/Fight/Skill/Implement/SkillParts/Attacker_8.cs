@@ -1,8 +1,10 @@
 ﻿using BreakInfinity;
+using DG.Tweening;
 using Logic.Common;
 using Logic.Fight.Actor;
 using Logic.Fight.Common;
 using Logic.Fight.Skill.State;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -94,7 +96,12 @@ namespace Logic.Fight.Skill.Implement
             m_coAnim = StartCoroutine(animHelper.CheckAnimationComplete(anim, "Skill_8_bullet", () =>
             {
                 transform.SetParent(FightManager.Ins.m_GroundNode);
-                StartCoroutine(WaitForLightDown(m_AttackDelay, gameObject));
+                //StartCoroutine(WaitForLightDown(m_AttackDelay, gameObject));
+
+                DOTweenDelay(m_AttackDelay, 1, () =>
+                {
+                    PlayLightningDown(gameObject);
+                });
             }));
         }
 
@@ -113,7 +120,7 @@ namespace Logic.Fight.Skill.Implement
         Vector3 GetNullTarget()
         {
             var target = new Vector3(FightEnemyManager.Ins.MiddlePosX, FightEnemySpawnManager.Ins.m_EnemyGroundSpawnPoss[0].position.y, 0);
-            var randomTarget = new Vector3(target.x + Random.Range(-1f, 2f), target.y, target.z);
+            var randomTarget = new Vector3(target.x + UnityEngine.Random.Range(-1f, 2f), target.y, target.z);
             return randomTarget;
         }
 
@@ -168,7 +175,12 @@ namespace Logic.Fight.Skill.Implement
                 pTarget.m_Health.Damage(m_Damage);
             }
 
-            StartCoroutine(WaitForDestroy(1f));
+            //StartCoroutine(WaitForDestroy(1f));
+
+            DOTweenDelay(1f, 1, () =>
+            {
+                Destroy(gameObject);
+            });
         }
 
         /// <summary>
@@ -182,6 +194,18 @@ namespace Logic.Fight.Skill.Implement
             Destroy(gameObject);
         }
 
+
+        public void DOTweenDelay(float delayedTimer, int loopTimes, Action action)
+        {
+            float timer = 0;
+            //DOTwwen.To()中参数：前两个参数是固定写法，第三个是到达的最终值，第四个是渐变过程所用的时间
+            Tween t = DOTween.To(() => timer, x => timer = x, 1, delayedTimer).SetUpdate(UpdateType.Manual)
+                          .OnStepComplete(() =>
+                          {
+                              action?.Invoke();
+                          })
+                          .SetLoops(loopTimes);
+        }
 
     }
 }

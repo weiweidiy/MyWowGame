@@ -10,7 +10,6 @@ namespace DummyServer
         {
             //初始英雄 TODO:7101最好是配置表配置
             pDB.m_RoleList.Add(new GameRoleData { RoleID = 7101 });
-            pDB.m_RoleList.Add(new GameRoleData { RoleID = 7103 });
         }
 
         #region 通用
@@ -61,12 +60,12 @@ namespace DummyServer
             {
                 roleData.RoleExp -= roleTotalExp;
                 roleData.RoleLevel++;
+                roleTotalExp = GetRoleIntensifyTotalExp(roleData.RoleLevel);
 
                 //英雄突破条件
-                if (roleData.RoleLevel % GameDefine.RoleBreakEveryLevel == 0)
-                {
-                    roleData.RoleBreakState = true;
-                }
+                if (roleData.RoleLevel % GameDefine.RoleBreakEveryLevel != 0) continue;
+                roleData.RoleBreakState = true;
+                break;
             }
 
             SendMsg(new S2C_RoleIntensify()

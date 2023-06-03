@@ -47,7 +47,7 @@ namespace Networks
     {
         public C2S_GMAccount()
         {
-            MsgType = NetWorkMsgType.C2S_GMAccount;
+            MsgType = NetWorkMsgType.C2S_GMCommand;
         }
     }
 
@@ -105,6 +105,8 @@ namespace Networks
 
         #region 公用逻辑数据
 
+        public long ServerTimer; //服务器当前时间
+        public long NextDaySeconds; //距离下一天的秒数
         public long LastGameDate; //上次下线时间
 
         #endregion
@@ -234,6 +236,7 @@ namespace Networks
         public List<SpoilSlotData> SpoilSlotsData = new List<SpoilSlotData>(8); //战利品槽位数据
         public List<SpoilData> SpoilsData = new List<SpoilData>(32); //战利品数据
         public int SpoilDrawProgress; //战利品抽卡池当前进度
+        public List<SpoilBreakthroughData> SpoilBreakthroughData = new List<SpoilBreakthroughData>(32); //战利品突破数据
 
         #endregion
 
@@ -394,6 +397,7 @@ namespace Networks
         public bool IsAuto;
         public int Type;
         public List<GameEquipUpgradeData> EquipList;
+        public List<GameComposeData> ComposeList;
     }
 
     //装备列表更新
@@ -406,6 +410,27 @@ namespace Networks
 
         public List<GameEquipData> WeaponList;
         public List<GameEquipData> ArmorList;
+    }
+
+    //单次合成
+    public class C2S_EquipCompose : MessageHead
+    {
+        public C2S_EquipCompose()
+        {
+            MsgType = NetWorkMsgType.C2S_EquipCompose;
+        }
+
+        public int EquipID;
+        public int Type;
+    }
+
+    public class S2S_EquipCompose : MessageHead
+    {
+        public int Type;
+        public int FromID; //合成者ID
+        public int FromCount; //合成后数量
+        public int ToID; //合成后ID
+        public int ToCount; //合成后数量
     }
 
     //---------------------------------------------------------------------------
@@ -1112,6 +1137,26 @@ namespace Networks
         }
 
         public SpoilData Spoil;
+    }
+
+    public class C2S_SpoilBreakthrough : MessageHead
+    {
+        public C2S_SpoilBreakthrough()
+        {
+            MsgType = NetWorkMsgType.C2S_SpoilBreakthrough;
+        }
+
+        public int SpoilId;
+    }
+
+    public class S2C_SpoilBreakthrough : MessageHead
+    {
+        public S2C_SpoilBreakthrough()
+        {
+            MsgType = NetWorkMsgType.S2C_SpoilBreakthrough;
+        }
+
+        public SpoilBreakthroughData SpoilBreakthrough;
     }
 
     #endregion

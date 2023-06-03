@@ -98,7 +98,23 @@ namespace Logic.Fight.Skill.Implement
             m_Animator.enabled = true;
             m_Animator.SetTrigger(Launch);
 
-            StartCoroutine(WaitForBulletsDown(m_LaunchDelay));
+            //StartCoroutine(WaitForBulletsDown(m_LaunchDelay));
+
+            DOTweenDelay(m_LaunchDelay, 1, ()=> {
+                //StartCoroutine(PlayBulletsDown(0.3f));
+                var interval = 0.3f;
+                int i = 0;
+                DOTweenDelay(interval, m_LightBulletCount, () =>
+                {
+                    var goBullet = Instantiate(m_LightBulletTemplate);
+                    goBullet.transform.position = new Vector3(0, m_LightBulletTemplate.transform.position.y, 0);
+                    goBullet.SetActive(true);
+                    var attacker = goBullet.GetComponent<Attacker>();
+                    attacker.Ready(m_AttackRange, Formula.GetGJJAtk() * GetSkillBaseDamage() / 100, m_AttackDelay);
+
+                    i++;
+                });
+            });
         }
 
         /// <summary>
@@ -111,6 +127,18 @@ namespace Logic.Fight.Skill.Implement
         {
             yield return new WaitForSeconds(interval);
             StartCoroutine(PlayBulletsDown(0.3f));
+        }
+
+        public void DOTweenDelay(float delayedTimer, int loopTimes , Action action)
+        {
+            float timer = 0;
+            //DOTwwen.To()中参数：前两个参数是固定写法，第三个是到达的最终值，第四个是渐变过程所用的时间
+            Tween t = DOTween.To(() => timer, x => timer = x, 1, delayedTimer).SetUpdate(UpdateType.Manual)
+                          .OnStepComplete(() =>
+                          {
+                              action?.Invoke();
+                          })
+                          .SetLoops(loopTimes);
         }
 
         /// <summary>
@@ -129,6 +157,8 @@ namespace Logic.Fight.Skill.Implement
                 attacker.Ready(m_AttackRange, Formula.GetGJJAtk() * GetSkillBaseDamage() / 100, m_AttackDelay);
             }
         }
+
+
 
 
         /// <summary>

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1373165365480200728}
   - component: {fileID: 5220100851542119231}
   - component: {fileID: 6342943995176078514}
+  - component: {fileID: 8489343301964263697}
   m_Layer: 11
   m_Name: FireSpikes
   m_TagString: Untagged
@@ -4879,6 +4880,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &8489343301964263697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2833043104789567836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c364e7a8609b1f94fa72d62049a91de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
 --- !u!1 &4470086906194285593
 GameObject:
   m_ObjectHideFlags: 0
@@ -4891,6 +4905,8 @@ GameObject:
   - component: {fileID: 4788888412086524013}
   - component: {fileID: 5929704889144802530}
   - component: {fileID: 4589843547224447310}
+  - component: {fileID: -5671711102385516093}
+  - component: {fileID: 1657207364045342588}
   m_Layer: 11
   m_Name: EnemyMuzzle_Biggun
   m_TagString: Untagged
@@ -9766,6 +9782,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DelayTime: 2
+--- !u!114 &-5671711102385516093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4470086906194285593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6090da511f8374135a15dd8655adcd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
+  _mode: 1
+  _globalClockKey: 
+  _rewindable: 0
+  _recordingDuration: 30
+--- !u!114 &1657207364045342588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4470086906194285593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9fdec4ff2bd044dbcd4aad1d46f3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  module: 2
 --- !u!1 &4725062019291653244
 GameObject:
   m_ObjectHideFlags: 0
@@ -9777,6 +9823,7 @@ GameObject:
   - component: {fileID: 2812687211115912855}
   - component: {fileID: 2195426230899009781}
   - component: {fileID: 466124632430854041}
+  - component: {fileID: 8010130950745660439}
   m_Layer: 11
   m_Name: Glow
   m_TagString: Untagged
@@ -14636,6 +14683,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &8010130950745660439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4725062019291653244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c364e7a8609b1f94fa72d62049a91de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
 --- !u!1 &6997662505419316354
 GameObject:
   m_ObjectHideFlags: 0
@@ -14647,6 +14707,7 @@ GameObject:
   - component: {fileID: 4088769571048119390}
   - component: {fileID: 8439015829070724359}
   - component: {fileID: 842378726958169980}
+  - component: {fileID: 836175148343257378}
   m_Layer: 11
   m_Name: Sparks
   m_TagString: Untagged
@@ -19506,3 +19567,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &836175148343257378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6997662505419316354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c364e7a8609b1f94fa72d62049a91de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5

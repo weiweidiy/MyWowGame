@@ -21,10 +21,18 @@ namespace Logic.States.Fight
         private Timer m_Timer;
         private bool m_IsTimeUp = false;
 
+        /// <summary>
+        /// 是否开启boss计时
+        /// </summary>
+        bool m_StartNormalBossTimer = false;
+        float m_NormalBossTimeDuration = float.MaxValue;
+        float m_CurNormalBossTime = 0f;
+
         #endregion
 
         private bool m_InSwitch = false;
         private FightStateData m_StateData;
+
         public FS_Fighting(FightState pType) : base(pType)
         {
         }
@@ -32,7 +40,9 @@ namespace Logic.States.Fight
         public override void Enter(FightStateData pContext)
         {
             //Debug.LogWarning("FS - Fighting ENTER");
-
+            m_StartNormalBossTimer = false;
+            m_NormalBossTimeDuration = float.MaxValue;
+            m_CurNormalBossTime = 0f;
             m_InSwitch = false;
             m_IsTimeUp = false;
             m_StateData = pContext;
@@ -134,6 +144,25 @@ namespace Logic.States.Fight
 
             //TODO 战斗中的其他逻辑
             //throw new Exception("---------------------");
+
+            if(m_StartNormalBossTimer)
+            {
+                if(m_CurNormalBossTime > m_NormalBossTimeDuration)
+                {
+                    m_IsTimeUp = true;
+                    m_StartNormalBossTimer = false;
+                    m_CurNormalBossTime = 0f;
+                }
+                else
+                {
+                    Debug.Assert(pContext.m_TimeLine != null, "没有找到timeline fightmanager"  );
+                    float deltaTime = pContext.m_TimeLine ? pContext.m_TimeLine.deltaTime : Time.deltaTime;
+                    deltaTime *= Time.timeScale;
+                    m_CurNormalBossTime += deltaTime;
+                    EventManager.Call(LogicEvent.Fight_NormalBossTimerChanged, m_CurNormalBossTime);
+                }
+            }
+
         }
 
         public override void Release(FightStateData pContext)
@@ -156,20 +185,28 @@ namespace Logic.States.Fight
             m_StateData.m_SM.ToSwitch(_Para.m_SwitchToType);
         }
 
+
+
         /// <summary>
         /// 部分战斗需要定时器
         /// </summary>
         /// <param name="pCD">时间</param>
         private void StartFightTimer(float pCD)
         {
-            m_Timer = Timer.Register(pCD, () =>
-            {
-                m_IsTimeUp = true;
-                m_Timer = null;
-            }, f =>
-            {
-                EventManager.Call(LogicEvent.Fight_NormalBossTimerChanged, f);
-            });
+            m_NormalBossTimeDuration = pCD;
+            m_StartNormalBossTimer = true;
+            m_CurNormalBossTime = 0f;
+
+            //因为要局部控制管理时间缩放，所以不能用Timer
+
+            //m_Timer = Timer.Register(pCD, () =>
+            //{
+            //    m_IsTimeUp = true;
+            //    m_Timer = null;
+            //}, f =>
+            //{
+            //    EventManager.Call(LogicEvent.Fight_NormalBossTimerChanged, f);
+            //});
         }
 
         private void OnCopyTimeUp(int i, object o)

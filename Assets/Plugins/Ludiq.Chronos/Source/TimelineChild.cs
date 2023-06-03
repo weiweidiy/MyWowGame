@@ -38,7 +38,7 @@ namespace Chronos
 
 			if (parent == null)
 			{
-				throw new ChronosException("Missing parent timeline for timeline child.");
+				throw new ChronosException("Missing parent timeline for timeline child." + gameObject);
 			}
 
 			if (previousParent != null)

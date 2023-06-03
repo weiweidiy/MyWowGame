@@ -18,6 +18,7 @@ namespace Logic.Manager
         public List<SpoilSlotData> m_SpoilSlotsData; //战利品槽位数据
         public List<SpoilData> m_SpoilsData; //战利品数据
         public int m_SpoilDrawProgress; //战利品抽卡池当前进度
+        public List<SpoilBreakthroughData> m_SpoilBreakthrough; //战利品已突破的次数
 
         public void Init(S2C_Login pMsg)
         {
@@ -25,6 +26,7 @@ namespace Logic.Manager
             m_SpoilDrawProgress = pMsg.SpoilDrawProgress;
             m_SpoilSlotsData = pMsg.SpoilSlotsData;
             m_SpoilsData = pMsg.SpoilsData;
+            m_SpoilBreakthrough = pMsg.SpoilBreakthroughData;
         }
 
         #region 本地缓存数据库操作方法
@@ -162,6 +164,60 @@ namespace Logic.Manager
             m_SpoilDrawProgress++;
         }
 
+        /// <summary>
+        /// 添加一条Spoilbreakthrough数据
+        /// </summary>
+        /// <param name="data"></param>
+        public bool AddSpoilBreakthroughData(SpoilBreakthroughData spoilBreakthroughData)
+        {
+            if(GetSpoilBreakthroughData(spoilBreakthroughData.SpoilId) != null)
+            {
+                Debug.LogError("已经存在战利品 , 请调用 UpdateSpoilBreakthroughData 方法" + spoilBreakthroughData.SpoilId);
+                return false;
+            }
+            m_SpoilBreakthrough.Add(spoilBreakthroughData);
+            return true;
+        }
+
+        /// <summary>
+        /// 更新一条Spoilbreakthrough数据
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public void UpdateSpoilBreakthroughData(SpoilBreakthroughData spoilBreakthroughData)
+        {
+            var data = GetSpoilBreakthroughData(spoilBreakthroughData.SpoilId);
+            if(data == null)
+            {
+                Debug.LogError("没有找到战利品 , 请调用 AddSpoilBreakthroughData 方法" + spoilBreakthroughData.SpoilId);
+                return;
+            }
+            data.Count = spoilBreakthroughData.Count;
+            
+        }
+
+        /// <summary>
+        /// 根据id获取一个spoilbreakthrough数据对象
+        /// </summary>
+        /// <param name="spoilId"></param>
+        /// <returns></returns>
+        public SpoilBreakthroughData GetSpoilBreakthroughData(int spoilId)
+        {
+            return m_SpoilBreakthrough.Where((p) => p.SpoilId.Equals(spoilId)).SingleOrDefault();
+        }
+
+        /// <summary>
+        /// 获取当前已突破的次数
+        /// </summary>
+        /// <returns></returns>
+        public int GetSpoilBreakthroughCount(int spoilId)
+        {
+            var data = GetSpoilBreakthroughData(spoilId);
+            if (data == null)
+                return 0;
+
+            return data.Count;
+        }
 
         /// <summary>
         /// 保存到数据库
@@ -274,6 +330,21 @@ namespace Logic.Manager
         }
 
         /// <summary>
+        /// 获取突破消耗
+        /// </summary>
+        /// <param name="spoilId"></param>
+        /// <param name="spoilLevel"></param>
+        /// <returns></returns>
+        public int GetBreakCost(int spoilId)
+        {
+            var spoilData = GetSpoil(spoilId);
+            if(spoilData == null)
+                return 0;
+
+            return Formula.GetSpoilBreakthroughCost(spoilId, spoilData.Level);
+        }
+
+        /// <summary>
         /// 获取抽卡消耗
         /// </summary>
         /// <returns></returns>
@@ -358,10 +429,20 @@ namespace Logic.Manager
         /// 查询兑换战功资源是否足够
         /// </summary>
         /// <returns></returns>
-        public bool DrawCostEnough(BigDouble needCost)
+        public bool DoesCostTrophyEnough(BigDouble needCost)
         {
             //判断战功是否足够
             return needCost <= GameDataManager.Ins.Trophy;
+        }
+
+        /// <summary>
+        /// 突破石是否足够
+        /// </summary>
+        /// <param name="needCost"></param>
+        /// <returns></returns>
+        public bool DoesCostBreakOreEngough(int needCost)
+        {
+            return needCost <= GameDataManager.Ins.BreakOre;
         }
 
         /// <summary>
@@ -377,6 +458,33 @@ namespace Logic.Manager
             return spoil.Level >= GetMaxUpgradeLevel();
         }
 
+        /// <summary>
+        /// 是否能突破
+        /// </summary>
+        /// <returns></returns>
+        public bool CanBreakthrough(SpoilData spoilData)
+        {
+            var spoilId = spoilData.SpoilId;
+            var level = spoilData.Level;
+            int count = level / 3;
+            int levelCondition = level % 3;
+
+            //等级符合要求,而且没有突破
+            return levelCondition == 0 && count > GetSpoilBreakthroughCount(spoilId);
+        }
+
+        /// <summary>
+        /// 是否已达最大突破次数
+        /// </summary>
+        /// <param name="spoilId"></param>
+        /// <returns></returns>
+        public bool IsMaxBreakthrough(int spoilId)
+        {
+            int maxBreakcount = 9;
+            var count = GetSpoilBreakthroughCount(spoilId);
+            return count >= maxBreakcount;
+        }
+
         #endregion
 
 
@@ -385,7 +493,7 @@ namespace Logic.Manager
         /// <summary>
         /// 抽Spoil
         /// </summary>
-        public void SpoilDraw()
+        public void RequestSpoilDraw()
         {
             //检查是否已经抽光了
             var curProgress = GetSpoilDrawProgress();
@@ -405,7 +513,7 @@ namespace Logic.Manager
 
             //检查cost
             var needCost = GetDrawCost(curProgress);
-            if (!DrawCostEnough(needCost))
+            if (!DoesCostTrophyEnough(needCost))
             {
                 EventManager.Call(LogicEvent.ShowTips, "战功不足");
                 //Debug.LogError("战功不足");
@@ -429,7 +537,7 @@ namespace Logic.Manager
         /// 装备Spoil
         /// </summary>
         /// <param name="spoilId"></param>
-        public void SpoilEquip(int spoilId)
+        public void RequestSpoilEquip(int spoilId)
         {
             var spoilData = GetSpoil(spoilId);
             if (spoilData == null)
@@ -449,7 +557,7 @@ namespace Logic.Manager
         /// 升级
         /// </summary>
         /// <param name="spoilId"></param>
-        public void SpoilUpgrade(int spoilId)
+        public void RequestSpoilUpgrade(int spoilId)
         {
             var spoilData = GetSpoil(spoilId);
             if (spoilData == null)
@@ -459,7 +567,25 @@ namespace Logic.Manager
                 return;
             }
 
+            if(!CanBreakthrough(spoilData))
+            {
+                DoRequestSpoilUpgrade(spoilData);
+            }
+            else
+            {
+                DoRequestSpoilBreakthrough(spoilData);
+            }
+           
+        }
+
+        /// <summary>
+        /// 强化
+        /// </summary>
+        /// <param name="spoilData"></param>
+        void DoRequestSpoilUpgrade(SpoilData spoilData)
+        {
             var spoilLevel = spoilData.Level;
+            var spoilId = spoilData.SpoilId;
 
             //判断等级是否最高
             if (spoilLevel >= GetMaxUpgradeLevel())
@@ -472,7 +598,7 @@ namespace Logic.Manager
 
             //判断战功是否足够
             var needCost = GetUpgradeCost(spoilId, spoilLevel);
-            if (!DrawCostEnough(needCost))
+            if (!DoesCostTrophyEnough(needCost))
             {
                 EventManager.Call(LogicEvent.ShowTips, "战功不足");
                 //Debug.LogError("战功不足");
@@ -492,6 +618,35 @@ namespace Logic.Manager
                 Spoil = spoilData
             });
         }
+
+        /// <summary>
+        /// 突破
+        /// </summary>
+        /// <param name="spoilData"></param>
+        private void DoRequestSpoilBreakthrough(SpoilData spoilData)
+        {
+            //判断资源够不够
+            if(!DoesCostBreakOreEngough(GetBreakCost(spoilData.SpoilId)))
+            {
+                EventManager.Call(LogicEvent.ShowTips, "突破石不足");
+                return;
+            }
+
+            //判断是否已经满突破
+            if(IsMaxBreakthrough(spoilData.SpoilId))
+            {
+                EventManager.Call(LogicEvent.ShowTips, "已达最大突破次数");
+                return;
+            }
+
+            //向服务器请求突破
+            NetworkManager.Ins.SendMsg(new C2S_SpoilBreakthrough()
+            {
+                SpoilId = spoilData.SpoilId
+            });
+        }
+
+
 
         #endregion
 
@@ -529,6 +684,15 @@ namespace Logic.Manager
             EventManager.Call(LogicEvent.OnSpoilUpgrade, pMsg.Spoil);
         }
 
+        public void OnSpoilBreakthrough(S2C_SpoilBreakthrough pMsg)
+        {
+            UpdateLocalSpoilBreakthroughData(pMsg.SpoilBreakthrough);
+
+            //EventManager.Call(LogicEvent.OnSpoilUpgrade, pMsg.SpoilBreakthrough);
+        }
+
+
+
         #endregion
 
         #region 更新本地数据
@@ -561,6 +725,18 @@ namespace Logic.Manager
             else
             {
                 UpdateSlotStateData(cur);
+            }
+        }
+
+        private void UpdateLocalSpoilBreakthroughData(SpoilBreakthroughData spoilBreakthrough)
+        {
+            if(GetSpoilBreakthroughData(spoilBreakthrough.SpoilId) == null)
+            {
+                AddSpoilBreakthroughData(spoilBreakthrough);
+            }
+            else
+            {
+                UpdateSpoilBreakthroughData(spoilBreakthrough);
             }
         }
 

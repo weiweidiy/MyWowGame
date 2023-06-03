@@ -69,6 +69,9 @@ namespace Logic.UI.UIRole
         private List<CommonRoleItem> m_RoleItemList = new List<CommonRoleItem>();
         private List<SortRoleData> m_SortRoleList = new List<SortRoleData>();
 
+        //强化按钮长按
+        public ButtonEx m_BtnExIntensify;
+
         [Serializable]
         public class SortRoleData
         {
@@ -90,6 +93,9 @@ namespace Logic.UI.UIRole
             m_EventGroup.Register(LogicEvent.RoleOff, OnRoleOff);
             m_EventGroup.Register(LogicEvent.RoleIntensify, OnRoleIntensify);
             m_EventGroup.Register(LogicEvent.RoleBreak, OnRoleBreak);
+
+            m_BtnExIntensify.onClick.AddListener(OnBtnExIntensifyClick);
+            m_BtnExIntensify.onLongClick.AddListener(OnBtnExIntensifyClick);
         }
 
         public override void OnShow()
@@ -445,7 +451,7 @@ namespace Logic.UI.UIRole
             }
         }
 
-        public void OnBtnIntensifyClick()
+        public void OnBtnExIntensifyClick()
         {
             if (RoleManager.Ins.IsCanRoleIntensify(1))
             {

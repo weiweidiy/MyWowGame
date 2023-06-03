@@ -97,7 +97,7 @@ namespace Logic.Fight.Skill.Implement
         protected override void DoReady()
         {
 
-            var tween = transform.DOMove(m_tranIdle.position, m_EnterSpeed).SetSpeedBased().SetEase(Ease.OutQuad);
+            var tween = transform.DOMove(m_tranIdle.position, m_EnterSpeed).SetSpeedBased().SetEase(Ease.OutQuad).SetUpdate(UpdateType.Manual);
             tween.onComplete = () => {
 
                 Idle();
@@ -142,7 +142,7 @@ namespace Logic.Fight.Skill.Implement
             path[1] = transform.position + new Vector3(3f, m_PathHight, 0);
             path[2] = targetPos; //10 5
             var tweenPath = transform.DOPath(path, m_AtkSpeed, PathType.CatmullRom).SetSpeedBased().SetEase(Ease.InSine);
-            tweenPath.onComplete = () =>
+            tweenPath.SetUpdate(UpdateType.Manual).onComplete = () =>
             {
                 m_body.gameObject.SetActive(false);
                 OnHitting(targetPos);
@@ -180,7 +180,9 @@ namespace Logic.Fight.Skill.Implement
             }
 
 
-            m_coAnim = StartCoroutine(WaitEnd(1f));
+            //m_coAnim = StartCoroutine(WaitEnd(1f));
+
+            DOTweenDelay(1f, 1);
 
             ////监听动画结束
             //var animHelper = new AnimatorHelper();
@@ -200,6 +202,21 @@ namespace Logic.Fight.Skill.Implement
 
             //进入结束状态
             End();
+        }
+
+        public void DOTweenDelay(float delayedTimer, int loopTimes)
+        {
+            float timer = 0;
+            //DOTwwen.To()中参数：前两个参数是固定写法，第三个是到达的最终值，第四个是渐变过程所用的时间
+            Tween t = DOTween.To(() => timer, x => timer = x, 1, delayedTimer).SetUpdate(UpdateType.Manual)
+                          .OnStepComplete(() =>
+                          {
+                              hitEffect.Destroy();
+
+                              //进入结束状态
+                              End();
+                          })
+                          .SetLoops(loopTimes);
         }
 
 

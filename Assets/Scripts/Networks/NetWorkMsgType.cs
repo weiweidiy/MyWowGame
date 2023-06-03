@@ -14,8 +14,8 @@
         C2S_Login,
         S2C_Login,
 
-        //更新GM数据
-        C2S_GMAccount,
+        //GM命令数据
+        C2S_GMCommand,
 
         //游戏币变化
         C2S_SyncCoin,
@@ -42,6 +42,8 @@
         C2S_EquipIntensify, //强化
         S2C_EquipIntensify,
         S2C_EquipListUpdate, //装备列表更新
+        C2S_EquipCompose,    // 单次合成
+        S2S_EquipCompose,
 
         //伙伴
         C2S_PartnerOn, //上阵
@@ -132,6 +134,8 @@
         S2C_SpoilEquip,
         C2S_SpoilUpgrade,
         S2C_SpoilUpgrade,
+        C2S_SpoilBreakthrough,
+        S2C_SpoilBreakthrough,
 
 
         //英雄

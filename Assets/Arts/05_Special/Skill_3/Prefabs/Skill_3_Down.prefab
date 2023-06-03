@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2376937139550058811}
   - component: {fileID: 8999427037546541095}
   - component: {fileID: 262507425078162642}
+  - component: {fileID: 7657599198799590382}
+  - component: {fileID: 1400468807681181146}
   m_Layer: 0
   m_Name: Skill_3_Down
   m_TagString: Untagged
@@ -71,7 +73,36 @@ MonoBehaviour:
   pIndex: 0
   m_Hit: {fileID: 0}
   m_HitPos: {fileID: 6333567347862052070}
-  m_HitEffect: {fileID: 0}
+--- !u!114 &7657599198799590382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242040384078200496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6090da511f8374135a15dd8655adcd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
+  _mode: 1
+  _globalClockKey: 
+  _rewindable: 0
+  _recordingDuration: 30
+--- !u!114 &1400468807681181146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242040384078200496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9fdec4ff2bd044dbcd4aad1d46f3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  module: 2
 --- !u!1 &6663025199323864062
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,6 +256,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08397faa747120443a8e4a12cf1fe0fe, type: 3}
+--- !u!1 &445595793854510515 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6510165599209818991, guid: 08397faa747120443a8e4a12cf1fe0fe, type: 3}
+  m_PrefabInstance: {fileID: 6663025198931230428}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1445080873070488542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445595793854510515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c364e7a8609b1f94fa72d62049a91de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
 --- !u!4 &6333567347862052070 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 833882741871288890, guid: 08397faa747120443a8e4a12cf1fe0fe, type: 3}

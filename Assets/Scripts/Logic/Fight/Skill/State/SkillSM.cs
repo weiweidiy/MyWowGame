@@ -1,4 +1,5 @@
-﻿using Framework.GameFSM;
+﻿using Chronos;
+using Framework.GameFSM;
 using Logic.Fight.Actor;
 
 namespace Logic.Fight.Skill.State
@@ -41,7 +42,8 @@ namespace Logic.Fight.Skill.State
         public SkillSM m_SM;
         public SkillBase m_SkillBase;
         public Enemy m_CurrentTarget;
-        
+        public Timeline m_TimeLine;
+
         //状态
         public readonly SS_Idle m_Idle = new (SkillState.Idle);
         public readonly SS_Auto m_Auto = new (SkillState.Auto);

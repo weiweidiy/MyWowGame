@@ -150,7 +150,7 @@ namespace Logic.Fight.GJJ
             _Sequence.AppendCallback(() => { m_GJJAnimator.SetTrigger(AniTrigger.ToIdle); 
                 EventManager.Call(LogicEvent.Fight_MapMoveBack); });
             _Sequence.Append(transform.DOLocalMoveX(StartPosX, MoveBackTime).SetEase(Ease.OutSine)); //回退
-            _Sequence.onComplete += () =>
+            _Sequence.SetUpdate(UpdateType.Manual).onComplete += () =>
             {
                 m_RunningSmoke.SetActive(false);
                 _Sequence = null;

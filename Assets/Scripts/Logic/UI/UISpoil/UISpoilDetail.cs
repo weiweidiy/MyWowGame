@@ -261,7 +261,7 @@ namespace Logic.UI.UISpoil
         /// </summary>
         private void OnUpgradeClick()
         {
-            SpoilManager.Ins.SpoilUpgrade(m_CurSpoilId);
+            SpoilManager.Ins.RequestSpoilUpgrade(m_CurSpoilId);
         }
 
         /// <summary>
@@ -269,7 +269,7 @@ namespace Logic.UI.UISpoil
         /// </summary>
         private void OnEquipClick()
         {
-            SpoilManager.Ins.SpoilEquip(m_CurSpoilId);
+            SpoilManager.Ins.RequestSpoilEquip(m_CurSpoilId);
         }
 
         #endregion

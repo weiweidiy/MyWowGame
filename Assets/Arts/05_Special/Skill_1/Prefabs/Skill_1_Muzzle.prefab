@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4315619768799119755}
   - component: {fileID: 4739571096030050887}
   - component: {fileID: 4447595623118583624}
+  - component: {fileID: 4352427523081711389}
+  - component: {fileID: -5858613685099721407}
   m_Layer: 0
   m_Name: Skill_1_Muzzle
   m_TagString: Untagged
@@ -79,6 +81,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ceea22fea842904ab6832d119291def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4352427523081711389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4315619768799119754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6090da511f8374135a15dd8655adcd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
+  _mode: 1
+  _globalClockKey: 
+  _rewindable: 0
+  _recordingDuration: 30
+--- !u!114 &-5858613685099721407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4315619768799119754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9fdec4ff2bd044dbcd4aad1d46f3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  module: 2
 --- !u!1 &4315619769132118235
 GameObject:
   m_ObjectHideFlags: 0

@@ -55,6 +55,8 @@ namespace Logic.Manager
         /// </summary>
         public BigDouble CurTotalDamage { get; set; } //记录当前总伤害
 
+        private EventGroup m_EventGroup = new();
+
         public void Init(S2C_Login pMsg)
         {
             m_DiamondCopyData = pMsg.DiamondCopyData;
@@ -62,13 +64,14 @@ namespace Logic.Manager
             m_OilCopyData = pMsg.OilCopyData;
             m_TrophyCopyData = pMsg.TrophyCopyData;
 
-            //已经跨天 重置
-            //TODO 临时在客户端实现
-            var day = TimeHelper.GetUtcDateTime(GameDataManager.Ins.LastGameDate).Day;
-            if (day != DateTime.UtcNow.Day)
-            {
-                SendC2SUpdateCopyKeyCount();
-            }
+            //已经跨天 更新副本钥匙
+            m_EventGroup.Register(LogicEvent.TimeDayChanged, (i, o) => SendC2SUpdateCopyKeyCount());
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            m_EventGroup.Release();
         }
 
         public async void OnEnterCopy(S2C_EnterCopy pMsg)

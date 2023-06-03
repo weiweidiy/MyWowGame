@@ -1,5 +1,6 @@
 ﻿using Chronos;
 using Framework.Extension;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,49 +15,30 @@ namespace Logic.Manager
             Battle,
         }
 
-
-        Dictionary<TimeScaleModule, float> timeMap = new Dictionary<TimeScaleModule, float>();
-
+        /// <summary>
+        /// 默认的时间缩放
+        /// </summary>
         float defaultScale = 1f;
+
+
+        GlobalClock[] globalClocks;
+
+
 
         protected override void Awake()
         {
-            base.Awake();
-
-            var globalClocks = GetComponentsInChildren<GlobalClock>();
-            foreach(var clock in globalClocks)
+            if (Ins != null)
             {
-                var moduleName = GetModuleName(clock.key);
-                timeMap.Add(moduleName, defaultScale);
+                Debug.LogError("重复单例 :" + Ins.gameObject.name);
+                Destroy(gameObject);
+                return;
             }
+            Ins = this;
+
+            globalClocks = GetComponentsInChildren<GlobalClock>();
         }
 
-        protected override void OnDestroy()
-        {
-            
-        }
 
-
-        TimeScaleModule GetModuleName(string key)
-        {
-            switch(key)
-            {
-                case "Root":
-                    {
-                        return TimeScaleModule.Root;
-                    }
-
-                case "Battle":
-                    {
-                        return TimeScaleModule.Battle;
-                    }
-                default:
-                    {
-                        throw new System.Exception($"没有实现时间模块 {key} 的转换方法！");
-                    }
-            }
-
-        }
 
         /// <summary>
         /// 设置时间缩放
@@ -65,7 +47,27 @@ namespace Logic.Manager
         /// <param name="scale"></param>
         public void SetScale(TimeScaleModule moduleName, float scale)
         {
-            timeMap[moduleName] = scale;
+            var clock = GetClock(moduleName);
+            clock.localTimeScale = scale;
+        }
+
+        /// <summary>
+        /// 获取时钟
+        /// </summary>
+        /// <param name="moduleName"></param>
+        /// <returns></returns>
+        private GlobalClock GetClock(TimeScaleModule moduleName)
+        {
+            foreach(var clock in globalClocks)
+            {
+                if(clock.key.Equals(moduleName.ToString()))
+                {
+                    return clock;
+
+                }
+            }
+
+            return null;
         }
 
         /// <summary>
@@ -86,6 +88,33 @@ namespace Logic.Manager
             SetScale(moduleName, defaultScale);
         }
 
-        
+
+        private void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                Pause(TimeScaleModule.Battle);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Resume(TimeScaleModule.Battle);
+            }
+
+            if(Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                SetScale(TimeScaleModule.Battle, 2f);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                SetScale(TimeScaleModule.Battle, 3f);
+            }
+        }
+
+        //public float DeltaTime()
+        //{
+
+        //}
     }
 }

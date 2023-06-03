@@ -1,6 +1,8 @@
 using BreakInfinity;
+using Chronos;
 using Framework.Pool;
 using Logic.Fight.Actor;
+using Logic.Manager;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -22,6 +24,12 @@ namespace Logic.Fight.Weapon
         private Vector3 m_TargetPos;
         private ActorBase m_TargetActor;
         private BigDouble m_Damage;
+
+        Timeline m_TimeLine;
+        private void Awake()
+        {
+            m_TimeLine = GetComponent<Timeline>();
+        }
 
         /// <summary>
         /// 攻击
@@ -45,11 +53,13 @@ namespace Logic.Fight.Weapon
             {
                 return;
             }
-            
+
             //transform.Translate(Time.deltaTime * m_Speed * m_Dir, Space.World);
             //var _TargetPos = m_TargetActor.GetPos();
-            
-            transform.position = Vector3.MoveTowards(transform.position, m_TargetPos, Time.deltaTime * m_Speed);
+            Debug.Assert(m_TimeLine != null, "没有找到timeline" + gameObject.name);
+            float deltaTime = m_TimeLine ? m_TimeLine.deltaTime : Time.deltaTime;
+            deltaTime *= Time.timeScale;
+            transform.position = Vector3.MoveTowards(transform.position, m_TargetPos, deltaTime * m_Speed);
             
             if (Mathf.Abs(transform.position.x - m_TargetPos.x) < 0.03f &&
                 Mathf.Abs(transform.position.y - m_TargetPos.y) < 0.03f)

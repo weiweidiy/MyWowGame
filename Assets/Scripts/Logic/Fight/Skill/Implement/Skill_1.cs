@@ -1,9 +1,12 @@
 ﻿
 using System.Collections;
+using Chronos;
+using DG.Tweening;
 using Framework.Pool;
 using Logic.Common;
 using Logic.Fight.Actor;
 using Logic.Fight.Weapon;
+using Logic.Manager;
 using UnityEngine;
 
 namespace Logic.Fight.Skill.Implement
@@ -27,6 +30,8 @@ namespace Logic.Fight.Skill.Implement
         private static readonly int DisAppear = Animator.StringToHash("DisAppear");
 
         private readonly WaitForSeconds m_WaitForSeconds = new WaitForSeconds(0.24f);
+
+
         public override void Init(int pSkillId)
         {
             base.Init(pSkillId);
@@ -106,8 +111,24 @@ namespace Logic.Fight.Skill.Implement
             
             _BulletObj.Fire(pTarget, m_TargetPos, GetSkillBaseDamage() * Formula.GetGJJAtk()/100 );
 
-            StartCoroutine(WaitNextAttack());
+            //StartCoroutine(WaitNextAttack());
+
+            DOTweenDelay(0.24f, 1);
         }
+
+        public void DOTweenDelay(float delayedTimer, int loopTimes)
+        {
+            float timer = 0;
+            //DOTwwen.To()中参数：前两个参数是固定写法，第三个是到达的最终值，第四个是渐变过程所用的时间
+            Tween t = DOTween.To(() => timer, x => timer = x, 1, delayedTimer).SetUpdate(UpdateType.Manual)
+                          .OnStepComplete(() =>
+                          {
+                              m_SM.m_ContextData.m_CurrentTarget = null;
+                              m_NeedSearch = true;
+                          })
+                          .SetLoops(loopTimes);
+        }
+
         
         IEnumerator WaitNextAttack()
         {

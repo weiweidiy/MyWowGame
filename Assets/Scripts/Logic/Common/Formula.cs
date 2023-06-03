@@ -346,6 +346,11 @@ namespace Logic.Common
             return finalCost;
         }
 
+        public static int GetSpoilBreakthroughCost(int spoilId, int spoilLevel)
+        {
+            return 0;
+        }
+
         #endregion
 
         #region 英雄系统相关

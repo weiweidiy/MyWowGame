@@ -61,6 +61,15 @@ namespace Logic.Data
             m_Data.m_BtnPlaceRewardShowTime = pData.PlaceRewardShowTime;
             m_Data.m_PopPlaceRewardTime = pData.PlaceRewardPopTime;
 
+            try
+            {
+                //时间
+                GameTimeManager.Ins.Init(pData);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
 
             try
             {
@@ -172,7 +181,6 @@ namespace Logic.Data
                 Debug.LogError(e);
             }
 
-
             try
             {
                 //战利品
@@ -193,7 +201,6 @@ namespace Logic.Data
                 Debug.LogError(e);
             }
 
-
             try
             {
                 //英雄
@@ -204,7 +211,6 @@ namespace Logic.Data
                 Debug.LogError(e);
             }
 
-
             try
             {
                 BigBoomRedDotManager.Ins.Init();
@@ -213,7 +219,6 @@ namespace Logic.Data
             {
                 Debug.LogError(e);
             }
-
 
             //通知其他逻辑 成功获取玩家基础数据 登录成功
             EventManager.Call(LogicEvent.LoginSuccess);

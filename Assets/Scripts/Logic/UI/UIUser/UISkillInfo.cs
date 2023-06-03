@@ -29,6 +29,8 @@ namespace Logic.UI.UIUser
         public GameObject BtnOn;
         public GameObject BtnOff;
         public GameObject BtnFull;
+        public GameObject m_BtnUpgrade;
+        public GameObject m_BtnCompose, m_BtnCanCompose, m_BtnCantCompose;
 
         public GameObject BtnLeft;
         public GameObject BtnRight;
@@ -40,6 +42,7 @@ namespace Logic.UI.UIUser
         private GameSkillData m_GameSkillData;
 
         private bool IsHave = false;
+        private bool IsMaxLevel = false;
 
         private void OnDisable()
         {
@@ -51,15 +54,16 @@ namespace Logic.UI.UIUser
             var _SkillID = (int)m_OpenData_;
             m_SkillData = SkillCfg.GetData(_SkillID);
             IsHave = SkillManager.Ins.IsHave(_SkillID);
-            if (IsHave)
-                m_GameSkillData = SkillManager.Ins.GetSkillData(_SkillID);
-            else
-                m_GameSkillData = new GameSkillData { SkillID = _SkillID, Level = 1, Count = 0 }; //没有按1级算
+            m_GameSkillData = IsHave
+                ? SkillManager.Ins.GetSkillData(_SkillID)
+                : new GameSkillData { SkillID = _SkillID, Level = 1, Count = 0 }; //没有按1级算
 
             var itemData = ItemCfg.GetData(m_SkillData.ID);
             UICommonHelper.LoadIcon(m_Icon, itemData.Res);
             UICommonHelper.LoadQuality(m_Quality, m_SkillData.Quality);
             m_QualityText.text = UICommonHelper.GetQualityShowText(m_SkillData.Quality);
+
+            IsMaxLevel = SkillManager.Ins.IsMaxLevel(_SkillID);
 
             UpdateSkillInfo();
 
@@ -67,8 +71,22 @@ namespace Logic.UI.UIUser
 
             if (IsHave)
             {
-                bool _IsON = SkillManager.Ins.IsOn(m_SkillData.ID);
-                if (_IsON)
+                m_NotHaveNode.Hide();
+
+                //强化合成
+                if (IsMaxLevel)
+                {
+                    m_BtnUpgrade.Hide();
+                    m_BtnCompose.Show();
+                }
+                else
+                {
+                    m_BtnUpgrade.Show();
+                    m_BtnCompose.Hide();
+                }
+
+                var isOn = SkillManager.Ins.IsOn(m_SkillData.ID);
+                if (isOn)
                 {
                     BtnOff.Show();
                 }
@@ -106,9 +124,20 @@ namespace Logic.UI.UIUser
             m_SkillInfo.text = string.Format(m_SkillData.SkillDes,
                 m_SkillData.DamageBase + (m_GameSkillData.Level - 1) * m_SkillData.DamageGrow);
 
-            var _CurCount = SkillManager.Ins.CurCount(m_SkillData.ID);
-            var _NeedCount = SkillManager.Ins.UpgradeNeedCount(m_SkillData.ID);
-            if (_CurCount >= _NeedCount)
+            var needCount = 0;
+            var curCount = SkillManager.Ins.CurCount(m_SkillData.ID);
+            if (IsMaxLevel)
+            {
+                needCount = SkillManager.Ins.ComposeNeedCount(m_SkillData.ID);
+                //服务器处理，客户端可以不处理
+                m_Level.text = "LV" + GameDefine.CommonItemMaxLevel;
+            }
+            else
+            {
+                needCount = SkillManager.Ins.UpgradeNeedCount(m_SkillData.ID);
+            }
+
+            if (curCount >= needCount)
             {
                 m_CantProcess.Hide();
                 m_CanProcess.Show();
@@ -119,11 +148,10 @@ namespace Logic.UI.UIUser
                 m_CanProcess.Hide();
             }
 
-            float _Process = (float)_CurCount / _NeedCount;
-            m_CantProcess.fillAmount = _Process;
-            m_CanProcess.fillAmount = _Process;
-
-            m_TextProcess.text = _CurCount + "/" + _NeedCount;
+            var process = (float)curCount / needCount;
+            m_CantProcess.fillAmount = process;
+            m_CanProcess.fillAmount = process;
+            m_TextProcess.text = curCount + "/" + needCount;
 
             m_HaveEffect.text =
                 "+" + ((BigDouble)(SkillManager.Ins.GetHaveEffect(m_SkillData.ID) * 100f)).ToUIStringFloat() + "%";
@@ -181,6 +209,19 @@ namespace Logic.UI.UIUser
             }
 
             SkillManager.Ins.DoIntensify(m_SkillData.ID, false);
+        }
+
+        public void OnBtnComposeClick()
+        {
+            var curCount = SkillManager.Ins.CurCount(m_SkillData.ID);
+            var needCount = SkillManager.Ins.ComposeNeedCount(m_SkillData.ID);
+            if (curCount < needCount)
+            {
+                EventManager.Call(LogicEvent.ShowTips, "合成所需数量不足");
+                return;
+            }
+
+            SkillManager.Ins.DoCompose(m_SkillData.ID);
         }
 
         public void OnClickLeft()

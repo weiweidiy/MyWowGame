@@ -203,6 +203,11 @@ namespace Networks
                     EquipManager.Ins.OnEquipListUpdate(pMsg as S2C_EquipListUpdate);
                 }
                     break;
+                case NetWorkMsgType.S2S_EquipCompose:
+                {
+                    EquipManager.Ins.OnEquipCompose(pMsg as S2S_EquipCompose);
+                }
+                    break;
                 case NetWorkMsgType.S2C_PartnerOn:
                 {
                     PartnerManager.Ins.OnPartnerOn(pMsg as S2C_PartnerOn);

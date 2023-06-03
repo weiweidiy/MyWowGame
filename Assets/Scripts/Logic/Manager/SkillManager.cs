@@ -193,6 +193,13 @@ namespace Logic.Manager
             return _Data.Level > 10 ? SkillLvlUpCfg.GetData(10).Cost : SkillLvlUpCfg.GetData(_Data.Level).Cost;
         }
 
+        //技能合成需要的数量
+        public int ComposeNeedCount(int pSkillID)
+        {
+            var data = SkillCfg.GetData(pSkillID);
+            return data.CombineNum;
+        }
+
         //技能是否可以升级
         public bool CanUpgrade(int pSkillID)
         {
@@ -218,6 +225,18 @@ namespace Logic.Manager
             }
 
             return false;
+        }
+
+        //技能是否满级
+        public bool IsMaxLevel(int pSkillID)
+        {
+            var level = 1;
+            if (IsHave(pSkillID))
+            {
+                level = GetSkillData(pSkillID).Level;
+            }
+
+            return level >= GameDefine.CommonItemMaxLevel;
         }
 
         //获取某个技能的拥有效果
@@ -284,6 +303,14 @@ namespace Logic.Manager
                 SkillID = pSkillID,
                 IsAuto = pIsAuto,
             });
+        }
+
+        public void DoCompose(int pSkillID)
+        {
+            // NetworkManager.Ins.SendMsg(new C2S_SkillCompose()
+            // {
+            //     SkillID = pSkillID,
+            // });
         }
 
         #endregion

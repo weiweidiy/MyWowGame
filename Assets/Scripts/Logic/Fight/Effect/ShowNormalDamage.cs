@@ -19,8 +19,8 @@ namespace Logic.Fight.Effect
             
             m_Text.SetText(pDamage.ToUIString());
 
-            var _T = transform.DOBlendableLocalMoveBy(new Vector3((pIsEnemy ? 0.3f : -0.3f), 0.3f, 0), 0.8f).SetEase(Ease.OutExpo);
-            m_Text.DOFade(0, 0.8f).SetEase(Ease.InQuint);
+            var _T = transform.DOBlendableLocalMoveBy(new Vector3((pIsEnemy ? 0.3f : -0.3f), 0.3f, 0), 0.8f).SetUpdate(UpdateType.Manual).SetEase(Ease.OutExpo);
+            m_Text.DOFade(0, 0.8f).SetUpdate(UpdateType.Manual).SetEase(Ease.InQuint);
             _T.OnComplete(OnTweenComplete);
         }
 

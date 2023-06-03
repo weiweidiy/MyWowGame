@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7947817857452733040}
   - component: {fileID: 2087440126378488698}
   - component: {fileID: 4251083717050625347}
+  - component: {fileID: 7070883350149758665}
   m_Layer: 13
   m_Name: CloudBurst
   m_TagString: Untagged
@@ -4870,6 +4871,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &7070883350149758665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369203666865481351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c364e7a8609b1f94fa72d62049a91de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
 --- !u!1 &1627223792901383715
 GameObject:
   m_ObjectHideFlags: 0
@@ -4881,6 +4895,7 @@ GameObject:
   - component: {fileID: 95458063463589901}
   - component: {fileID: 7341177761709013670}
   - component: {fileID: 8644098989925416200}
+  - component: {fileID: 7201941332128080245}
   m_Layer: 13
   m_Name: Sparks
   m_TagString: Untagged
@@ -9740,6 +9755,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &7201941332128080245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627223792901383715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c364e7a8609b1f94fa72d62049a91de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
 --- !u!1 &5480661219697346554
 GameObject:
   m_ObjectHideFlags: 0
@@ -9751,6 +9779,7 @@ GameObject:
   - component: {fileID: 2986440507114169994}
   - component: {fileID: 3790055550592914447}
   - component: {fileID: 8286392571374043648}
+  - component: {fileID: 659080622573747814}
   m_Layer: 13
   m_Name: Glow
   m_TagString: Untagged
@@ -14610,6 +14639,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &659080622573747814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5480661219697346554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c364e7a8609b1f94fa72d62049a91de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
 --- !u!1 &5586285615654713218
 GameObject:
   m_ObjectHideFlags: 0
@@ -14621,6 +14663,7 @@ GameObject:
   - component: {fileID: 5429893442322915980}
   - component: {fileID: 6579768103278375413}
   - component: {fileID: 704725916132857546}
+  - component: {fileID: 4058961584970774444}
   m_Layer: 13
   m_Name: SmokeTrail
   m_TagString: Untagged
@@ -19481,6 +19524,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &4058961584970774444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5586285615654713218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c364e7a8609b1f94fa72d62049a91de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
 --- !u!1 &5604341573639924915
 GameObject:
   m_ObjectHideFlags: 0
@@ -19493,6 +19549,8 @@ GameObject:
   - component: {fileID: 7232030982880463504}
   - component: {fileID: 3443000753753971231}
   - component: {fileID: -1886980124271805415}
+  - component: {fileID: -1600029363432260493}
+  - component: {fileID: 5031480879684503860}
   m_Layer: 13
   m_Name: BPHit
   m_TagString: Untagged
@@ -24369,6 +24427,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DelayTime: 1
+--- !u!114 &-1600029363432260493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5604341573639924915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6090da511f8374135a15dd8655adcd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
+  _mode: 1
+  _globalClockKey: Battle
+  _rewindable: 0
+  _recordingDuration: 30
+--- !u!114 &5031480879684503860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5604341573639924915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9fdec4ff2bd044dbcd4aad1d46f3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  module: 2
 --- !u!1 &8959502215845025901
 GameObject:
   m_ObjectHideFlags: 0
@@ -24380,6 +24468,7 @@ GameObject:
   - component: {fileID: 1095671279729194515}
   - component: {fileID: 187994844348748702}
   - component: {fileID: 3910741122208333089}
+  - component: {fileID: 103678050311233650}
   m_Layer: 13
   m_Name: Trail
   m_TagString: Untagged
@@ -29190,3 +29279,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &103678050311233650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8959502215845025901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c364e7a8609b1f94fa72d62049a91de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5

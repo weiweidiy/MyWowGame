@@ -146,6 +146,7 @@ namespace DummyServer
         public List<SpoilSlotData> m_SpoilSlotsData; //战利品槽位数据
         public List<SpoilData> m_SpoilsData; //战利品数据
         public int m_SpoilDrawProgress; //战利品抽卡池当前进度
+        public List<SpoilBreakthroughData> m_SpoilBreakthrough;
 
         #endregion
 
@@ -220,6 +221,7 @@ namespace DummyServer
             m_SpoilSlotsData = new List<SpoilSlotData>(8);
             m_SpoilsData = new List<SpoilData>(32);
             m_SpoilDrawProgress = 1;
+            m_SpoilBreakthrough = new List<SpoilBreakthroughData>(32);
 
             m_RoleOnId = 7101;
             m_RoleList = new List<GameRoleData>(64);

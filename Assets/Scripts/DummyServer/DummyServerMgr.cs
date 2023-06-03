@@ -41,7 +41,7 @@ namespace DummyServer
                 case NetWorkMsgType.C2S_Login:
                     On_C2S_Login();
                     break;
-                case NetWorkMsgType.C2S_GMAccount:
+                case NetWorkMsgType.C2S_GMCommand:
                     // 临时增加客户端向服务器请求GM数据功能
                     UpdateGMAccount();
                     break;
@@ -168,6 +168,9 @@ namespace DummyServer
                 case NetWorkMsgType.C2S_SpoilUpgrade:
                     On_C2S_SpoilUpgrade(_Msg as C2S_SpoilUpgrade);
                     break;
+                case NetWorkMsgType.C2S_SpoilBreakthrough:
+                    On_C2S_SpoilBreakthrough(_Msg as C2S_SpoilBreakthrough);
+                    break;
                 case NetWorkMsgType.C2S_RoleOn:
                     On_C2S_RoleOn(_Msg as C2S_RoleOn);
                     break;
@@ -184,6 +187,8 @@ namespace DummyServer
                 }
             }
         }
+
+
 
 
         #region 消息处理
@@ -329,6 +334,11 @@ namespace DummyServer
             foreach (var item in m_DB.m_SpoilsData)
             {
                 _Data.SpoilsData.Add(item.Clone());
+            }
+
+            foreach(var item in m_DB.m_SpoilBreakthrough)
+            {
+                _Data.SpoilBreakthroughData.Add(item.Clone());
             }
 
 
@@ -563,6 +573,11 @@ namespace DummyServer
             OnC2S_SpoilUpgrade(pMsg);
         }
 
+        private void On_C2S_SpoilBreakthrough(C2S_SpoilBreakthrough c2S_SpoilBreakthrough)
+        {
+            OnC2S_SpoilBreakthrough(c2S_SpoilBreakthrough);
+        }
+
 
         public void On_C2S_RoleOn(C2S_RoleOn pMsg)
         {
@@ -675,7 +690,7 @@ namespace DummyServer
         {
             m_DB.m_IsFirstLogin = false;
             m_DB.m_LastGameDate = TimeHelper.GetUnixTimeStamp();
-            DummyDB.Save(m_DB);
+            // DummyDB.Save(m_DB);
         }
 
         public DummyDB DummyGetDB()

@@ -1,5 +1,3 @@
-
-using System;
 using Framework.Extension;
 using Framework.Helper;
 using Framework.UI;
@@ -7,50 +5,22 @@ using Logic.Common;
 using Logic.Manager;
 using TMPro;
 using UnityEngine;
-using UnityTimer;
 
 public class UIDailyTask : UIPage
 {
     public GameObject m_ItemPrefabObj;
     public Transform m_ListRoot;
     public TextMeshProUGUI m_CDTimer;
-    
+
     private void Awake()
     {
         m_EventGroup.Register(LogicEvent.DailyTaskListUpdate, OnListUpdate);
+        m_EventGroup.Register(LogicEvent.TimeNextDaySecondsChanged, OnTimeNextDaySecondsChanged);
     }
 
     private void Start()
     {
         ShowAllTask();
-    }
-
-    private Timer m_Timer;
-    private void OnEnable()
-    {
-        DateTime now = DateTime.Now;
-        DateTime midnight = DateTime.Today.AddDays(1);
-        TimeSpan timeLeft = midnight - now;
-        int secondsLeft = (int)timeLeft.TotalSeconds;
-        
-        m_CDTimer.text = TimeHelper.FormatSecond(secondsLeft);
-
-        m_Timer = Timer.Register(1f, () =>
-        {
-            secondsLeft--;
-            if (secondsLeft <= 0)
-            {
-                secondsLeft = 24 * 60 * 60 - 1;
-                return;
-            }
-
-            m_CDTimer.text = TimeHelper.FormatSecond(secondsLeft);
-        }, null, true, true, this);
-    }
-
-    private void OnDisable()
-    {
-        m_Timer?.Cancel();
     }
 
     private void ShowAllTask()
@@ -68,5 +38,16 @@ public class UIDailyTask : UIPage
     {
         m_ListRoot.DestroyChildren();
         ShowAllTask();
+    }
+
+    /// <summary>
+    /// 每日任务跨天倒计时刷新
+    /// </summary>
+    /// <param name="eventId"></param>
+    /// <param name="data"></param>
+    private void OnTimeNextDaySecondsChanged(int eventId, object data)
+    {
+        var secondsLeft = (int)data;
+        m_CDTimer.text = TimeHelper.FormatSecond(secondsLeft);
     }
 }

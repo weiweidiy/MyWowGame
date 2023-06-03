@@ -483,6 +483,8 @@ GameObject:
   - component: {fileID: 3182897154286006079}
   - component: {fileID: 8084837163386021411}
   - component: {fileID: 266045911372919617}
+  - component: {fileID: 2622130373863399731}
+  - component: {fileID: 3042306388997567061}
   m_Layer: 13
   m_Name: Skill_3_Down_Hit_1
   m_TagString: Untagged
@@ -540,6 +542,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Animator: {fileID: 8084837163386021411}
   m_Root: {fileID: 1832730791600366238}
+--- !u!114 &2622130373863399731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120439557478049972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6090da511f8374135a15dd8655adcd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
+  _mode: 1
+  _globalClockKey: 
+  _rewindable: 0
+  _recordingDuration: 30
+--- !u!114 &3042306388997567061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120439557478049972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9fdec4ff2bd044dbcd4aad1d46f3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  module: 2
 --- !u!1 &1262070044324071047
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,6 +963,7 @@ GameObject:
   - component: {fileID: 9178915218246320106}
   - component: {fileID: 6279678795429044545}
   - component: {fileID: 319767877039106407}
+  - component: {fileID: 9150731442840035080}
   m_Layer: 13
   m_Name: Skill_Flame
   m_TagString: Untagged
@@ -5733,6 +5766,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &9150731442840035080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2207238097843028126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c364e7a8609b1f94fa72d62049a91de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
 --- !u!1 &2225201704172368968
 GameObject:
   m_ObjectHideFlags: 0
@@ -5745,6 +5791,8 @@ GameObject:
   - component: {fileID: 4803762694303399565}
   - component: {fileID: 2728864460787682556}
   - component: {fileID: 7602862108333137658}
+  - component: {fileID: 1101965790293509287}
+  - component: {fileID: 4616193117839968069}
   m_Layer: 13
   m_Name: Attacker
   m_TagString: Untagged
@@ -5815,6 +5863,36 @@ SortingGroup:
   m_SortingLayerID: -1435571219
   m_SortingLayer: 1
   m_SortingOrder: 100
+--- !u!114 &1101965790293509287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2225201704172368968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6090da511f8374135a15dd8655adcd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
+  _mode: 1
+  _globalClockKey: 
+  _rewindable: 0
+  _recordingDuration: 30
+--- !u!114 &4616193117839968069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2225201704172368968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9fdec4ff2bd044dbcd4aad1d46f3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  module: 2
 --- !u!1 &2242147181299265391
 GameObject:
   m_ObjectHideFlags: 0
@@ -6599,6 +6677,7 @@ GameObject:
   - component: {fileID: 7209233990831317287}
   - component: {fileID: 5799312411930715776}
   - component: {fileID: 3945389688154855475}
+  - component: {fileID: 2393059770710338468}
   m_Layer: 13
   m_Name: HAHAHAAAAA
   m_TagString: Untagged
@@ -11503,6 +11582,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &2393059770710338468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5002839043057617884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c364e7a8609b1f94fa72d62049a91de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
 --- !u!1 &5413509965684739676
 GameObject:
   m_ObjectHideFlags: 0
@@ -11880,6 +11972,7 @@ GameObject:
   - component: {fileID: 7330418040706307139}
   - component: {fileID: 6267743328895032874}
   - component: {fileID: 4468866232544363642}
+  - component: {fileID: 1753235447591688549}
   m_Layer: 13
   m_Name: Flame_02
   m_TagString: Untagged
@@ -16681,6 +16774,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &1753235447591688549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5982062401934439195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c364e7a8609b1f94fa72d62049a91de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
 --- !u!1 &6019814422966427162
 GameObject:
   m_ObjectHideFlags: 0
@@ -16691,6 +16797,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6019814422966427163}
   - component: {fileID: 7335977134942495239}
+  - component: {fileID: -6669247658252268003}
+  - component: {fileID: 3470900022210050712}
   m_Layer: 0
   m_Name: Skill_Pfb_3004
   m_TagString: Untagged
@@ -16752,6 +16860,36 @@ MonoBehaviour:
   m_EnterSpeed: 4
   m_AtkSpeed: 15
   m_SearchDelay: 0.3
+--- !u!114 &-6669247658252268003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6019814422966427162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6090da511f8374135a15dd8655adcd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
+  _mode: 1
+  _globalClockKey: 
+  _rewindable: 0
+  _recordingDuration: 30
+--- !u!114 &3470900022210050712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6019814422966427162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9fdec4ff2bd044dbcd4aad1d46f3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  module: 2
 --- !u!1 &6207561225402709867
 GameObject:
   m_ObjectHideFlags: 0
@@ -18416,6 +18554,7 @@ GameObject:
   - component: {fileID: 6860519979018861374}
   - component: {fileID: 7728851396252630169}
   - component: {fileID: 1007110355735413290}
+  - component: {fileID: 5511607038303050622}
   m_Layer: 13
   m_Name: Skill_3_Hit_02
   m_TagString: Untagged
@@ -23320,3 +23459,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &5511607038303050622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9103051477226099141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c364e7a8609b1f94fa72d62049a91de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5

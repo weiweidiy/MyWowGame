@@ -1,10 +1,8 @@
-using System;
 using Framework.Helper;
 using Framework.UI;
 using Logic.Common;
 using Logic.Manager;
 using TMPro;
-using UnityTimer;
 
 namespace Logic.UI.UICopy
 {
@@ -16,39 +14,16 @@ namespace Logic.UI.UICopy
         public TextMeshProUGUI m_TrophyKeyCount;
         public TextMeshProUGUI m_CDTimer;
 
-        private Timer m_Timer;
-
         private void Awake()
         {
             m_EventGroup.Register(LogicEvent.CopyKeyChanged, (i, o) => OnCopyKeyChanged());
+            m_EventGroup.Register(LogicEvent.TimeNextDaySecondsChanged, OnTimeNextDaySecondsChanged);
         }
 
-        private void OnEnable()
+        public override void OnShow()
         {
-            DateTime now = DateTime.Now;
-            DateTime midnight = DateTime.Today.AddDays(1);
-            TimeSpan timeLeft = midnight - now;
-            int secondsLeft = (int)timeLeft.TotalSeconds;
-
-            m_CDTimer.text = TimeHelper.FormatSecond(secondsLeft);
-
-            m_Timer = Timer.Register(1f, () =>
-            {
-                secondsLeft--;
-                m_CDTimer.text = TimeHelper.FormatSecond(secondsLeft);
-                if (secondsLeft <= 0)
-                {
-                    CopyManager.Ins.SendC2SUpdateCopyKeyCount();
-                    secondsLeft = 24 * 60 * 60;
-                }
-            }, null, true, true, this);
-
+            base.OnShow();
             OnCopyKeyChanged();
-        }
-
-        private void OnDisable()
-        {
-            m_Timer?.Cancel();
         }
 
         public async void OnClick_EnterDiamondCopy()
@@ -80,6 +55,17 @@ namespace Logic.UI.UICopy
             m_CoinKeyCount.text = $"{CopyManager.Ins.m_CoinCopyData.KeyCount}/2";
             m_OilKeyCount.text = $"{CopyManager.Ins.m_OilCopyData.KeyCount}/2";
             m_TrophyKeyCount.text = $"{CopyManager.Ins.m_TrophyCopyData.KeyCount}/2";
+        }
+
+        /// <summary>
+        /// 副本跨天倒计时刷新
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <param name="data"></param>
+        private void OnTimeNextDaySecondsChanged(int eventId, object data)
+        {
+            var secondsLeft = (int)data;
+            m_CDTimer.text = TimeHelper.FormatSecond(secondsLeft);
         }
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5274137189927043469}
   - component: {fileID: 1660718180898786452}
   - component: {fileID: 4471022262360421994}
+  - component: {fileID: 6624497369620048610}
   m_Layer: 13
   m_Name: SparkTrail
   m_TagString: Untagged
@@ -4812,6 +4813,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &6624497369620048610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2446036269211565729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c364e7a8609b1f94fa72d62049a91de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
 --- !u!1 &4256950044657942312
 GameObject:
   m_ObjectHideFlags: 0
@@ -4824,6 +4838,8 @@ GameObject:
   - component: {fileID: 4608598029331246484}
   - component: {fileID: 5498449246726862401}
   - component: {fileID: -4689754449774955879}
+  - component: {fileID: 614831082167831930}
+  - component: {fileID: 507080042529348188}
   m_Layer: 13
   m_Name: BPBullet
   m_TagString: Untagged
@@ -9650,6 +9666,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Speed: 30
   m_HitEffectPrefab: {fileID: 5604341573639924915, guid: 4c35757c22b60ec44a4edc982ee2d85f, type: 3}
+--- !u!114 &614831082167831930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4256950044657942312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6090da511f8374135a15dd8655adcd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
+  _mode: 1
+  _globalClockKey: 
+  _rewindable: 0
+  _recordingDuration: 30
+--- !u!114 &507080042529348188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4256950044657942312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9fdec4ff2bd044dbcd4aad1d46f3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  module: 2
 --- !u!1 &6148349507059859615
 GameObject:
   m_ObjectHideFlags: 0
@@ -9661,6 +9707,7 @@ GameObject:
   - component: {fileID: 9189713524981201470}
   - component: {fileID: 5448661531442576799}
   - component: {fileID: 6238283111034490646}
+  - component: {fileID: 5389774059754698603}
   m_Layer: 13
   m_Name: Glow
   m_TagString: Untagged
@@ -14462,3 +14509,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &5389774059754698603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6148349507059859615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c364e7a8609b1f94fa72d62049a91de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5

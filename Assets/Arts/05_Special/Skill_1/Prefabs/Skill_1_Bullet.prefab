@@ -94,6 +94,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4880627885006745746}
   - component: {fileID: 2449062314511256992}
+  - component: {fileID: 6371280981607640628}
+  - component: {fileID: -5475839025225302448}
   m_Layer: 11
   m_Name: Skill_1_Bullet
   m_TagString: Untagged
@@ -131,3 +133,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Speed: 25
   m_HitEffectPrefab: {fileID: 6562969088243433413, guid: 474fb3ef4e19bdb4ca97e2daaa9e9e8a, type: 3}
+--- !u!114 &6371280981607640628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2448331706743675507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6090da511f8374135a15dd8655adcd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
+  _mode: 1
+  _globalClockKey: 
+  _rewindable: 0
+  _recordingDuration: 30
+--- !u!114 &-5475839025225302448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2448331706743675507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9fdec4ff2bd044dbcd4aad1d46f3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  module: 2

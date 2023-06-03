@@ -120,7 +120,7 @@ namespace Logic.Fight.Skill.Implement
             var _body = skillSubObject.m_body.gameObject;
             var _HitEffect = skillSubObject.m_hitEffect.GetComponent<Skill_3MissilesHit>();
             var _ObjTrans = skillSubObject.transform;
-            var _Tweener = _ObjTrans.DOMoveX(m_TargetPosX, m_moveSpeed).SetSpeedBased();
+            var _Tweener = _ObjTrans.DOMoveX(m_TargetPosX, m_moveSpeed).SetSpeedBased().SetUpdate(UpdateType.Manual);
             _Tweener.OnComplete(() =>
             {
                 _body.SetActive(false);

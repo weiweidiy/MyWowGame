@@ -37,12 +37,13 @@ namespace Logic.UI.Cells
         {
             m_ID = id;
             var max = m_MiningGround.Length;
-            var pId = RandomHelper.Range(0, max);
-            m_Image.sprite = m_MiningGround[pId];
+            var pImageId = RandomHelper.Range(0, max);
+            var pDuration = RandomHelper.Range(1, 5);
+            m_Image.sprite = m_MiningGround[pImageId];
             m_GroundMask.Show();
             m_IsCanClick = true;
             m_IsDoorCanClick = false;
-            transform.DOPunchScale(new Vector3(1.1f, 1.1f, 1f), 0.05f * pId);
+            transform.DOPunchScale(new Vector3(1.1f, 1.1f, 1f), 0.05f * pDuration);
         }
 
         public void OnPointerDown(PointerEventData eventData)

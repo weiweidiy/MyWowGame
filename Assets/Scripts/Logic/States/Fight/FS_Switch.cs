@@ -41,12 +41,14 @@ namespace Logic.States.Fight
                         //EventManager.Call(LogicEvent.SkillReset);
                         GameDataManager.Ins.LevelState = LevelState.HandUp;
 
-                        await UniTask.Delay(1000);
+                        //await UniTask.Delay(1000);
+                        await UniTask.DelayFrame(60);
                         FightEnemyManager.Ins.ClearBattleground();
                         FightManager.Ins.m_CurGJJ.OnSwitching();
                         FightManager.Ins.m_CurGJJ.RecoverMaxHP();
                         EventManager.Call(LogicEvent.Fight_MapChanged, pContext.m_SM.m_ContextData.m_LevelType);
-                        await UniTask.Delay(200);
+                        //await UniTask.Delay(200);
+                        await UniTask.DelayFrame(20);
                         pContext.m_SM.ToStandby();
                     }
                     break;
@@ -56,12 +58,14 @@ namespace Logic.States.Fight
                         EventManager.Call(LogicEvent.ShowFightSwitch, FightSwitchEvent.NormalBoss);
                         //EventManager.Call(LogicEvent.SkillReset);
 
-                        await UniTask.Delay(1000);
+                        //await UniTask.Delay(1000);
+                        await UniTask.DelayFrame(60);
                         FightEnemyManager.Ins.ClearBattleground();
                         FightManager.Ins.m_CurGJJ.OnSwitching();
                         FightManager.Ins.m_CurGJJ.RecoverMaxHP();
                         EventManager.Call(LogicEvent.Fight_MapChanged, pContext.m_SM.m_ContextData.m_LevelType);
-                        await UniTask.Delay(200);
+                        //await UniTask.Delay(200);
+                        await UniTask.DelayFrame(60);
                         pContext.m_SM.ToStandby();
                     }
                     break;
@@ -71,12 +75,14 @@ namespace Logic.States.Fight
                         EventManager.Call(LogicEvent.ShowFightSwitch, FightSwitchEvent.NextLevel);
                         //EventManager.Call(LogicEvent.SkillReset);
 
-                        await UniTask.Delay(1000);
+                        //await UniTask.Delay(1000);
+                        await UniTask.DelayFrame(60);
                         FightEnemyManager.Ins.ClearBattleground();
                         FightManager.Ins.m_CurGJJ.OnSwitching();
                         FightManager.Ins.m_CurGJJ.RecoverMaxHP();
                         EventManager.Call(LogicEvent.Fight_MapChanged, pContext.m_SM.m_ContextData.m_LevelType);
-                        await UniTask.Delay(200);
+                        //await UniTask.Delay(200);
+                        await UniTask.DelayFrame(60);
                         pContext.m_SM.ToStandby();
                     }
                     break;
@@ -86,12 +92,14 @@ namespace Logic.States.Fight
                         EventManager.Call(LogicEvent.ShowFightSwitch, FightSwitchEvent.Normal);
                         //EventManager.Call(LogicEvent.SkillReset);
 
-                        await UniTask.Delay(1000);
+                        //await UniTask.Delay(1000);
+                        await UniTask.DelayFrame(60);
                         FightEnemyManager.Ins.ClearBattleground();
                         FightManager.Ins.m_CurGJJ.OnSwitching();
                         FightManager.Ins.m_CurGJJ.RecoverMaxHP();
                         EventManager.Call(LogicEvent.Fight_MapChanged, pContext.m_SM.m_ContextData.m_LevelType);
-                        await UniTask.Delay(200);
+                        //await UniTask.Delay(200);
+                        await UniTask.DelayFrame(60);
                         pContext.m_SM.ToStandby();
                     }
                     break;
@@ -101,12 +109,14 @@ namespace Logic.States.Fight
                         EventManager.Call(LogicEvent.ShowFightSwitch, FightSwitchEvent.NormalBoss);
                         //EventManager.Call(LogicEvent.SkillReset);
 
-                        await UniTask.Delay(1000);
+                        //await UniTask.Delay(1000);
+                        await UniTask.DelayFrame(60);
                         FightEnemyManager.Ins.ClearBattleground();
                         FightManager.Ins.m_CurGJJ.OnSwitching();
                         FightManager.Ins.m_CurGJJ.RecoverMaxHP();
                         EventManager.Call(LogicEvent.Fight_MapChanged, pContext.m_SM.m_ContextData.m_LevelType);
-                        await UniTask.Delay(200);
+                        //await UniTask.Delay(200);
+                        await UniTask.DelayFrame(60);
                         pContext.m_SM.ToStandby();
                     }
                     break;
@@ -116,12 +126,14 @@ namespace Logic.States.Fight
                         EventManager.Call(LogicEvent.ShowFightSwitch, FightSwitchEvent.NormalBoss);
                         //EventManager.Call(LogicEvent.SkillReset);
 
-                        await UniTask.Delay(1000);
+                        //await UniTask.Delay(1000);
+                        await UniTask.DelayFrame(60);
                         FightEnemyManager.Ins.ClearBattleground();
                         FightManager.Ins.m_CurGJJ.OnSwitching();
                         FightManager.Ins.m_CurGJJ.RecoverMaxHP();
                         EventManager.Call(LogicEvent.Fight_MapChanged, pContext.m_SM.m_ContextData.m_LevelType);
-                        await UniTask.Delay(200);
+                        //await UniTask.Delay(200);
+                        await UniTask.DelayFrame(60);
                         pContext.m_SM.ToStandby();
                     }
                     break;
@@ -131,12 +143,14 @@ namespace Logic.States.Fight
                         EventManager.Call(LogicEvent.ShowFightSwitch, FightSwitchEvent.NormalBoss);
                         //EventManager.Call(LogicEvent.SkillReset);
 
-                        await UniTask.Delay(1000);
+                        //await UniTask.Delay(1000);
+                        await UniTask.DelayFrame(60);
                         FightEnemyManager.Ins.ClearBattleground();
                         FightManager.Ins.m_CurGJJ.OnSwitching();
                         FightManager.Ins.m_CurGJJ.RecoverMaxHP();
                         EventManager.Call(LogicEvent.Fight_MapChanged, pContext.m_SM.m_ContextData.m_LevelType);
-                        await UniTask.Delay(200);
+                        //await UniTask.Delay(200);
+                        await UniTask.DelayFrame(60);
                         pContext.m_SM.ToStandby();
                         break;
                     }
@@ -146,12 +160,14 @@ namespace Logic.States.Fight
                         EventManager.Call(LogicEvent.ShowFightSwitch, FightSwitchEvent.NormalBoss);
                         //EventManager.Call(LogicEvent.SkillReset);
 
-                        await UniTask.Delay(1000);
+                        //await UniTask.Delay(1000);
+                        await UniTask.DelayFrame(60);
                         FightEnemyManager.Ins.ClearBattleground();
                         FightManager.Ins.m_CurGJJ.OnSwitching();
                         FightManager.Ins.m_CurGJJ.RecoverMaxHP();
                         EventManager.Call(LogicEvent.Fight_MapChanged, pContext.m_SM.m_ContextData.m_LevelType);
-                        await UniTask.Delay(200);
+                       // await UniTask.Delay(200);
+                        await UniTask.DelayFrame(60);
                         pContext.m_SM.ToStandby();
                         break;
                     }

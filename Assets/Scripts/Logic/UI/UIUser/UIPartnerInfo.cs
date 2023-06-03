@@ -29,6 +29,8 @@ namespace Logic.UI.UIUser
         public GameObject BtnOn;
         public GameObject BtnOff;
         public GameObject BtnFull;
+        public GameObject m_BtnUpgrade;
+        public GameObject m_BtnCompose, m_BtnCanCompose, m_BtnCantCompose;
 
         public GameObject BtnLeft;
         public GameObject BtnRight;
@@ -40,6 +42,7 @@ namespace Logic.UI.UIUser
         private GamePartnerData m_GamePartnerData;
 
         private bool IsHave = false;
+        private bool IsMaxLevel = false;
 
         private void OnDisable()
         {
@@ -51,15 +54,16 @@ namespace Logic.UI.UIUser
             var _PartnerID = (int)m_OpenData_;
             m_PartnerData = PartnerCfg.GetData(_PartnerID);
             IsHave = PartnerManager.Ins.IsHave(_PartnerID);
-            if (IsHave)
-                m_GamePartnerData = PartnerManager.Ins.GetPartnerData(_PartnerID);
-            else
-                m_GamePartnerData = new GamePartnerData { PartnerID = _PartnerID, Level = 1, Count = 0 }; //没有按1级算
+            m_GamePartnerData = IsHave
+                ? PartnerManager.Ins.GetPartnerData(_PartnerID)
+                : new GamePartnerData { PartnerID = _PartnerID, Level = 1, Count = 0 }; //没有按1级算
 
             var itemData = ItemCfg.GetData(m_GamePartnerData.PartnerID);
             UICommonHelper.LoadIcon(m_Icon, itemData.Res);
             UICommonHelper.LoadQuality(m_Quality, m_PartnerData.Quality);
             m_QualityText.text = UICommonHelper.GetQualityShowText(m_PartnerData.Quality);
+
+            IsMaxLevel = PartnerManager.Ins.IsMaxLevel(_PartnerID);
 
             UpdatePartnerInfo();
 
@@ -67,8 +71,22 @@ namespace Logic.UI.UIUser
 
             if (IsHave)
             {
-                bool _IsON = PartnerManager.Ins.IsOn(m_PartnerData.ID);
-                if (_IsON)
+                m_NotHaveNode.Hide();
+
+                //强化合成
+                if (IsMaxLevel)
+                {
+                    m_BtnUpgrade.Hide();
+                    m_BtnCompose.Show();
+                }
+                else
+                {
+                    m_BtnUpgrade.Show();
+                    m_BtnCompose.Hide();
+                }
+
+                var isOn = PartnerManager.Ins.IsOn(m_PartnerData.ID);
+                if (isOn)
                 {
                     BtnOff.Show();
                 }
@@ -107,9 +125,20 @@ namespace Logic.UI.UIUser
                                  Formula.GetGJJAtk())
                 .ToUIString();
 
-            var _CurCount = PartnerManager.Ins.CurCount(m_PartnerData.ID);
-            var _NeedCount = PartnerManager.Ins.UpgradeNeedCount(m_PartnerData.ID);
-            if (_CurCount >= _NeedCount)
+            var needCount = 0;
+            var curCount = PartnerManager.Ins.CurCount(m_PartnerData.ID);
+            if (IsMaxLevel)
+            {
+                needCount = PartnerManager.Ins.ComposeNeedCount(m_PartnerData.ID);
+                //服务器处理，客户端可以不处理
+                m_Level.text = "LV" + GameDefine.CommonItemMaxLevel;
+            }
+            else
+            {
+                needCount = PartnerManager.Ins.UpgradeNeedCount(m_PartnerData.ID);
+            }
+
+            if (curCount >= needCount)
             {
                 m_CantProcess.Hide();
                 m_CanProcess.Show();
@@ -120,11 +149,11 @@ namespace Logic.UI.UIUser
                 m_CanProcess.Hide();
             }
 
-            float _Process = (float)_CurCount / _NeedCount;
-            m_CantProcess.fillAmount = _Process;
-            m_CanProcess.fillAmount = _Process;
+            var process = (float)curCount / needCount;
+            m_CantProcess.fillAmount = process;
+            m_CanProcess.fillAmount = process;
 
-            m_TextProcess.text = _CurCount + "/" + _NeedCount;
+            m_TextProcess.text = curCount + "/" + needCount;
 
             m_HaveEffect.text =
                 "+" + ((BigDouble)(PartnerManager.Ins.GetHaveEffect(m_PartnerData.ID) * 100f)).ToUIStringFloat() + "%";
@@ -169,6 +198,19 @@ namespace Logic.UI.UIUser
             }
 
             PartnerManager.Ins.DoIntensify(m_PartnerData.ID, false);
+        }
+
+        public void OnBtnComposeClick()
+        {
+            var curCount = PartnerManager.Ins.CurCount(m_PartnerData.ID);
+            var needCount = PartnerManager.Ins.ComposeNeedCount(m_PartnerData.ID);
+            if (curCount < needCount)
+            {
+                EventManager.Call(LogicEvent.ShowTips, "合成所需数量不足");
+                return;
+            }
+
+            PartnerManager.Ins.DoCompose(m_PartnerData.ID);
         }
 
         public void OnClickLeft()

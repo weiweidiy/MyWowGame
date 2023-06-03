@@ -1,5 +1,6 @@
 using DummyServer;
 using Logic.Config;
+using Logic.Manager;
 using Networks;
 using System.Collections;
 using System.Collections.Generic;
@@ -132,6 +133,64 @@ namespace DummyServer
         }
 
         /// <summary>
+        /// 添加一条Spoilbreakthrough数据
+        /// </summary>
+        /// <param name="data"></param>
+        public bool AddSpoilBreakthroughData(SpoilBreakthroughData spoilBreakthroughData)
+        {
+            if (GetSpoilBreakthroughData(spoilBreakthroughData.SpoilId) != null)
+            {
+                Debug.LogError("已经存在战利品 , 请调用 UpdateSpoilBreakthroughData 方法" + spoilBreakthroughData.SpoilId);
+                return false;
+            }
+            m_DB.m_SpoilBreakthrough.Add(spoilBreakthroughData);
+            SendMsg(new S2C_SpoilBreakthrough { SpoilBreakthrough = spoilBreakthroughData });
+            return true;
+        }
+
+        /// <summary>
+        /// 更新一条Spoilbreakthrough数据
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public void UpdateSpoilBreakthroughData(SpoilBreakthroughData spoilBreakthroughData)
+        {
+            var data = GetSpoilBreakthroughData(spoilBreakthroughData.SpoilId);
+            if (data == null)
+            {
+                Debug.LogError("没有找到战利品 , 请调用 AddSpoilBreakthroughData 方法" + spoilBreakthroughData.SpoilId);
+                return;
+            }
+            data.Count = spoilBreakthroughData.Count;
+
+            SendMsg(new S2C_SpoilBreakthrough { SpoilBreakthrough = data });
+        }
+
+        /// <summary>
+        /// 根据id获取一个spoilbreakthrough数据对象
+        /// </summary>
+        /// <param name="spoilId"></param>
+        /// <returns></returns>
+        public SpoilBreakthroughData GetSpoilBreakthroughData(int spoilId)
+        {
+            return m_DB.m_SpoilBreakthrough.Where((p) => p.SpoilId.Equals(spoilId)).SingleOrDefault();
+        }
+
+        /// <summary>
+        /// 获取当前已突破的次数
+        /// </summary>
+        /// <returns></returns>
+        public int GetSpoilBreakthroughCount(int spoilId)
+        {
+            var data = GetSpoilBreakthroughData(spoilId);
+            if (data == null)
+                return 0;
+
+            return data.Count;
+        }
+
+
+        /// <summary>
         /// 保存到数据库
         /// </summary>
         public void Save()
@@ -242,6 +301,43 @@ namespace DummyServer
             var newLevel = spoilLevel + 1;
             var newSpoilData = GetNewSpoilData(spoilId, newLevel);
             UpdateSpoilData(newSpoilData);
+
+            Save();
+        }
+
+        /// <summary>
+        /// 突破逻辑
+        /// </summary>
+        /// <param name="pMsg"></param>
+        public void OnC2S_SpoilBreakthrough(C2S_SpoilBreakthrough pMsg)
+        {
+            var spoilId = pMsg.SpoilId;
+
+            //判断资源够不够
+            var needCost = SpoilManager.Ins.GetBreakCost(spoilId);
+            if (SpoilManager.Ins.DoesCostBreakOreEngough(needCost))
+            {
+                // error: "突破石不足";
+                return;
+            }
+
+            //判断是否已经满突破
+            if (SpoilManager.Ins.IsMaxBreakthrough(spoilId))
+            {
+                // error: "已达最大突破次数";
+                return;
+            }
+
+            //进行突破
+            var spoilBreakthroughData = GetSpoilBreakthroughData(spoilId);
+            if(spoilBreakthroughData == null)
+            {//新数据
+                AddSpoilBreakthroughData(spoilBreakthroughData);
+            }
+            else
+            {
+                UpdateSpoilBreakthroughData(spoilBreakthroughData);
+            }
 
             Save();
         }
