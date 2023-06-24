@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using BreakInfinity;
 using Configs;
 using Framework.EventKit;
@@ -7,7 +8,6 @@ using Framework.UI;
 using Logic.Common;
 using Logic.UI.UIUser;
 using Networks;
-using UnityEngine;
 
 namespace Logic.Manager
 {
@@ -85,8 +85,43 @@ namespace Logic.Manager
             EventManager.Call(LogicEvent.EquipOff, pMsg);
         }
 
-        public async void OnWeaponIntensify(List<GameEquipUpgradeData> pEquipList, bool pAuto)
+        public async void OnWeaponIntensify(List<GameEquipUpgradeData> pEquipList, bool pAuto,
+            List<GameComposeData> pComposeList)
         {
+            if (pComposeList != null)
+            {
+                // 武器批量合成
+                if (pAuto)
+                {
+                    foreach (var composeData in pComposeList)
+                    {
+                        var fromData = GetEquipData(composeData.FromID, ItemType.Weapon);
+                        if (fromData != null)
+                        {
+                            fromData.Count = composeData.FromCount;
+                        }
+
+                        var toData = GetEquipData(composeData.ToID, ItemType.Weapon);
+                        if (toData != null)
+                        {
+                            toData.Count = composeData.ToCount;
+                        }
+                        else
+                        {
+                            //如果合成列表中出现新的武器数据需要new后添加到Map中
+                            var equipData = new GameEquipData
+                            {
+                                EquipID = composeData.ToID,
+                                Level = 1,
+                                Count = composeData.ToCount
+                            };
+                            WeaponMap.Add(composeData.ToID, equipData);
+                        }
+                    }
+                }
+            }
+
+            // 武器批量升级
             var _TaskNeedCount = 0;
             foreach (var equipUpgradeData in pEquipList)
             {
@@ -103,16 +138,67 @@ namespace Logic.Manager
             TaskManager.Ins.DoTaskUpdate(TaskType.TT_9001, _TaskNeedCount);
 
             if (pAuto)
-                await UIManager.Ins.OpenUI<UIUpgradedInfo>(pEquipList);
+            {
+                // 弹出合成或升级面板
+                if (pComposeList != null && pComposeList.Count != 0)
+                {
+                    // 1.有合成数据，没有升级数据
+                    // 2.有合成数据，有升级数据
+                    var data = (pComposeList, pEquipList);
+                    await UIManager.Ins.OpenUI<UIComposeInfo>(data);
+                }
+                else
+                {
+                    //没有合成数据，有升级数据
+                    await UIManager.Ins.OpenUI<UIUpgradedInfo>(pEquipList);
+                }
+            }
             else
+            {
                 EventManager.Call(LogicEvent.EquipWeaponUpgraded);
+            }
 
             UpdateAllHaveATKEffect();
             EventManager.Call(LogicEvent.EquipListChanged, ItemType.Weapon);
         }
 
-        public async void OnArmorIntensify(List<GameEquipUpgradeData> pEquipList, bool pAuto)
+        public async void OnArmorIntensify(List<GameEquipUpgradeData> pEquipList, bool pAuto,
+            List<GameComposeData> pComposeList)
         {
+            if (pComposeList != null)
+            {
+                // 防具批量合成
+                if (pAuto)
+                {
+                    foreach (var composeData in pComposeList)
+                    {
+                        var fromData = GetEquipData(composeData.FromID, ItemType.Armor);
+                        if (fromData != null)
+                        {
+                            fromData.Count = composeData.FromCount;
+                        }
+
+                        var toData = GetEquipData(composeData.ToID, ItemType.Armor);
+                        if (toData != null)
+                        {
+                            toData.Count = composeData.ToCount;
+                        }
+                        else
+                        {
+                            //如果合成列表中出现新的防具数据需要new后添加到Map中
+                            var equipData = new GameEquipData
+                            {
+                                EquipID = composeData.ToID,
+                                Level = 1,
+                                Count = composeData.ToCount
+                            };
+                            ArmorMap.Add(composeData.ToID, equipData);
+                        }
+                    }
+                }
+            }
+
+            // 防具批量升级
             var _TaskNeedCount = 0;
             foreach (var equipUpgradeData in pEquipList)
             {
@@ -129,9 +215,25 @@ namespace Logic.Manager
             TaskManager.Ins.DoTaskUpdate(TaskType.TT_9002, _TaskNeedCount);
 
             if (pAuto)
-                await UIManager.Ins.OpenUI<UIUpgradedInfo>(pEquipList);
+            {
+                // 弹出合成或升级面板
+                if (pComposeList != null && pComposeList.Count != 0)
+                {
+                    // 1.有合成数据，没有升级数据
+                    // 2.有合成数据，有升级数据
+                    var data = (pComposeList, pEquipList);
+                    await UIManager.Ins.OpenUI<UIComposeInfo>(data);
+                }
+                else
+                {
+                    //没有合成数据，有升级数据
+                    await UIManager.Ins.OpenUI<UIUpgradedInfo>(pEquipList);
+                }
+            }
             else
+            {
                 EventManager.Call(LogicEvent.EquipArmorUpgraded);
+            }
 
             UpdateAllHaveHPEffect();
             EventManager.Call(LogicEvent.EquipListChanged, ItemType.Armor);
@@ -174,13 +276,38 @@ namespace Logic.Manager
         }
 
         // 装备合成
-        public void OnEquipCompose(S2S_EquipCompose pMsg)
+        public async void OnEquipCompose(S2S_EquipCompose pMsg)
         {
-            Debug.LogError($"/Type------{pMsg.Type}------");
-            Debug.LogError($"/FromID------{pMsg.FromID}------");
-            Debug.LogError($"/FromCount------{pMsg.FromCount}------");
-            Debug.LogError($"/ToID------{pMsg.ToID}------");
-            Debug.LogError($"/ToCount------{pMsg.ToCount}------");
+            var itemType = (ItemType)pMsg.Type;
+            //更新合成ID合成后数量
+            if (itemType == ItemType.Weapon)
+            {
+                foreach (var gameWeaponData in WeaponMap.Where(gameWeaponData => gameWeaponData.Key == pMsg.FromID))
+                {
+                    gameWeaponData.Value.Count = pMsg.FromCount;
+                }
+            }
+            else if (itemType == ItemType.Armor)
+            {
+                foreach (var gameArmorData in ArmorMap.Where(gameArmorData => gameArmorData.Key == pMsg.FromID))
+                {
+                    gameArmorData.Value.Count = pMsg.FromCount;
+                }
+            }
+
+            EventManager.Call(LogicEvent.EquipListChanged, ItemType.Weapon);
+            EventManager.Call(LogicEvent.EquipListChanged, ItemType.Armor);
+            //弹出合成面板
+            var composeData = new GameComposeData()
+            {
+                FromID = pMsg.FromID,
+                FromCount = pMsg.FromCount,
+                ToID = pMsg.ToID,
+                ToAddCount = pMsg.ToCount,
+            };
+            var composeDataList = new List<GameComposeData> { composeData };
+
+            await UIManager.Ins.OpenUI<UIComposeInfo>(composeDataList);
         }
 
         #endregion
@@ -239,6 +366,11 @@ namespace Logic.Manager
             if (!IsHave(pEquipID, pType))
                 return false;
             var _Data = GetEquipData(pEquipID, pType);
+            if (_Data.Level >= GameDefine.CommonItemMaxLevel)
+            {
+                return false;
+            }
+
             var _NeedCount =
                 _Data.Level > 10 ? EquipLvlUpCfg.GetData(10).Cost : EquipLvlUpCfg.GetData(_Data.Level).Cost;
             return _Data.Count >= _NeedCount;
@@ -255,7 +387,9 @@ namespace Logic.Manager
                         ? EquipLvlUpCfg.GetData(10).Cost
                         : EquipLvlUpCfg.GetData(_MapData.Value.Level).Cost;
                     if (_MapData.Value.Count >= _NeedCount)
+                    {
                         return true;
+                    }
                 }
             }
 
@@ -267,7 +401,9 @@ namespace Logic.Manager
                         ? EquipLvlUpCfg.GetData(10).Cost
                         : EquipLvlUpCfg.GetData(_MapData.Value.Level).Cost;
                     if (_MapData.Value.Count >= _NeedCount)
+                    {
                         return true;
+                    }
                 }
             }
 
@@ -284,6 +420,38 @@ namespace Logic.Manager
             }
 
             return level >= GameDefine.CommonItemMaxLevel;
+        }
+
+        //是否有可合成的装备
+        public bool HaveCanComposeEquip(ItemType pType)
+        {
+            if (pType == ItemType.Weapon)
+            {
+                foreach (var weaponData in WeaponMap)
+                {
+                    if (!IsMaxLevel(weaponData.Key, ItemType.Weapon)) continue;
+                    var needCount = ComposeNeedCount(weaponData.Key, ItemType.Weapon);
+                    if (weaponData.Value.Count >= needCount)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            if (pType == ItemType.Armor)
+            {
+                foreach (var armorData in ArmorMap)
+                {
+                    if (!IsMaxLevel(armorData.Key, ItemType.Armor)) continue;
+                    var needCount = ComposeNeedCount(armorData.Key, ItemType.Armor);
+                    if (armorData.Value.Count >= needCount)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
         //获取某个装备的拥有效果
@@ -303,6 +471,9 @@ namespace Logic.Manager
             if (IsHave(pEquipID, pType))
                 _Level = GetEquipData(pEquipID, pType).Level;
             var _CfgData = EquipCfg.GetData(pEquipID);
+            // 连接服务器此处会报空处理
+            if (_CfgData == null) return 0;
+
             return _CfgData.ValueBase + (_Level - 1) * _CfgData.ValueGrow;
         }
 
@@ -314,6 +485,8 @@ namespace Logic.Manager
             foreach (var _MapData in WeaponMap)
             {
                 var _CfgData = EquipCfg.GetData(_MapData.Key);
+                // 连接服务器此处会报空处理
+                if (_CfgData == null) continue;
                 var _GameData = _MapData.Value;
                 _AllEffect += (_CfgData.HasAdditionBase + (_GameData.Level - 1) * _CfgData.HasAdditionGrow);
                 var atk = GetEquipEffect(_MapData.Key, ItemType.Weapon);

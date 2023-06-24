@@ -2,5588 +2,6041 @@
   "AllData":{
   "0":  {
     "ID":0,
-    "AtkBase":700000000,
-    "AtkGrow":50,
-    "AtkFeel":1,
-    "HPBase":500000000,
-    "HPGrow":60000000,
-    "HpFeel":500000000,
-    "DropBase":12000,
-    "DropGrow":1,
-    "DropFeel":10,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":10,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":0,
+    "HPPower":0,
+    "DropBase":0,
+    "DropPower":0,
+    "HangupFormationGroup":101,
+    "HangupAtk":0.01,
+    "HangupHP":0.1,
+    "HangupDrop":0.01,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            20,30,60
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            2
          ],
     "MonsterScenes":100
    },
   "1":  {
     "ID":1,
-    "AtkBase":10,
-    "AtkGrow":1,
-    "AtkFeel":1,
-    "HPBase":500,
-    "HPGrow":300,
-    "HpFeel":5,
-    "DropBase":400,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":1,
-    "MaxCount":1,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":1,
+    "HPPower":1.6,
+    "DropBase":5,
+    "DropPower":1,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            201,
+            201,
+            201,
+            201,
+            2001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            10,
+            0.5,
+            0.5,
+            0.5,
+            10
          ],
-    "SpawnType":[
-            1,1,1,1,5
+    "WaveHP":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,55,70
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "2":  {
     "ID":2,
-    "AtkBase":10,
-    "AtkGrow":2,
-    "AtkFeel":1,
-    "HPBase":1000,
-    "HPGrow":1,
-    "HpFeel":5,
-    "DropBase":800,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":2,
-    "MaxCount":2,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":1,
+    "HPPower":2,
+    "DropBase":5,
+    "DropPower":1.2,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            202,
+            202,
+            202,
+            202,
+            2001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,1,1,5
+    "WaveHP":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,55,70
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "3":  {
     "ID":3,
-    "AtkBase":10,
-    "AtkGrow":2,
-    "AtkFeel":1,
-    "HPBase":6000,
-    "HPGrow":100,
-    "HpFeel":5,
-    "DropBase":2000,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":3,
-    "MaxCount":3,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":1.2,
+    "HPPower":2.4,
+    "DropBase":5,
+    "DropPower":1.4,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            203,
+            203,
+            203,
+            203,
+            2001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,1,1,5
+    "WaveHP":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,55,70
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "4":  {
     "ID":4,
-    "AtkBase":10,
-    "AtkGrow":4,
-    "AtkFeel":1,
-    "HPBase":8000,
-    "HPGrow":1,
-    "HpFeel":5,
-    "DropBase":3200,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":3,
-    "MaxCount":3,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":1.4,
+    "HPPower":2.7,
+    "DropBase":5,
+    "DropPower":1.5,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            204,
+            204,
+            204,
+            204,
+            2001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "5":  {
     "ID":5,
-    "AtkBase":10,
-    "AtkGrow":5,
-    "AtkFeel":1,
-    "HPBase":10000,
-    "HPGrow":1,
-    "HpFeel":5,
-    "DropBase":4000,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":4,
-    "MaxCount":4,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":1.55,
+    "HPPower":3.1,
+    "DropBase":5,
+    "DropPower":1.545,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            204,
+            204,
+            204,
+            204,
+            2001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "6":  {
     "ID":6,
-    "AtkBase":10,
-    "AtkGrow":9,
-    "AtkFeel":1,
-    "HPBase":25000,
-    "HPGrow":500,
-    "HpFeel":5,
-    "DropBase":4400,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":5,
-    "MaxCount":5,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":1.6,
+    "HPPower":3.35,
+    "DropBase":5,
+    "DropPower":1.57,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            205,
+            205,
+            205,
+            205,
+            2001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "7":  {
     "ID":7,
-    "AtkBase":10,
-    "AtkGrow":7,
-    "AtkFeel":1,
-    "HPBase":30000,
-    "HPGrow":1,
-    "HpFeel":5,
-    "DropBase":4800,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":5,
-    "MaxCount":5,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":1.62,
+    "HPPower":3.52,
+    "DropBase":5,
+    "DropPower":1.615,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            205,
+            205,
+            205,
+            205,
+            2001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "8":  {
     "ID":8,
-    "AtkBase":10,
-    "AtkGrow":8,
-    "AtkFeel":1,
-    "HPBase":40000,
-    "HPGrow":1,
-    "HpFeel":5,
-    "DropBase":5200,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":5,
-    "MaxCount":5,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":1.77,
+    "HPPower":3.6,
+    "DropBase":5,
+    "DropPower":1.67,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            206,
+            206,
+            206,
+            206,
+            2001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "9":  {
     "ID":9,
-    "AtkBase":10,
-    "AtkGrow":9,
-    "AtkFeel":1,
-    "HPBase":90000,
-    "HPGrow":2000,
-    "HpFeel":5,
-    "DropBase":6000,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":5,
-    "MaxCount":5,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":1.9,
+    "HPPower":3.75,
+    "DropBase":5,
+    "DropPower":1.715,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            207,
+            207,
+            207,
+            207,
+            2001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "10":  {
     "ID":10,
-    "AtkBase":10,
-    "AtkGrow":9,
-    "AtkFeel":1,
-    "HPBase":1800000,
-    "HPGrow":20000,
-    "HpFeel":5,
-    "DropBase":7200,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":5,
-    "MaxCount":5,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2,
+    "HPPower":4,
+    "DropBase":5,
+    "DropPower":1.72,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,4
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "11":  {
     "ID":11,
-    "AtkBase":45,
-    "AtkGrow":11,
-    "AtkFeel":1,
-    "HPBase":181000,
-    "HPGrow":20000,
-    "HpFeel":5,
-    "DropBase":6000,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":5,
-    "MaxCount":5,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.02,
+    "HPPower":4.04,
+    "DropBase":5,
+    "DropPower":1.725,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "12":  {
     "ID":12,
-    "AtkBase":45,
-    "AtkGrow":12,
-    "AtkFeel":1,
-    "HPBase":182000,
-    "HPGrow":21000,
-    "HpFeel":5,
-    "DropBase":6400,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":5,
-    "MaxCount":5,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.04,
+    "HPPower":4.08,
+    "DropBase":5,
+    "DropPower":1.73,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "13":  {
     "ID":13,
-    "AtkBase":45,
-    "AtkGrow":13,
-    "AtkFeel":1,
-    "HPBase":183000,
-    "HPGrow":22000,
-    "HpFeel":5,
-    "DropBase":6800,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":5,
-    "MaxCount":5,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.06,
+    "HPPower":4.12,
+    "DropBase":5,
+    "DropPower":1.735,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "14":  {
     "ID":14,
-    "AtkBase":45,
-    "AtkGrow":14,
-    "AtkFeel":1,
-    "HPBase":184000,
-    "HPGrow":23000,
-    "HpFeel":5,
-    "DropBase":7200,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":6,
-    "MaxCount":6,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.08,
+    "HPPower":4.16,
+    "DropBase":5,
+    "DropPower":1.74,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "15":  {
     "ID":15,
-    "AtkBase":45,
-    "AtkGrow":15,
-    "AtkFeel":1,
-    "HPBase":185000,
-    "HPGrow":24000,
-    "HpFeel":5,
-    "DropBase":7600,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":6,
-    "MaxCount":6,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.1,
+    "HPPower":4.2,
+    "DropBase":5,
+    "DropPower":1.745,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "16":  {
     "ID":16,
-    "AtkBase":45,
-    "AtkGrow":16,
-    "AtkFeel":1,
-    "HPBase":186000,
-    "HPGrow":25000,
-    "HpFeel":5,
-    "DropBase":8000,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":6,
-    "MaxCount":6,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.12,
+    "HPPower":4.24,
+    "DropBase":5,
+    "DropPower":1.75,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "17":  {
     "ID":17,
-    "AtkBase":45,
-    "AtkGrow":17,
-    "AtkFeel":1,
-    "HPBase":187000,
-    "HPGrow":26000,
-    "HpFeel":5,
-    "DropBase":8400,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":7,
-    "MaxCount":7,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.14,
+    "HPPower":4.28,
+    "DropBase":5,
+    "DropPower":1.755,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "18":  {
     "ID":18,
-    "AtkBase":45,
-    "AtkGrow":18,
-    "AtkFeel":1,
-    "HPBase":188000,
-    "HPGrow":27000,
-    "HpFeel":5,
-    "DropBase":8800,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":7,
-    "MaxCount":7,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.16,
+    "HPPower":4.32,
+    "DropBase":5,
+    "DropPower":1.76,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "19":  {
     "ID":19,
-    "AtkBase":45,
-    "AtkGrow":19,
-    "AtkFeel":1,
-    "HPBase":189000,
-    "HPGrow":28000,
-    "HpFeel":5,
-    "DropBase":9200,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":7,
-    "MaxCount":7,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.18,
+    "HPPower":4.36,
+    "DropBase":5,
+    "DropPower":1.765,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "20":  {
     "ID":20,
-    "AtkBase":202,
-    "AtkGrow":20,
-    "AtkFeel":1,
-    "HPBase":1800000,
-    "HPGrow":20000,
-    "HpFeel":5,
-    "DropBase":10000,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":7,
-    "MaxCount":7,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.2,
+    "HPPower":4.4,
+    "DropBase":5,
+    "DropPower":1.77,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "21":  {
     "ID":21,
-    "AtkBase":202,
-    "AtkGrow":21,
-    "AtkFeel":1,
-    "HPBase":183600,
-    "HPGrow":20400,
-    "HpFeel":5,
-    "DropBase":10080,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.22,
+    "HPPower":4.44,
+    "DropBase":5,
+    "DropPower":1.775,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "22":  {
     "ID":22,
-    "AtkBase":202,
-    "AtkGrow":22,
-    "AtkFeel":1,
-    "HPBase":187272,
-    "HPGrow":20808,
-    "HpFeel":5,
-    "DropBase":10160,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.24,
+    "HPPower":4.48,
+    "DropBase":5,
+    "DropPower":1.78,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "23":  {
     "ID":23,
-    "AtkBase":202,
-    "AtkGrow":23,
-    "AtkFeel":1,
-    "HPBase":191017,
-    "HPGrow":21224,
-    "HpFeel":5,
-    "DropBase":10240,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.26,
+    "HPPower":4.52,
+    "DropBase":5,
+    "DropPower":1.785,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "24":  {
     "ID":24,
-    "AtkBase":202,
-    "AtkGrow":24,
-    "AtkFeel":1,
-    "HPBase":194837,
-    "HPGrow":21648,
-    "HpFeel":5,
-    "DropBase":10320,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.28,
+    "HPPower":4.56,
+    "DropBase":5,
+    "DropPower":1.79,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "25":  {
     "ID":25,
-    "AtkBase":202,
-    "AtkGrow":25,
-    "AtkFeel":1,
-    "HPBase":198733,
-    "HPGrow":22080,
-    "HpFeel":5,
-    "DropBase":10400,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.3,
+    "HPPower":4.6,
+    "DropBase":5,
+    "DropPower":1.795,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "26":  {
     "ID":26,
-    "AtkBase":202,
-    "AtkGrow":26,
-    "AtkFeel":1,
-    "HPBase":202707,
-    "HPGrow":22521,
-    "HpFeel":5,
-    "DropBase":10480,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.32,
+    "HPPower":4.64,
+    "DropBase":5,
+    "DropPower":1.8,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "27":  {
     "ID":27,
-    "AtkBase":202,
-    "AtkGrow":27,
-    "AtkFeel":1,
-    "HPBase":206761,
-    "HPGrow":22971,
-    "HpFeel":5,
-    "DropBase":10560,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.34,
+    "HPPower":4.68,
+    "DropBase":5,
+    "DropPower":1.805,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "28":  {
     "ID":28,
-    "AtkBase":202,
-    "AtkGrow":28,
-    "AtkFeel":1,
-    "HPBase":210896,
-    "HPGrow":23430,
-    "HpFeel":5,
-    "DropBase":10640,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.36,
+    "HPPower":4.72,
+    "DropBase":5,
+    "DropPower":1.81,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "29":  {
     "ID":29,
-    "AtkBase":202,
-    "AtkGrow":29,
-    "AtkFeel":1,
-    "HPBase":215113,
-    "HPGrow":23898,
-    "HpFeel":5,
-    "DropBase":10720,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.38,
+    "HPPower":4.76,
+    "DropBase":5,
+    "DropPower":1.815,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "30":  {
     "ID":30,
-    "AtkBase":909,
-    "AtkGrow":30,
-    "AtkFeel":1,
-    "HPBase":2700000,
-    "HPGrow":30000,
-    "HpFeel":5,
-    "DropBase":10800,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.4,
+    "HPPower":4.8,
+    "DropBase":5,
+    "DropPower":1.82,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "31":  {
     "ID":31,
-    "AtkBase":909,
-    "AtkGrow":31,
-    "AtkFeel":1,
-    "HPBase":329122,
-    "HPGrow":36563,
-    "HpFeel":5,
-    "DropBase":10880,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.42,
+    "HPPower":4.84,
+    "DropBase":5,
+    "DropPower":1.825,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "32":  {
     "ID":32,
-    "AtkBase":909,
-    "AtkGrow":32,
-    "AtkFeel":1,
-    "HPBase":335704,
-    "HPGrow":37294,
-    "HpFeel":5,
-    "DropBase":10960,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.44,
+    "HPPower":4.88,
+    "DropBase":5,
+    "DropPower":1.83,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "33":  {
     "ID":33,
-    "AtkBase":909,
-    "AtkGrow":33,
-    "AtkFeel":1,
-    "HPBase":342418,
-    "HPGrow":38039,
-    "HpFeel":5,
-    "DropBase":11040,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.46,
+    "HPPower":4.92,
+    "DropBase":5,
+    "DropPower":1.835,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "34":  {
     "ID":34,
-    "AtkBase":909,
-    "AtkGrow":34,
-    "AtkFeel":1,
-    "HPBase":349266,
-    "HPGrow":38799,
-    "HpFeel":5,
-    "DropBase":11120,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.48,
+    "HPPower":4.96,
+    "DropBase":5,
+    "DropPower":1.84,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "35":  {
     "ID":35,
-    "AtkBase":909,
-    "AtkGrow":35,
-    "AtkFeel":1,
-    "HPBase":356251,
-    "HPGrow":39574,
-    "HpFeel":5,
-    "DropBase":11200,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.5,
+    "HPPower":5,
+    "DropBase":5,
+    "DropPower":1.845,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "36":  {
     "ID":36,
-    "AtkBase":909,
-    "AtkGrow":36,
-    "AtkFeel":1,
-    "HPBase":363376,
-    "HPGrow":40365,
-    "HpFeel":5,
-    "DropBase":11280,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.52,
+    "HPPower":5.04,
+    "DropBase":5,
+    "DropPower":1.85,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "37":  {
     "ID":37,
-    "AtkBase":909,
-    "AtkGrow":37,
-    "AtkFeel":1,
-    "HPBase":370643,
-    "HPGrow":41172,
-    "HpFeel":5,
-    "DropBase":11360,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.54,
+    "HPPower":5.08,
+    "DropBase":5,
+    "DropPower":1.855,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "38":  {
     "ID":38,
-    "AtkBase":909,
-    "AtkGrow":38,
-    "AtkFeel":1,
-    "HPBase":378055,
-    "HPGrow":41995,
-    "HpFeel":5,
-    "DropBase":11440,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.56,
+    "HPPower":5.12,
+    "DropBase":5,
+    "DropPower":1.86,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "39":  {
     "ID":39,
-    "AtkBase":909,
-    "AtkGrow":39,
-    "AtkFeel":1,
-    "HPBase":385616,
-    "HPGrow":42834,
-    "HpFeel":5,
-    "DropBase":11520,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.58,
+    "HPPower":5.16,
+    "DropBase":5,
+    "DropPower":1.865,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "40":  {
     "ID":40,
-    "AtkBase":4090,
-    "AtkGrow":40,
-    "AtkFeel":1,
-    "HPBase":4050000,
-    "HPGrow":45000,
-    "HpFeel":5,
-    "DropBase":11600,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.6,
+    "HPPower":5.2,
+    "DropBase":5,
+    "DropPower":1.87,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "41":  {
     "ID":41,
-    "AtkBase":4090,
-    "AtkGrow":41,
-    "AtkFeel":1,
-    "HPBase":589992,
-    "HPGrow":65536,
-    "HpFeel":5,
-    "DropBase":11680,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.62,
+    "HPPower":5.24,
+    "DropBase":5,
+    "DropPower":1.875,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "42":  {
     "ID":42,
-    "AtkBase":4090,
-    "AtkGrow":42,
-    "AtkFeel":1,
-    "HPBase":601791,
-    "HPGrow":66846,
-    "HpFeel":5,
-    "DropBase":11760,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.64,
+    "HPPower":5.28,
+    "DropBase":5,
+    "DropPower":1.88,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "43":  {
     "ID":43,
-    "AtkBase":4090,
-    "AtkGrow":43,
-    "AtkFeel":1,
-    "HPBase":613826,
-    "HPGrow":68182,
-    "HpFeel":5,
-    "DropBase":11840,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.66,
+    "HPPower":5.32,
+    "DropBase":5,
+    "DropPower":1.885,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "44":  {
     "ID":44,
-    "AtkBase":4090,
-    "AtkGrow":44,
-    "AtkFeel":1,
-    "HPBase":626102,
-    "HPGrow":69545,
-    "HpFeel":5,
-    "DropBase":11920,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.68,
+    "HPPower":5.36,
+    "DropBase":5,
+    "DropPower":1.89,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "45":  {
     "ID":45,
-    "AtkBase":4090,
-    "AtkGrow":45,
-    "AtkFeel":1,
-    "HPBase":638624,
-    "HPGrow":70935,
-    "HpFeel":5,
-    "DropBase":12000,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.7,
+    "HPPower":5.4,
+    "DropBase":5,
+    "DropPower":1.895,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "46":  {
     "ID":46,
-    "AtkBase":4090,
-    "AtkGrow":46,
-    "AtkFeel":1,
-    "HPBase":651396,
-    "HPGrow":72353,
-    "HpFeel":5,
-    "DropBase":12080,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.72,
+    "HPPower":5.44,
+    "DropBase":5,
+    "DropPower":1.9,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "47":  {
     "ID":47,
-    "AtkBase":4090,
-    "AtkGrow":47,
-    "AtkFeel":1,
-    "HPBase":664423,
-    "HPGrow":73800,
-    "HpFeel":5,
-    "DropBase":12160,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.74,
+    "HPPower":5.48,
+    "DropBase":5,
+    "DropPower":1.905,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "48":  {
     "ID":48,
-    "AtkBase":4090,
-    "AtkGrow":48,
-    "AtkFeel":1,
-    "HPBase":677711,
-    "HPGrow":75276,
-    "HpFeel":5,
-    "DropBase":12240,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.76,
+    "HPPower":5.52,
+    "DropBase":5,
+    "DropPower":1.91,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "49":  {
     "ID":49,
-    "AtkBase":4090,
-    "AtkGrow":49,
-    "AtkFeel":1,
-    "HPBase":691265,
-    "HPGrow":76781,
-    "HpFeel":5,
-    "DropBase":12320,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.78,
+    "HPPower":5.56,
+    "DropBase":5,
+    "DropPower":1.915,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "50":  {
     "ID":50,
-    "AtkBase":18405,
-    "AtkGrow":50,
-    "AtkFeel":1,
-    "HPBase":6075000,
-    "HPGrow":67500,
-    "HpFeel":5,
-    "DropBase":12400,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.8,
+    "HPPower":5.6,
+    "DropBase":5,
+    "DropPower":1.92,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            4001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "51":  {
     "ID":51,
-    "AtkBase":18405,
-    "AtkGrow":51,
-    "AtkFeel":1,
-    "HPBase":1057634,
-    "HPGrow":117474,
-    "HpFeel":5,
-    "DropBase":12480,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.82,
+    "HPPower":5.64,
+    "DropBase":5,
+    "DropPower":1.925,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "52":  {
     "ID":52,
-    "AtkBase":18405,
-    "AtkGrow":52,
-    "AtkFeel":1,
-    "HPBase":1078786,
-    "HPGrow":119823,
-    "HpFeel":5,
-    "DropBase":12560,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.84,
+    "HPPower":5.68,
+    "DropBase":5,
+    "DropPower":1.93,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "53":  {
     "ID":53,
-    "AtkBase":18405,
-    "AtkGrow":53,
-    "AtkFeel":1,
-    "HPBase":1100361,
-    "HPGrow":122219,
-    "HpFeel":5,
-    "DropBase":12640,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.86,
+    "HPPower":5.72,
+    "DropBase":5,
+    "DropPower":1.935,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "54":  {
     "ID":54,
-    "AtkBase":18405,
-    "AtkGrow":54,
-    "AtkFeel":1,
-    "HPBase":1122368,
-    "HPGrow":124663,
-    "HpFeel":5,
-    "DropBase":12720,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.88,
+    "HPPower":5.76,
+    "DropBase":5,
+    "DropPower":1.94,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "55":  {
     "ID":55,
-    "AtkBase":18405,
-    "AtkGrow":55,
-    "AtkFeel":1,
-    "HPBase":1144815,
-    "HPGrow":127156,
-    "HpFeel":5,
-    "DropBase":12800,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.9,
+    "HPPower":5.8,
+    "DropBase":5,
+    "DropPower":1.94499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "56":  {
     "ID":56,
-    "AtkBase":18405,
-    "AtkGrow":56,
-    "AtkFeel":1,
-    "HPBase":1167711,
-    "HPGrow":129699,
-    "HpFeel":5,
-    "DropBase":12880,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.92,
+    "HPPower":5.84,
+    "DropBase":5,
+    "DropPower":1.94999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "57":  {
     "ID":57,
-    "AtkBase":18405,
-    "AtkGrow":57,
-    "AtkFeel":1,
-    "HPBase":1191065,
-    "HPGrow":132292,
-    "HpFeel":5,
-    "DropBase":12960,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.94,
+    "HPPower":5.88,
+    "DropBase":5,
+    "DropPower":1.95499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "58":  {
     "ID":58,
-    "AtkBase":18405,
-    "AtkGrow":58,
-    "AtkFeel":1,
-    "HPBase":1214886,
-    "HPGrow":134937,
-    "HpFeel":5,
-    "DropBase":13040,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.96,
+    "HPPower":5.92,
+    "DropBase":5,
+    "DropPower":1.95999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "59":  {
     "ID":59,
-    "AtkBase":18405,
-    "AtkGrow":59,
-    "AtkFeel":1,
-    "HPBase":1239183,
-    "HPGrow":137635,
-    "HpFeel":5,
-    "DropBase":13120,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":2.98,
+    "HPPower":5.96,
+    "DropBase":5,
+    "DropPower":1.96499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "60":  {
     "ID":60,
-    "AtkBase":82822,
-    "AtkGrow":60,
-    "AtkFeel":1,
-    "HPBase":9112500,
-    "HPGrow":101250,
-    "HpFeel":5,
-    "DropBase":13200,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3,
+    "HPPower":6,
+    "DropBase":5,
+    "DropPower":1.96999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "61":  {
     "ID":61,
-    "AtkBase":82822,
-    "AtkGrow":61,
-    "AtkFeel":1,
-    "HPBase":1895949,
-    "HPGrow":210581,
-    "HpFeel":5,
-    "DropBase":13280,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.02,
+    "HPPower":6.04,
+    "DropBase":5,
+    "DropPower":1.97499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "62":  {
     "ID":62,
-    "AtkBase":82822,
-    "AtkGrow":62,
-    "AtkFeel":1,
-    "HPBase":1933867,
-    "HPGrow":214792,
-    "HpFeel":5,
-    "DropBase":13360,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.04,
+    "HPPower":6.08,
+    "DropBase":5,
+    "DropPower":1.97999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "63":  {
     "ID":63,
-    "AtkBase":82822,
-    "AtkGrow":63,
-    "AtkFeel":1,
-    "HPBase":1972544,
-    "HPGrow":219087,
-    "HpFeel":5,
-    "DropBase":13440,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.06,
+    "HPPower":6.12,
+    "DropBase":5,
+    "DropPower":1.98499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "64":  {
     "ID":64,
-    "AtkBase":82822,
-    "AtkGrow":64,
-    "AtkFeel":1,
-    "HPBase":2011994,
-    "HPGrow":223468,
-    "HpFeel":5,
-    "DropBase":13520,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.08,
+    "HPPower":6.16,
+    "DropBase":5,
+    "DropPower":1.98999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "65":  {
     "ID":65,
-    "AtkBase":82822,
-    "AtkGrow":65,
-    "AtkFeel":1,
-    "HPBase":2052233,
-    "HPGrow":227937,
-    "HpFeel":5,
-    "DropBase":13600,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.1,
+    "HPPower":6.2,
+    "DropBase":5,
+    "DropPower":1.99499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "66":  {
     "ID":66,
-    "AtkBase":82822,
-    "AtkGrow":66,
-    "AtkFeel":1,
-    "HPBase":2093277,
-    "HPGrow":232495,
-    "HpFeel":5,
-    "DropBase":13680,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.12,
+    "HPPower":6.24,
+    "DropBase":5,
+    "DropPower":1.99999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "67":  {
     "ID":67,
-    "AtkBase":82822,
-    "AtkGrow":67,
-    "AtkFeel":1,
-    "HPBase":2135142,
-    "HPGrow":237144,
-    "HpFeel":5,
-    "DropBase":13760,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.14,
+    "HPPower":6.28,
+    "DropBase":5,
+    "DropPower":2.00499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "68":  {
     "ID":68,
-    "AtkBase":82822,
-    "AtkGrow":68,
-    "AtkFeel":1,
-    "HPBase":2177844,
-    "HPGrow":241886,
-    "HpFeel":5,
-    "DropBase":13840,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.16,
+    "HPPower":6.32,
+    "DropBase":5,
+    "DropPower":2.00999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "69":  {
     "ID":69,
-    "AtkBase":82822,
-    "AtkGrow":69,
-    "AtkFeel":1,
-    "HPBase":2221400,
-    "HPGrow":246723,
-    "HpFeel":5,
-    "DropBase":13920,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.18,
+    "HPPower":6.36,
+    "DropBase":5,
+    "DropPower":2.01499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "70":  {
     "ID":70,
-    "AtkBase":372699,
-    "AtkGrow":70,
-    "AtkFeel":1,
-    "HPBase":13668750,
-    "HPGrow":377485,
-    "HpFeel":5,
-    "DropBase":14000,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.2,
+    "HPPower":6.4,
+    "DropBase":5,
+    "DropPower":2.01999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "71":  {
     "ID":71,
-    "AtkBase":372699,
-    "AtkGrow":71,
-    "AtkFeel":1,
-    "HPBase":3398742,
-    "HPGrow":377485,
-    "HpFeel":5,
-    "DropBase":14080,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.22,
+    "HPPower":6.44,
+    "DropBase":5,
+    "DropPower":2.02499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "72":  {
     "ID":72,
-    "AtkBase":372699,
-    "AtkGrow":72,
-    "AtkFeel":1,
-    "HPBase":3466716,
-    "HPGrow":385034,
-    "HpFeel":5,
-    "DropBase":14160,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.24,
+    "HPPower":6.48,
+    "DropBase":5,
+    "DropPower":2.02999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "73":  {
     "ID":73,
-    "AtkBase":372699,
-    "AtkGrow":73,
-    "AtkFeel":1,
-    "HPBase":3536050,
-    "HPGrow":392734,
-    "HpFeel":5,
-    "DropBase":14240,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.26,
+    "HPPower":6.52,
+    "DropBase":5,
+    "DropPower":2.03499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "74":  {
     "ID":74,
-    "AtkBase":372699,
-    "AtkGrow":74,
-    "AtkFeel":1,
-    "HPBase":3606771,
-    "HPGrow":400588,
-    "HpFeel":5,
-    "DropBase":14320,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.28,
+    "HPPower":6.56,
+    "DropBase":5,
+    "DropPower":2.03999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "75":  {
     "ID":75,
-    "AtkBase":372699,
-    "AtkGrow":75,
-    "AtkFeel":1,
-    "HPBase":3678906,
-    "HPGrow":408599,
-    "HpFeel":5,
-    "DropBase":14400,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.3,
+    "HPPower":6.6,
+    "DropBase":5,
+    "DropPower":2.04499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "76":  {
     "ID":76,
-    "AtkBase":372699,
-    "AtkGrow":76,
-    "AtkFeel":1,
-    "HPBase":3752484,
-    "HPGrow":416770,
-    "HpFeel":5,
-    "DropBase":14480,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.32,
+    "HPPower":6.64,
+    "DropBase":5,
+    "DropPower":2.04999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "77":  {
     "ID":77,
-    "AtkBase":372699,
-    "AtkGrow":77,
-    "AtkFeel":1,
-    "HPBase":3827533,
-    "HPGrow":425105,
-    "HpFeel":5,
-    "DropBase":14560,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.34,
+    "HPPower":6.68,
+    "DropBase":5,
+    "DropPower":2.05499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "78":  {
     "ID":78,
-    "AtkBase":372699,
-    "AtkGrow":78,
-    "AtkFeel":1,
-    "HPBase":3904083,
-    "HPGrow":433607,
-    "HpFeel":5,
-    "DropBase":14640,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.36,
+    "HPPower":6.72,
+    "DropBase":5,
+    "DropPower":2.05999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "79":  {
     "ID":79,
-    "AtkBase":372699,
-    "AtkGrow":79,
-    "AtkFeel":1,
-    "HPBase":3982164,
-    "HPGrow":442279,
-    "HpFeel":5,
-    "DropBase":14720,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.38,
+    "HPPower":6.76,
+    "DropBase":5,
+    "DropPower":2.06499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "80":  {
     "ID":80,
-    "AtkBase":1677145,
-    "AtkGrow":80,
-    "AtkFeel":1,
-    "HPBase":20503125,
-    "HPGrow":676686,
-    "HpFeel":5,
-    "DropBase":14800,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.4,
+    "HPPower":6.8,
+    "DropBase":5,
+    "DropPower":2.06999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "81":  {
     "ID":81,
-    "AtkBase":1677145,
-    "AtkGrow":81,
-    "AtkFeel":1,
-    "HPBase":6092710,
-    "HPGrow":676686,
-    "HpFeel":5,
-    "DropBase":14880,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.42,
+    "HPPower":6.84,
+    "DropBase":5,
+    "DropPower":2.07499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "82":  {
     "ID":82,
-    "AtkBase":1677145,
-    "AtkGrow":82,
-    "AtkFeel":1,
-    "HPBase":6214564,
-    "HPGrow":690219,
-    "HpFeel":5,
-    "DropBase":14960,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.44,
+    "HPPower":6.88,
+    "DropBase":5,
+    "DropPower":2.07999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "83":  {
     "ID":83,
-    "AtkBase":1677145,
-    "AtkGrow":83,
-    "AtkFeel":1,
-    "HPBase":6338855,
-    "HPGrow":704023,
-    "HpFeel":5,
-    "DropBase":15040,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.46,
+    "HPPower":6.92,
+    "DropBase":5,
+    "DropPower":2.08499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "84":  {
     "ID":84,
-    "AtkBase":1677145,
-    "AtkGrow":84,
-    "AtkFeel":1,
-    "HPBase":6465632,
-    "HPGrow":718103,
-    "HpFeel":5,
-    "DropBase":15120,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.48,
+    "HPPower":6.96,
+    "DropBase":5,
+    "DropPower":2.08999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "85":  {
     "ID":85,
-    "AtkBase":1677145,
-    "AtkGrow":85,
-    "AtkFeel":1,
-    "HPBase":6594944,
-    "HPGrow":732465,
-    "HpFeel":5,
-    "DropBase":15200,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.5,
+    "HPPower":7,
+    "DropBase":5,
+    "DropPower":2.09499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "86":  {
     "ID":86,
-    "AtkBase":1677145,
-    "AtkGrow":86,
-    "AtkFeel":1,
-    "HPBase":6726842,
-    "HPGrow":747114,
-    "HpFeel":5,
-    "DropBase":15280,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.52,
+    "HPPower":7.04,
+    "DropBase":5,
+    "DropPower":2.09999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "87":  {
     "ID":87,
-    "AtkBase":1677145,
-    "AtkGrow":87,
-    "AtkFeel":1,
-    "HPBase":6861378,
-    "HPGrow":762056,
-    "HpFeel":5,
-    "DropBase":15360,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.54,
+    "HPPower":7.08,
+    "DropBase":5,
+    "DropPower":2.10499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "88":  {
     "ID":88,
-    "AtkBase":1677145,
-    "AtkGrow":88,
-    "AtkFeel":1,
-    "HPBase":6998605,
-    "HPGrow":777297,
-    "HpFeel":5,
-    "DropBase":15440,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.56,
+    "HPPower":7.12,
+    "DropBase":5,
+    "DropPower":2.10999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "89":  {
     "ID":89,
-    "AtkBase":1677145,
-    "AtkGrow":89,
-    "AtkFeel":1,
-    "HPBase":7138577,
-    "HPGrow":792842,
-    "HpFeel":5,
-    "DropBase":15520,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.58,
+    "HPPower":7.16,
+    "DropBase":5,
+    "DropPower":2.11499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "90":  {
     "ID":90,
-    "AtkBase":7547152,
-    "AtkGrow":90,
-    "AtkFeel":1,
-    "HPBase":30754687,
-    "HPGrow":1015029,
-    "HpFeel":5,
-    "DropBase":15600,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.6,
+    "HPPower":7.2,
+    "DropBase":5,
+    "DropPower":2.11999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "91":  {
     "ID":91,
-    "AtkBase":7547152,
-    "AtkGrow":91,
-    "AtkFeel":1,
-    "HPBase":10922022,
-    "HPGrow":1213048,
-    "HpFeel":5,
-    "DropBase":15680,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.62,
+    "HPPower":7.24,
+    "DropBase":5,
+    "DropPower":2.12499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "92":  {
     "ID":92,
-    "AtkBase":7547152,
-    "AtkGrow":92,
-    "AtkFeel":1,
-    "HPBase":11140462,
-    "HPGrow":1237308,
-    "HpFeel":5,
-    "DropBase":15760,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.64,
+    "HPPower":7.28,
+    "DropBase":5,
+    "DropPower":2.12999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "93":  {
     "ID":93,
-    "AtkBase":7547152,
-    "AtkGrow":93,
-    "AtkFeel":1,
-    "HPBase":11363271,
-    "HPGrow":1262054,
-    "HpFeel":5,
-    "DropBase":15840,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.66,
+    "HPPower":7.32,
+    "DropBase":5,
+    "DropPower":2.13499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "94":  {
     "ID":94,
-    "AtkBase":7547152,
-    "AtkGrow":94,
-    "AtkFeel":1,
-    "HPBase":11590536,
-    "HPGrow":1287295,
-    "HpFeel":5,
-    "DropBase":15920,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.68,
+    "HPPower":7.36,
+    "DropBase":5,
+    "DropPower":2.13999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "95":  {
     "ID":95,
-    "AtkBase":7547152,
-    "AtkGrow":95,
-    "AtkFeel":1,
-    "HPBase":11822346,
-    "HPGrow":1313040,
-    "HpFeel":5,
-    "DropBase":16000,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.7,
+    "HPPower":7.4,
+    "DropBase":5,
+    "DropPower":2.14499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "96":  {
     "ID":96,
-    "AtkBase":7547152,
-    "AtkGrow":96,
-    "AtkFeel":1,
-    "HPBase":12058792,
-    "HPGrow":1339300,
-    "HpFeel":5,
-    "DropBase":16080,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.72,
+    "HPPower":7.44,
+    "DropBase":5,
+    "DropPower":2.14999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "97":  {
     "ID":97,
-    "AtkBase":7547152,
-    "AtkGrow":97,
-    "AtkFeel":1,
-    "HPBase":12299967,
-    "HPGrow":1366086,
-    "HpFeel":5,
-    "DropBase":16160,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.74,
+    "HPPower":7.48,
+    "DropBase":5,
+    "DropPower":2.15499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "98":  {
     "ID":98,
-    "AtkBase":7547152,
-    "AtkGrow":98,
-    "AtkFeel":1,
-    "HPBase":12545966,
-    "HPGrow":1393407,
-    "HpFeel":5,
-    "DropBase":16240,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.76,
+    "HPPower":7.52,
+    "DropBase":5,
+    "DropPower":2.15999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "99":  {
     "ID":99,
-    "AtkBase":7547152,
-    "AtkGrow":99,
-    "AtkFeel":1,
-    "HPBase":12796885,
-    "HPGrow":1421275,
-    "HpFeel":5,
-    "DropBase":16320,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.78,
+    "HPPower":7.56,
+    "DropBase":5,
+    "DropPower":2.16499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "100":  {
     "ID":100,
-    "AtkBase":33962184,
-    "AtkGrow":100,
-    "AtkFeel":1,
-    "HPBase":46132030,
-    "HPGrow":2174550,
-    "HpFeel":5,
-    "DropBase":16400,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.8,
+    "HPPower":7.6,
+    "DropBase":5,
+    "DropPower":2.16999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            4001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "101":  {
     "ID":101,
-    "AtkBase":33962184,
-    "AtkGrow":101,
-    "AtkFeel":1,
-    "HPBase":19579233,
-    "HPGrow":2174550,
-    "HpFeel":5,
-    "DropBase":16480,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.82,
+    "HPPower":7.64,
+    "DropBase":5,
+    "DropPower":2.17499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "102":  {
     "ID":102,
-    "AtkBase":33962184,
-    "AtkGrow":102,
-    "AtkFeel":1,
-    "HPBase":19970817,
-    "HPGrow":2218041,
-    "HpFeel":5,
-    "DropBase":16560,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.84,
+    "HPPower":7.68,
+    "DropBase":5,
+    "DropPower":2.17999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "103":  {
     "ID":103,
-    "AtkBase":33962184,
-    "AtkGrow":103,
-    "AtkFeel":1,
-    "HPBase":20370233,
-    "HPGrow":2262401,
-    "HpFeel":5,
-    "DropBase":16640,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.86,
+    "HPPower":7.72,
+    "DropBase":5,
+    "DropPower":2.18499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "104":  {
     "ID":104,
-    "AtkBase":33962184,
-    "AtkGrow":104,
-    "AtkFeel":1,
-    "HPBase":20777637,
-    "HPGrow":2307649,
-    "HpFeel":5,
-    "DropBase":16720,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.88,
+    "HPPower":7.76,
+    "DropBase":5,
+    "DropPower":2.18999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "105":  {
     "ID":105,
-    "AtkBase":33962184,
-    "AtkGrow":105,
-    "AtkFeel":1,
-    "HPBase":21193189,
-    "HPGrow":2353801,
-    "HpFeel":5,
-    "DropBase":16800,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.9,
+    "HPPower":7.8,
+    "DropBase":5,
+    "DropPower":2.19499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "106":  {
     "ID":106,
-    "AtkBase":33962184,
-    "AtkGrow":106,
-    "AtkFeel":1,
-    "HPBase":21617052,
-    "HPGrow":2400877,
-    "HpFeel":5,
-    "DropBase":16880,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.92,
+    "HPPower":7.84,
+    "DropBase":5,
+    "DropPower":2.19999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "107":  {
     "ID":107,
-    "AtkBase":33962184,
-    "AtkGrow":107,
-    "AtkFeel":1,
-    "HPBase":22049393,
-    "HPGrow":2448894,
-    "HpFeel":5,
-    "DropBase":16960,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.94,
+    "HPPower":7.88,
+    "DropBase":5,
+    "DropPower":2.20499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "108":  {
     "ID":108,
-    "AtkBase":33962184,
-    "AtkGrow":108,
-    "AtkFeel":1,
-    "HPBase":22490380,
-    "HPGrow":2497871,
-    "HpFeel":5,
-    "DropBase":17040,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.96,
+    "HPPower":7.92,
+    "DropBase":5,
+    "DropPower":2.20999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "109":  {
     "ID":109,
-    "AtkBase":33962184,
-    "AtkGrow":109,
-    "AtkFeel":1,
-    "HPBase":22940187,
-    "HPGrow":2547828,
-    "HpFeel":5,
-    "DropBase":17120,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":3.98,
+    "HPPower":7.96,
+    "DropBase":5,
+    "DropPower":2.21499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "110":  {
     "ID":110,
-    "AtkBase":152829828,
-    "AtkGrow":110,
-    "AtkFeel":1,
-    "HPBase":69198045,
-    "HPGrow":3898176,
-    "HpFeel":5,
-    "DropBase":17200,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4,
+    "HPPower":8,
+    "DropBase":5,
+    "DropPower":2.21999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "111":  {
     "ID":111,
-    "AtkBase":152829828,
-    "AtkGrow":111,
-    "AtkFeel":1,
-    "HPBase":35098485,
-    "HPGrow":3898176,
-    "HpFeel":5,
-    "DropBase":17280,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.02,
+    "HPPower":8.04,
+    "DropBase":5,
+    "DropPower":2.22499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "112":  {
     "ID":112,
-    "AtkBase":152829828,
-    "AtkGrow":112,
-    "AtkFeel":1,
-    "HPBase":35800454,
-    "HPGrow":3976139,
-    "HpFeel":5,
-    "DropBase":17360,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.04,
+    "HPPower":8.08,
+    "DropBase":5,
+    "DropPower":2.22999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "113":  {
     "ID":113,
-    "AtkBase":152829828,
-    "AtkGrow":113,
-    "AtkFeel":1,
-    "HPBase":36516463,
-    "HPGrow":4055661,
-    "HpFeel":5,
-    "DropBase":17440,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.06,
+    "HPPower":8.12,
+    "DropBase":5,
+    "DropPower":2.23499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "114":  {
     "ID":114,
-    "AtkBase":152829828,
-    "AtkGrow":114,
-    "AtkFeel":1,
-    "HPBase":37246792,
-    "HPGrow":4136774,
-    "HpFeel":5,
-    "DropBase":17520,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.08,
+    "HPPower":8.16,
+    "DropBase":5,
+    "DropPower":2.23999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "115":  {
     "ID":115,
-    "AtkBase":152829828,
-    "AtkGrow":115,
-    "AtkFeel":1,
-    "HPBase":37991727,
-    "HPGrow":4219509,
-    "HpFeel":5,
-    "DropBase":17600,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.1,
+    "HPPower":8.2,
+    "DropBase":5,
+    "DropPower":2.24499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "116":  {
     "ID":116,
-    "AtkBase":152829828,
-    "AtkGrow":116,
-    "AtkFeel":1,
-    "HPBase":38751561,
-    "HPGrow":4303899,
-    "HpFeel":5,
-    "DropBase":17680,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.12,
+    "HPPower":8.24,
+    "DropBase":5,
+    "DropPower":2.24999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "117":  {
     "ID":117,
-    "AtkBase":152829828,
-    "AtkGrow":117,
-    "AtkFeel":1,
-    "HPBase":39526592,
-    "HPGrow":4389976,
-    "HpFeel":5,
-    "DropBase":17760,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.14,
+    "HPPower":8.28,
+    "DropBase":5,
+    "DropPower":2.25499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "118":  {
     "ID":118,
-    "AtkBase":152829828,
-    "AtkGrow":118,
-    "AtkFeel":1,
-    "HPBase":40317123,
-    "HPGrow":4477775,
-    "HpFeel":5,
-    "DropBase":17840,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.16,
+    "HPPower":8.32,
+    "DropBase":5,
+    "DropPower":2.25999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "119":  {
     "ID":119,
-    "AtkBase":152829828,
-    "AtkGrow":119,
-    "AtkFeel":1,
-    "HPBase":41123465,
-    "HPGrow":4567330,
-    "HpFeel":5,
-    "DropBase":17920,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.18,
+    "HPPower":8.36,
+    "DropBase":5,
+    "DropPower":2.26499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "120":  {
     "ID":120,
-    "AtkBase":687734226,
-    "AtkGrow":120,
-    "AtkFeel":1,
-    "HPBase":103797067,
-    "HPGrow":4567330,
-    "HpFeel":5,
-    "DropBase":18000,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.2,
+    "HPPower":8.4,
+    "DropBase":5,
+    "DropPower":2.26999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "121":  {
     "ID":121,
-    "AtkBase":687734226,
-    "AtkGrow":121,
-    "AtkFeel":1,
-    "HPBase":62918900,
-    "HPGrow":6988014,
-    "HpFeel":5,
-    "DropBase":18080,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.22,
+    "HPPower":8.43999999999999,
+    "DropBase":5,
+    "DropPower":2.27499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "122":  {
     "ID":122,
-    "AtkBase":687734226,
-    "AtkGrow":122,
-    "AtkFeel":1,
-    "HPBase":64177278,
-    "HPGrow":7127774,
-    "HpFeel":5,
-    "DropBase":18160,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.24,
+    "HPPower":8.47999999999999,
+    "DropBase":5,
+    "DropPower":2.27999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "123":  {
     "ID":123,
-    "AtkBase":687734226,
-    "AtkGrow":123,
-    "AtkFeel":1,
-    "HPBase":65460823,
-    "HPGrow":7270329,
-    "HpFeel":5,
-    "DropBase":18240,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.26,
+    "HPPower":8.51999999999999,
+    "DropBase":5,
+    "DropPower":2.28499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "124":  {
     "ID":124,
-    "AtkBase":687734226,
-    "AtkGrow":124,
-    "AtkFeel":1,
-    "HPBase":66770039,
-    "HPGrow":7415735,
-    "HpFeel":5,
-    "DropBase":18320,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.28,
+    "HPPower":8.55999999999999,
+    "DropBase":5,
+    "DropPower":2.28999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "125":  {
     "ID":125,
-    "AtkBase":687734226,
-    "AtkGrow":125,
-    "AtkFeel":1,
-    "HPBase":68105439,
-    "HPGrow":7564049,
-    "HpFeel":5,
-    "DropBase":18400,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.3,
+    "HPPower":8.59999999999999,
+    "DropBase":5,
+    "DropPower":2.29499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "126":  {
     "ID":126,
-    "AtkBase":687734226,
-    "AtkGrow":126,
-    "AtkFeel":1,
-    "HPBase":69467547,
-    "HPGrow":7715329,
-    "HpFeel":5,
-    "DropBase":18480,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.31999999999999,
+    "HPPower":8.63999999999999,
+    "DropBase":5,
+    "DropPower":2.29999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "127":  {
     "ID":127,
-    "AtkBase":687734226,
-    "AtkGrow":127,
-    "AtkFeel":1,
-    "HPBase":70856897,
-    "HPGrow":7869635,
-    "HpFeel":5,
-    "DropBase":18560,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.33999999999999,
+    "HPPower":8.67999999999999,
+    "DropBase":5,
+    "DropPower":2.30499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "128":  {
     "ID":128,
-    "AtkBase":687734226,
-    "AtkGrow":128,
-    "AtkFeel":1,
-    "HPBase":72274034,
-    "HPGrow":8027027,
-    "HpFeel":5,
-    "DropBase":18640,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.35999999999999,
+    "HPPower":8.71999999999999,
+    "DropBase":5,
+    "DropPower":2.30999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "129":  {
     "ID":129,
-    "AtkBase":687734226,
-    "AtkGrow":129,
-    "AtkFeel":1,
-    "HPBase":73719514,
-    "HPGrow":8187567,
-    "HpFeel":5,
-    "DropBase":18720,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.37999999999999,
+    "HPPower":8.75999999999999,
+    "DropBase":5,
+    "DropPower":2.31499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "130":  {
     "ID":130,
-    "AtkBase":687734226,
-    "AtkGrow":130,
-    "AtkFeel":1,
-    "HPBase":155695600,
-    "HPGrow":8187567,
-    "HpFeel":5,
-    "DropBase":18800,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.39999999999999,
+    "HPPower":8.79999999999999,
+    "DropBase":5,
+    "DropPower":2.31999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "131":  {
     "ID":131,
-    "AtkBase":687734226,
-    "AtkGrow":131,
-    "AtkFeel":1,
-    "HPBase":112790856,
-    "HPGrow":12526977,
-    "HpFeel":5,
-    "DropBase":18880,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.41999999999999,
+    "HPPower":8.83999999999999,
+    "DropBase":5,
+    "DropPower":2.32499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "132":  {
     "ID":132,
-    "AtkBase":687734226,
-    "AtkGrow":132,
-    "AtkFeel":1,
-    "HPBase":115046673,
-    "HPGrow":12777516,
-    "HpFeel":5,
-    "DropBase":18960,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.43999999999999,
+    "HPPower":8.87999999999998,
+    "DropBase":5,
+    "DropPower":2.32999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "133":  {
     "ID":133,
-    "AtkBase":687734226,
-    "AtkGrow":133,
-    "AtkFeel":1,
-    "HPBase":117347606,
-    "HPGrow":13033066,
-    "HpFeel":5,
-    "DropBase":19040,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.45999999999999,
+    "HPPower":8.91999999999998,
+    "DropBase":5,
+    "DropPower":2.33499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "134":  {
     "ID":134,
-    "AtkBase":687734226,
-    "AtkGrow":134,
-    "AtkFeel":1,
-    "HPBase":119694558,
-    "HPGrow":13293727,
-    "HpFeel":5,
-    "DropBase":19120,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.47999999999999,
+    "HPPower":8.95999999999998,
+    "DropBase":5,
+    "DropPower":2.33999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "135":  {
     "ID":135,
-    "AtkBase":687734226,
-    "AtkGrow":135,
-    "AtkFeel":1,
-    "HPBase":122088449,
-    "HPGrow":13559601,
-    "HpFeel":5,
-    "DropBase":19200,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.49999999999999,
+    "HPPower":8.99999999999998,
+    "DropBase":5,
+    "DropPower":2.34499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "136":  {
     "ID":136,
-    "AtkBase":687734226,
-    "AtkGrow":136,
-    "AtkFeel":1,
-    "HPBase":124530217,
-    "HPGrow":13830793,
-    "HpFeel":5,
-    "DropBase":19280,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.51999999999999,
+    "HPPower":9.03999999999998,
+    "DropBase":5,
+    "DropPower":2.34999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "137":  {
     "ID":137,
-    "AtkBase":687734226,
-    "AtkGrow":137,
-    "AtkFeel":1,
-    "HPBase":127020821,
-    "HPGrow":14107408,
-    "HpFeel":5,
-    "DropBase":19360,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.53999999999999,
+    "HPPower":9.07999999999998,
+    "DropBase":5,
+    "DropPower":2.35499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "138":  {
     "ID":138,
-    "AtkBase":687734226,
-    "AtkGrow":138,
-    "AtkFeel":1,
-    "HPBase":129561237,
-    "HPGrow":14389556,
-    "HpFeel":5,
-    "DropBase":19440,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.55999999999999,
+    "HPPower":9.11999999999998,
+    "DropBase":5,
+    "DropPower":2.35999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "139":  {
     "ID":139,
-    "AtkBase":687734226,
-    "AtkGrow":139,
-    "AtkFeel":1,
-    "HPBase":132152461,
-    "HPGrow":14677347,
-    "HpFeel":5,
-    "DropBase":19520,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.57999999999999,
+    "HPPower":9.15999999999998,
+    "DropBase":5,
+    "DropPower":2.36499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "140":  {
     "ID":140,
-    "AtkBase":687734226,
-    "AtkGrow":140,
-    "AtkFeel":1,
-    "HPBase":233543400,
-    "HPGrow":14677347,
-    "HpFeel":5,
-    "DropBase":19600,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.59999999999999,
+    "HPPower":9.19999999999998,
+    "DropBase":5,
+    "DropPower":2.36999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "141":  {
     "ID":141,
-    "AtkBase":687734226,
-    "AtkGrow":141,
-    "AtkFeel":1,
-    "HPBase":202193264,
-    "HPGrow":22456340,
-    "HpFeel":5,
-    "DropBase":19680,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.61999999999999,
+    "HPPower":9.23999999999998,
+    "DropBase":5,
+    "DropPower":2.37499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "142":  {
     "ID":142,
-    "AtkBase":687734226,
-    "AtkGrow":142,
-    "AtkFeel":1,
-    "HPBase":206237129,
-    "HPGrow":22905466,
-    "HpFeel":5,
-    "DropBase":19760,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.63999999999999,
+    "HPPower":9.27999999999998,
+    "DropBase":5,
+    "DropPower":2.37999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "143":  {
     "ID":143,
-    "AtkBase":687734226,
-    "AtkGrow":143,
-    "AtkFeel":1,
-    "HPBase":210361871,
-    "HPGrow":23363575,
-    "HpFeel":5,
-    "DropBase":19840,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.65999999999999,
+    "HPPower":9.31999999999998,
+    "DropBase":5,
+    "DropPower":2.38499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "144":  {
     "ID":144,
-    "AtkBase":687734226,
-    "AtkGrow":144,
-    "AtkFeel":1,
-    "HPBase":214569108,
-    "HPGrow":23830846,
-    "HpFeel":5,
-    "DropBase":19920,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.67999999999999,
+    "HPPower":9.35999999999997,
+    "DropBase":5,
+    "DropPower":2.38999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "145":  {
     "ID":145,
-    "AtkBase":687734226,
-    "AtkGrow":145,
-    "AtkFeel":1,
-    "HPBase":218860490,
-    "HPGrow":24307462,
-    "HpFeel":5,
-    "DropBase":20000,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.69999999999999,
+    "HPPower":9.39999999999997,
+    "DropBase":5,
+    "DropPower":2.39499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "146":  {
     "ID":146,
-    "AtkBase":687734226,
-    "AtkGrow":146,
-    "AtkFeel":1,
-    "HPBase":223237699,
-    "HPGrow":24793611,
-    "HpFeel":5,
-    "DropBase":20080,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.71999999999999,
+    "HPPower":9.43999999999997,
+    "DropBase":5,
+    "DropPower":2.39999999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "147":  {
     "ID":147,
-    "AtkBase":687734226,
-    "AtkGrow":147,
-    "AtkFeel":1,
-    "HPBase":227702452,
-    "HPGrow":25289483,
-    "HpFeel":5,
-    "DropBase":20160,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.73999999999999,
+    "HPPower":9.47999999999997,
+    "DropBase":5,
+    "DropPower":2.40499999999999,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "148":  {
     "ID":148,
-    "AtkBase":687734226,
-    "AtkGrow":148,
-    "AtkFeel":1,
-    "HPBase":232256501,
-    "HPGrow":25795272,
-    "HpFeel":5,
-    "DropBase":20240,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":8,
-    "MaxCount":8,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.75999999999999,
+    "HPPower":9.51999999999997,
+    "DropBase":5,
+    "DropPower":2.40999999999998,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "149":  {
     "ID":149,
-    "AtkBase":687734226,
-    "AtkGrow":149,
-    "AtkFeel":1,
-    "HPBase":236901631,
-    "HPGrow":26311177,
-    "HpFeel":5,
-    "DropBase":20320,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.77999999999999,
+    "HPPower":9.55999999999997,
+    "DropBase":5,
+    "DropPower":2.41499999999998,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            3002
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            0.5,
+            0.6,
+            0.7,
+            0.75,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    },
   "150":  {
     "ID":150,
-    "AtkBase":687734226,
-    "AtkGrow":150,
-    "AtkFeel":1,
-    "HPBase":350315100,
-    "HPGrow":26311177,
-    "HpFeel":5,
-    "DropBase":20400,
-    "DropGrow":1,
-    "DropFeel":1,
-    "HangUpCount":10,
-    "MinCount":9,
-    "MaxCount":9,
-    "EliteMinCount":1,
-    "EliteMaxCount":1,
-    "BOSSCount":1,
-    "HPAdds":[
-            0.8,0.9,0.95,1,1
+    "AtkPower":4.79999999999998,
+    "HPPower":9.59999999999997,
+    "DropBase":5,
+    "DropPower":2.41999999999998,
+    "HangupFormationGroup":100,
+    "HangupAtk":0.1,
+    "HangupHP":0.05,
+    "HangupDrop":0.04,
+    "FormationGroupID":[
+            208,
+            208,
+            208,
+            208,
+            4001
          ],
-    "AtkAdds":[
-            1,1,1,1,1
+    "WaveAtk":[
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1
          ],
-    "SpawnType":[
-            1,1,3,3,5
+    "WaveHP":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
-    "AtkWight":[
-            10,30,60
-         ],
-    "HPWight":[
-            50,80,100
-         ],
-    "DropWight":[
-            40,60,100
+    "WaveDrop":[
+            1,
+            1,
+            1,
+            1,
+            1
          ],
     "MonsterScenes":1
    }

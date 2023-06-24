@@ -5,16 +5,18 @@
     "Name":"钻石",
     "Type":101,
     "Des":"钻石",
-    "Res":"",
-    "ResShow":""
+    "Res":"Item_1",
+    "ResShow":"",
+    "Quality":3
    },
   "2":  {
     "ID":2,
     "Name":"金币",
     "Type":102,
     "Des":"金币",
-    "Res":"",
-    "ResShow":""
+    "Res":"Item_2",
+    "ResShow":"",
+    "Quality":2
    },
   "3":  {
     "ID":3,
@@ -22,7 +24,8 @@
     "Type":103,
     "Des":"考古获得,用于组装引擎",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":3
    },
   "4":  {
     "ID":4,
@@ -30,7 +33,8 @@
     "Type":104,
     "Des":"升级角色",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "5":  {
     "ID":5,
@@ -38,7 +42,8 @@
     "Type":105,
     "Des":"古代金属",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":3
    },
   "6":  {
     "ID":6,
@@ -46,7 +51,8 @@
     "Type":106,
     "Des":"引擎分解获得，用于引擎强化",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "7":  {
     "ID":7,
@@ -54,23 +60,26 @@
     "Type":107,
     "Des":"音乐副本获得,用于DJ打碟",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":3
    },
   "8":  {
     "ID":8,
-    "Name":"功勋钥匙",
+    "Name":"鸡腿",
     "Type":108,
-    "Des":"功勋副本获得,用于战利品获取",
+    "Des":"料理副本获得,用于料理升级/兑换",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":3
    },
   "9":  {
     "ID":9,
     "Name":"蘑菇",
     "Type":109,
     "Des":"兽人升级使用",
-    "Res":"",
-    "ResShow":""
+    "Res":"Item_9",
+    "ResShow":"",
+    "Quality":3
    },
   "10":  {
     "ID":10,
@@ -78,7 +87,17 @@
     "Type":110,
     "Des":"突破使用",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
+   },
+  "11":  {
+    "ID":11,
+    "Name":"科技点",
+    "Type":111,
+    "Des":"引擎升级使用",
+    "Res":"",
+    "ResShow":"",
+    "Quality":0
    },
   "1001":  {
     "ID":1001,
@@ -86,7 +105,8 @@
     "Type":1,
     "Des":"皮老虎",
     "Res":"Equip_1001",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "1002":  {
     "ID":1002,
@@ -94,7 +114,8 @@
     "Type":1,
     "Des":"海盗勾",
     "Res":"Equip_1002",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "1003":  {
     "ID":1003,
@@ -102,7 +123,8 @@
     "Type":1,
     "Des":"弹夹",
     "Res":"Equip_1003",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "1004":  {
     "ID":1004,
@@ -110,7 +132,8 @@
     "Type":1,
     "Des":"剪刀手",
     "Res":"Equip_1004",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "1005":  {
     "ID":1005,
@@ -118,7 +141,8 @@
     "Type":1,
     "Des":"血爪",
     "Res":"Equip_1005",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "1006":  {
     "ID":1006,
@@ -126,7 +150,8 @@
     "Type":1,
     "Des":"MP5",
     "Res":"Equip_1006",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "1007":  {
     "ID":1007,
@@ -134,7 +159,8 @@
     "Type":1,
     "Des":"机关枪",
     "Res":"Equip_1007",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "1008":  {
     "ID":1008,
@@ -142,7 +168,8 @@
     "Type":1,
     "Des":"手雷",
     "Res":"Equip_1008",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "1009":  {
     "ID":1009,
@@ -150,7 +177,8 @@
     "Type":1,
     "Des":"炸弹",
     "Res":"Equip_1009",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "1010":  {
     "ID":1010,
@@ -158,7 +186,8 @@
     "Type":1,
     "Des":"激光枪",
     "Res":"Equip_1010",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "1011":  {
     "ID":1011,
@@ -166,7 +195,8 @@
     "Type":1,
     "Des":"地雷",
     "Res":"Equip_1011",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "1012":  {
     "ID":1012,
@@ -174,7 +204,8 @@
     "Type":1,
     "Des":"C4",
     "Res":"Equip_1012",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "1013":  {
     "ID":1013,
@@ -182,7 +213,8 @@
     "Type":1,
     "Des":"RPG",
     "Res":"Equip_1013",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "1014":  {
     "ID":1014,
@@ -190,7 +222,8 @@
     "Type":1,
     "Des":"导弹桶",
     "Res":"Equip_1014",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "1015":  {
     "ID":1015,
@@ -198,7 +231,8 @@
     "Type":1,
     "Des":"导弹15号",
     "Res":"Equip_1015",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "1016":  {
     "ID":1016,
@@ -206,7 +240,8 @@
     "Type":1,
     "Des":"导弹16号",
     "Res":"Equip_1016",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":3
    },
   "1017":  {
     "ID":1017,
@@ -214,7 +249,8 @@
     "Type":1,
     "Des":"导弹17号",
     "Res":"Equip_1017",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":3
    },
   "1018":  {
     "ID":1018,
@@ -222,7 +258,8 @@
     "Type":1,
     "Des":"导弹18号",
     "Res":"Equip_1018",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":3
    },
   "1019":  {
     "ID":1019,
@@ -230,7 +267,8 @@
     "Type":1,
     "Des":"导弹19号",
     "Res":"Equip_1019",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":3
    },
   "1020":  {
     "ID":1020,
@@ -238,7 +276,8 @@
     "Type":1,
     "Des":"导弹20号",
     "Res":"Equip_1020",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":3
    },
   "1021":  {
     "ID":1021,
@@ -246,7 +285,8 @@
     "Type":1,
     "Des":"导弹21号",
     "Res":"Equip_1021",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":4
    },
   "1022":  {
     "ID":1022,
@@ -254,7 +294,8 @@
     "Type":1,
     "Des":"导弹22号",
     "Res":"Equip_1022",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":4
    },
   "1023":  {
     "ID":1023,
@@ -262,7 +303,8 @@
     "Type":1,
     "Des":"导弹23号",
     "Res":"Equip_1023",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":4
    },
   "1024":  {
     "ID":1024,
@@ -270,7 +312,8 @@
     "Type":1,
     "Des":"导弹24号",
     "Res":"Equip_1024",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":4
    },
   "1025":  {
     "ID":1025,
@@ -278,7 +321,8 @@
     "Type":1,
     "Des":"导弹25号",
     "Res":"Equip_1025",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":4
    },
   "1026":  {
     "ID":1026,
@@ -286,7 +330,8 @@
     "Type":1,
     "Des":"导弹26号",
     "Res":"Equip_1026",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":5
    },
   "1027":  {
     "ID":1027,
@@ -294,7 +339,8 @@
     "Type":1,
     "Des":"导弹27号",
     "Res":"Equip_1027",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":5
    },
   "1028":  {
     "ID":1028,
@@ -302,7 +348,8 @@
     "Type":1,
     "Des":"导弹28号",
     "Res":"Equip_1028",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":5
    },
   "1029":  {
     "ID":1029,
@@ -310,7 +357,8 @@
     "Type":1,
     "Des":"导弹29号",
     "Res":"Equip_1029",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":5
    },
   "1030":  {
     "ID":1030,
@@ -318,7 +366,8 @@
     "Type":1,
     "Des":"导弹30号",
     "Res":"Equip_1030",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":5
    },
   "1031":  {
     "ID":1031,
@@ -326,7 +375,8 @@
     "Type":1,
     "Des":"导弹31号",
     "Res":"Equip_1031",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":6
    },
   "2001":  {
     "ID":2001,
@@ -334,7 +384,8 @@
     "Type":2,
     "Des":"肩甲",
     "Res":"Equip_2001",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "2002":  {
     "ID":2002,
@@ -342,7 +393,8 @@
     "Type":2,
     "Des":"护颚",
     "Res":"Equip_2002",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "2003":  {
     "ID":2003,
@@ -350,7 +402,8 @@
     "Type":2,
     "Des":"皮甲",
     "Res":"Equip_2003",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "2004":  {
     "ID":2004,
@@ -358,7 +411,8 @@
     "Type":2,
     "Des":"金下巴",
     "Res":"Equip_2004",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "2005":  {
     "ID":2005,
@@ -366,7 +420,8 @@
     "Type":2,
     "Des":"尖刺铠",
     "Res":"Equip_2005",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "2006":  {
     "ID":2006,
@@ -374,7 +429,8 @@
     "Type":2,
     "Des":"主厨帽",
     "Res":"Equip_2006",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "2007":  {
     "ID":2007,
@@ -382,7 +438,8 @@
     "Type":2,
     "Des":"木盾",
     "Res":"Equip_2007",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "2008":  {
     "ID":2008,
@@ -390,7 +447,8 @@
     "Type":2,
     "Des":"医疗箱",
     "Res":"Equip_2008",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "2009":  {
     "ID":2009,
@@ -398,7 +456,8 @@
     "Type":2,
     "Des":"莫西摇头崽",
     "Res":"Equip_2009",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "2010":  {
     "ID":2010,
@@ -406,7 +465,8 @@
     "Type":2,
     "Des":"风镜",
     "Res":"Equip_2010",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "2011":  {
     "ID":2011,
@@ -414,7 +474,8 @@
     "Type":2,
     "Des":"鲨颚",
     "Res":"Equip_2011",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "2012":  {
     "ID":2012,
@@ -422,7 +483,8 @@
     "Type":2,
     "Des":"铁盾",
     "Res":"Equip_2012",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "2013":  {
     "ID":2013,
@@ -430,7 +492,8 @@
     "Type":2,
     "Des":"猫摇崽",
     "Res":"Equip_2013",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "2014":  {
     "ID":2014,
@@ -438,7 +501,8 @@
     "Type":2,
     "Des":"防爆盾",
     "Res":"Equip_2014",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "2015":  {
     "ID":2015,
@@ -446,7 +510,8 @@
     "Type":2,
     "Des":"医疗包15号",
     "Res":"Equip_2015",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "2016":  {
     "ID":2016,
@@ -454,7 +519,8 @@
     "Type":2,
     "Des":"医疗包16号",
     "Res":"Equip_2016",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":3
    },
   "2017":  {
     "ID":2017,
@@ -462,7 +528,8 @@
     "Type":2,
     "Des":"医疗包17号",
     "Res":"Equip_2017",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":3
    },
   "2018":  {
     "ID":2018,
@@ -470,7 +537,8 @@
     "Type":2,
     "Des":"医疗包18号",
     "Res":"Equip_2018",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":3
    },
   "2019":  {
     "ID":2019,
@@ -478,7 +546,8 @@
     "Type":2,
     "Des":"医疗包19号",
     "Res":"Equip_2019",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":3
    },
   "2020":  {
     "ID":2020,
@@ -486,7 +555,8 @@
     "Type":2,
     "Des":"医疗包20号",
     "Res":"Equip_2020",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":3
    },
   "2021":  {
     "ID":2021,
@@ -494,7 +564,8 @@
     "Type":2,
     "Des":"医疗包21号",
     "Res":"Equip_2021",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":4
    },
   "2022":  {
     "ID":2022,
@@ -502,7 +573,8 @@
     "Type":2,
     "Des":"医疗包22号",
     "Res":"Equip_2022",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":4
    },
   "2023":  {
     "ID":2023,
@@ -510,7 +582,8 @@
     "Type":2,
     "Des":"医疗包23号",
     "Res":"Equip_2023",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":4
    },
   "2024":  {
     "ID":2024,
@@ -518,7 +591,8 @@
     "Type":2,
     "Des":"医疗包24号",
     "Res":"Equip_2024",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":4
    },
   "2025":  {
     "ID":2025,
@@ -526,7 +600,8 @@
     "Type":2,
     "Des":"医疗包25号",
     "Res":"Equip_2025",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":4
    },
   "2026":  {
     "ID":2026,
@@ -534,7 +609,8 @@
     "Type":2,
     "Des":"医疗包26号",
     "Res":"Equip_2026",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":5
    },
   "2027":  {
     "ID":2027,
@@ -542,7 +618,8 @@
     "Type":2,
     "Des":"医疗包27号",
     "Res":"Equip_2027",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":5
    },
   "2028":  {
     "ID":2028,
@@ -550,7 +627,8 @@
     "Type":2,
     "Des":"医疗包28号",
     "Res":"Equip_2028",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":5
    },
   "2029":  {
     "ID":2029,
@@ -558,7 +636,8 @@
     "Type":2,
     "Des":"医疗包29号",
     "Res":"Equip_2029",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":5
    },
   "2030":  {
     "ID":2030,
@@ -566,7 +645,8 @@
     "Type":2,
     "Des":"医疗包30号",
     "Res":"Equip_2030",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":5
    },
   "2031":  {
     "ID":2031,
@@ -574,7 +654,8 @@
     "Type":2,
     "Des":"医疗包31号",
     "Res":"Equip_2031",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":6
    },
   "3001":  {
     "ID":3001,
@@ -582,7 +663,8 @@
     "Type":3,
     "Des":"绞肉机",
     "Res":"Skill_01",
-    "ResShow":"SkillShow_01"
+    "ResShow":"SkillShow_01",
+    "Quality":0
    },
   "3002":  {
     "ID":3002,
@@ -590,7 +672,8 @@
     "Type":3,
     "Des":"合金弹头",
     "Res":"Skill_02",
-    "ResShow":"SkillShow_02"
+    "ResShow":"SkillShow_02",
+    "Quality":0
    },
   "3003":  {
     "ID":3003,
@@ -598,7 +681,8 @@
     "Type":3,
     "Des":"对地导弹",
     "Res":"Skill_03",
-    "ResShow":"SkillShow_03"
+    "ResShow":"SkillShow_03",
+    "Quality":0
    },
   "3004":  {
     "ID":3004,
@@ -606,7 +690,8 @@
     "Type":3,
     "Des":"屁精飞弹",
     "Res":"Skill_04",
-    "ResShow":"SkillShow_04"
+    "ResShow":"SkillShow_04",
+    "Quality":1
    },
   "3005":  {
     "ID":3005,
@@ -614,7 +699,8 @@
     "Type":3,
     "Des":"屁精炸弹",
     "Res":"Skill_05",
-    "ResShow":"SkillShow_05"
+    "ResShow":"SkillShow_05",
+    "Quality":1
    },
   "3006":  {
     "ID":3006,
@@ -622,7 +708,8 @@
     "Type":3,
     "Des":"狙击弹",
     "Res":"Skill_06",
-    "ResShow":"SkillShow_06"
+    "ResShow":"SkillShow_06",
+    "Quality":1
    },
   "3007":  {
     "ID":3007,
@@ -630,7 +717,8 @@
     "Type":3,
     "Des":"燃烧弹",
     "Res":"Skill_07",
-    "ResShow":"SkillShow_07"
+    "ResShow":"SkillShow_07",
+    "Quality":2
    },
   "3008":  {
     "ID":3008,
@@ -638,7 +726,8 @@
     "Type":3,
     "Des":"引雷针",
     "Res":"Skill_08",
-    "ResShow":"SkillShow_08"
+    "ResShow":"SkillShow_08",
+    "Quality":2
    },
   "3009":  {
     "ID":3009,
@@ -646,7 +735,8 @@
     "Type":3,
     "Des":"聚变打击",
     "Res":"Skill_09",
-    "ResShow":"SkillShow_09"
+    "ResShow":"SkillShow_09",
+    "Quality":2
    },
   "3010":  {
     "ID":3010,
@@ -654,7 +744,8 @@
     "Type":3,
     "Des":"技能10",
     "Res":"Skill_10",
-    "ResShow":"SkillShow_10"
+    "ResShow":"SkillShow_10",
+    "Quality":3
    },
   "3011":  {
     "ID":3011,
@@ -662,7 +753,8 @@
     "Type":3,
     "Des":"技能11",
     "Res":"Skill_11",
-    "ResShow":"SkillShow_11"
+    "ResShow":"SkillShow_11",
+    "Quality":3
    },
   "3012":  {
     "ID":3012,
@@ -670,7 +762,8 @@
     "Type":3,
     "Des":"技能12",
     "Res":"Skill_12",
-    "ResShow":"SkillShow_12"
+    "ResShow":"SkillShow_12",
+    "Quality":3
    },
   "3013":  {
     "ID":3013,
@@ -678,7 +771,8 @@
     "Type":3,
     "Des":"技能13",
     "Res":"Skill_13",
-    "ResShow":"SkillShow_13"
+    "ResShow":"SkillShow_13",
+    "Quality":4
    },
   "3014":  {
     "ID":3014,
@@ -686,7 +780,8 @@
     "Type":3,
     "Des":"技能14",
     "Res":"Skill_14",
-    "ResShow":"SkillShow_14"
+    "ResShow":"SkillShow_14",
+    "Quality":4
    },
   "3015":  {
     "ID":3015,
@@ -694,7 +789,8 @@
     "Type":3,
     "Des":"技能15",
     "Res":"Skill_15",
-    "ResShow":"SkillShow_15"
+    "ResShow":"SkillShow_15",
+    "Quality":4
    },
   "3016":  {
     "ID":3016,
@@ -702,7 +798,8 @@
     "Type":3,
     "Des":"技能16",
     "Res":"Skill_16",
-    "ResShow":"SkillShow_16"
+    "ResShow":"SkillShow_16",
+    "Quality":5
    },
   "3017":  {
     "ID":3017,
@@ -710,7 +807,8 @@
     "Type":3,
     "Des":"技能17",
     "Res":"Skill_17",
-    "ResShow":"SkillShow_17"
+    "ResShow":"SkillShow_17",
+    "Quality":5
    },
   "3018":  {
     "ID":3018,
@@ -718,7 +816,8 @@
     "Type":3,
     "Des":"技能18",
     "Res":"Skill_18",
-    "ResShow":"SkillShow_18"
+    "ResShow":"SkillShow_18",
+    "Quality":5
    },
   "3019":  {
     "ID":3019,
@@ -726,7 +825,8 @@
     "Type":3,
     "Des":"技能19",
     "Res":"Skill_19",
-    "ResShow":"SkillShow_19"
+    "ResShow":"SkillShow_19",
+    "Quality":6
    },
   "3020":  {
     "ID":3020,
@@ -734,7 +834,8 @@
     "Type":3,
     "Des":"技能20",
     "Res":"Skill_20",
-    "ResShow":"SkillShow_20"
+    "ResShow":"SkillShow_20",
+    "Quality":6
    },
   "3021":  {
     "ID":3021,
@@ -742,7 +843,8 @@
     "Type":3,
     "Des":"技能21",
     "Res":"Skill_21",
-    "ResShow":"SkillShow_21"
+    "ResShow":"SkillShow_21",
+    "Quality":6
    },
   "4001":  {
     "ID":4001,
@@ -750,7 +852,8 @@
     "Type":4,
     "Des":"大毛",
     "Res":"Partner_001",
-    "ResShow":"PartnerShow_001"
+    "ResShow":"PartnerShow_001",
+    "Quality":0
    },
   "4002":  {
     "ID":4002,
@@ -758,7 +861,8 @@
     "Type":4,
     "Des":"二毛",
     "Res":"Partner_002",
-    "ResShow":"PartnerShow_002"
+    "ResShow":"PartnerShow_002",
+    "Quality":0
    },
   "4003":  {
     "ID":4003,
@@ -766,7 +870,8 @@
     "Type":4,
     "Des":"三毛",
     "Res":"Partner_003",
-    "ResShow":"PartnerShow_003"
+    "ResShow":"PartnerShow_003",
+    "Quality":0
    },
   "4004":  {
     "ID":4004,
@@ -774,7 +879,8 @@
     "Type":4,
     "Des":"四毛",
     "Res":"Partner_004",
-    "ResShow":"PartnerShow_004"
+    "ResShow":"PartnerShow_004",
+    "Quality":0
    },
   "4005":  {
     "ID":4005,
@@ -782,7 +888,8 @@
     "Type":4,
     "Des":"五毛",
     "Res":"Partner_005",
-    "ResShow":"PartnerShow_005"
+    "ResShow":"PartnerShow_005",
+    "Quality":0
    },
   "4006":  {
     "ID":4006,
@@ -790,7 +897,8 @@
     "Type":4,
     "Des":"六毛",
     "Res":"Partner_006",
-    "ResShow":"PartnerShow_006"
+    "ResShow":"PartnerShow_006",
+    "Quality":0
    },
   "4007":  {
     "ID":4007,
@@ -798,7 +906,8 @@
     "Type":4,
     "Des":"矿兽",
     "Res":"Partner_007",
-    "ResShow":"PartnerShow_007"
+    "ResShow":"PartnerShow_007",
+    "Quality":1
    },
   "4008":  {
     "ID":4008,
@@ -806,7 +915,8 @@
     "Type":4,
     "Des":"修兽",
     "Res":"Partner_008",
-    "ResShow":"PartnerShow_008"
+    "ResShow":"PartnerShow_008",
+    "Quality":1
    },
   "4009":  {
     "ID":4009,
@@ -814,7 +924,8 @@
     "Type":4,
     "Des":"绿博",
     "Res":"Partner_009",
-    "ResShow":"PartnerShow_009"
+    "ResShow":"PartnerShow_009",
+    "Quality":1
    },
   "4010":  {
     "ID":4010,
@@ -822,7 +933,8 @@
     "Type":4,
     "Des":"四棒",
     "Res":"Partner_013",
-    "ResShow":"PartnerShow_013"
+    "ResShow":"PartnerShow_013",
+    "Quality":1
    },
   "4011":  {
     "ID":4011,
@@ -830,7 +942,8 @@
     "Type":4,
     "Des":"五棒",
     "Res":"Partner_014",
-    "ResShow":"PartnerShow_014"
+    "ResShow":"PartnerShow_014",
+    "Quality":1
    },
   "4012":  {
     "ID":4012,
@@ -838,7 +951,8 @@
     "Type":4,
     "Des":"六棒",
     "Res":"Partner_015",
-    "ResShow":"PartnerShow_015"
+    "ResShow":"PartnerShow_015",
+    "Quality":1
    },
   "4013":  {
     "ID":4013,
@@ -846,7 +960,8 @@
     "Type":4,
     "Des":"狱兽",
     "Res":"Partner_019",
-    "ResShow":"PartnerShow_019"
+    "ResShow":"PartnerShow_019",
+    "Quality":2
    },
   "4014":  {
     "ID":4014,
@@ -854,7 +969,8 @@
     "Type":4,
     "Des":"兽纳尔多",
     "Res":"Partner_020",
-    "ResShow":"PartnerShow_020"
+    "ResShow":"PartnerShow_020",
+    "Quality":2
    },
   "4015":  {
     "ID":4015,
@@ -862,7 +978,8 @@
     "Type":4,
     "Des":"幽灵",
     "Res":"Partner_021",
-    "ResShow":"PartnerShow_021"
+    "ResShow":"PartnerShow_021",
+    "Quality":2
    },
   "4016":  {
     "ID":4016,
@@ -870,7 +987,8 @@
     "Type":4,
     "Des":"四鬼",
     "Res":"Partner_025",
-    "ResShow":"PartnerShow_025"
+    "ResShow":"PartnerShow_025",
+    "Quality":2
    },
   "4017":  {
     "ID":4017,
@@ -878,7 +996,8 @@
     "Type":4,
     "Des":"五鬼",
     "Res":"Partner_031",
-    "ResShow":"PartnerShow_031"
+    "ResShow":"PartnerShow_031",
+    "Quality":2
    },
   "4018":  {
     "ID":4018,
@@ -886,7 +1005,8 @@
     "Type":4,
     "Des":"六鬼",
     "Res":"Partner_037",
-    "ResShow":"PartnerShow_037"
+    "ResShow":"PartnerShow_037",
+    "Quality":2
    },
   "4019":  {
     "ID":4019,
@@ -894,7 +1014,8 @@
     "Type":4,
     "Des":"丐溜子",
     "Res":"Partner_001",
-    "ResShow":"PartnerShow_001"
+    "ResShow":"PartnerShow_001",
+    "Quality":3
    },
   "4020":  {
     "ID":4020,
@@ -902,7 +1023,8 @@
     "Type":4,
     "Des":"泰木",
     "Res":"Partner_002",
-    "ResShow":"PartnerShow_002"
+    "ResShow":"PartnerShow_002",
+    "Quality":3
    },
   "4021":  {
     "ID":4021,
@@ -910,7 +1032,8 @@
     "Type":4,
     "Des":"蛆",
     "Res":"Partner_003",
-    "ResShow":"PartnerShow_003"
+    "ResShow":"PartnerShow_003",
+    "Quality":3
    },
   "4022":  {
     "ID":4022,
@@ -918,7 +1041,8 @@
     "Type":4,
     "Des":"四哥",
     "Res":"Partner_004",
-    "ResShow":"PartnerShow_004"
+    "ResShow":"PartnerShow_004",
+    "Quality":3
    },
   "4023":  {
     "ID":4023,
@@ -926,7 +1050,8 @@
     "Type":4,
     "Des":"五哥",
     "Res":"Partner_005",
-    "ResShow":"PartnerShow_005"
+    "ResShow":"PartnerShow_005",
+    "Quality":3
    },
   "4024":  {
     "ID":4024,
@@ -934,7 +1059,8 @@
     "Type":4,
     "Des":"六哥",
     "Res":"Partner_006",
-    "ResShow":"PartnerShow_006"
+    "ResShow":"PartnerShow_006",
+    "Quality":3
    },
   "4025":  {
     "ID":4025,
@@ -942,7 +1068,8 @@
     "Type":4,
     "Des":"兽塔纳",
     "Res":"Partner_007",
-    "ResShow":"PartnerShow_007"
+    "ResShow":"PartnerShow_007",
+    "Quality":4
    },
   "4026":  {
     "ID":4026,
@@ -950,7 +1077,8 @@
     "Type":4,
     "Des":"二锤",
     "Res":"Partner_008",
-    "ResShow":"PartnerShow_008"
+    "ResShow":"PartnerShow_008",
+    "Quality":4
    },
   "4027":  {
     "ID":4027,
@@ -958,7 +1086,8 @@
     "Type":4,
     "Des":"三锤",
     "Res":"Partner_009",
-    "ResShow":"PartnerShow_009"
+    "ResShow":"PartnerShow_009",
+    "Quality":4
    },
   "4028":  {
     "ID":4028,
@@ -966,7 +1095,8 @@
     "Type":4,
     "Des":"四锤",
     "Res":"Partner_013",
-    "ResShow":"PartnerShow_013"
+    "ResShow":"PartnerShow_013",
+    "Quality":4
    },
   "4029":  {
     "ID":4029,
@@ -974,7 +1104,8 @@
     "Type":4,
     "Des":"五锤",
     "Res":"Partner_014",
-    "ResShow":"PartnerShow_014"
+    "ResShow":"PartnerShow_014",
+    "Quality":4
    },
   "4030":  {
     "ID":4030,
@@ -982,7 +1113,8 @@
     "Type":4,
     "Des":"六锤",
     "Res":"Partner_015",
-    "ResShow":"PartnerShow_015"
+    "ResShow":"PartnerShow_015",
+    "Quality":4
    },
   "4031":  {
     "ID":4031,
@@ -990,7 +1122,8 @@
     "Type":4,
     "Des":"小兽",
     "Res":"Partner_019",
-    "ResShow":"PartnerShow_019"
+    "ResShow":"PartnerShow_019",
+    "Quality":5
    },
   "4032":  {
     "ID":4032,
@@ -998,7 +1131,8 @@
     "Type":4,
     "Des":"大傻",
     "Res":"Partner_020",
-    "ResShow":"PartnerShow_020"
+    "ResShow":"PartnerShow_020",
+    "Quality":5
    },
   "4033":  {
     "ID":4033,
@@ -1006,7 +1140,8 @@
     "Type":4,
     "Des":"二傻",
     "Res":"Partner_021",
-    "ResShow":"PartnerShow_021"
+    "ResShow":"PartnerShow_021",
+    "Quality":5
    },
   "4034":  {
     "ID":4034,
@@ -1014,7 +1149,8 @@
     "Type":4,
     "Des":"三傻",
     "Res":"Partner_025",
-    "ResShow":"PartnerShow_025"
+    "ResShow":"PartnerShow_025",
+    "Quality":5
    },
   "4035":  {
     "ID":4035,
@@ -1022,7 +1158,8 @@
     "Type":4,
     "Des":"四傻",
     "Res":"Partner_031",
-    "ResShow":"PartnerShow_031"
+    "ResShow":"PartnerShow_031",
+    "Quality":5
    },
   "4036":  {
     "ID":4036,
@@ -1030,7 +1167,8 @@
     "Type":4,
     "Des":"五傻",
     "Res":"Partner_037",
-    "ResShow":"PartnerShow_037"
+    "ResShow":"PartnerShow_037",
+    "Quality":5
    },
   "4037":  {
     "ID":4037,
@@ -1038,7 +1176,8 @@
     "Type":4,
     "Des":"兽王",
     "Res":"Partner_019",
-    "ResShow":"PartnerShow_019"
+    "ResShow":"PartnerShow_019",
+    "Quality":6
    },
   "4038":  {
     "ID":4038,
@@ -1046,7 +1185,8 @@
     "Type":4,
     "Des":"二爷",
     "Res":"Partner_020",
-    "ResShow":"PartnerShow_020"
+    "ResShow":"PartnerShow_020",
+    "Quality":6
    },
   "4039":  {
     "ID":4039,
@@ -1054,7 +1194,8 @@
     "Type":4,
     "Des":"三爷",
     "Res":"Partner_021",
-    "ResShow":"PartnerShow_021"
+    "ResShow":"PartnerShow_021",
+    "Quality":6
    },
   "4040":  {
     "ID":4040,
@@ -1062,7 +1203,8 @@
     "Type":4,
     "Des":"四爷",
     "Res":"Partner_025",
-    "ResShow":"PartnerShow_025"
+    "ResShow":"PartnerShow_025",
+    "Quality":6
    },
   "4041":  {
     "ID":4041,
@@ -1070,7 +1212,8 @@
     "Type":4,
     "Des":"五爷",
     "Res":"Partner_031",
-    "ResShow":"PartnerShow_031"
+    "ResShow":"PartnerShow_031",
+    "Quality":6
    },
   "4042":  {
     "ID":4042,
@@ -1078,167 +1221,368 @@
     "Type":4,
     "Des":"六爷",
     "Res":"Partner_037",
-    "ResShow":"PartnerShow_037"
+    "ResShow":"PartnerShow_037",
+    "Quality":6
    },
   "5101":  {
     "ID":5101,
-    "Name":"豪猪引擎",
+    "Name":"豪猪火花塞",
     "Type":5,
-    "Des":"豪猪引擎",
+    "Des":"豪猪火花塞",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "5102":  {
     "ID":5102,
-    "Name":"犀牛引擎",
+    "Name":"犀牛火花塞",
     "Type":5,
-    "Des":"犀牛引擎",
+    "Des":"犀牛火花塞",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "5103":  {
     "ID":5103,
-    "Name":"猛犸引擎",
+    "Name":"猛犸火花塞",
     "Type":5,
-    "Des":"猛犸引擎",
+    "Des":"猛犸火花塞",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "5104":  {
     "ID":5104,
-    "Name":"巨蜥引擎",
+    "Name":"巨蜥火花塞",
     "Type":5,
-    "Des":"巨蜥引擎",
+    "Des":"巨蜥火花塞",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "5105":  {
     "ID":5105,
-    "Name":"黑熊引擎",
+    "Name":"黑熊火花塞",
     "Type":5,
-    "Des":"黑熊引擎",
+    "Des":"黑熊火花塞",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "5201":  {
     "ID":5201,
-    "Name":"雄狮引擎",
+    "Name":"雄狮火花塞",
     "Type":5,
-    "Des":"雄狮引擎",
+    "Des":"雄狮火花塞",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "5202":  {
     "ID":5202,
-    "Name":"猛虎引擎",
+    "Name":"猛虎火花塞",
     "Type":5,
-    "Des":"猛虎引擎",
+    "Des":"猛虎火花塞",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "5203":  {
     "ID":5203,
-    "Name":"黑豹引擎",
+    "Name":"黑豹火花塞",
     "Type":5,
-    "Des":"黑豹引擎",
+    "Des":"黑豹火花塞",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "5204":  {
     "ID":5204,
-    "Name":"山猫引擎",
+    "Name":"山猫火花塞",
     "Type":5,
-    "Des":"山猫引擎",
+    "Des":"山猫火花塞",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "5205":  {
     "ID":5205,
-    "Name":"猞猁引擎",
+    "Name":"猞猁火花塞",
     "Type":5,
-    "Des":"猞猁引擎",
+    "Des":"猞猁火花塞",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "5301":  {
     "ID":5301,
-    "Name":"野马引擎",
+    "Name":"野马火花塞",
     "Type":5,
-    "Des":"野马引擎",
+    "Des":"野马火花塞",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "5302":  {
     "ID":5302,
-    "Name":"鬣狗引擎",
+    "Name":"鬣狗火花塞",
     "Type":5,
-    "Des":"鬣狗引擎",
+    "Des":"鬣狗火花塞",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "5303":  {
     "ID":5303,
-    "Name":"苍鹰引擎",
+    "Name":"苍鹰火花塞",
     "Type":5,
-    "Des":"苍鹰引擎",
+    "Des":"苍鹰火花塞",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "5304":  {
     "ID":5304,
-    "Name":"游隼引擎",
+    "Name":"游隼火花塞",
     "Type":5,
-    "Des":"游隼引擎",
+    "Des":"游隼火花塞",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "5305":  {
     "ID":5305,
-    "Name":"响尾引擎",
+    "Name":"响尾火花塞",
     "Type":5,
-    "Des":"响尾引擎",
+    "Des":"响尾火花塞",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "5401":  {
     "ID":5401,
-    "Name":"章鱼引擎",
+    "Name":"章鱼火花塞",
     "Type":5,
-    "Des":"章鱼引擎",
+    "Des":"章鱼火花塞",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "5402":  {
     "ID":5402,
-    "Name":"锯鳐引擎",
+    "Name":"锯鳐火花塞",
     "Type":5,
-    "Des":"锯鳐引擎",
+    "Des":"锯鳐火花塞",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "5403":  {
     "ID":5403,
-    "Name":"虎鲨引擎",
+    "Name":"虎鲨火花塞",
     "Type":5,
-    "Des":"虎鲨引擎",
+    "Des":"虎鲨火花塞",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "5404":  {
     "ID":5404,
-    "Name":"巨鳄引擎",
+    "Name":"巨鳄火花塞",
     "Type":5,
-    "Des":"巨鳄引擎",
+    "Des":"巨鳄火花塞",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "5405":  {
     "ID":5405,
-    "Name":"蓝鲸引擎",
+    "Name":"蓝鲸火花塞",
     "Type":5,
-    "Des":"蓝鲸引擎",
+    "Des":"蓝鲸火花塞",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
+   },
+  "6101":  {
+    "ID":6101,
+    "Name":"豪猪气缸",
+    "Type":6,
+    "Des":"豪猪气缸",
+    "Res":"",
+    "ResShow":"",
+    "Quality":0
+   },
+  "6102":  {
+    "ID":6102,
+    "Name":"犀牛气缸",
+    "Type":6,
+    "Des":"犀牛气缸",
+    "Res":"",
+    "ResShow":"",
+    "Quality":0
+   },
+  "6103":  {
+    "ID":6103,
+    "Name":"猛犸气缸",
+    "Type":6,
+    "Des":"猛犸气缸",
+    "Res":"",
+    "ResShow":"",
+    "Quality":0
+   },
+  "6104":  {
+    "ID":6104,
+    "Name":"巨蜥气缸",
+    "Type":6,
+    "Des":"巨蜥气缸",
+    "Res":"",
+    "ResShow":"",
+    "Quality":0
+   },
+  "6105":  {
+    "ID":6105,
+    "Name":"黑熊气缸",
+    "Type":6,
+    "Des":"黑熊气缸",
+    "Res":"",
+    "ResShow":"",
+    "Quality":0
+   },
+  "6201":  {
+    "ID":6201,
+    "Name":"雄狮气缸",
+    "Type":6,
+    "Des":"雄狮气缸",
+    "Res":"",
+    "ResShow":"",
+    "Quality":0
+   },
+  "6202":  {
+    "ID":6202,
+    "Name":"猛虎气缸",
+    "Type":6,
+    "Des":"猛虎气缸",
+    "Res":"",
+    "ResShow":"",
+    "Quality":0
+   },
+  "6203":  {
+    "ID":6203,
+    "Name":"黑豹气缸",
+    "Type":6,
+    "Des":"黑豹气缸",
+    "Res":"",
+    "ResShow":"",
+    "Quality":0
+   },
+  "6204":  {
+    "ID":6204,
+    "Name":"山猫气缸",
+    "Type":6,
+    "Des":"山猫气缸",
+    "Res":"",
+    "ResShow":"",
+    "Quality":0
+   },
+  "6205":  {
+    "ID":6205,
+    "Name":"猞猁气缸",
+    "Type":6,
+    "Des":"猞猁气缸",
+    "Res":"",
+    "ResShow":"",
+    "Quality":0
+   },
+  "6301":  {
+    "ID":6301,
+    "Name":"野马气缸",
+    "Type":6,
+    "Des":"野马气缸",
+    "Res":"",
+    "ResShow":"",
+    "Quality":0
+   },
+  "6302":  {
+    "ID":6302,
+    "Name":"鬣狗气缸",
+    "Type":6,
+    "Des":"鬣狗气缸",
+    "Res":"",
+    "ResShow":"",
+    "Quality":0
+   },
+  "6303":  {
+    "ID":6303,
+    "Name":"苍鹰气缸",
+    "Type":6,
+    "Des":"苍鹰气缸",
+    "Res":"",
+    "ResShow":"",
+    "Quality":0
+   },
+  "6304":  {
+    "ID":6304,
+    "Name":"游隼气缸",
+    "Type":6,
+    "Des":"游隼气缸",
+    "Res":"",
+    "ResShow":"",
+    "Quality":0
+   },
+  "6305":  {
+    "ID":6305,
+    "Name":"响尾气缸",
+    "Type":6,
+    "Des":"响尾气缸",
+    "Res":"",
+    "ResShow":"",
+    "Quality":0
+   },
+  "6401":  {
+    "ID":6401,
+    "Name":"章鱼气缸",
+    "Type":6,
+    "Des":"章鱼气缸",
+    "Res":"",
+    "ResShow":"",
+    "Quality":0
+   },
+  "6402":  {
+    "ID":6402,
+    "Name":"锯鳐气缸",
+    "Type":6,
+    "Des":"锯鳐气缸",
+    "Res":"",
+    "ResShow":"",
+    "Quality":0
+   },
+  "6403":  {
+    "ID":6403,
+    "Name":"虎鲨气缸",
+    "Type":6,
+    "Des":"虎鲨气缸",
+    "Res":"",
+    "ResShow":"",
+    "Quality":0
+   },
+  "6404":  {
+    "ID":6404,
+    "Name":"巨鳄气缸",
+    "Type":6,
+    "Des":"巨鳄气缸",
+    "Res":"",
+    "ResShow":"",
+    "Quality":0
+   },
+  "6405":  {
+    "ID":6405,
+    "Name":"蓝鲸气缸",
+    "Type":6,
+    "Des":"蓝鲸气缸",
+    "Res":"",
+    "ResShow":"",
+    "Quality":0
    },
   "100001":  {
     "ID":100001,
@@ -1246,7 +1590,8 @@
     "Type":1000,
     "Des":"随机获得武器装备",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "100002":  {
     "ID":100002,
@@ -1254,7 +1599,8 @@
     "Type":1000,
     "Des":"随机获得防具装备",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "100005":  {
     "ID":100005,
@@ -1262,7 +1608,8 @@
     "Type":1000,
     "Des":"随机获得装备",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "100006":  {
     "ID":100006,
@@ -1270,7 +1617,8 @@
     "Type":1000,
     "Des":"随机获得任意",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "100007":  {
     "ID":100007,
@@ -1278,7 +1626,8 @@
     "Type":1000,
     "Des":"随机获得金币",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "100008":  {
     "ID":100008,
@@ -1286,7 +1635,8 @@
     "Type":1000,
     "Des":"随机获得金币",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "100009":  {
     "ID":100009,
@@ -1294,7 +1644,8 @@
     "Type":1000,
     "Des":"蘑菇包",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "100010":  {
     "ID":100010,
@@ -1302,7 +1653,8 @@
     "Type":1000,
     "Des":"随机获得零件",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "100011":  {
     "ID":100011,
@@ -1310,7 +1662,8 @@
     "Type":1000,
     "Des":"远古铜矿",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "100012":  {
     "ID":100012,
@@ -1318,7 +1671,8 @@
     "Type":1000,
     "Des":"远古银矿",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "100013":  {
     "ID":100013,
@@ -1326,7 +1680,8 @@
     "Type":1000,
     "Des":"远古金矿",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "100015":  {
     "ID":100015,
@@ -1334,7 +1689,8 @@
     "Type":1000,
     "Des":"钻石包",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "100016":  {
     "ID":100016,
@@ -1342,7 +1698,8 @@
     "Type":1000,
     "Des":"考古道具宝箱",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "100017":  {
     "ID":100017,
@@ -1350,7 +1707,8 @@
     "Type":1000,
     "Des":"",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "100018":  {
     "ID":100018,
@@ -1358,7 +1716,8 @@
     "Type":1000,
     "Des":"",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "100019":  {
     "ID":100019,
@@ -1366,7 +1725,8 @@
     "Type":1000,
     "Des":"",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "200001":  {
     "ID":200001,
@@ -1374,7 +1734,8 @@
     "Type":2000,
     "Des":"",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "200002":  {
     "ID":200002,
@@ -1382,7 +1743,8 @@
     "Type":2000,
     "Des":"",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "200003":  {
     "ID":200003,
@@ -1390,39 +1752,53 @@
     "Type":2000,
     "Des":"",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":2
    },
   "210001":  {
     "ID":210001,
     "Name":"钻石钥匙",
-    "Type":2000,
+    "Type":2101,
     "Des":"进入钻石副本的钥匙",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "210002":  {
     "ID":210002,
     "Name":"金币钥匙",
-    "Type":2000,
+    "Type":2102,
     "Des":"进入金币副本的钥匙",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "210003":  {
     "ID":210003,
     "Name":"功勋钥匙",
-    "Type":2000,
+    "Type":2103,
     "Des":"进入功勋副本的钥匙",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
    },
   "210004":  {
     "ID":210004,
     "Name":"音乐钥匙",
-    "Type":2000,
+    "Type":2104,
     "Des":"进入音乐副本的钥匙",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":0
+   },
+  "210005":  {
+    "ID":210005,
+    "Name":"改造钥匙",
+    "Type":2105,
+    "Des":"进入改造计划的钥匙",
+    "Res":"",
+    "ResShow":"",
+    "Quality":0
    },
   "7101":  {
     "ID":7101,
@@ -1430,7 +1806,8 @@
     "Type":7,
     "Des":"测试1描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7102":  {
     "ID":7102,
@@ -1438,7 +1815,8 @@
     "Type":7,
     "Des":"测试2描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7103":  {
     "ID":7103,
@@ -1446,7 +1824,8 @@
     "Type":7,
     "Des":"测试3描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7104":  {
     "ID":7104,
@@ -1454,7 +1833,8 @@
     "Type":7,
     "Des":"测试4描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7201":  {
     "ID":7201,
@@ -1462,7 +1842,8 @@
     "Type":7,
     "Des":"测试5描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7202":  {
     "ID":7202,
@@ -1470,7 +1851,8 @@
     "Type":7,
     "Des":"测试6描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7203":  {
     "ID":7203,
@@ -1478,7 +1860,8 @@
     "Type":7,
     "Des":"测试7描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7204":  {
     "ID":7204,
@@ -1486,7 +1869,8 @@
     "Type":7,
     "Des":"测试8描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7301":  {
     "ID":7301,
@@ -1494,7 +1878,8 @@
     "Type":7,
     "Des":"测试9描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7302":  {
     "ID":7302,
@@ -1502,7 +1887,8 @@
     "Type":7,
     "Des":"测试10描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7303":  {
     "ID":7303,
@@ -1510,7 +1896,8 @@
     "Type":7,
     "Des":"测试11描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7304":  {
     "ID":7304,
@@ -1518,7 +1905,8 @@
     "Type":7,
     "Des":"测试12描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7401":  {
     "ID":7401,
@@ -1526,7 +1914,8 @@
     "Type":7,
     "Des":"测试13描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7402":  {
     "ID":7402,
@@ -1534,7 +1923,8 @@
     "Type":7,
     "Des":"测试14描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7403":  {
     "ID":7403,
@@ -1542,7 +1932,8 @@
     "Type":7,
     "Des":"测试15描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7404":  {
     "ID":7404,
@@ -1550,7 +1941,8 @@
     "Type":7,
     "Des":"测试16描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7501":  {
     "ID":7501,
@@ -1558,7 +1950,8 @@
     "Type":7,
     "Des":"测试17描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7502":  {
     "ID":7502,
@@ -1566,7 +1959,8 @@
     "Type":7,
     "Des":"测试18描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7503":  {
     "ID":7503,
@@ -1574,7 +1968,8 @@
     "Type":7,
     "Des":"测试19描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7504":  {
     "ID":7504,
@@ -1582,7 +1977,8 @@
     "Type":7,
     "Des":"测试20描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7601":  {
     "ID":7601,
@@ -1590,7 +1986,8 @@
     "Type":7,
     "Des":"测试21描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7602":  {
     "ID":7602,
@@ -1598,7 +1995,8 @@
     "Type":7,
     "Des":"测试22描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7603":  {
     "ID":7603,
@@ -1606,7 +2004,8 @@
     "Type":7,
     "Des":"测试23描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7604":  {
     "ID":7604,
@@ -1614,7 +2013,8 @@
     "Type":7,
     "Des":"测试24描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7701":  {
     "ID":7701,
@@ -1622,7 +2022,8 @@
     "Type":7,
     "Des":"测试25描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7702":  {
     "ID":7702,
@@ -1630,7 +2031,8 @@
     "Type":7,
     "Des":"测试26描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7703":  {
     "ID":7703,
@@ -1638,7 +2040,8 @@
     "Type":7,
     "Des":"测试27描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "7704":  {
     "ID":7704,
@@ -1646,167 +2049,260 @@
     "Type":7,
     "Des":"测试28描述",
     "Res":"",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":1
    },
   "37101":  {
     "ID":37101,
     "Name":"风暴之光",
-    "Type":3,
+    "Type":10,
     "Des":"风暴之光",
     "Res":"DriverSkill_101",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":5
    },
   "37102":  {
     "ID":37102,
     "Name":"灵能之光",
-    "Type":3,
+    "Type":10,
     "Des":"灵能之光",
     "Res":"DriverSkill_102",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":5
    },
   "37103":  {
     "ID":37103,
     "Name":"机车之光",
-    "Type":3,
+    "Type":10,
     "Des":"机车之光",
     "Res":"DriverSkill_103",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":6
    },
   "37104":  {
     "ID":37104,
     "Name":"机甲之光",
-    "Type":3,
+    "Type":10,
     "Des":"机甲之光",
     "Res":"DriverSkill_104",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":6
    },
   "37105":  {
     "ID":37105,
     "Name":"极速之光",
-    "Type":3,
+    "Type":10,
     "Des":"极速之光",
     "Res":"DriverSkill_105",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":7
    },
   "37201":  {
     "ID":37201,
     "Name":"狂暴之光",
-    "Type":3,
+    "Type":10,
     "Des":"狂暴之光",
     "Res":"DriverSkill_201",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":5
    },
   "37202":  {
     "ID":37202,
     "Name":"突击之光",
-    "Type":3,
+    "Type":10,
     "Des":"突击之光",
     "Res":"DriverSkill_202",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":5
    },
   "37203":  {
     "ID":37203,
     "Name":"特战之光",
-    "Type":3,
+    "Type":10,
     "Des":"特战之光",
     "Res":"DriverSkill_203",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":6
    },
   "37204":  {
     "ID":37204,
     "Name":"炸弹之光",
-    "Type":3,
+    "Type":10,
     "Des":"炸弹之光",
     "Res":"DriverSkill_204",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":6
    },
   "37205":  {
     "ID":37205,
     "Name":"狙击之光",
-    "Type":3,
+    "Type":10,
     "Des":"狙击之光",
     "Res":"DriverSkill_205",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":7
    },
   "37301":  {
     "ID":37301,
     "Name":"冲锋之光",
-    "Type":3,
+    "Type":10,
     "Des":"冲锋之光",
     "Res":"DriverSkill_301",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":5
    },
   "37302":  {
     "ID":37302,
     "Name":"医疗之光",
-    "Type":3,
+    "Type":10,
     "Des":"医疗之光",
     "Res":"DriverSkill_302",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":5
    },
   "37303":  {
     "ID":37303,
     "Name":"海豹之光",
-    "Type":3,
+    "Type":10,
     "Des":"海豹之光",
     "Res":"DriverSkill_303",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":6
    },
   "37304":  {
     "ID":37304,
     "Name":"侦查之光",
-    "Type":3,
+    "Type":10,
     "Des":"侦查之光",
     "Res":"DriverSkill_304",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":6
    },
   "37305":  {
     "ID":37305,
     "Name":"火箭之光",
-    "Type":3,
+    "Type":10,
     "Des":"火箭之光",
     "Res":"DriverSkill_305",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":7
    },
   "37401":  {
     "ID":37401,
     "Name":"巨炮之光",
-    "Type":3,
+    "Type":10,
     "Des":"巨炮之光",
     "Res":"DriverSkill_401",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":5
    },
   "37402":  {
     "ID":37402,
     "Name":"钢铁之光",
-    "Type":3,
+    "Type":10,
     "Des":"钢铁之光",
     "Res":"DriverSkill_402",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":5
    },
   "37403":  {
     "ID":37403,
     "Name":"毒液之光",
-    "Type":3,
+    "Type":10,
     "Des":"毒液之光",
     "Res":"DriverSkill_403",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":6
    },
   "37404":  {
     "ID":37404,
     "Name":"镭射之光",
-    "Type":3,
+    "Type":10,
     "Des":"镭射之光",
     "Res":"DriverSkill_404",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":6
    },
   "37405":  {
     "ID":37405,
     "Name":"百变之光",
-    "Type":3,
+    "Type":10,
     "Des":"百变之光",
     "Res":"DriverSkill_405",
-    "ResShow":""
+    "ResShow":"",
+    "Quality":7
+   },
+  "8101":  {
+    "ID":8101,
+    "Name":"英雄礼包",
+    "Type":8,
+    "Des":"英雄礼包",
+    "Res":"",
+    "ResShow":"",
+    "Quality":3
+   },
+  "8102":  {
+    "ID":8102,
+    "Name":"神话礼包",
+    "Type":8,
+    "Des":"神话礼包",
+    "Res":"",
+    "ResShow":"",
+    "Quality":3
+   },
+  "8103":  {
+    "ID":8103,
+    "Name":"传说礼包",
+    "Type":8,
+    "Des":"传说礼包",
+    "Res":"",
+    "ResShow":"",
+    "Quality":3
+   },
+  "8104":  {
+    "ID":8104,
+    "Name":"突破礼包",
+    "Type":8,
+    "Des":"突破礼包",
+    "Res":"",
+    "ResShow":"",
+    "Quality":3
+   },
+  "8201":  {
+    "ID":8201,
+    "Name":"冒险礼包",
+    "Type":8,
+    "Des":"冒险礼包",
+    "Res":"",
+    "ResShow":"",
+    "Quality":3
+   },
+  "8202":  {
+    "ID":8202,
+    "Name":"副本礼包",
+    "Type":8,
+    "Des":"副本礼包",
+    "Res":"",
+    "ResShow":"",
+    "Quality":3
+   },
+  "8203":  {
+    "ID":8203,
+    "Name":"每日礼包",
+    "Type":8,
+    "Des":"每日礼包",
+    "Res":"",
+    "ResShow":"",
+    "Quality":3
+   },
+  "8301":  {
+    "ID":8301,
+    "Name":"矿石礼包",
+    "Type":8,
+    "Des":"矿石礼包",
+    "Res":"",
+    "ResShow":"",
+    "Quality":3
    }
   }
 }

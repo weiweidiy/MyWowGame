@@ -73,10 +73,12 @@ namespace Logic.UI.UIUser
 
         public void OnClickAuto()
         {
-            if (PartnerManager.Ins.HasOneCanUpgrade())
+            if (PartnerManager.Ins.HasOneCanUpgrade() ||
+                PartnerManager.Ins.HaveCanComposePartner()
+               )
                 PartnerManager.Ins.DoIntensify(0, true);
             else
-                EventManager.Call(LogicEvent.ShowTips, "没有可升级的技能");
+                EventManager.Call(LogicEvent.ShowTips, "没有可升级或合成的伙伴");
         }
 
         public void OnClickGet()

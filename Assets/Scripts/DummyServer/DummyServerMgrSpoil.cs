@@ -315,7 +315,7 @@ namespace DummyServer
 
             //判断资源够不够
             var needCost = SpoilManager.Ins.GetBreakCost(spoilId);
-            if (SpoilManager.Ins.DoesCostBreakOreEngough(needCost))
+            if (!SpoilManager.Ins.DoesCostBreakOreEngough(needCost))
             {
                 // error: "突破石不足";
                 return;
@@ -328,14 +328,23 @@ namespace DummyServer
                 return;
             }
 
+
+            //扣除突破石
+            UpdateBreakOre(-needCost);
+
             //进行突破
             var spoilBreakthroughData = GetSpoilBreakthroughData(spoilId);
             if(spoilBreakthroughData == null)
             {//新数据
-                AddSpoilBreakthroughData(spoilBreakthroughData);
+                AddSpoilBreakthroughData(new SpoilBreakthroughData() {
+                    
+                    SpoilId = spoilId,
+                    Count = 1,
+                });
             }
             else
             {
+                spoilBreakthroughData.Count += 1;
                 UpdateSpoilBreakthroughData(spoilBreakthroughData);
             }
 

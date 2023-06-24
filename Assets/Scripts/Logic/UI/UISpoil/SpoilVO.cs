@@ -19,6 +19,7 @@ namespace Logic.UI.UISpoil
         public int spoilLevel;
         public string iconPath;
         public State state;
+        public int breakCount;
     }
 
     /// <summary>
@@ -45,11 +46,14 @@ namespace Logic.UI.UISpoil
         public bool hold;
         public string holdEffect;
         public BigDouble cost;
+        public long breakthroughCost;
         public string txtEquipState;
         public bool btnEquipInteractable;
         public string iconPath;
         public string slotName;
         public bool isMaxLevel;
+        public bool canBreakthrough; //只要等级满足就行，和货币无关
+        public int breakCount;
     }
 
     /// <summary>

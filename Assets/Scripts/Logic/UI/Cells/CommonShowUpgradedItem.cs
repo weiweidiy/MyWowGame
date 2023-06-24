@@ -63,10 +63,6 @@ namespace Logic.UI.Cells
                 case ItemType.Armor:
                     m_ItemType = ItemType.Armor;
                     break;
-                case ItemType.Engine:
-                    break;
-                case ItemType.Toy:
-                    break;
             }
 
             UICommonHelper.LoadIcon(m_Icon, itemData.Res);

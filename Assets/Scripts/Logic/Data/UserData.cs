@@ -1,6 +1,6 @@
-﻿using System;
-using BreakInfinity;
+﻿using BreakInfinity;
 using Logic.Common;
+using Networks;
 
 namespace Logic.Data
 {
@@ -13,6 +13,7 @@ namespace Logic.Data
         #region 公用逻辑数据
 
         public long m_LastGameDate; //上次登录时间
+        public ServerTimes m_ServerTimes; // 服务器当前时间
 
         #endregion
 
@@ -20,11 +21,12 @@ namespace Logic.Data
 
         public BigDouble m_Coin; //游戏币
         public long m_Diamond; //金币
-        public int m_Iron; //钢铁
         public int m_Oil; //原油
         public BigDouble m_Trophy; //战利品
         public int m_MushRoom; //英雄升级蘑菇
         public int m_BreakOre; //英雄突破矿石
+        public int m_BreakTP; //英雄突破天赋点
+        public int m_TecPoint; //引擎升级科技点
 
         #endregion
 

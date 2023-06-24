@@ -33,6 +33,7 @@ namespace Logic.Manager
             }
 
             PartnerOnList = pDataPartnerOnList;
+            m_CanDoOnCount = 0;
 
             UpdateAllHaveEffect();
             UpdateCanDoOnCount();
@@ -54,6 +55,40 @@ namespace Logic.Manager
 
         public async void OnPartnerIntensify(S2C_PartnerIntensify pMsg)
         {
+            if (pMsg.ComposeList != null)
+            {
+                //伙伴批量合成
+                if (pMsg.IsAuto)
+                {
+                    foreach (var composeData in pMsg.ComposeList)
+                    {
+                        var fromData = GetPartnerData(composeData.FromID);
+                        if (fromData != null)
+                        {
+                            fromData.Count = composeData.FromCount;
+                        }
+
+                        var toData = GetPartnerData(composeData.ToID);
+                        if (toData != null)
+                        {
+                            toData.Count = composeData.ToCount;
+                        }
+                        else
+                        {
+                            //如果合成列表中出现新的伙伴数据需要new后添加到Map中
+                            var equipData = new GamePartnerData()
+                            {
+                                PartnerID = composeData.ToID,
+                                Level = 1,
+                                Count = composeData.ToCount
+                            };
+                            PartnerMap.Add(composeData.ToID, equipData);
+                        }
+                    }
+                }
+            }
+
+            //伙伴批量升级
             var _TaskNeedCount = 0;
             foreach (var upgradeData in pMsg.PartnerList)
             {
@@ -70,9 +105,25 @@ namespace Logic.Manager
             TaskManager.Ins.DoTaskUpdate(TaskType.TT_9004, _TaskNeedCount);
 
             if (pMsg.IsAuto)
-                await UIManager.Ins.OpenUI<UIUpgradedInfo>(pMsg.PartnerList);
+            {
+                // 弹出合成或升级面板
+                if (pMsg.ComposeList != null && pMsg.ComposeList.Count != 0)
+                {
+                    // 1.有合成数据，没有升级数据
+                    // 2.有合成数据，有升级数据
+                    var data = (pMsg.ComposeList, pMsg.PartnerList);
+                    await UIManager.Ins.OpenUI<UIComposeInfo>(data);
+                }
+                else
+                {
+                    //没有合成数据，有升级数据
+                    await UIManager.Ins.OpenUI<UIUpgradedInfo>(pMsg.PartnerList);
+                }
+            }
             else
+            {
                 EventManager.Call(LogicEvent.PartnerUpgraded);
+            }
 
             EventManager.Call(LogicEvent.PartnerListChanged);
 
@@ -95,6 +146,27 @@ namespace Logic.Manager
 
             EventManager.Call(LogicEvent.PartnerListChanged);
             UpdateAllHaveEffect();
+        }
+
+        public async void OnPartnerCompose(S2S_PartnerCompose pMsg)
+        {
+            foreach (var gamePartnerData in PartnerMap.Where(gamePartnerData => gamePartnerData.Key == pMsg.FromID))
+            {
+                gamePartnerData.Value.Count = pMsg.FromCount;
+            }
+
+            EventManager.Call(LogicEvent.PartnerListChanged);
+            //弹出合成面板
+            var composeData = new GameComposeData()
+            {
+                FromID = pMsg.FromID,
+                FromCount = pMsg.FromCount,
+                ToID = pMsg.ToID,
+                ToAddCount = pMsg.ToCount,
+            };
+            var composeDataList = new List<GameComposeData> { composeData };
+
+            await UIManager.Ins.OpenUI<UIComposeInfo>(composeDataList);
         }
 
         #endregion
@@ -220,6 +292,11 @@ namespace Logic.Manager
             if (!IsHave(pPartnerID)) return false;
 
             var _Data = GetPartnerData(pPartnerID);
+            if (_Data.Level >= GameDefine.CommonItemMaxLevel)
+            {
+                return false;
+            }
+
             var _NeedCount = _Data.Level > 10
                 ? PartnerLvlUpCfg.GetData(10).Cost
                 : PartnerLvlUpCfg.GetData(_Data.Level).Cost;
@@ -251,6 +328,22 @@ namespace Logic.Manager
             }
 
             return level >= GameDefine.CommonItemMaxLevel;
+        }
+
+        //是否有可合成的伙伴
+        public bool HaveCanComposePartner()
+        {
+            foreach (var partnerData in PartnerMap)
+            {
+                if (!IsMaxLevel(partnerData.Key)) continue;
+                var needCount = ComposeNeedCount(partnerData.Key);
+                if (partnerData.Value.Count >= needCount)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         //获取某个伙伴的拥有效果
@@ -312,10 +405,10 @@ namespace Logic.Manager
 
         public void DoCompose(int pPartnerId)
         {
-            // NetworkManager.Ins.SendMsg(new C2S_PartnerCompose()
-            // {
-            //     PartnerId = pPartnerId,
-            // });
+            NetworkManager.Ins.SendMsg(new C2S_PartnerCompose()
+            {
+                PartnerID = pPartnerId,
+            });
         }
 
         #endregion

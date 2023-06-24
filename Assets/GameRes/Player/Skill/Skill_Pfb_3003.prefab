@@ -1783,6 +1783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SkillId: 3003
   m_AutoSkillThreshold: 7
+  posType: -1
   m_Animator: {fileID: 1261597102921705579}
   m_AnimatorBack: {fileID: 7482124146323352903}
   m_SkillObj: {fileID: 6953483342293335870}
@@ -5059,6 +5060,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 242040384078200496, guid: b9de8d75d5e2c234097f4022647ba649, type: 3}
   m_PrefabInstance: {fileID: 6702103165425295622}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3753679974624679340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6798536734250737590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9fdec4ff2bd044dbcd4aad1d46f3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  module: 2
 --- !u!114 &6197952933785500703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5076,19 +5090,6 @@ MonoBehaviour:
   _globalClockKey: 
   _rewindable: 0
   _recordingDuration: 30
---- !u!114 &3753679974624679340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6798536734250737590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc9fdec4ff2bd044dbcd4aad1d46f3db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  module: 2
 --- !u!4 &9078752095487809597 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2376937139550058811, guid: b9de8d75d5e2c234097f4022647ba649, type: 3}

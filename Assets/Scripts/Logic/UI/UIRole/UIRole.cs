@@ -311,6 +311,11 @@ namespace Logic.UI.UIRole
                 {
                     attrLock.Show();
                 }
+
+                foreach (var attUnLockLevel in m_AdditionAttUnLockLevel)
+                {
+                    attUnLockLevel.Show();
+                }
             }
         }
 
@@ -340,7 +345,7 @@ namespace Logic.UI.UIRole
         /// </summary>
         private void RefreshBtnIntensifyState()
         {
-            if (RoleManager.Ins.IsCanRoleIntensify(1))
+            if (RoleManager.Ins.IsCanRoleIntensify())
             {
                 m_BtnIntensifyCan.Show();
                 m_BtnIntensifyCant.Hide();
@@ -426,17 +431,20 @@ namespace Logic.UI.UIRole
                 for (var j = 0; j < numToShow; j++)
                 {
                     m_AttrLock[j].Hide();
+                    m_AdditionAttUnLockLevel[j].Hide();
                 }
             }
         }
 
         #region 事件
 
+        // 点击关闭页面按钮
         public void OnBtnCloseClick()
         {
             this.Hide();
         }
 
+        // 点击装配按钮
         public void OnBtnOnClick()
         {
             if (m_CurSelectRole == null) return;
@@ -451,9 +459,10 @@ namespace Logic.UI.UIRole
             }
         }
 
+        // 点击强化按钮
         public void OnBtnExIntensifyClick()
         {
-            if (RoleManager.Ins.IsCanRoleIntensify(1))
+            if (RoleManager.Ins.IsCanRoleIntensify())
             {
                 RoleManager.Ins.DoRoleIntensify(m_CurRoleData.RoleID);
             }
@@ -463,6 +472,7 @@ namespace Logic.UI.UIRole
             }
         }
 
+        // 点击突破按钮
         public void OnBtnBreakClick()
         {
             if (m_CurSelectRole == null) return;
@@ -478,10 +488,13 @@ namespace Logic.UI.UIRole
             }
         }
 
-        public void OnBtnShopGetClick()
+        // 点击突破天赋树按钮
+        public async void OnBtnBreakTreeClick()
         {
+            await UIManager.Ins.OpenUI<UIRoleBreakTree>();
         }
 
+        // 选择英雄
         private void OnClickRoleItem(CommonRoleItem cItem)
         {
             if (m_CurSelectRole == cItem)
@@ -499,13 +512,15 @@ namespace Logic.UI.UIRole
             UpdateRole(m_CurSelectRole);
         }
 
+        // 英雄升级材料变化
         private void OnRoleMushRoomChanged()
         {
             m_MushRoom.text = GameDataManager.Ins.MushRoom.ToString();
-            m_IntensifyCost.text = $"{GameDataManager.Ins.MushRoom}/1";
+            m_IntensifyCost.text = $"{GameDataManager.Ins.MushRoom}/{GameDefine.RoleUpgradeCost}";
             RefreshBtnIntensifyState();
         }
 
+        // 英雄突破材料变化
         private void OnRoleBreakOreChanged()
         {
             m_BreakOre.text = GameDataManager.Ins.BreakOre.ToString();
@@ -515,6 +530,7 @@ namespace Logic.UI.UIRole
             }
         }
 
+        // 英雄装配
         private void OnRoleOn(int eventId, object data)
         {
             var roleId = (int)data;
@@ -524,6 +540,7 @@ namespace Logic.UI.UIRole
             m_BtnOnCant.Show();
         }
 
+        // 英雄解除
         private void OnRoleOff(int eventId, object data)
         {
             var roleId = (int)data;
@@ -533,6 +550,7 @@ namespace Logic.UI.UIRole
             m_BtnOnCant.Hide();
         }
 
+        // 英雄强化
         private void OnRoleIntensify(int eventId, object data)
         {
             var (roleId, roleLevel, roleExp, roleBreakState) = (ValueTuple<int, int, int, bool>)data;
@@ -541,6 +559,7 @@ namespace Logic.UI.UIRole
             UpdateRoleAttrDes(roleLevel);
         }
 
+        // 英雄突破
         private void OnRoleBreak(int eventId, object data)
         {
             var (roleId, roleBreakLevel, roleBreakState) = (ValueTuple<int, int, bool>)data;

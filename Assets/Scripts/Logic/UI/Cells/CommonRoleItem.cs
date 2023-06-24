@@ -153,11 +153,13 @@ namespace Logic.UI.Cells
 
             if (RoleManager.Ins.IsRoleOn(m_RoleData.RoleID))
             {
-                m_IsOn.Show();
+                if(m_IsOn !=null)
+                    m_IsOn.Show();
             }
             else
             {
-                m_IsOn.Hide();
+                if (m_IsOn != null)
+                    m_IsOn.Hide();
             }
         }
 
@@ -224,6 +226,11 @@ namespace Logic.UI.Cells
         public void HideSelected()
         {
             m_Selected.Hide();
+        }
+
+        public bool IsSelected()
+        {
+            return m_Selected.activeSelf;
         }
     }
 }

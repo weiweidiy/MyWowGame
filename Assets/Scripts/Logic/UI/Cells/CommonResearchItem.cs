@@ -5,6 +5,7 @@ using Configs;
 using Framework.EventKit;
 using Framework.Extension;
 using Logic.Common;
+using Logic.Common.RedDot;
 using Logic.Manager;
 using Logic.UI.Common;
 using TMPro;
@@ -43,6 +44,7 @@ namespace Logic.UI.Cells
         private bool m_IsSelected;
         private EventGroup m_EventGroup = new();
 
+        public BigBoomCellRedDotMono m_BigBoomCellRedDotMono;
 
         private void Awake()
         {
@@ -55,6 +57,7 @@ namespace Logic.UI.Cells
         private void Init()
         {
             m_ResearchData = ResearchManager.Ins.GetResearchData(m_ResearchId);
+            m_BigBoomCellRedDotMono.Uid = m_ResearchId.ToString();
             var attributeId = m_ResearchData.ResearchAttrGroup;
             var resId = m_ResearchData.ResID;
             m_ResPath = ResearchManager.Ins.GetResData(resId).Res;

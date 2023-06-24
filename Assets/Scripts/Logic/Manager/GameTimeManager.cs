@@ -1,88 +1,113 @@
 using System;
+using Framework.Core;
 using Framework.EventKit;
 using Framework.Extension;
 using Logic.Common;
+using Logic.Data;
 using Networks;
 using UnityTimer;
 
 namespace Logic.Manager
 {
-    /// <summary>
-    /// 时间管理
-    /// </summary>
     public class GameTimeManager : Singleton<GameTimeManager>
     {
-        private Timer m_DayTimer; //跨天计时器
-        private long m_ServerTimer; //服务器当前时间
-        private int m_NextDaySeconds; //距离下一天的秒数
+        //服务器时间
+        public ServerTimes m_ServerTimes;
+
+        //计时器
+        private Timer m_Timer;
 
         /// <summary>
-        /// 初始化一些数据
+        /// 初始化
         /// </summary>
-        public void Init(S2C_Login pMsg)
+        /// <param name="pMsg"></param>
+        public void Init()
         {
-            m_DayTimer = null;
-            m_ServerTimer = pMsg.ServerTimer;
-            m_NextDaySeconds = (int)pMsg.NextDaySeconds;
+            m_ServerTimes = GameDataManager.Ins.ServerTimes;
+            m_Timer = null;
+            //单机模式不启用游戏定时器
+            if (GameCore.Ins.UseDummyServer) return;
+            TimerStart();
         }
 
         /// <summary>
-        /// 启动游戏定时器
+        /// 请求服务器时间
         /// </summary>
-        public void StartGameTimer()
+        public void RequestServerTimes()
         {
-            DayTimerStart();
+            NetworkManager.Ins.SendMsg(new C2S_ST());
         }
 
         /// <summary>
-        /// 关闭游戏定时器
+        /// 接收服务器时间
         /// </summary>
-        public void StopGameTimer()
+        /// <param name="pMsg"></param>
+        public void OnReceiveServerTimes(S2C_ST pMsg)
         {
-            DayTimerStop();
+            //关闭定时器
+            TimerStop();
+            //刷新服务器时间
+            m_ServerTimes = pMsg.ST;
+            //启动定时器
+            TimerStart();
         }
 
-        #region 跨天定时器模块
-
         /// <summary>
-        /// 启动跨天计时器
+        /// 定时器开启
         /// </summary>
-        private void DayTimerStart()
+        private void TimerStart(int duration = 1)
         {
-            var now = DateTime.Now;
-            var midnight = DateTime.Today.AddDays(1);
-            var timeLeft = midnight - now;
-            var secondsLeft = (int)timeLeft.TotalSeconds;
-            m_NextDaySeconds = secondsLeft;
-            m_DayTimer = Timer.Register(1f, () =>
+            //计算各计时模块剩余时间
+            var dayLeftSeconds = (int)(m_ServerTimes.DayET - m_ServerTimes.ServerTimer);
+            var weekLeftSeconds = (int)(m_ServerTimes.WeekET - m_ServerTimes.ServerTimer);
+
+            m_Timer = Timer.Register(duration, () =>
             {
-                m_NextDaySeconds--;
-                // 通知跨天UI更新
-                EventManager.Call(LogicEvent.TimeNextDaySecondsChanged, m_NextDaySeconds);
-                // 跨天
-                if (m_NextDaySeconds <= 0)
-                {
-                    // 通知跨天事件
-                    EventManager.Call(LogicEvent.TimeDayChanged, m_NextDaySeconds);
-                    // 重置每日剩余时间
-                    m_NextDaySeconds = 24 * 60 * 60;
-                }
+                //更新各计时模块剩余时间
+                dayLeftSeconds -= duration;
+                weekLeftSeconds -= duration;
+                //进入各计时模块计时流程
+                TimerProcedure(
+                    dayLeftSeconds,
+                    () => { EventManager.Call(LogicEvent.TimeDaySecondsChanged, dayLeftSeconds); },
+                    () =>
+                    {
+                        RequestServerTimes();
+                        EventManager.Call(LogicEvent.TimeDayChanged);
+                    });
+                TimerProcedure(
+                    weekLeftSeconds,
+                    () => { EventManager.Call(LogicEvent.TimeWeekSecondsChanged, weekLeftSeconds); },
+                    () =>
+                    {
+                        RequestServerTimes();
+                        EventManager.Call(LogicEvent.TimeWeekChanged);
+                    });
             }, isLooped: true, useRealTime: true);
         }
 
         /// <summary>
-        /// 关闭跨天计时器
+        /// 定时器流程
         /// </summary>
-        private void DayTimerStop()
+        /// <param name="leftSeconds"></param>
+        /// <param name="action"></param>
+        /// <param name="completeAction"></param>
+        private void TimerProcedure(int leftSeconds, Action action, Action completeAction)
         {
-            m_DayTimer?.Cancel();
-            m_DayTimer = null;
+            //流程中委托
+            action?.Invoke();
+            if (leftSeconds > 0) return;
+            //流程结束后委托
+            completeAction?.Invoke();
         }
 
-        #endregion
-
-        #region 其他定时器模块
-
-        #endregion
+        /// <summary>
+        /// 定时器关闭
+        /// </summary>
+        private void TimerStop()
+        {
+            m_Timer?.Cancel();
+            m_Timer = null;
+        }
     }
 }

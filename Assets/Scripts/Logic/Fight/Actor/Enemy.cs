@@ -22,6 +22,7 @@ namespace Logic.Fight.Actor
     /// </summary>
     public class Enemy : ActorBase, IPoolAssets, IDamagable , IEventNotifier
     {
+        public event Action onEnterAttack;
         public enum EnemyType
         {
             Normal, //普通小怪
@@ -31,8 +32,8 @@ namespace Logic.Fight.Actor
 
         public enum PositionType
         {
-            Ground, //地面
-            Sky, //空中
+            Ground = 1<<0, //地面
+            Sky = 1 << 1, //空中
         }
 
         [LabelText("血条控制")] [ChildGameObjectsOnly]
@@ -49,14 +50,26 @@ namespace Logic.Fight.Actor
         [ReadOnly, LabelText("攻击力")] public BigDouble m_Attack;
         [ReadOnly, LabelText("掉落金币")] public BigDouble m_DropCoin;
 
+        /// <summary>
+        /// 空中单位或者地面单位
+        /// </summary>
+        public PositionType positionType;
+
         //怪物实例ID
         public long m_EnemyInsID { get; private set; }
 
         //状态机
         protected EnemySM m_EnemySM;
 
+        /// <summary>
+        /// 受击点
+        /// </summary>
+        public Transform[] m_HitteePoints;
+
         //事件处理
         protected readonly EventGroup m_EventGroup = new();
+
+        
 
         protected override void Awake()
         {
@@ -77,7 +90,7 @@ namespace Logic.Fight.Actor
             m_EventGroup.Release();
         }
 
-        public void Init(long pInsID, BigDouble pMaxHP, BigDouble pAttack, BigDouble pDropCoin,
+        public void Init(long pInsID, BigDouble pMaxHP, BigDouble pAttack, BigDouble pDropCoin,float attackSpeed,
             float pMoveSpeedMult = 1f)
         {
             m_EnemyInsID = pInsID;
@@ -94,6 +107,7 @@ namespace Logic.Fight.Actor
             m_Attack = pAttack;
             m_DropCoin = pDropCoin;
             m_MoveSpeed = MoveSpeed * pMoveSpeedMult;
+            m_AttackSpeed = attackSpeed;
             m_EnemySM.Start(_Data, _Data.m_Move);
         }
 
@@ -136,11 +150,13 @@ namespace Logic.Fight.Actor
             return FightManager.Ins.GetGJJTarget();
         }
 
-        private void OnHurt(FightDamageData pDamageData)
+        private void OnHurt(FightDamageData pDamageData, Transform target)
         {
             if (FightManager.Ins.IsGJJDead())
                 return;
-            FightDamageManager.Ins.ShowDamage(m_HPCtrl != null ? m_HPCtrl.transform : transform, pDamageData, true);
+
+            FightDamageManager.Ins.ShowDamage(target != null ? target : m_HPCtrl.transform, pDamageData, true);
+            //FightDamageManager.Ins.ShowDamage(m_HPCtrl != null ? m_HPCtrl.transform : transform, pDamageData, true);
 
             onEventRaise?.Invoke();
         }
@@ -153,11 +169,43 @@ namespace Logic.Fight.Actor
             return false;
         }
 
+        public PositionType GetPositionType()
+        {
+            return positionType;
+        }
+
+        /// <summary>
+        /// 获取指定的受击点坐标
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public Transform GetHitteePosition(int index)
+        {
+            if (m_HitteePoints == null || m_HitteePoints.Length == 0)
+                return null;
+
+            return m_HitteePoints[index];
+        }
+
+        public Transform GetRandomHitteePosition()
+        {
+            if (m_HitteePoints == null || m_HitteePoints.Length == 0)
+                return null;
+
+            return m_HitteePoints[UnityEngine.Random.Range(0, m_HitteePoints.Length)];
+        }
+
+        public Transform GetTransform()
+        {
+            return transform;
+        }
+
         #region 动画状态机事件回调 处理攻击逻辑
 
         //攻击动画开始 回调
         public virtual void OnAni_AttackStart()
         {
+            
         }
 
         //攻击动画触发 回调
@@ -194,6 +242,15 @@ namespace Logic.Fight.Actor
         public void OnRecycle()
         {
         }
+
+        public override void OnEnterAttack()
+        {
+            base.OnEnterAttack();
+
+            onEnterAttack?.Invoke();
+        }
+
+
 
         #endregion
     }

@@ -292,10 +292,15 @@ namespace Logic.UI.UIUser
 
         public void OnClickAuto()
         {
-            if (EquipManager.Ins.HaveCanUpgradeEquip(ItemType.Armor))
+            if (EquipManager.Ins.HaveCanUpgradeEquip(ItemType.Armor) ||
+                EquipManager.Ins.HaveCanComposeEquip(ItemType.Armor))
+            {
                 EquipManager.Ins.DoIntensify(0, (int)ItemType.Armor, true);
+            }
             else
-                EventManager.Call(LogicEvent.ShowTips, "没有可升级的武器");
+            {
+                EventManager.Call(LogicEvent.ShowTips, "没有可升级或合成的防具");
+            }
         }
 
         public void OnBtnComposeClick()

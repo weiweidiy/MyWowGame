@@ -94,6 +94,7 @@ namespace Networks
         }
 
         public static long ClientMsgId = 0;
+
         /// <summary>
         /// 发送消息
         /// </summary>
@@ -164,6 +165,11 @@ namespace Networks
                     GameDataManager.Ins.OnReceiveLoginData(pMsg as S2C_Login);
                 }
                     break;
+                case NetWorkMsgType.S2C_ST:
+                {
+                    GameTimeManager.Ins.OnReceiveServerTimes(pMsg as S2C_ST);
+                }
+                    break;
                 case NetWorkMsgType.S2C_DiamondUpdate:
                 {
                     GameDataManager.Ins.Diamond = ((S2C_DiamondUpdate)pMsg).Diamond;
@@ -172,6 +178,11 @@ namespace Networks
                 case NetWorkMsgType.S2C_OilUpdate:
                 {
                     GameDataManager.Ins.Oil = ((S2C_OilUpdate)pMsg).Oil;
+                }
+                    break;
+                case NetWorkMsgType.S2C_TecPointUpdate:
+                {
+                    GameDataManager.Ins.TecPoint = ((S2C_TecPointUpdate)pMsg).TecPoint;
                 }
                     break;
                 case NetWorkMsgType.S2C_EquipOn:
@@ -190,11 +201,11 @@ namespace Networks
                     var type = (ItemType)_Msg.Type;
                     if (type == ItemType.Weapon)
                     {
-                        EquipManager.Ins.OnWeaponIntensify(_Msg.EquipList, _Msg.IsAuto);
+                        EquipManager.Ins.OnWeaponIntensify(_Msg.EquipList, _Msg.IsAuto, _Msg.ComposeList);
                     }
                     else if (type == ItemType.Armor)
                     {
-                        EquipManager.Ins.OnArmorIntensify(_Msg.EquipList, _Msg.IsAuto);
+                        EquipManager.Ins.OnArmorIntensify(_Msg.EquipList, _Msg.IsAuto, _Msg.ComposeList);
                     }
                 }
                     break;
@@ -228,6 +239,11 @@ namespace Networks
                     PartnerManager.Ins.OnPartnerListUpdate(pMsg as S2C_PartnerListUpdate);
                 }
                     break;
+                case NetWorkMsgType.S2S_PartnerCompose:
+                {
+                    PartnerManager.Ins.OnPartnerCompose(pMsg as S2S_PartnerCompose);
+                }
+                    break;
                 case NetWorkMsgType.S2C_SkillOn:
                 {
                     SkillManager.Ins.OnSkillOn(pMsg as S2C_SkillOn);
@@ -248,29 +264,9 @@ namespace Networks
                     SkillManager.Ins.OnSkillListUpdate(pMsg as S2C_SkillListUpdate);
                 }
                     break;
-                case NetWorkMsgType.S2C_EngineGet:
+                case NetWorkMsgType.S2S_SkillCompose:
                 {
-                    EngineManager.Ins.OnEngineGet(pMsg as S2C_EngineGet);
-                }
-                    break;
-                case NetWorkMsgType.S2C_EngineIntensify:
-                {
-                    EngineManager.Ins.OnEngineIntensify(pMsg as S2C_EngineIntensify);
-                }
-                    break;
-                case NetWorkMsgType.S2C_EngineIronUpdate:
-                {
-                    GameDataManager.Ins.Iron = ((S2C_EngineIronUpdate)pMsg).Iron;
-                }
-                    break;
-                case NetWorkMsgType.S2C_EngineOn:
-                {
-                    EngineManager.Ins.OnEngineOn(pMsg as S2C_EngineOn);
-                }
-                    break;
-                case NetWorkMsgType.S2C_EngineOff:
-                {
-                    EngineManager.Ins.OnEngineOff(pMsg as S2C_EngineOff);
+                    SkillManager.Ins.OnSkillCompose(pMsg as S2S_SkillCompose);
                 }
                     break;
                 case NetWorkMsgType.S2C_DrawCard:
@@ -283,9 +279,14 @@ namespace Networks
                     ShopManager.Ins.On_S2C_UpdateShopData(pMsg as S2C_UpdateDrawCardData);
                 }
                     break;
-                case NetWorkMsgType.S2C_MiningReward:
+                case NetWorkMsgType.S2C_ShopBuyOrder:
                 {
-                    RewardManager.Ins.On_S2C_MiningReward(pMsg as S2C_MiningReward);
+                    ShopManager.Ins.OnShopBuyOrder(pMsg as S2C_ShopBuyOrder);
+                }
+                    break;
+                case NetWorkMsgType.S2C_ShopBuy:
+                {
+                    ShopManager.Ins.OnShopBuy(pMsg as S2C_ShopBuy);
                 }
                     break;
                 case NetWorkMsgType.S2C_PlaceReward:
@@ -303,9 +304,29 @@ namespace Networks
                     RewardManager.Ins.On_S2C_OilCopyReward(pMsg as S2C_OilCopyReward);
                 }
                     break;
+                case NetWorkMsgType.S2C_ReformCopyReward:
+                {
+                    RewardManager.Ins.On_S2C_ReformCopyReward(pMsg as S2C_ReformCopyReward);
+                }
+                    break;
+                case NetWorkMsgType.S2C_MiningReward:
+                {
+                    RewardManager.Ins.On_S2C_MiningReward(pMsg as S2C_MiningReward);
+                }
+                    break;
                 case NetWorkMsgType.S2C_UpdateMiningData:
                 {
                     MiningManager.Ins.On_S2C_UpdateMiningData(pMsg as S2C_UpdateMiningData);
+                }
+                    break;
+                case NetWorkMsgType.S2C_UpdateResearchTime:
+                {
+                    ResearchManager.Ins.OnUpdateResearchTime(pMsg as S2C_UpdateResearchTime);
+                }
+                    break;
+                case NetWorkMsgType.S2C_Researching:
+                {
+                    ResearchManager.Ins.OnResearching(pMsg as S2C_Researching);
                 }
                     break;
                 case NetWorkMsgType.S2C_UpdateTaskState:
@@ -343,16 +364,6 @@ namespace Networks
                     CopyManager.Ins.OnUpdateCopyKeyCount(pMsg as S2C_UpdateCopyKeyCount);
                 }
                     break;
-                case NetWorkMsgType.S2C_UpdateResearchTime:
-                {
-                    ResearchManager.Ins.OnUpdateResearchTime(pMsg as S2C_UpdateResearchTime);
-                }
-                    break;
-                case NetWorkMsgType.S2C_Researching:
-                {
-                    ResearchManager.Ins.OnResearching(pMsg as S2C_Researching);
-                }
-                    break;
                 case NetWorkMsgType.S2C_SpoilDraw:
                 {
                     SpoilManager.Ins.OnSpoilDrawResult(pMsg as S2C_SpoilDraw);
@@ -371,6 +382,11 @@ namespace Networks
                 case NetWorkMsgType.S2C_SpoilUpgrade:
                 {
                     SpoilManager.Ins.OnSpoilUpgrade(pMsg as S2C_SpoilUpgrade);
+                    break;
+                }
+                case NetWorkMsgType.S2C_SpoilBreakthrough:
+                {
+                    SpoilManager.Ins.OnSpoilBreakthrough(pMsg as S2C_SpoilBreakthrough);
                     break;
                 }
                 case NetWorkMsgType.S2C_RoleOn:
@@ -406,6 +422,41 @@ namespace Networks
                 case NetWorkMsgType.S2C_BreakOreUpdate:
                 {
                     GameDataManager.Ins.BreakOre = ((S2C_BreakOreUpdate)pMsg).BreakOre;
+                }
+                    break;
+                case NetWorkMsgType.S2C_BreakTreeIntensify:
+                {
+                    RoleBreakTreeManager.Ins.OnIntensify(pMsg as S2C_BreakTreeIntensify);
+                }
+                    break;
+                case NetWorkMsgType.S2C_BreakTPUpdate:
+                {
+                    GameDataManager.Ins.BreakTP = ((S2C_BreakTPUpdate)pMsg).BreakTP;
+                }
+                    break;
+                case NetWorkMsgType.S2C_EngUpgrade:
+                {
+                    EngineManager.Ins.OnEngineUpgrade(pMsg as S2C_EngUpgrade);
+                }
+                    break;
+                case NetWorkMsgType.S2C_EngPartOn:
+                {
+                    EngineManager.Ins.OnEngineOn(pMsg as S2C_EngPartOn);
+                }
+                    break;
+                case NetWorkMsgType.S2C_EngPartOff:
+                {
+                    EngineManager.Ins.OnEngineOff(pMsg as S2C_EngPartOff);
+                }
+                    break;
+                case NetWorkMsgType.S2C_EngResolve:
+                {
+                    EngineManager.Ins.OnEngineResolve(pMsg as S2C_EngResolve);
+                }
+                    break;
+                case NetWorkMsgType.S2C_UpdateEngParts:
+                {
+                    EngineManager.Ins.OnEnginePartsUpdate(pMsg as S2C_UpdateEngParts);
                 }
                     break;
                 default:

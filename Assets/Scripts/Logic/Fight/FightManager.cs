@@ -110,6 +110,15 @@ namespace Logic.Fight
             return m_FSM.GetState().m_Type;
         }
 
+        public void ToIdle()
+        {
+            m_FSM.ToIdle();
+        }
+        public void ToStandBy()
+        {
+            m_FSM.ToStandby();
+        }
+
         // public bool CanSwitchState()
         // {
         //     var _State = 

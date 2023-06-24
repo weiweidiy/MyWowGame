@@ -139,17 +139,17 @@ namespace Logic.Fight.Skill.Implement
                 return null;
         }
 
-        /// <summary>
-        /// 等待闪电雷击下落
-        /// </summary>
-        /// <param name="interval"></param>
-        /// <param name="targets"></param>
-        /// <returns></returns>
-        IEnumerator WaitForLightDown(float interval, GameObject bullet)
-        {
-            yield return new WaitForSeconds(interval);
-            PlayLightningDown(bullet);
-        }
+        ///// <summary>
+        ///// 等待闪电雷击下落
+        ///// </summary>
+        ///// <param name="interval"></param>
+        ///// <param name="targets"></param>
+        ///// <returns></returns>
+        //IEnumerator WaitForLightDown(float interval, GameObject bullet)
+        //{
+        //    yield return new WaitForSeconds(interval);
+        //    PlayLightningDown(bullet);
+        //}
 
 
         /// <summary>
@@ -183,16 +183,16 @@ namespace Logic.Fight.Skill.Implement
             });
         }
 
-        /// <summary>
-        /// 清理创建的对象
-        /// </summary>
-        /// <param name="interval"></param>
-        /// <returns></returns>
-        IEnumerator WaitForDestroy(float interval)
-        {
-            yield return new WaitForSeconds(interval);
-            Destroy(gameObject);
-        }
+        ///// <summary>
+        ///// 清理创建的对象
+        ///// </summary>
+        ///// <param name="interval"></param>
+        ///// <returns></returns>
+        //IEnumerator WaitForDestroy(float interval)
+        //{
+        //    yield return new WaitForSeconds(interval);
+        //    Destroy(gameObject);
+        //}
 
 
         public void DOTweenDelay(float delayedTimer, int loopTimes, Action action)

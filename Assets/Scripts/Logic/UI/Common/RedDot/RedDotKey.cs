@@ -1,5 +1,4 @@
-﻿
-namespace Logic.Common.RedDot
+﻿namespace Logic.Common.RedDot
 {
     public enum RedDotKey
     {
@@ -48,6 +47,14 @@ namespace Logic.Common.RedDot
         /// </summary>
         PartnerUpgradable,
 
-    }
+        /// <summary>
+        /// 有可研究的考古项
+        /// </summary>
+        Researchable,
 
+        /// <summary>
+        /// 有可升级的英雄突破天赋树
+        /// </summary>
+        BreakTreeUpgradable,
+    }
 }

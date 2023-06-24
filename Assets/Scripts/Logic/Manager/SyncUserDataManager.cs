@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Framework.EventKit;
+﻿using Framework.EventKit;
 using Framework.Extension;
 using Logic.Common;
 using Logic.Data;
@@ -18,7 +16,7 @@ namespace Logic.Manager
         PlaceReward,
         TrophyData,
     }
-    
+
     /// <summary>
     /// 当玩家数据产生变化时 向服务器同步用户数据
     /// 主要是客户端 游戏币 相关 产生的数据变化
@@ -30,16 +28,22 @@ namespace Logic.Manager
         private bool m_NeedSend;
         private float m_LastSendTime;
 
-        private readonly UpdateCell CoinDataCell = new (6);
+        private readonly UpdateCell CoinDataCell = new(6);
         private readonly UpdateCell TrophyDataCell = new(6);
-        private readonly UpdateCell RoomDataCell = new (3);
-        private readonly UpdateCell SettingDataCell = new (5);
-        private readonly UpdateCell LevelDataCell = new (5f);
-        private readonly UpdateCell PlaceRewardCell = new (5f);
-        
+        private readonly UpdateCell RoomDataCell = new(3);
+        private readonly UpdateCell SettingDataCell = new(5);
+        private readonly UpdateCell LevelDataCell = new(5f);
+        private readonly UpdateCell PlaceRewardCell = new(5f);
+
         public void OnSingletonInit()
-        { 
+        {
             m_EventGroup.Register(LogicEvent.SyncUserData, OnSyncUserData);
+
+            // TODO:临时处理RoomData同步频率 (30需配置)
+            if (GameDataManager.Ins.CurLevelID < 30)
+            {
+                RoomDataCell.TimeThreshold = 1f;
+            }
         }
 
         void OnDestroy()
@@ -49,10 +53,10 @@ namespace Logic.Manager
             // if (m_NeedSend)
             //     SendSyncUserData();
         }
-        
+
         private void OnSyncUserData(int arg1, object arg2)
         {
-            var _Type = (SyncDataType) arg2;
+            var _Type = (SyncDataType)arg2;
             switch (_Type)
             {
                 case SyncDataType.CoinData:
@@ -61,6 +65,7 @@ namespace Logic.Manager
                         CoinDataCell.NeedSend = true;
                         CoinDataCell.SendTime = CoinDataCell.TimeThreshold + Time.realtimeSinceStartup;
                     }
+
                     break;
                 case SyncDataType.TrophyData:
                     if (!TrophyDataCell.NeedSend)
@@ -68,6 +73,7 @@ namespace Logic.Manager
                         TrophyDataCell.NeedSend = true;
                         TrophyDataCell.SendTime = TrophyDataCell.TimeThreshold + Time.realtimeSinceStartup;
                     }
+
                     break;
                 case SyncDataType.RoomData:
                     if (!RoomDataCell.NeedSend)
@@ -75,6 +81,7 @@ namespace Logic.Manager
                         RoomDataCell.NeedSend = true;
                         RoomDataCell.SendTime = RoomDataCell.TimeThreshold + Time.realtimeSinceStartup;
                     }
+
                     break;
                 case SyncDataType.SettingData:
                     if (!SettingDataCell.NeedSend)
@@ -82,6 +89,7 @@ namespace Logic.Manager
                         SettingDataCell.NeedSend = true;
                         SettingDataCell.SendTime = SettingDataCell.TimeThreshold + Time.realtimeSinceStartup;
                     }
+
                     break;
                 case SyncDataType.LevelData:
                     if (!LevelDataCell.NeedSend)
@@ -89,6 +97,7 @@ namespace Logic.Manager
                         LevelDataCell.NeedSend = true;
                         LevelDataCell.SendTime = LevelDataCell.TimeThreshold + Time.realtimeSinceStartup;
                     }
+
                     break;
                 case SyncDataType.PlaceReward:
                     if (!PlaceRewardCell.NeedSend)
@@ -96,11 +105,13 @@ namespace Logic.Manager
                         PlaceRewardCell.NeedSend = true;
                         PlaceRewardCell.SendTime = PlaceRewardCell.TimeThreshold + Time.realtimeSinceStartup;
                     }
+
                     break;
             }
         }
 
         float _FrameCont;
+
         private void Update()
         {
             _FrameCont++;
@@ -109,7 +120,7 @@ namespace Logic.Manager
 
             _FrameCont = 0;
             var _Time = Time.realtimeSinceStartup;
-            
+
             if (CoinDataCell.NeedSend && _Time > CoinDataCell.SendTime)
             {
                 CoinDataCell.NeedSend = false;
@@ -130,21 +141,21 @@ namespace Logic.Manager
                 _SyncRoomDataMsg.Init();
                 NetworkManager.Ins.SendMsg(_SyncRoomDataMsg);
             }
-            
+
             if (SettingDataCell.NeedSend && _Time > SettingDataCell.SendTime)
             {
                 SettingDataCell.NeedSend = false;
                 _SyncSettingDataMsg.Init();
                 NetworkManager.Ins.SendMsg(_SyncSettingDataMsg);
             }
-            
+
             if (LevelDataCell.NeedSend && _Time > LevelDataCell.SendTime)
             {
                 LevelDataCell.NeedSend = false;
                 _SyncLevelDataMsg.Init();
                 NetworkManager.Ins.SendMsg(_SyncLevelDataMsg);
             }
-            
+
             if (PlaceRewardCell.NeedSend && _Time > PlaceRewardCell.SendTime)
             {
                 PlaceRewardCell.NeedSend = false;
@@ -153,11 +164,11 @@ namespace Logic.Manager
             }
         }
 
-        private readonly C2S_SyncCoin _SyncCoinMsg = new ();
-        private readonly C2S_SyncRoomData _SyncRoomDataMsg = new ();
-        private readonly C2S_SyncSettingData _SyncSettingDataMsg = new ();
-        private readonly C2S_SyncLevelData _SyncLevelDataMsg = new ();
-        private readonly C2S_SyncPlaceRewardData _SyncPlaceRewardDataMsg = new ();
+        private readonly C2S_SyncCoin _SyncCoinMsg = new();
+        private readonly C2S_SyncRoomData _SyncRoomDataMsg = new();
+        private readonly C2S_SyncSettingData _SyncSettingDataMsg = new();
+        private readonly C2S_SyncLevelData _SyncLevelDataMsg = new();
+        private readonly C2S_SyncPlaceRewardData _SyncPlaceRewardDataMsg = new();
         private readonly C2S_SyncTrophy _SyncTrophyMsg = new();
 
         private void OnApplicationPause(bool pauseStatus)
@@ -170,21 +181,21 @@ namespace Logic.Manager
                     _SyncRoomDataMsg.Init();
                     NetworkManager.Ins.SendMsg(_SyncRoomDataMsg);
                 }
-            
+
                 if (SettingDataCell.NeedSend)
                 {
                     SettingDataCell.NeedSend = false;
                     _SyncSettingDataMsg.Init();
                     NetworkManager.Ins.SendMsg(_SyncSettingDataMsg);
                 }
-            
+
                 if (LevelDataCell.NeedSend)
                 {
                     LevelDataCell.NeedSend = false;
                     _SyncLevelDataMsg.Init();
                     NetworkManager.Ins.SendMsg(_SyncLevelDataMsg);
                 }
-            
+
                 if (PlaceRewardCell.NeedSend)
                 {
                     PlaceRewardCell.NeedSend = false;
@@ -194,8 +205,8 @@ namespace Logic.Manager
             }
         }
     }
-    
-    
+
+
     /// <summary>
     /// 控制更新频率
     /// 次数达到一定阈值
@@ -207,6 +218,7 @@ namespace Logic.Manager
         {
             TimeThreshold = timeThreshold;
         }
+
         public float TimeThreshold; //时间阈值
         public float SendTime; //最后还一次请求更新时间 
         public bool NeedSend; //是否已经发送过更新请求

@@ -103,6 +103,11 @@ namespace Logic.States.Fight
                         }
                     }
                     break;
+                case LevelType.ReformCopy:
+                    {
+                        FightEnemyManager.Ins.StartSpawnReformCopyEnemy();
+                    }
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

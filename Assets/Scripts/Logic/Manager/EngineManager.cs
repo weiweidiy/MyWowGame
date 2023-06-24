@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using BreakInfinity;
 using Configs;
 using Framework.EventKit;
 using Framework.Extension;
+using Framework.Helper;
 using Logic.Common;
 using Logic.Data;
 using Networks;
@@ -12,215 +12,282 @@ namespace Logic.Manager
 {
     public class EngineManager : Singleton<EngineManager>
     {
-        public int curEngineOnId { get; private set; }
-        public int curEngineGetIdGearCost { get; private set; }
+        public GameEngineData gameEngineData { get; private set; }
+        public EngineData engineData { get; private set; }
+        public Dictionary<int, GameEnginePartData> engineMap { get; private set; }
+        public Dictionary<int, GameEnginePartData> sparkMap { get; private set; }
+        public Dictionary<int, GameEnginePartData> cylinderMap { get; private set; }
 
-        public int curEngineCount { get; private set; }
-
-        public Dictionary<int, GameEngineData> EngineMap { get; private set; }
-
-        //拥有攻击力和血量加成
-        public float AllHaveATKEffect { get; private set; }
-        public float AllHaveHPEffect { get; private set; }
-
-        public void Init(List<GameEngineData> pDataEngineList, int pDataEngineOnId, int pDataEngineGetId)
+        public void Init(GameEngineData pGameEngineData, List<GameEnginePartData> pGameEnginePartDataList)
         {
-            EngineMap = new Dictionary<int, GameEngineData>(64);
-            foreach (var data in pDataEngineList)
+            // 引擎数据
+            gameEngineData = pGameEngineData;
+            engineData = GetEngineData(gameEngineData.Level);
+            // 引擎装备数据
+            engineMap = new Dictionary<int, GameEnginePartData>(64);
+            sparkMap = new Dictionary<int, GameEnginePartData>(64);
+            cylinderMap = new Dictionary<int, GameEnginePartData>(64);
+            foreach (var gameEnginePartData in pGameEnginePartDataList)
             {
-                EngineMap.Add(data.Id, data);
-            }
-
-            curEngineOnId = pDataEngineOnId;
-            curEngineGetIdGearCost = GetEngineGearCost(pDataEngineGetId);
-            curEngineCount = EngineMap.Count - 1;
-            UpdateAllHaveEffect();
-        }
-
-        #region 消息接口
-
-        public void OnEngineGet(S2C_EngineGet pMsg)
-        {
-            foreach (var gameEngineData in pMsg.EngineList)
-            {
-                //更新获取引擎的数据
-                var data = GetGameEngineData(gameEngineData.Id);
-                if (data != null)
+                engineMap.Add(gameEnginePartData.InsID, gameEnginePartData);
+                switch ((ItemType)gameEnginePartData.Type)
                 {
-                    data.Id = gameEngineData.Id;
-                    data.TypeId = gameEngineData.TypeId;
-                    data.IsGet = gameEngineData.IsGet;
-                    data.AttrId = gameEngineData.AttrId;
-                    data.Level = gameEngineData.Level;
-                    data.Reform = gameEngineData.Reform;
-                }
-                else
-                {
-                    //将要获取的引擎添加
-                    EngineMap.Add(gameEngineData.Id, gameEngineData);
-                    curEngineGetIdGearCost = GetEngineGearCost(gameEngineData.Id);
+                    case ItemType.Spark:
+                        sparkMap.Add(gameEnginePartData.InsID, gameEnginePartData);
+                        break;
+                    case ItemType.Cylinder:
+                        cylinderMap.Add(gameEnginePartData.InsID, gameEnginePartData);
+                        break;
                 }
             }
 
-            curEngineCount++;
-            EventManager.Call(LogicEvent.EngineGet, pMsg.LastEngineGetId);
+            //TODO:添加引擎相关加成属性
+            // UpdateEngineEffect();
         }
 
-        public void OnEngineIntensify(S2C_EngineIntensify pMsg)
+        #region 通用
+
+        /// <summary>
+        /// 更新引擎相关加成属性
+        /// </summary>
+        public void UpdateEngineEffect()
         {
-            var data = ((m_EngineIntensifyId: pMsg.EngineId, m_EngineLevel: pMsg.EngineLevel));
-            EngineMap[data.m_EngineIntensifyId].Level = data.m_EngineLevel;
-            EventManager.Call(LogicEvent.EngineIntensify, data);
+            EventManager.Call(LogicEvent.EngineEffectUpdate);
         }
 
-        public void OnEngineRemove(int engineRemoveId)
+        /// <summary>
+        /// 获取引擎装备数据
+        /// </summary>
+        /// <param name="pID"></param>
+        /// <returns></returns>
+        public GameEnginePartData GetGameEngineData(int pID)
         {
-            foreach (var gameEngineData in EngineMap.Where(
-                         gameEngineData => gameEngineData.Key == engineRemoveId))
+            return engineMap.TryGetValue(pID, out var data) ? data : null;
+        }
+
+        /// <summary>
+        /// 获取引擎火花塞数据
+        /// </summary>
+        /// <param name="pID"></param>
+        /// <returns></returns>
+        public GameEnginePartData GetGameSparkData(int pID)
+        {
+            return sparkMap.TryGetValue(pID, out var data) ? data : null;
+        }
+
+        /// <summary>
+        /// 获取引擎气缸数据
+        /// </summary>
+        /// <param name="pID"></param>
+        /// <returns></returns>
+        public GameEnginePartData GetGameCylinderData(int pID)
+        {
+            return cylinderMap.TryGetValue(pID, out var data) ? data : null;
+        }
+
+        /// <summary>
+        /// 获取引擎表数据
+        /// </summary>
+        /// <param name="pID"></param>
+        /// <returns></returns>
+        public EngineData GetEngineData(int pID)
+        {
+            return EngineCfg.GetData(pID);
+        }
+
+        /// <summary>
+        /// 创建引擎装备数据
+        /// 气缸或火花塞数据
+        /// </summary>
+        /// <param name="pID"></param>
+        /// <param name="pType"></param>
+        /// <returns></returns>
+        public GameEnginePartData CreateGameEnginePartData(int pID, ItemType pType = ItemType.Cylinder)
+        {
+            var type = (int)pType;
+            var cylinderData = CylinderCfg.GetData(pID);
+            var attributeRandomData = AttributeRandomCfg.GetData(cylinderData.RandomAttribute);
+            var count = attributeRandomData.Attribute.Count;
+            var attr1 = attributeRandomData.Attribute[RandomHelper.Range(0, count)];
+            var attr2 = attributeRandomData.Attribute[RandomHelper.Range(0, count)];
+            return new GameEnginePartData { CfgID = pID, Type = type, Attr1ID = attr1, Attr2ID = attr2 };
+        }
+
+        /// <summary>
+        /// 引擎是否可以升级
+        /// </summary>
+        /// <returns></returns>
+        public bool IsCanEngineUpgrade()
+        {
+            if (IsEngineMaxLevel())
             {
-                EngineMap.Remove(gameEngineData.Key);
-                curEngineCount--;
-                EventManager.Call(LogicEvent.EngineRemove, engineRemoveId);
-                break;
+                return false;
             }
+
+            return GameDataManager.Ins.TecPoint >= engineData.Costtech;
         }
 
-        public void OnEngineOn(S2C_EngineOn pMsg)
+        /// <summary>
+        /// 引擎是否达到最大等级
+        /// </summary>
+        /// <returns></returns>
+        public bool IsEngineMaxLevel()
         {
-            curEngineOnId = pMsg.EngineId;
-            EventManager.Call(LogicEvent.EngineOn, pMsg.EngineId);
-            UpdateAllHaveEffect();
+            return gameEngineData.Level >= GameDefine.EngineMaxLevel;
         }
 
-        public void OnEngineOff(S2C_EngineOff pMsg)
+        /// <summary>
+        /// 判断ID是否已上阵
+        /// </summary>
+        /// <param name="pID"></param>
+        /// <returns></returns>
+        public bool IsEngineOn(int pID)
         {
-            curEngineOnId = 0;
-            EventManager.Call(LogicEvent.EngineOff, pMsg.EngineId);
-            UpdateAllHaveEffect();
+            return pID != 0 && gameEngineData.OnList.Any(onID => pID == onID);
+        }
+
+        /// <summary>
+        /// 判断ID是否是该上阵位装配ID
+        /// </summary>
+        /// <param name="pID"></param>
+        /// <param name="pSlotID"></param>
+        /// <returns></returns>
+        public bool IsIDOnSlot(int pID, int pSlotID)
+        {
+            return gameEngineData.OnList[pSlotID - 1] == pID;
         }
 
         #endregion
 
-        #region 通用接口
+        #region 接收消息
 
-        // 获取引擎数据
-        public GameEngineData GetGameEngineData(int engineId)
+        /// <summary>
+        /// 接收引擎强化消息
+        /// </summary>
+        /// <param name="pMsg"></param>
+        public void OnEngineUpgrade(S2C_EngUpgrade pMsg)
         {
-            return EngineMap.TryGetValue(engineId, out var data) ? data : null;
-        }
-
-        // 获取引擎表数据
-        public EngineData GetEngineData(int engineTypeId)
-        {
-            return EngineCfg.GetData(engineTypeId);
+            gameEngineData.Level = pMsg.Level;
+            gameEngineData.Exp = pMsg.Exp;
+            engineData = GetEngineData(gameEngineData.Level);
+            EventManager.Call(LogicEvent.EngineUpgrade);
         }
 
         /// <summary>
-        /// 获取引擎随机属性表数据
+        /// 接收引擎装配消息
         /// </summary>
-        /// <param name="attrId"></param>
-        /// <returns></returns>
-        public AttributeData GetAttributeData(int attrId)
+        /// <param name="pMsg"></param>
+        public void OnEngineOn(S2C_EngPartOn pMsg)
         {
-            return AttributeCfg.GetData(attrId);
+            var data = (pMsg.InsID, pMsg.SlotID);
+            gameEngineData.OnList[pMsg.SlotID - 1] = pMsg.InsID;
+            EventManager.Call(LogicEvent.EngineOn, data);
         }
-        
+
         /// <summary>
-        /// 获取Res表数据
+        /// 接收引擎解除消息
         /// </summary>
-        /// <param name="rId"></param>
-        /// <returns></returns>
-        public ResData GetResData(int rId)
+        /// <param name="pMsg"></param>
+        public void OnEngineOff(S2C_EngPartOff pMsg)
         {
-            return ResCfg.GetData(rId);
+            var data = (pMsg.InsID, pMsg.SlotID);
+            gameEngineData.OnList[pMsg.SlotID - 1] = 0;
+            EventManager.Call(LogicEvent.EngineOff, data);
         }
 
-        // 引擎是否装备
-        public bool IsOn(int pEngineId)
+        /// <summary>
+        /// 接收引擎分解消息
+        /// </summary>
+        /// <param name="pMsg"></param>
+        public void OnEngineResolve(S2C_EngResolve pMsg)
         {
-            return curEngineOnId == pEngineId;
-        }
-
-        public bool IsCanIntensify(int cost)
-        {
-            return GameDataManager.Ins.Iron >= cost;
-        }
-
-        //获取引擎所有已有的加成值
-        public void UpdateAllHaveEffect()
-        {
-            if (curEngineOnId == 0)
+            foreach (var insID in pMsg.InsID)
             {
-                AllHaveATKEffect = 0;
-                AllHaveHPEffect = 0;
-                EventManager.Call(LogicEvent.EngineAllEffectUpdate);
+                if (engineMap.ContainsKey(insID))
+                {
+                    engineMap.Remove(insID);
+                }
+
+                if (sparkMap.ContainsKey(insID))
+                {
+                    sparkMap.Remove(insID);
+                }
+
+                if (cylinderMap.ContainsKey(insID))
+                {
+                    cylinderMap.Remove(insID);
+                }
             }
-            else
+
+            EventManager.Call(LogicEvent.EngineResolve, pMsg.InsID);
+        }
+
+        public void OnEnginePartsUpdate(S2C_UpdateEngParts pMsg)
+        {
+            foreach (var gameEnginePartData in pMsg.Parts)
             {
-                var gameEngineData = GetGameEngineData(curEngineOnId);
-                var engineData = GetEngineData(gameEngineData.TypeId);
-                var engineLevel = gameEngineData.Level;
-                //TODO:公式计算
-                var atkEffect = (engineData.HasAdditionATK + engineLevel) / 100;
-                var hpEffect = (engineData.HasAdditionHP + engineLevel) / 100;
-                AllHaveATKEffect = atkEffect;
-                AllHaveHPEffect = hpEffect;
-                EventManager.Call(LogicEvent.EngineAllEffectUpdate);
+                engineMap.Add(gameEnginePartData.InsID, gameEnginePartData);
+                switch ((ItemType)gameEnginePartData.Type)
+                {
+                    case ItemType.Spark:
+                        sparkMap.Add(gameEnginePartData.InsID, gameEnginePartData);
+                        break;
+                    case ItemType.Cylinder:
+                        cylinderMap.Add(gameEnginePartData.InsID, gameEnginePartData);
+                        break;
+                }
             }
-        }
 
-        //引擎攻击力加成
-        public BigDouble GetEngineATKAdd()
-        {
-            return AllHaveATKEffect;
-        }
-
-        //引擎血量加成
-        public BigDouble GetEngineHPAdd()
-        {
-            return AllHaveHPEffect;
-        }
-
-        //获取将要获取引擎的齿轮消耗
-        public int GetEngineGearCost(int pEngineGetId)
-        {
-            var costGear = EngineCfg.GetData(EngineMap[pEngineGetId].TypeId).CostGear;
-            return costGear;
+            EventManager.Call(LogicEvent.EnginePartsUpdate, pMsg.Parts);
         }
 
         #endregion
 
-        #region 操作接口
+        #region 发送消息
 
-        public void DoEngineOn(int pEngineOnId)
+        /// <summary>
+        /// 发送引擎强化消息
+        /// </summary>
+        public void DoEngineUpgrade()
         {
-            NetworkManager.Ins.SendMsg(new C2S_EngineOn()
+            NetworkManager.Ins.SendMsg(new C2S_EngUpgrade());
+        }
+
+        /// <summary>
+        /// 发送引擎装配消息
+        /// </summary>
+        /// <param name="pID"></param>
+        /// <param name="pSlotID"></param>
+        public void DoEngineOn(int pID, int pSlotID)
+        {
+            NetworkManager.Ins.SendMsg(new C2S_EngPartOn()
             {
-                EngineId = pEngineOnId,
+                InsID = pID,
+                SlotID = pSlotID,
             });
         }
 
-        public void DoEngineOff(int pEngineOffId)
+        /// <summary>
+        /// 发送引擎解除消息
+        /// </summary>
+        /// <param name="pID"></param>
+        public void DoEngineOff(int pID)
         {
-            NetworkManager.Ins.SendMsg(new C2S_EngineOff()
+            NetworkManager.Ins.SendMsg(new C2S_EngPartOff()
             {
-                EngineId = pEngineOffId,
+                InsID = pID,
             });
         }
 
-        public void DoEngineRemove(int pEngineRemoveId)
+        /// <summary>
+        /// 发送引擎分解消息
+        /// </summary>
+        /// <param name="pIDList"></param>
+        public void DoEngineResolve(List<int> pIDList)
         {
-            NetworkManager.Ins.SendMsg(new C2S_EngineRemove()
+            NetworkManager.Ins.SendMsg(new C2S_EngResolve()
             {
-                EngineId = pEngineRemoveId,
-            });
-        }
-
-        public void DoEngineIntensify(int pEngineIntensifyId)
-        {
-            NetworkManager.Ins.SendMsg(new C2S_EngineIntensify()
-            {
-                EngineId = pEngineIntensifyId,
+                InsID = pIDList,
             });
         }
 

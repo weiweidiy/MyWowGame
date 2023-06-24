@@ -14,26 +14,6 @@ namespace Logic.Fight.Actor
     {
         [SerializeField] Animator m_BPAnimtor;
 
-        [LabelText("BP枪口位置")]
-        public Transform m_BPMuzzlePos;
-        [LabelText("BP子弹预制体")]
-        public GameObject m_BPBulletPrefab;
-        [LabelText("BP枪口特效预制体")]
-        public GameObject m_BPMuzzleEffectPrefab;
-
-
-        
-
-        public override void PlayAttack()
-        {
-            base.PlayAttack();
-
-            m_BPAnimtor.SetTrigger(AniTrigger.ToAtk);
-
-        }
-
-
-
         protected override void OnDead()
         {
             base.OnDead();

@@ -68,6 +68,7 @@ namespace Logic.UI.UIUser
             UpdateSkillInfo();
 
             m_EventGroup.Register(LogicEvent.SkillUpgraded, (i, o) => { OnSkillUpgraded(); });
+            m_EventGroup.Register(LogicEvent.SkillListChanged, (i, o) => { UpdateSkillInfo(); });
 
             if (IsHave)
             {

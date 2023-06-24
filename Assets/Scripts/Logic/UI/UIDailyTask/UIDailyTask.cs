@@ -15,7 +15,7 @@ public class UIDailyTask : UIPage
     private void Awake()
     {
         m_EventGroup.Register(LogicEvent.DailyTaskListUpdate, OnListUpdate);
-        m_EventGroup.Register(LogicEvent.TimeNextDaySecondsChanged, OnTimeNextDaySecondsChanged);
+        m_EventGroup.Register(LogicEvent.TimeDaySecondsChanged, OnTimeDaySecondsChanged);
     }
 
     private void Start()
@@ -45,7 +45,7 @@ public class UIDailyTask : UIPage
     /// </summary>
     /// <param name="eventId"></param>
     /// <param name="data"></param>
-    private void OnTimeNextDaySecondsChanged(int eventId, object data)
+    private void OnTimeDaySecondsChanged(int eventId, object data)
     {
         var secondsLeft = (int)data;
         m_CDTimer.text = TimeHelper.FormatSecond(secondsLeft);

@@ -18,7 +18,7 @@ namespace Logic.UI.UISpecial
         private void Awake()
         {
             m_BtnEnter.onClick.AddListener(OnBtnEnterClick);
-            m_EventGroup.Register(LogicEvent.MiningDataChanged, OnMineChanged);
+            m_EventGroup.Register(LogicEvent.MineChanged, (i, o) => OnMineChanged());
             Refresh();
         }
 
@@ -32,14 +32,9 @@ namespace Logic.UI.UISpecial
             await UIManager.Ins.OpenUI<UIResearch.UIResearch>();
         }
 
-        private void OnMineChanged(int eventId, object data)
+        private void OnMineChanged()
         {
-            var miningType = (MiningType)data;
-            if (miningType is MiningType.CopperMine or MiningType.SilverMine ||
-                miningType == MiningType.GoldMine)
-            {
-                Refresh();
-            }
+            Refresh();
         }
 
         private void Refresh()

@@ -22,6 +22,7 @@ namespace Logic.Fight.Skill.Implement.SkillParts
 
         public void Destroy()
         {
+            if(gameObject != null)
             GameObject.Destroy(gameObject);
         }
 

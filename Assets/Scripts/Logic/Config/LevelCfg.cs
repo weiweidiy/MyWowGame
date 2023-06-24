@@ -20,83 +20,55 @@ namespace Configs
         //关卡ID
         public int ID;
 
-        //关卡攻击力基础值
-        public int AtkBase;
-
-        //攻击力成长系数
-        public int AtkGrow;
-
-        //关卡攻击体验系数
-        public int AtkFeel;
-
-        //体力基础值
-        public int HPBase;
-
-        //体力成长系数
-        public int HPGrow;
-
-        //体力体验系数
-        public int HpFeel;
-
-        //掉落基础值
-        public int DropBase;
-
-        //掉落成长系数
-        public int DropGrow;
-
-        //掉落体验系数
-        public int DropFeel;
-
-        //挂机怪物数量
-        public int HangUpCount;
-
-        //关卡普通怪物最小数量
-        public int MinCount;
-
-        //关卡普通怪物最大数量
-        public int MaxCount;
-
-        //关卡精英怪物最小数量
-        public int EliteMinCount;
-
-        //关卡精英怪物最大数量
-        public int EliteMaxCount;
-
-        //BOSS波怪物数量
-        public int BOSSCount;
-
-        //怪物HP变化系数
-        public List<float> HPAdds;
-
-        //怪物ATK变化系数
-        public List<float> AtkAdds;
+        /*
+        攻击力=
+怪物攻击力*10^关卡攻击力幂值
+无限关0 攻击力公式=怪物攻击力*10^(关卡ID*无限关卡攻击力成长)
+        */
+        //关卡攻击力幂值
+        public float AtkPower;
 
         /*
-        KuMo:
-    /// <summary>
-    /// 普通关卡刷怪类型
-    /// </summary>
-    public enum SpawnType
-    {
-        Normal = 1,
-        Elite = 2,
-        Both = 3,
-        Boss = 4,
-        BossNormal = 5,
-        All = 6,
-    }
+        体力=怪物体力*10^关卡体力幂值
+无限关0 体力力公式=怪物体力*10^(关卡ID*无限关卡体力成长)
         */
-        //波怪物类型
-        public List<int> SpawnType;
+        //关卡体力幂值
+        public float HPPower;
 
-        //怪物ATK权重
-        public List<int> AtkWight;
+        /*
+        关卡掉落
+有限关  金币掉落公式=掉落基础值*10^(关卡掉落幂值)
+无限关0 金币掉落公式=掉落基础值*10^(关卡ID*无限关卡掉落成长)
+        */
+        //关卡掉落基础值
+        public float DropBase;
 
-        //怪物HP权重
-        public List<int> HPWight;
+        //关卡掉落幂值
+        public float DropPower;
 
-        //怪物掉落权重
-        public List<int> DropWight;
+        //挂机阵型组
+        public int HangupFormationGroup;
+
+        //挂机攻击系数
+        public float HangupAtk;
+
+        //挂机体力系数
+        public float HangupHP;
+
+        //挂机掉落系数
+        public float HangupDrop;
+
+        //关卡阵型组ID
+        public List<int> FormationGroupID;
+
+        //波次攻击系数
+        public List<float> WaveAtk;
+
+        //波次体力系数
+        public List<float> WaveHP;
+
+        //波次掉落系数
+        public List<float> WaveDrop;
 
         /*
         Administrator:

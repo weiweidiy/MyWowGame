@@ -223,6 +223,9 @@ namespace Logic.Fight.GJJ
         #endregion
 
         #region 地图移动和回退响应方法
+
+        List<Tween> tweens = new List<Tween>();
+
         /// <summary>
         /// 启动
         /// </summary>
@@ -231,21 +234,24 @@ namespace Logic.Fight.GJJ
             foreach(var ctr in scrollUVController)
             {
                 ctr.SetSpeed(0);
-                DOTween.To(() => ctr.GetSpeed(), pValue => ctr.SetSpeed(pValue), ctr.targetSpeed, speedUp).SetUpdate(UpdateType.Manual);
-
+                var tween = DOTween.To(() => ctr.GetSpeed(), pValue => ctr.SetSpeed(pValue), ctr.targetSpeed, speedUp).SetUpdate(UpdateType.Manual);
+                tweens.Add(tween);
             }
            
         }
+
+      
 
         /// <summary>
         /// 回退
         /// </summary>
         private void MoveBack()
         {
+            
             foreach (var ctr in scrollUVController)
             {
-                DOTween.To(() => ctr.GetSpeed(), pValue => ctr.SetSpeed(pValue), 0, speedDown).SetUpdate(UpdateType.Manual);
-
+                var tween = DOTween.To(() => ctr.GetSpeed(), pValue => ctr.SetSpeed(pValue), 0, speedDown).SetUpdate(UpdateType.Manual);
+                tweens.Add(tween);
             }
 
         }
@@ -255,10 +261,15 @@ namespace Logic.Fight.GJJ
         /// </summary>
         void Stop()
         {
+            foreach(var tween in tweens)
+            {
+                tween?.Pause();
+            }
+            tweens.Clear();
+
             foreach (var ctr in scrollUVController)
             {
                 ctr.SetSpeed(0);
-
             }
         }
         #endregion

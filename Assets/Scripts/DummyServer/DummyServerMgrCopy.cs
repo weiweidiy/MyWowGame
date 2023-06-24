@@ -17,6 +17,7 @@ namespace DummyServer
             pDB.m_CoinCopyData = new GameCopyData();
             pDB.m_OilCopyData = new GameCopyOilData();
             pDB.m_TropyCopyData = new GameCopyData();
+            pDB.m_ReformCopyData = new GameCopyData();
         }
 
         #region 消息处理
@@ -103,11 +104,45 @@ namespace DummyServer
                 _Msg.KeyCount = m_DB.m_TropyCopyData.KeyCount;
                 _Msg.Level = m_DB.m_TropyCopyData.Level;
             }
+            else if(pMsg.LevelType == (int)LevelType.ReformCopy)
+            {
+                _Msg.RewardCount = CopyManager.Ins.GetCopyReformReward(m_DB.m_ReformCopyData.Level);
+
+                //如果是胜利的，则增加等级
+                if (pMsg.IsWin)
+                {
+                    m_DB.m_ReformCopyData.Level++;                  
+                }
+
+                _Msg.Level = m_DB.m_ReformCopyData.Level;
+                m_DB.m_ReformCopyData.KeyCount--;
+                _Msg.KeyCount = m_DB.m_ReformCopyData.KeyCount;
+
+                //科技点计算        
+                long technologyPoint = _Msg.RewardCount;
+                //更新科技点并保存数据库
+                UpdateTechnologyPoint(technologyPoint);
+
+                //获取选择的引擎列表
+                var needToCreateCylinders = pMsg.LstEnginePartData;
+                //服务器实现：创建引擎数据对象，并保存
+                var lstCylinders = CreateAndSaveCylinders(needToCreateCylinders);
+
+                //副本奖励消息
+                SendMsg(new S2C_ReformCopyReward() { TechnologyPoint = technologyPoint,LstCylinders = lstCylinders });
+
+            }
 
             DummyDB.Save(m_DB);
             SendMsg(_Msg);
         }
-        
+
+        private List<GameEnginePartData> CreateAndSaveCylinders(List<GameEnginePartData> needToCreateCylinders)
+        {
+            //这里只是简单的把客户端发送的数据返回给客户端，实际需要服务器创建新的实例，并且保存到数据库
+            return needToCreateCylinders;
+        }
+
         public void On_C2S_UpdateCopyKeyCount(C2S_UpdateCopyKeyCount pMsg)
         {
             if (m_DB.m_DiamondCopyData.KeyCount < 2)
@@ -118,6 +153,8 @@ namespace DummyServer
                 m_DB.m_OilCopyData.KeyCount = 2;
             if (m_DB.m_TropyCopyData.KeyCount < 2)
                 m_DB.m_TropyCopyData.KeyCount = 2;
+            if (m_DB.m_ReformCopyData.KeyCount < 2)
+                m_DB.m_ReformCopyData.KeyCount = 2;
 
             DummyDB.Save(m_DB);
             SendMsg(new S2C_UpdateCopyKeyCount
@@ -125,7 +162,8 @@ namespace DummyServer
                 CoinKeyCount = m_DB.m_CoinCopyData.KeyCount,
                 DiamondKeyCount = m_DB.m_DiamondCopyData.KeyCount,
                 OilKeyCount = m_DB.m_OilCopyData.KeyCount,
-                TrophyKeyCount = m_DB.m_TropyCopyData.KeyCount
+                TrophyKeyCount = m_DB.m_TropyCopyData.KeyCount,
+                ReformKeyCount = m_DB.m_ReformCopyData.KeyCount
             }) ;
         }
 

@@ -278,10 +278,6 @@ namespace Logic.UI.Cells
 
                     m_RedDot?.AddInteresting(RedDotKey.EquipArmorEquipable);
                     break;
-                case ItemType.Engine:
-                    break;
-                case ItemType.Toy:
-                    break;
             }
 
             //Debug.LogError("InitByEquip");

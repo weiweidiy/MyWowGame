@@ -196,5 +196,55 @@ namespace Logic.UI.Common
         {
             pImage.sprite = UICommonSprites.Ins.m_QuenchingQuality[qualityType];
         }
+
+        /// <summary>
+        /// 礼包底框A
+        /// </summary>
+        /// <param name="pImage"></param>
+        /// <param name="type"></param>
+        public static void LoadTimeGiftBgA(Image pImage, int type)
+        {
+            pImage.sprite = UICommonSprites.Ins.m_TimeGiftBgA[type];
+        }
+
+        /// <summary>
+        /// 限时礼包底框B
+        /// </summary>
+        /// <param name="pImage"></param>
+        /// <param name="type"></param>
+        public static void LoadTimeGiftBgB(Image pImage, int type)
+        {
+            pImage.sprite = UICommonSprites.Ins.m_TimeGiftBgB[type];
+        }
+
+        /// <summary>
+        /// 一次性礼包底框A
+        /// </summary>
+        /// <param name="pImage"></param>
+        /// <param name="type"></param>
+        public static void LoadGiftBgA(Image pImage, int type)
+        {
+            pImage.sprite = UICommonSprites.Ins.m_GiftBgA[type];
+        }
+
+        /// <summary>
+        /// 一次性礼包底框B
+        /// </summary>
+        /// <param name="pImage"></param>
+        /// <param name="type"></param>
+        public static void LoadGiftBgB(Image pImage, int type)
+        {
+            pImage.sprite = UICommonSprites.Ins.m_GiftBgB[type];
+        }
+
+        /// <summary>
+        /// 一次性礼包标签
+        /// </summary>
+        /// <param name="pImage"></param>
+        /// <param name="type"></param>
+        public static void LoadGiftTag(Image pImage, int type)
+        {
+            pImage.sprite = UICommonSprites.Ins.m_GiftTag[type];
+        }
     }
 }

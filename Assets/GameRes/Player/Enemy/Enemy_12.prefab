@@ -1798,6 +1798,37 @@ Transform:
   m_Father: {fileID: 7018966442336576318}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5977596293647807178
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7765488002096786066}
+  m_Layer: 9
+  m_Name: MuzzlePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7765488002096786066
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5977596293647807178}
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.01, y: 1.022, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7414509293069755670}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6089117366917515811
 GameObject:
   m_ObjectHideFlags: 0
@@ -2890,6 +2921,7 @@ Transform:
   m_Children:
   - {fileID: 7414509293672966907}
   - {fileID: 8052711052033008897}
+  - {fileID: 7765488002096786066}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2961,16 +2993,19 @@ MonoBehaviour:
   m_HPCtrl: {fileID: 8259485512535132485}
   MoveSpeed: 1
   TargetPosX: 0
-  AttackRange: 2
+  AttackRange: 2.5
   m_Attack:
     mantissa: 0
     exponent: 0
   m_DropCoin:
     mantissa: 0
     exponent: 0
-  m_MuzzlePos: {fileID: 0}
-  m_BulletPrefab: {fileID: 0}
-  m_MuzzleEffectPrefab: {fileID: 0}
+  positionType: 2
+  m_HitteePoints: []
+  m_MuzzlePos: {fileID: 7765488002096786066}
+  m_BulletPrefab: {fileID: 1022691708801192542, guid: dced295ffcbc3e44eb39f3da5dea4267, type: 3}
+  m_MuzzleEffectPrefab: {fileID: 2227962438465797554, guid: fc21dda7c0bb75549a1082c23949f8d4, type: 3}
+  m_HitIndexArray: 0000000001000000
 --- !u!114 &6670158427729601352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3304,9 +3339,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7414509293069755670}
     m_Modifications:
+    - target: {fileID: 255807804845656445, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.396
+      objectReference: {fileID: 0}
+    - target: {fileID: 255807804845656445, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2313874603843258738, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852805172422318554, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
+      propertyPath: m_Size.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852805172422318554, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
+      propertyPath: m_Size.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852805172422318554, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
+      propertyPath: m_DrawMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718013569475578051, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
+      propertyPath: m_Size.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718013569475578051, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
+      propertyPath: m_Size.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718013569475578051, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
+      propertyPath: m_DrawMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7228788573886431633, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
       propertyPath: m_Name
@@ -3314,7 +3381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7228788573886431633, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7228788573886431633, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
       propertyPath: m_IsActive

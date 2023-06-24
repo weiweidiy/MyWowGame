@@ -31,14 +31,16 @@ namespace Logic.Data
         public void OnReceiveLoginData(S2C_Login pData)
         {
             m_Data.m_LastGameDate = pData.LastGameDate;
+            m_Data.m_ServerTimes = pData.ST;
 
             m_Data.m_Coin = BigDouble.Parse(pData.Coin);
             m_Data.m_Diamond = pData.Diamond;
-            m_Data.m_Iron = pData.Iron;
             m_Data.m_Oil = pData.Oil;
             m_Data.m_Trophy = BigDouble.Parse(pData.Trophy);
             m_Data.m_MushRoom = pData.MushRoom;
             m_Data.m_BreakOre = pData.BreakOre;
+            m_Data.m_BreakTP = pData.BreakTP;
+            m_Data.m_TecPoint = pData.TecPoint;
 
             m_Data.m_AutoSkill = pData.AutoSkill;
             m_Data.m_IsMusicOn = pData.IsMusicOn;
@@ -60,16 +62,6 @@ namespace Logic.Data
             m_Data.m_BtnPlaceRewardClickTime = pData.PlaceRewardClickTime;
             m_Data.m_BtnPlaceRewardShowTime = pData.PlaceRewardShowTime;
             m_Data.m_PopPlaceRewardTime = pData.PlaceRewardPopTime;
-
-            try
-            {
-                //时间
-                GameTimeManager.Ins.Init(pData);
-            }
-            catch (Exception e)
-            {
-                Debug.LogError(e);
-            }
 
             try
             {
@@ -95,16 +87,6 @@ namespace Logic.Data
             {
                 //技能
                 SkillManager.Ins.Init(pData.SkillList, pData.SkillOnList);
-            }
-            catch (Exception e)
-            {
-                Debug.LogError(e);
-            }
-
-            try
-            {
-                //引擎
-                EngineManager.Ins.Init(pData.EngineList, pData.EngineOnId, pData.EngineGetId);
             }
             catch (Exception e)
             {
@@ -213,6 +195,28 @@ namespace Logic.Data
 
             try
             {
+                //英雄突破天赋树
+                RoleBreakTreeManager.Ins.Init(pData.RoleBreakTree);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+
+            try
+            {
+                //引擎
+                EngineManager.Ins.Init(pData.EngineData, pData.EngineParts);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+
+            try
+            {
+                //红点系统
+                //需要再最后进行初始化
                 BigBoomRedDotManager.Ins.Init();
             }
             catch (Exception e)
@@ -223,13 +227,16 @@ namespace Logic.Data
             //通知其他逻辑 成功获取玩家基础数据 登录成功
             EventManager.Call(LogicEvent.LoginSuccess);
 
-            Debug.LogError("上次登录UTC时间 : " + TimeHelper.GetUtcDateTime(LastGameDate));
+            Debug.LogError("上次登录时间 : " + TimeHelper.GetDateTime(LastGameDate));
         }
 
         #region 数据接口
 
         //上次游戏时间
         public long LastGameDate => m_Data.m_LastGameDate;
+
+        // 服务器当前时间
+        public ServerTimes ServerTimes => m_Data.m_ServerTimes;
 
         //游戏币
         public BigDouble Coin
@@ -276,17 +283,6 @@ namespace Logic.Data
             }
         }
 
-        //钢铁
-        public int Iron
-        {
-            get => m_Data.m_Iron;
-            set
-            {
-                m_Data.m_Iron = value;
-                EventManager.Call(LogicEvent.EngineIronChanged);
-            }
-        }
-
         //英雄升级蘑菇
         public int MushRoom
         {
@@ -306,6 +302,27 @@ namespace Logic.Data
             {
                 m_Data.m_BreakOre = value;
                 EventManager.Call(LogicEvent.RoleBreakOreChanged);
+            }
+        }
+
+        //英雄突破天赋点
+        public int BreakTP
+        {
+            get => m_Data.m_BreakTP;
+            set
+            {
+                m_Data.m_BreakTP = value;
+                EventManager.Call(LogicEvent.RoleBreakTPChanged);
+            }
+        }
+
+        public int TecPoint
+        {
+            get => m_Data.m_TecPoint;
+            set
+            {
+                m_Data.m_TecPoint = value;
+                EventManager.Call(LogicEvent.TecPointChanged);
             }
         }
 

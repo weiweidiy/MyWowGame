@@ -58,17 +58,21 @@ namespace Logic.States.Fight
                     if(m_FSMData.m_LevelType != LevelType.OilCopy)
                     {
                         // 副本超时失败界面没有弹出
+                        yield return new WaitForSeconds(2f);
+
                         EventManager.Call(LogicEvent.ShowFightSwitch, FightSwitchEvent.FallBack);
                     }
                     
                 }
 
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(0.5f);
             }
 
             //TODO 打开战斗失败的提示UI
             if (!m_FSMData.m_IsWin)
             {
+                // 副本超时失败界面没有弹出
+                yield return new WaitForSeconds(2f);
             }
 
             //清理战场 通知切换到待机状态
@@ -110,6 +114,11 @@ namespace Logic.States.Fight
                 case LevelType.TrophyCopy:
                     {
                         OnTrophyCopyFinished(pWasWin);
+                    }
+                    break;
+                case LevelType.ReformCopy:
+                    {
+                        OnReformCopyFinished(pWasWin);
                     }
                     break;
                 default:
@@ -248,6 +257,51 @@ namespace Logic.States.Fight
             else
             {
                 CopyManager.Ins.StopCopyTimer();
+                OnCopyExit(true, levelType);
+            }
+        }
+
+        private void OnReformCopyFinished(bool pWasWin)
+        {
+            const LevelType levelType = LevelType.ReformCopy;
+            if (pWasWin)
+            {
+                CopyManager.Ins.m_ReformCopyCount++;
+                if (CopyManager.Ins.m_ReformCopyCount > GameDefine.CopyReformCount) //副本结束
+                {
+                    var manager = CopyManager.Ins.GetCopyLogicManager(levelType) as ReformCopyManager;
+                    CopyManager.Ins.StopCopyTimer();
+                    //NetworkManager.Ins.SendMsg(new C2S_ExitCopy
+                    //{
+                    //    LevelType = (int)levelType,
+                    //    LstEnginePartData = manager.GetEnginePartData()
+                    //}); 
+
+                    //var manager = CopyManager.Ins.GetCopyLogicManager(LevelType.ReformCopy) as ReformCopyManager;
+                    manager.RequestExitCopy(true);
+                    OnCopyExit(true, levelType);
+                }
+                else
+                {
+
+                    var manager = CopyManager.Ins.GetCopyLogicManager(LevelType.ReformCopy) as ReformCopyManager;
+                    manager.PauseFightToSelectCard();
+                    //m_FSMData.m_SM.ToStandby();
+                }
+            }
+            else
+            {
+                var manager = CopyManager.Ins.GetCopyLogicManager(LevelType.ReformCopy) as ReformCopyManager;
+
+                //NetworkManager.Ins.SendMsg(new C2S_ExitCopy
+                //{
+                //    LevelType = (int)levelType,
+                //    LstEnginePartData = manager.GetEnginePartData()
+                //});
+
+
+                CopyManager.Ins.StopCopyTimer();
+                manager.RequestExitCopy(false);
                 OnCopyExit(true, levelType);
             }
         }

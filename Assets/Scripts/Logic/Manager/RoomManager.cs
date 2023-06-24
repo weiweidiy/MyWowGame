@@ -50,7 +50,7 @@ namespace Logic.Manager
                 var (lockType, lockState) = (ValueTuple<LockType, int>)o;
                 if (lockState != 1) return;
 
-                Debug.LogError("lockType " + lockType + " lockState" + lockState);
+                // Debug.LogError("lockType " + lockType + " lockState" + lockState);
                 if (IsRoomType(lockType))
                 {
                     //添加到room映射

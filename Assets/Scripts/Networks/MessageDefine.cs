@@ -83,6 +83,17 @@ namespace Networks
         public int Oil;
     }
 
+    //public class S2C_TechnologyPointUpdate : MessageHead
+    //{
+    //    public S2C_TechnologyPointUpdate()
+    //    {
+    //        MsgType = NetWorkMsgType.S2C_TechnologyPointUpdate;
+    //    }
+
+    //    public long TechnologyPoint;
+    //}
+
+
     public class C2S_SyncTrophy : MessageHead
     {
         public C2S_SyncTrophy()
@@ -91,6 +102,16 @@ namespace Networks
         }
 
         public string Trophy;
+    }
+    
+    public class S2C_TecPointUpdate : MessageHead
+    {
+        public S2C_TecPointUpdate()
+        {
+            MsgType = NetWorkMsgType.S2C_TecPointUpdate;
+        }
+
+        public int TecPoint;
     }
 
     /// <summary>
@@ -105,8 +126,7 @@ namespace Networks
 
         #region 公用逻辑数据
 
-        public long ServerTimer; //服务器当前时间
-        public long NextDaySeconds; //距离下一天的秒数
+        public ServerTimes ST; //服务器时间
         public long LastGameDate; //上次下线时间
 
         #endregion
@@ -115,11 +135,12 @@ namespace Networks
 
         public string Coin; //游戏币
         public long Diamond; //金币
-        public int Iron; //钢铁
         public int Oil; //原油
         public string Trophy; //战利品
         public int MushRoom; //英雄升级蘑菇
         public int BreakOre; //英雄突破矿石
+        public int BreakTP; //英雄突破天赋点
+        public int TecPoint; //引擎升级科技点
 
         #endregion
 
@@ -166,7 +187,7 @@ namespace Networks
 
         #endregion
 
-        #region 伙伴 装备 技能 引擎
+        #region 伙伴 装备 技能
 
         public List<int> PartnerOnList = new List<int>(5); //伙伴上阵列表
         public List<GamePartnerData> PartnerList = new List<GamePartnerData>(64);
@@ -179,10 +200,6 @@ namespace Networks
         public List<int> SkillOnList = new List<int>(); //技能上阵列表
         public List<GameSkillData> SkillList = new List<GameSkillData>(64);
 
-        public int EngineOnId; // 引擎上阵ID
-        public int EngineGetId; // 引擎获取ID
-        public List<GameEngineData> EngineList = new List<GameEngineData>(64);
-
         #endregion
 
         #region 任务数据
@@ -193,11 +210,12 @@ namespace Networks
 
         #endregion
 
-        #region 抽卡数据
+        #region 商城数据
 
-        public GameShopSkillData ShopSkillData;
-        public GameShopPartnerData ShopPartnerData;
-        public GameShopEquipData ShopEquipData;
+        public GameShopCardData ShopSkillData;
+        public GameShopCardData ShopPartnerData;
+        public GameShopCardData ShopEquipData;
+        public GameShopData ShopData;
 
         #endregion
 
@@ -207,6 +225,7 @@ namespace Networks
         public GameCopyData CoinCopyData; //金币副本数据
         public GameCopyOilData OilCopyData;
         public GameCopyData TrophyCopyData; //功勋副本
+        public GameCopyData ReformCopyData; //改造副本
 
         #endregion
 
@@ -228,8 +247,7 @@ namespace Networks
         public List<GameQuenchingData> QuenchingList = new List<GameQuenchingData>(64);
 
         #endregion
-
-
+        
         #region 战利品数据
 
         public List<int> SpoilSlotsUnlockData = new List<int>(8); //战利品槽位解锁数据
@@ -239,14 +257,34 @@ namespace Networks
         public List<SpoilBreakthroughData> SpoilBreakthroughData = new List<SpoilBreakthroughData>(32); //战利品突破数据
 
         #endregion
-
-
+        
         #region 英雄数据
 
         public int RoleOnId; //英雄上阵ID
         public List<GameRoleData> RoleList = new List<GameRoleData>(64); //英雄上阵列表
+        public List<GameBreakTreeData> RoleBreakTree = new List<GameBreakTreeData>(64); //英雄突破天赋树列表数据
 
         #endregion
+
+        #region 引擎
+
+        public GameEngineData EngineData;       //引擎数据
+        public List<GameEnginePartData> EngineParts = new List<GameEnginePartData>(); //引擎部件列表
+
+        #endregion
+    }
+
+    public class C2S_ST : MessageHead
+    {
+        public C2S_ST()
+        {
+            MsgType = NetWorkMsgType.C2S_ST;
+        }
+    }
+
+    public class S2C_ST : MessageHead
+    {
+        public ServerTimes ST; //服务器时间
     }
 
     /// <summary>
@@ -498,6 +536,7 @@ namespace Networks
 
         public bool IsAuto;
         public List<GamePartnerUpgradeData> PartnerList;
+        public List<GameComposeData> ComposeList;
     }
 
     //伙伴列表更新
@@ -511,8 +550,27 @@ namespace Networks
         public List<GamePartnerData> PartnerList;
     }
 
+    //单次合成
+    public class C2S_PartnerCompose : MessageHead
+    {
+        public C2S_PartnerCompose()
+        {
+            MsgType = NetWorkMsgType.C2S_PartnerCompose;
+        }
+
+        public int PartnerID;
+    }
+
+    public class S2S_PartnerCompose : MessageHead
+    {
+        public int FromID; //合成者ID
+        public int FromCount; //合成后数量
+        public int ToID; //合成后ID
+        public int ToCount; //合成后数量
+    }
+
     //---------------------------------------------------------------------------
-    //技能-装备上
+    //技能-上
     public class C2S_SkillOn : MessageHead
     {
         public C2S_SkillOn()
@@ -534,7 +592,7 @@ namespace Networks
         public int Index;
     }
 
-    //技能-装备下
+    //技能-下
     public class C2S_SkillOff : MessageHead
     {
         public C2S_SkillOff()
@@ -577,6 +635,7 @@ namespace Networks
 
         public bool IsAuto;
         public List<GameSkillUpgradeData> SkillList;
+        public List<GameComposeData> ComposeList;
     }
 
     //技能列表更新
@@ -590,102 +649,23 @@ namespace Networks
         public List<GameSkillData> SkillList;
     }
 
-    //引擎获取
-    public class S2C_EngineGet : MessageHead
+    //单次合成
+    public class C2S_SkillCompose : MessageHead
     {
-        public S2C_EngineGet()
+        public C2S_SkillCompose()
         {
-            MsgType = NetWorkMsgType.S2C_EngineGet;
+            MsgType = NetWorkMsgType.C2S_SkillCompose;
         }
 
-        public List<GameEngineData> EngineList;
-        public int LastEngineGetId;
+        public int SkillID;
     }
 
-    //引擎强化
-    public class C2S_EngineIntensify : MessageHead
+    public class S2S_SkillCompose : MessageHead
     {
-        public C2S_EngineIntensify()
-        {
-            MsgType = NetWorkMsgType.C2S_EngineIntensify;
-        }
-
-        public int EngineId;
-    }
-
-    public class S2C_EngineIntensify : MessageHead
-    {
-        public S2C_EngineIntensify()
-        {
-            MsgType = NetWorkMsgType.S2C_EngineIntensify;
-        }
-
-        public int EngineId;
-        public int EngineLevel;
-    }
-
-    //引擎分解
-    public class C2S_EngineRemove : MessageHead
-    {
-        public C2S_EngineRemove()
-        {
-            MsgType = NetWorkMsgType.C2S_EngineRemove;
-        }
-
-        public int EngineId;
-    }
-
-    //引擎材料更新
-    public class S2C_EngineIronUpdate : MessageHead
-    {
-        public S2C_EngineIronUpdate()
-        {
-            MsgType = NetWorkMsgType.S2C_EngineIronUpdate;
-        }
-
-        public int Iron;
-    }
-
-    //引擎-装备上
-    public class C2S_EngineOn : MessageHead
-    {
-        public C2S_EngineOn()
-        {
-            MsgType = NetWorkMsgType.C2S_EngineOn;
-        }
-
-        public int EngineId;
-    }
-
-    public class S2C_EngineOn : MessageHead
-    {
-        public S2C_EngineOn()
-        {
-            MsgType = NetWorkMsgType.S2C_EngineOn;
-        }
-
-        public int EngineId;
-    }
-
-    //引擎-装备下
-    public class C2S_EngineOff : MessageHead
-    {
-        public C2S_EngineOff()
-        {
-            MsgType = NetWorkMsgType.C2S_EngineOff;
-        }
-
-        public int EngineId;
-    }
-
-    public class S2C_EngineOff : MessageHead
-    {
-        public S2C_EngineOff()
-        {
-            MsgType = NetWorkMsgType.S2C_EngineOff;
-        }
-
-        public int EngineId;
+        public int FromID; //合成者ID
+        public int FromCount; //合成后数量
+        public int ToID; //合成后ID
+        public int ToCount; //合成后数量
     }
 
     //抽卡
@@ -733,6 +713,28 @@ namespace Networks
         public int DrawCardLevel;
         public int DrawCardExp;
         public int DrawCardTotalExp;
+    }
+
+    public class C2S_ShopBuy : MessageHead //商店购买
+    {
+        public C2S_ShopBuy()
+        {
+            MsgType = NetWorkMsgType.C2S_ShopBuy;
+        }
+
+        public int ID;
+        public int Type; //ShopType
+    }
+
+    public class S2C_ShopBuyOrder : MessageHead
+    {
+        public string OrderId;
+    }
+
+    public class S2C_ShopBuy : MessageHead
+    {
+        public bool FirstBuy; //首充
+        public GameShopBuyData Data; //本次数据
     }
 
     // 奖励
@@ -800,6 +802,17 @@ namespace Networks
         public int Oil;
         public List<int> LstRewardId;
         public List<int> LstRewardCount;
+    }
+
+    public class S2C_ReformCopyReward : MessageHead
+    {
+        public S2C_ReformCopyReward()
+        {
+            MsgType = NetWorkMsgType.S2C_ReformCopyReward;
+        }
+
+        public long TechnologyPoint;
+        public List<GameEnginePartData> LstCylinders;
     }
 
     public class C2S_CommonReward : MessageHead
@@ -901,8 +914,7 @@ namespace Networks
         public int MainTaskCount;
     }
 
-    public class C2S_RequestDailyTaskList : MessageHead
-    {
+    public class C2S_RequestDailyTaskList : MessageHead    {
         public C2S_RequestDailyTaskList()
         {
             MsgType = NetWorkMsgType.C2S_RequestDailyTaskList;
@@ -950,6 +962,8 @@ namespace Networks
         public int LevelType;
         public string CurTotalDamage;
         public int CurBossLevel;
+        public bool IsWin;
+        public List<GameEnginePartData> LstEnginePartData;
     }
 
     public class S2C_ExitCopy : MessageHead
@@ -986,6 +1000,7 @@ namespace Networks
         public int CoinKeyCount;
         public int OilKeyCount;
         public int TrophyKeyCount;
+        public int ReformKeyCount;
     }
 
     //开放剧情系统
@@ -1269,4 +1284,126 @@ namespace Networks
 
         public int BreakOre;
     }
+
+    //英雄突破天赋树重置
+    public class C2S_BreakTreeReset : MessageHead
+    {
+        public C2S_BreakTreeReset()
+        {
+            MsgType = NetWorkMsgType.C2S_BreakTreeReset;
+        }
+    }
+
+    //英雄突破天赋树强化
+    public class C2S_BreakTreeIntensify : MessageHead
+    {
+        public C2S_BreakTreeIntensify()
+        {
+            MsgType = NetWorkMsgType.C2S_BreakTreeIntensify;
+        }
+
+        public int Id; //突破天赋树当前项Id
+    }
+
+    public class S2C_BreakTreeIntensify : MessageHead
+    {
+        public GameBreakTreeData CurBreakData; //突破天赋树当前项数据
+
+        public S2C_BreakTreeIntensify()
+        {
+            MsgType = NetWorkMsgType.S2C_BreakTreeIntensify;
+        }
+    }
+
+    public class S2C_BreakTPUpdate : MessageHead
+    {
+        public S2C_BreakTPUpdate()
+        {
+            MsgType = NetWorkMsgType.S2C_BreakTPUpdate;
+        }
+
+        public int BreakTP;
+    }
+    
+    // 引擎系统
+    public class C2S_EngUpgrade : MessageHead // 引擎升级
+    {
+        public C2S_EngUpgrade()
+        {
+            MsgType = NetWorkMsgType.C2S_EngUpgrade;
+        }
+    }
+
+    public class S2C_EngUpgrade : MessageHead
+    {
+        public S2C_EngUpgrade()
+        {
+            MsgType = NetWorkMsgType.S2C_EngUpgrade;
+        }
+        public int Level;
+        public int Exp;
+    }
+
+    public class C2S_EngPartOn : MessageHead // 引擎装备装配
+    {
+        public C2S_EngPartOn()
+        {
+            MsgType = NetWorkMsgType.C2S_EngPartOn;
+        }
+        public int InsID;
+        public int SlotID; // 1 - 6
+    }
+
+    public class S2C_EngPartOn : MessageHead
+    {
+        public S2C_EngPartOn()
+        {
+            MsgType = NetWorkMsgType.S2C_EngPartOn;
+        }
+        public int InsID;
+        public int SlotID; // 1 - 6
+    }
+
+    public class C2S_EngPartOff : MessageHead // 引擎装备卸下
+    {
+        public C2S_EngPartOff()
+        {
+            MsgType = NetWorkMsgType.C2S_EngPartOff;
+        }
+        public int InsID;
+    }
+
+    public class S2C_EngPartOff : MessageHead
+    {
+        public S2C_EngPartOff()
+        {
+            MsgType = NetWorkMsgType.S2C_EngPartOff;
+        }
+        public int InsID;
+        public int SlotID; // 1 - 6
+    }
+
+    public class C2S_EngResolve : MessageHead // 分解
+    {
+        public C2S_EngResolve()
+        {
+            MsgType = NetWorkMsgType.C2S_EngResolve;
+        }
+        public List<int> InsID;
+    }
+
+    public class S2C_EngResolve : MessageHead
+    {
+        public S2C_EngResolve()
+        {
+            MsgType = NetWorkMsgType.S2C_EngResolve;
+        }
+        public List<int> InsID;
+    }
+
+    public class S2C_UpdateEngParts : MessageHead
+    {
+        public List<GameEnginePartData> Parts;
+    }
 }
+

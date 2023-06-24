@@ -13,6 +13,11 @@ namespace Logic.Fight.Skill.Implement
             return transform.position;
         }
 
+        public Transform GetTransform()
+        {
+            return transform;
+        }
+
         public bool IsDead()
         {
             return false;

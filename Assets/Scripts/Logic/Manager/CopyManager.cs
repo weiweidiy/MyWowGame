@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BreakInfinity;
 using Configs;
 using Framework.EventKit;
@@ -23,6 +24,7 @@ namespace Logic.Manager
         public GameCopyData m_CoinCopyData;
         public GameCopyOilData m_OilCopyData;
         public GameCopyData m_TrophyCopyData;
+        public GameCopyData m_ReformCopyData;
 
         public int CurSelectedLevel { get; private set; }
         public int CurCDTime { get; set; }
@@ -57,25 +59,56 @@ namespace Logic.Manager
 
         private EventGroup m_EventGroup = new();
 
+        /// <summary>
+        /// 具体的每一个副本的逻辑管理器
+        /// </summary>
+        Dictionary<LevelType, CopyLogicManager> subCopyManagers = new Dictionary<LevelType, CopyLogicManager>();
+
         public void Init(S2C_Login pMsg)
         {
             m_DiamondCopyData = pMsg.DiamondCopyData;
             m_CoinCopyData = pMsg.CoinCopyData;
             m_OilCopyData = pMsg.OilCopyData;
             m_TrophyCopyData = pMsg.TrophyCopyData;
+            m_ReformCopyData =  pMsg.ReformCopyData;
 
             //已经跨天 更新副本钥匙
             m_EventGroup.Register(LogicEvent.TimeDayChanged, (i, o) => SendC2SUpdateCopyKeyCount());
+
+
+            subCopyManagers.Add(LevelType.ReformCopy, new ReformCopyManager(this));
         }
 
-        public override void Dispose()
+        /// <summary>
+        /// 获取具体的副本逻辑管理器
+        /// </summary>
+        /// <param name="levelType"></param>
+        /// <returns></returns>
+        public CopyLogicManager GetCopyLogicManager(LevelType levelType)
         {
-            base.Dispose();
+            if (!subCopyManagers.ContainsKey(levelType))
+                return null;
+
+            return subCopyManagers[levelType];
+        }
+
+        public override void OnSingletonRelease()
+        {
             m_EventGroup.Release();
         }
 
         public async void OnEnterCopy(S2C_EnterCopy pMsg)
         {
+            var levelType = (LevelType)pMsg.LevelType;
+            var copyLogicManager = GetCopyLogicManager(levelType);
+            //目前只重构了这一个副本种类，所以这个类型的走新的副本逻辑
+            if(copyLogicManager != null && levelType == LevelType.ReformCopy)
+            {
+                await copyLogicManager.OnEnter(pMsg);
+                return;
+            }
+
+
             switch ((LevelType)pMsg.LevelType)
             {
                 case LevelType.DiamondCopy:
@@ -120,6 +153,16 @@ namespace Logic.Manager
 
                     break;
                 }
+                //case LevelType.ReformCopy:
+                //    {
+                //        m_ReformCopyCount = 1;
+                //        var _Para = new FightSwitchTo { m_SwitchToType = SwitchToType.ToReformCopy };
+                //        EventManager.Call(LogicEvent.Fight_Switch, _Para);
+                //        if (_Para.m_CanSwitchToNextNode == false)
+                //            return;
+
+                //        break;
+                //    }
 
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -136,6 +179,17 @@ namespace Logic.Manager
         /// </summary>
         public async void OnExitCopy(S2C_ExitCopy pMsg)
         {
+            var levelType = (LevelType)pMsg.LevelType;
+            var copyLogicManager = GetCopyLogicManager(levelType);
+            //目前只重构了这一个副本种类，所以这个类型的走新的副本逻辑
+            if (copyLogicManager != null && levelType == LevelType.ReformCopy)
+            {
+                copyLogicManager.OnExit(pMsg);
+                return;
+            }
+
+
+
             if (pMsg.LevelType == (int)LevelType.DiamondCopy)
             {
                 m_DiamondCopyData.Level = pMsg.Level;
@@ -162,8 +216,9 @@ namespace Logic.Manager
             {
                 m_TrophyCopyData.Level = pMsg.Level;
                 m_TrophyCopyData.KeyCount = pMsg.KeyCount;
-                GameDataManager.Ins.Coin += GetCopyTrophyReward(pMsg.Level - 1);
+                GameDataManager.Ins.Trophy += GetCopyTrophyReward(pMsg.Level - 1);
             }
+           
 
 
             // 副本挑战成功返回到副本选择界面，再次打开进入副本界面
@@ -182,6 +237,8 @@ namespace Logic.Manager
             m_CoinCopyData.KeyCount = pMsg.CoinKeyCount;
             m_OilCopyData.KeyCount = pMsg.OilKeyCount;
             m_TrophyCopyData.KeyCount = pMsg.TrophyKeyCount;
+            m_ReformCopyData.KeyCount = pMsg.ReformKeyCount;
+
             EventManager.Call(LogicEvent.CopyKeyChanged);
         }
 
@@ -202,12 +259,24 @@ namespace Logic.Manager
             NetworkManager.Ins.SendMsg(new C2S_UpdateCopyKeyCount());
         }
 
+        /// <summary>
+        /// 请求退出副本
+        /// </summary>
+        /// <param name="pLevelType"></param>
+        /// <param name="isWin"></param>
+        public void SendExitCopy(LevelType pLevelType, bool isWin)
+        {
+            var manager = GetCopyLogicManager(pLevelType);
+            manager.RequestExitCopy(isWin);
+        }
+
         #endregion
 
         #region 战斗副本逻辑
 
-        public int m_DiamondCopyCount = 0; //刷怪
+        public int m_DiamondCopyCount = 0; //刷怪波次
         public int m_TrophyCopyCount = 0;
+        public int m_ReformCopyCount = 0;
 
         private Timer m_Timer;
 
@@ -386,6 +455,50 @@ namespace Logic.Manager
             var _data = CopyTrophyCfg.GetData(m_TrophyCopyData.Level);
             if (_data == null)
                 _data = CopyTrophyCfg.GetData(0);
+            return _data.ResGroupId;
+        }
+
+
+        public long GetCopyReformReward(int pLevel)
+        {
+            var _data = CopyReformCfg.GetData(pLevel);
+            if (_data == null)
+                _data = CopyReformCfg.GetData(0);
+            return (long)_data.RewardBase + (_data.RewardGrow + _data.RewardExp) * (long)pLevel;
+        }
+
+
+        public int GetCopyReformBossCount()
+        {
+            var _data = CopyReformCfg.GetData(m_ReformCopyData.Level);
+            if (_data == null)
+                _data = CopyReformCfg.GetData(0);
+            return RandomHelper.Range(_data.MonsterCountMin, _data.MonsterCountMax);
+        }
+
+        public BigDouble GetCopyRefromBossATK()
+        {
+            var _data = CopyReformCfg.GetData(m_ReformCopyData.Level);
+            if (_data == null)
+                _data = CopyReformCfg.GetData(0);
+            return (BigDouble)_data.BOSSAtkBase +
+                   (_data.BOSSAtkGrow + _data.BOSSAtkExp) * (BigDouble)m_CoinCopyData.Level;
+        }
+
+        public BigDouble GetCopyRefromBossHp()
+        {
+            var _data = CopyReformCfg.GetData(m_ReformCopyData.Level);
+            if (_data == null)
+                _data = CopyReformCfg.GetData(0);
+            return (BigDouble)_data.BOSSHPBase +
+                   (_data.BOSSHPGrow + _data.BOSSHPExp) * (BigDouble)m_CoinCopyData.Level;
+        }
+
+        public int GetCopyReformBossID()
+        {
+            var _data = CopyReformCfg.GetData(m_ReformCopyData.Level);
+            if (_data == null)
+                _data = CopyReformCfg.GetData(0);
             return _data.ResGroupId;
         }
 

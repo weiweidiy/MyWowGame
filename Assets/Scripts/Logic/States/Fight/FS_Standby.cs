@@ -32,7 +32,7 @@ namespace Logic.States.Fight
             m_EventGroup.Register(LogicEvent.Fight_CopyTimeUp, OnCopyTimeUp);
             
             //通知播放战斗前准备动画
-            EventManager.Call(LogicEvent.Fight_Standby);
+            EventManager.Call(LogicEvent.Fight_Standby, m_StateData.m_LevelType);
             EventManager.Call(LogicEvent.Fight_LevelTypeChanged, m_StateData.m_LevelType);
             
             //战斗状态改变 通知UI (正常/挂机)
@@ -69,6 +69,10 @@ namespace Logic.States.Fight
                 case LevelType.TrophyCopy:
                     m_StateData.m_SM.ToFighting();
                     EventManager.Call(LogicEvent.Fight_CopyTrophyCountChanged);
+                    break;
+                case LevelType.ReformCopy:
+                    m_StateData.m_SM.ToFighting();
+                    //EventManager.Call(LogicEvent.Fight_CopyTrophyCountChanged);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

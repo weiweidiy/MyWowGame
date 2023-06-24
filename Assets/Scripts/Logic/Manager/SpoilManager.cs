@@ -210,7 +210,7 @@ namespace Logic.Manager
         /// 获取当前已突破的次数
         /// </summary>
         /// <returns></returns>
-        public int GetSpoilBreakthroughCount(int spoilId)
+        public int GetSpoilBreakthroughLevel(int spoilId)
         {
             var data = GetSpoilBreakthroughData(spoilId);
             if (data == null)
@@ -300,11 +300,55 @@ namespace Logic.Manager
         /// <returns></returns>
         public string GetSkillDesc(int spoilId)
         {
+
+            return GetSkillDesc(spoilId, GetSpoilBreakthroughLevel(spoilId));
+        }
+
+
+        public string GetSkillDesc(int spoilId, int breakLevel)
+        {
             var spoilCfg = Configs.SpoilCfg.GetData(spoilId);
             var attrCfg = Configs.AttributeCfg.GetData(spoilCfg.AttributeID);
             string content = attrCfg.Des;
-            float arg = attrCfg.Value;
+            float arg = GetSkillSkillEffect(spoilId);
+            var breakEffect = GetSkillBreakEffect(spoilId, breakLevel);
+            arg += breakEffect * breakLevel;
+
             return string.Format(content, arg);
+        }
+
+        /// <summary>
+        /// 获取技能效果
+        /// </summary>
+        /// <param name="spoilId"></param>
+        /// <returns></returns>
+        public float GetSkillSkillEffect(int spoilId)
+        {
+            var spoilCfg = Configs.SpoilCfg.GetData(spoilId);
+            var attrCfg = Configs.AttributeCfg.GetData(spoilCfg.AttributeID);
+            string content = attrCfg.Des;
+            return attrCfg.Value;
+        }
+
+        /// <summary>
+        /// 获取技能突破效果
+        /// </summary>
+        /// <param name="spoilId"></param>
+        /// <param name="breakLevel"></param>
+        /// <returns></returns>
+        public float GetSkillBreakEffect(int spoilId, int breakLevel)
+        {
+            if (breakLevel == 0)
+                return 0;
+
+            List<Configs.SpoilBreakUpData> result = new List<Configs.SpoilBreakUpData>();
+            Configs.SpoilBreakUpCfg.GetDataList((p) => p.SpoilID.Equals(spoilId)
+                && p.BreakLvl.Equals(breakLevel), result);
+
+            if (result.Count == 0)
+                return 0;
+
+            return result[0].AttributeGrow;
         }
 
         /// <summary>
@@ -337,11 +381,13 @@ namespace Logic.Manager
         /// <returns></returns>
         public int GetBreakCost(int spoilId)
         {
-            var spoilData = GetSpoil(spoilId);
-            if(spoilData == null)
+            var breakCount = GetSpoilBreakthroughLevel(spoilId);
+            var costLevel = breakCount + 1;
+            List<Configs.SpoilBreakUpData> result = new List<Configs.SpoilBreakUpData>();
+            Configs.SpoilBreakUpCfg.GetDataList((p) => p.SpoilID.Equals(spoilId), result);
+            if (costLevel >= result[0].BreakMaxlvl)
                 return 0;
-
-            return Formula.GetSpoilBreakthroughCost(spoilId, spoilData.Level);
+            return Formula.GetSpoilBreakthroughCost(spoilId, costLevel);
         }
 
         /// <summary>
@@ -355,7 +401,7 @@ namespace Logic.Manager
 
 
         /// <summary>
-        /// 获取攻击加成
+        /// 获取攻击加成(要加上突破的加成）
         /// </summary>
         /// <param name="spoilId"></param>
         /// <param name="spoilLevel"></param>
@@ -363,7 +409,30 @@ namespace Logic.Manager
         public float GetAtkEffect(int spoilId, int spoilLevel)
         {
             var cfg = Configs.SpoilCfg.GetData(spoilId);
-            return cfg.HasAtkAdditionBase + spoilLevel * cfg.HasATKAdditionGrow;
+            var breakLevel = GetSpoilBreakthroughLevel(spoilId);
+            return cfg.HasAtkAdditionBase + spoilLevel * cfg.HasATKAdditionGrow  + GetBreakAtkEffect(spoilId, breakLevel);
+        }
+
+        /// <summary>
+        /// 获取突破攻击属性
+        /// </summary>
+        /// <param name="spoilId"></param>
+        /// <returns></returns>
+        public float GetBreakAtkEffect(int spoilId, int breakLevel)
+        {
+            List<Configs.SpoilBreakUpData> result = new List<Configs.SpoilBreakUpData>();
+            //var count = GetSpoilBreakthroughCount(spoilId);
+            Configs.SpoilBreakUpCfg.GetDataList((p) => p.SpoilID.Equals(spoilId)
+                && p.BreakLvl.Equals(breakLevel), result);
+
+            if(result.Count == 0)
+            {
+                //Debug.LogError("没有找到spoilbreakupdata " + spoilId);
+                return 0;
+            }
+            var breakEffect = result[0].HasAtkAdditionBase + breakLevel * result[0].HasATKAdditionGrow;
+
+            return breakEffect;
         }
 
         /// <summary>
@@ -386,7 +455,31 @@ namespace Logic.Manager
         public float GetHpEffect(int spoilId, int spoilLevel)
         {
             var cfg = Configs.SpoilCfg.GetData(spoilId);
-            return cfg.HasHPAdditionBase + spoilLevel * cfg.HasHPAdditionGrow;
+            var breakLevel = GetSpoilBreakthroughLevel(spoilId);
+            return cfg.HasHPAdditionBase + spoilLevel * cfg.HasHPAdditionGrow + GetBreakHpEffect(spoilId, breakLevel);
+        }
+
+        /// <summary>
+        /// 获取突破HP加成
+        /// </summary>
+        /// <param name="spoilId"></param>
+        /// <returns></returns>
+        public float GetBreakHpEffect(int spoilId, int breakLevel)
+        {
+            List<Configs.SpoilBreakUpData> result = new List<Configs.SpoilBreakUpData>();
+            //var count = GetSpoilBreakthroughCount(spoilId);
+
+            Configs.SpoilBreakUpCfg.GetDataList((p) => p.SpoilID.Equals(spoilId)
+                && p.BreakLvl.Equals(breakLevel), result);
+
+            if (result.Count == 0)
+            {
+                //Debug.LogError("没有找到spoilbreakupdata " + spoilId);
+                return 0;
+            }
+            var breakEffect = result[0].HasHPAdditionBase + breakLevel * result[0].HasHPAdditionGrow;
+
+            return breakEffect;
         }
 
         /// <summary>
@@ -455,7 +548,8 @@ namespace Logic.Manager
             var spoil = GetSpoil(spoilId);
             if (spoil == null)
                 return false;
-            return spoil.Level >= GetMaxUpgradeLevel();
+
+            return spoil.Level >= GetMaxLevel(spoilId);
         }
 
         /// <summary>
@@ -464,13 +558,10 @@ namespace Logic.Manager
         /// <returns></returns>
         public bool CanBreakthrough(SpoilData spoilData)
         {
-            var spoilId = spoilData.SpoilId;
+            var spoilId = spoilData.SpoilId;  
             var level = spoilData.Level;
-            int count = level / 3;
-            int levelCondition = level % 3;
-
-            //等级符合要求,而且没有突破
-            return levelCondition == 0 && count > GetSpoilBreakthroughCount(spoilId);
+            var nextBreakLevel = GetNextBreakthroughLevel(spoilId);
+            return level == nextBreakLevel ;
         }
 
         /// <summary>
@@ -481,11 +572,48 @@ namespace Logic.Manager
         public bool IsMaxBreakthrough(int spoilId)
         {
             int maxBreakcount = 9;
-            var count = GetSpoilBreakthroughCount(spoilId);
+            var count = GetSpoilBreakthroughLevel(spoilId);
             return count >= maxBreakcount;
         }
 
+        /// <summary>
+        ///获取下一个突破等级
+        /// </summary>
+        /// <param name="spoilId"></param>
+        /// <returns></returns>
+        public int GetNextBreakthroughLevel(int spoilId)
+        {
+            List<Configs.SpoilBreakUpData> result = new List<Configs.SpoilBreakUpData>();
+            var breakLevel = GetSpoilBreakthroughLevel(spoilId);
+            Configs.SpoilBreakUpCfg.GetDataList((p) => p.SpoilID.Equals(spoilId)
+                && p.BreakLvl.Equals(breakLevel + 1), result);
+
+            if (result.Count == 0)
+                return 0;
+
+            return result[0].Lvl;
+        }
+
+
+
         #endregion
+
+        public int GetMaxLevel(int spoilId)
+        {
+            return ConfigManager.Ins.m_SpoilLvlUpCfg.AllData.Keys.Count;
+
+            //List<Configs.SpoilBreakUpData> result = new List<Configs.SpoilBreakUpData>();
+            //Configs.SpoilBreakUpCfg.GetDataList((p) => p.SpoilID.Equals(spoilId) 
+            // && p.BreakLvl.Equals(p.BreakMaxlvl), result);
+
+            //if (result.Count == 0)
+            //{
+            //    Debug.LogError("没有找到spoilId" + spoilId);
+            //    return 0;
+            //}
+
+            //return result[0].Lvl;
+        }
 
 
         #region 业务接口
@@ -688,7 +816,7 @@ namespace Logic.Manager
         {
             UpdateLocalSpoilBreakthroughData(pMsg.SpoilBreakthrough);
 
-            //EventManager.Call(LogicEvent.OnSpoilUpgrade, pMsg.SpoilBreakthrough);
+            EventManager.Call(LogicEvent.OnSpoilBreakthrough, pMsg.SpoilBreakthrough);
         }
 
 

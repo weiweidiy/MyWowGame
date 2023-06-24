@@ -58,7 +58,10 @@ namespace Logic.Fight.GJJ
                 m_CurrentTarget = FightEnemyManager.Ins.GetOneTarget(m_AttackThreshold);
             if (IsInvalidTarget())
                 return false;
-            m_TargetPos = m_CurrentTarget.GetPos();
+
+            Vector3 pos = m_CurrentTarget.GetRandomHitteePosition() != null ? m_CurrentTarget.GetRandomHitteePosition().position : m_CurrentTarget.GetPos();
+
+            m_TargetPos = pos;//  m_CurrentTarget.GetPos();
             return true;
         }
         

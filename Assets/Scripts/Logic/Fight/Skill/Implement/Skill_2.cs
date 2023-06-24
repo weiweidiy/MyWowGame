@@ -45,15 +45,27 @@ namespace Logic.Fight.Skill.Implement
                     FightManager.Ins.m_CurGJJ.PlayMainGunAni();
                     m_NeedSearch = false;
                 }
+                else
+                {
+                    OnFindTarget(m_SM.m_ContextData.m_CurrentTarget);
+                }
             }
         }
 
         private EnemyRange m_Range;
         private bool m_NeedSearch = true;
 
+        /// <summary>
+        /// 技能搜寻目标
+        /// </summary>
+        public override Enemy GetSkillTarget()
+        {
+            return FightEnemyManager.Ins.GetOneTarget(posType);
+        }
+
         public override void OnFindTarget(Enemy pTarget)
         {
-
+            // Debug.LogError("OnFindTarget " + pTarget);
             m_NeedSearch = false;
             
             m_SkillObj.transform.SetParent(FightManager.Ins.m_GroundNode);
@@ -104,13 +116,13 @@ namespace Logic.Fight.Skill.Implement
             switch (m_Range)
             {
                 case EnemyRange.Near:
-                    FightEnemyManager.Ins.GetTargetByDistance(m_HitList, EnemyRange.Near);
+                    FightEnemyManager.Ins.GetTargetByDistance(m_HitList, EnemyRange.Near, Enemy.PositionType.Ground);
                     break;
                 case EnemyRange.Middle:
-                    FightEnemyManager.Ins.GetTargetByDistance(m_HitList, EnemyRange.Middle);
+                    FightEnemyManager.Ins.GetTargetByDistance(m_HitList, EnemyRange.Middle, Enemy.PositionType.Ground);
                     break;
                 case EnemyRange.Far:
-                    FightEnemyManager.Ins.GetTargetByDistance(m_HitList, EnemyRange.Far);
+                    FightEnemyManager.Ins.GetTargetByDistance(m_HitList, EnemyRange.Far, Enemy.PositionType.Ground);
                     break;
             }
 

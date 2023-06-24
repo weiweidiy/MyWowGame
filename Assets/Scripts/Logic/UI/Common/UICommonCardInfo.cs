@@ -321,10 +321,6 @@ namespace Logic.UI.Common
                 case ItemType.Armor:
                     curEquipOnID = EquipManager.Ins.CurArmorOnID;
                     break;
-                case ItemType.Engine:
-                    break;
-                case ItemType.Toy:
-                    break;
             }
 
             // 未装备武器或防具处理

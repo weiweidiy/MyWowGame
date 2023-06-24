@@ -40,6 +40,7 @@ namespace Logic.UI.UIFight
         public GameObject m_DiamondCopyNode;
         public GameObject m_CoinCopyNode;
         public GameObject m_OilCopyNode;
+        public GameObject m_SkillNode;
 
         #endregion
         
@@ -120,6 +121,12 @@ namespace Logic.UI.UIFight
                         m_DiamondCopyNode.Show();
                         m_DiamondLevelName.text = $"<color=#F3B736>掠食冒险 </color>{CopyManager.Ins.CurSelectedLevel}";
                         m_DiamondCopyPro.text = $"{CopyManager.Ins.m_TrophyCopyCount}/{GameDefine.CopyTrophyCount}";
+                        break;
+                    case LevelType.ReformCopy:
+                        SetFightSkillConfigState(false);
+                        m_DiamondCopyNode.Show();
+                        m_DiamondLevelName.text = $"<color=#F3B736>改造副本 </color>{CopyManager.Ins.CurSelectedLevel}";
+                        m_DiamondCopyPro.text = $"{CopyManager.Ins.m_ReformCopyCount}/{GameDefine.CopyReformCount}";
                         break;
                 }
             });
@@ -222,7 +229,7 @@ namespace Logic.UI.UIFight
         private void UpdateFight_LevelChanged()
         {
             m_LevelName.text = UICommonHelper.GetLevelNameByID(GameDataManager.Ins.CurLevelID);
-            LockStoryManager.Ins.DoLockStoryUpdate(GameDataManager.Ins.CurLevelID); // 更新关卡开放和剧情
+            LockStoryManager.Ins.DoUnLock(GameDataManager.Ins.CurLevelID); // 更新关卡开放
         }
 
         private void UpdateFight_LevelNodeChanged()
@@ -264,6 +271,7 @@ namespace Logic.UI.UIFight
             switch (_Type)
             {
                 case FightSwitchEvent.Close:
+                    await UniTask.DelayFrame(20);
                     m_SwitchNode.Hide();
                     m_SwitchSuccess.Hide();
                     m_SwitchFailed.Hide();
@@ -318,6 +326,28 @@ namespace Logic.UI.UIFight
         public void OnClickAuto(bool b)
         {
             GameDataManager.Ins.AutoSkill = b;
+        }
+
+        public void HideSkillNode()
+        {
+            m_SkillNode.Hide();
+        }
+
+        public void ShowSkillNode(int sortingOrder = 0)
+        {
+            m_SkillNode.Show();
+            var canvas = m_SkillNode.GetComponent<Canvas>();
+            canvas.sortingOrder = sortingOrder;
+        }
+
+        public void HideNormalLevelNode()
+        {
+            m_NormalLevelNode.Hide();
+        }
+
+        public void ShowNormalLevelNode()
+        {
+            m_NormalLevelNode.Show();
         }
     }
 }

@@ -34,6 +34,7 @@ namespace Logic.Manager
             }
 
             SkillOnList = pDataSkillOnList;
+            m_CanDoOnCount = 0;
 
             UpdateAllHaveEffect();
             UpdateCanDoOnCount();
@@ -55,6 +56,40 @@ namespace Logic.Manager
 
         public async void OnSkillIntensify(S2C_SkillIntensify pMsg)
         {
+            if (pMsg.ComposeList != null)
+            {
+                //技能批量合成
+                if (pMsg.IsAuto)
+                {
+                    foreach (var composeData in pMsg.ComposeList)
+                    {
+                        var fromData = GetSkillData(composeData.FromID);
+                        if (fromData != null)
+                        {
+                            fromData.Count = composeData.FromCount;
+                        }
+
+                        var toData = GetSkillData(composeData.ToID);
+                        if (toData != null)
+                        {
+                            toData.Count = composeData.ToCount;
+                        }
+                        else
+                        {
+                            //如果合成列表中出现新的技能数据需要new后添加到Map中
+                            var equipData = new GameSkillData()
+                            {
+                                SkillID = composeData.ToID,
+                                Level = 1,
+                                Count = composeData.ToCount
+                            };
+                            SkillMap.Add(composeData.ToID, equipData);
+                        }
+                    }
+                }
+            }
+
+            //技能批量升级
             var _TaskNeedCount = 0;
             foreach (var skillUpgradeData in pMsg.SkillList)
             {
@@ -71,9 +106,25 @@ namespace Logic.Manager
             TaskManager.Ins.DoTaskUpdate(TaskType.TT_9003, _TaskNeedCount);
 
             if (pMsg.IsAuto)
-                await UIManager.Ins.OpenUI<UIUpgradedInfo>(pMsg.SkillList);
+            {
+                // 弹出合成或升级面板
+                if (pMsg.ComposeList != null && pMsg.ComposeList.Count != 0)
+                {
+                    // 1.有合成数据，没有升级数据
+                    // 2.有合成数据，有升级数据
+                    var data = (pMsg.ComposeList, pMsg.SkillList);
+                    await UIManager.Ins.OpenUI<UIComposeInfo>(data);
+                }
+                else
+                {
+                    //没有合成数据，有升级数据
+                    await UIManager.Ins.OpenUI<UIUpgradedInfo>(pMsg.SkillList);
+                }
+            }
             else
+            {
                 EventManager.Call(LogicEvent.SkillUpgraded);
+            }
 
             EventManager.Call(LogicEvent.SkillListChanged);
 
@@ -96,6 +147,27 @@ namespace Logic.Manager
 
             EventManager.Call(LogicEvent.SkillListChanged);
             UpdateAllHaveEffect();
+        }
+
+        public async void OnSkillCompose(S2S_SkillCompose pMsg)
+        {
+            foreach (var gameSkillData in SkillMap.Where(gameSkillData => gameSkillData.Key == pMsg.FromID))
+            {
+                gameSkillData.Value.Count = pMsg.FromCount;
+            }
+
+            EventManager.Call(LogicEvent.SkillListChanged);
+            //弹出合成面板
+            var composeData = new GameComposeData()
+            {
+                FromID = pMsg.FromID,
+                FromCount = pMsg.FromCount,
+                ToID = pMsg.ToID,
+                ToAddCount = pMsg.ToCount,
+            };
+            var composeDataList = new List<GameComposeData> { composeData };
+
+            await UIManager.Ins.OpenUI<UIComposeInfo>(composeDataList);
         }
 
         #endregion
@@ -206,6 +278,11 @@ namespace Logic.Manager
             if (!IsHave(pSkillID)) return false;
 
             var _Data = GetSkillData(pSkillID);
+            if (_Data.Level >= GameDefine.CommonItemMaxLevel)
+            {
+                return false;
+            }
+
             var _NeedCount = _Data.Level > 10
                 ? SkillLvlUpCfg.GetData(10).Cost
                 : SkillLvlUpCfg.GetData(_Data.Level).Cost;
@@ -237,6 +314,22 @@ namespace Logic.Manager
             }
 
             return level >= GameDefine.CommonItemMaxLevel;
+        }
+
+        //是否有可合成的伙伴
+        public bool HaveCanComposeSkill()
+        {
+            foreach (var skillData in SkillMap)
+            {
+                if (!IsMaxLevel(skillData.Key)) continue;
+                var needCount = ComposeNeedCount(skillData.Key);
+                if (skillData.Value.Count >= needCount)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         //获取某个技能的拥有效果
@@ -307,10 +400,10 @@ namespace Logic.Manager
 
         public void DoCompose(int pSkillID)
         {
-            // NetworkManager.Ins.SendMsg(new C2S_SkillCompose()
-            // {
-            //     SkillID = pSkillID,
-            // });
+            NetworkManager.Ins.SendMsg(new C2S_SkillCompose()
+            {
+                SkillID = pSkillID,
+            });
         }
 
         #endregion

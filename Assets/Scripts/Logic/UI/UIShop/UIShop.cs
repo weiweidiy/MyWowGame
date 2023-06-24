@@ -9,16 +9,16 @@ namespace Logic.UI.UIShop
     {
         None = -1,
         DrawCard = 0,
-        GameGift,
         TimeLimit,
+        GameGift,
         Special,
     }
 
     public class UIShop : UIPage
     {
         public GameObject DrawCardNode;
-        public GameObject GameGiftNode;
         public GameObject TimeLimitNode;
+        public GameObject GameGiftNode;
         public GameObject SpecialNode;
 
         public Toggle[] Toggles;
@@ -45,18 +45,6 @@ namespace Logic.UI.UIShop
             }
         }
 
-        public void OnToggleGameGift(bool pOn)
-        {
-            if (pOn)
-            {
-                GameGiftNode.Show();
-            }
-            else
-            {
-                GameGiftNode.Hide();
-            }
-        }
-
         public void OnToggleTimeLimit(bool pOn)
         {
             if (pOn)
@@ -66,6 +54,18 @@ namespace Logic.UI.UIShop
             else
             {
                 TimeLimitNode.Hide();
+            }
+        }
+
+        public void OnToggleGameGift(bool pOn)
+        {
+            if (pOn)
+            {
+                GameGiftNode.Show();
+            }
+            else
+            {
+                GameGiftNode.Hide();
             }
         }
 

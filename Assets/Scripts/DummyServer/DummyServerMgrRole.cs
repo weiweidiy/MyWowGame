@@ -1,5 +1,6 @@
 using Configs;
 using Logic.Common;
+using Logic.Config;
 using Networks;
 
 namespace DummyServer
@@ -9,7 +10,13 @@ namespace DummyServer
         public void InitRole(DummyDB pDB)
         {
             //初始英雄 TODO:7101最好是配置表配置
-            pDB.m_RoleList.Add(new GameRoleData { RoleID = 7101 });
+            // pDB.m_RoleList.Add(new GameRoleData { RoleID = 7101 });
+
+            var hexoList = ConfigManager.Ins.m_HerosCfg.AllData;
+            foreach (var hexo in hexoList)
+            {
+                pDB.m_RoleList.Add(new GameRoleData { RoleID = hexo.Value.ID });
+            }
         }
 
         #region 通用
@@ -53,7 +60,7 @@ namespace DummyServer
             //消耗英雄升级所需的蘑菇
             UpdateMushRoom(-1);
             //英雄等级提升
-            roleData.RoleExp += GameDefine.RoleMushRoomExp;
+            roleData.RoleExp += (int)GameDefine.RoleMushRoomExp;
             var roleTotalExp = GetRoleIntensifyTotalExp(roleData.RoleLevel);
 
             while (roleData.RoleExp >= roleTotalExp)

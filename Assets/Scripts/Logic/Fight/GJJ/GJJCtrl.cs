@@ -23,6 +23,7 @@ namespace Logic.Fight.GJJ
         //初始X坐标位置
         private float StartPosX;
         [LabelText("移动目标点")] public float MoveToPosX;
+        [LabelText("死亡移动目标点")] public float DeadMoveToPosX;
         [LabelText("胜利移动目标点")] public float WinMoveToPosX = 6f;
         [LabelText("向前移动时间")] public float MoveToTime = 1;
         [LabelText("回退移动时间")] public float MoveBackTime = 0.8f;
@@ -43,6 +44,11 @@ namespace Logic.Fight.GJJ
         //主炮
         public Animator m_MainGunAnimator;
 
+        /// <summary>
+        /// 受击点
+        /// </summary>
+        public Transform[] m_HitteePoints;
+
         private void Awake()
         {
             StartPosX = transform.localPosition.x;
@@ -51,9 +57,9 @@ namespace Logic.Fight.GJJ
             m_Health.Init(Formula.GetGJJHP());
             m_Health.OnDeath.AddListener(OnGJJDead);
             m_Health.OnHealthChange.AddListener(OnHpChange);
-            m_Health.OnHurt.AddListener(pDamageData =>
+            m_Health.OnHurt.AddListener((pDamageData,target) =>
             {
-                FightDamageManager.Ins.ShowDamage(m_HPCtrl != null ? m_HPCtrl.transform : transform, pDamageData);
+                FightDamageManager.Ins.ShowDamage(target != null ? target : m_HPCtrl.transform, pDamageData);
             });
 
             m_EventGroup.Register(LogicEvent.Fight_Standby, OnStandBy)
@@ -101,6 +107,9 @@ namespace Logic.Fight.GJJ
         public void OnGJJDead()
         {
             //GJJ 死亡
+            m_GJJAnimator.SetTrigger(AniTrigger.ToDead);
+
+            //transform.DOLocalMoveX(DeadMoveToPosX, MoveToTime).SetEase(Ease.InSine).SetUpdate(UpdateType.Manual);
         }
 
         //复活GJJ 回复满血量
@@ -143,6 +152,15 @@ namespace Logic.Fight.GJJ
 
         private void OnStandBy(int arg1, object arg2)
         {
+            if((LevelType) arg2 == LevelType.ReformCopy)
+            {
+                EventManager.Call(LogicEvent.Fight_Start);
+                return;
+            }
+
+            //归位
+            transform.localPosition = new Vector3(StartPosX, transform.localPosition.y, transform.localPosition.z);
+
             //移动
             _Sequence = DOTween.Sequence();
             m_GJJAnimator.SetTrigger(AniTrigger.ToMove);
@@ -171,6 +189,7 @@ namespace Logic.Fight.GJJ
             _Sequence?.Kill();
             _Tweener?.Kill();
             transform.LocalPositionX(StartPosX);
+            EventManager.Call(LogicEvent.Fight_MapStop);
         }
 
         /// <summary>
@@ -181,7 +200,8 @@ namespace Logic.Fight.GJJ
         public void OnFightWinMove(LevelType levelType)
         {
             if((levelType == LevelType.TrophyCopy && CopyManager.Ins.m_TrophyCopyCount < GameDefine.CopyTrophyCount)
-                || (levelType == LevelType.DiamondCopy && CopyManager.Ins.m_DiamondCopyCount < GameDefine.CopyDiamondCount))
+                || (levelType == LevelType.DiamondCopy && CopyManager.Ins.m_DiamondCopyCount < GameDefine.CopyDiamondCount)
+                || levelType == LevelType.ReformCopy)
             {
                 return;
             }
@@ -248,6 +268,16 @@ namespace Logic.Fight.GJJ
                 if (partner.gameObject.activeSelf)
                     partner.StartStandby();
             }
+        }
+
+        /// <summary>
+        /// 获取指定的受击点坐标
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public Transform GetHitteePosition(int index)
+        {
+            return m_HitteePoints[index];
         }
 
         #endregion

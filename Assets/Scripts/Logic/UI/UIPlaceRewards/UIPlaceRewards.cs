@@ -70,7 +70,7 @@ namespace Logic.UI.UIPlaceRewards
         {
             var _CfgData = LevelCfg.GetLevelData(GameDataManager.Ins.CurLevelID);
             var coin = _CfgData.DropBase +
-                       GameDataManager.Ins.CurLevelID * (_CfgData.DropBase + _CfgData.DropGrow);
+                       GameDataManager.Ins.CurLevelID * (_CfgData.DropBase);
             var multiplier = GameDefine.PlaceRewardMultiplier;
 
             return BigDouble.Floor(coin * multiplier);

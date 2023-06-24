@@ -11,6 +11,7 @@ using Logic.Common;
 using Logic.Manager;
 using Logic.UI.Cells;
 using Logic.UI.Common;
+using Networks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -60,8 +61,8 @@ namespace Logic.UI.UIMining
             m_EventGroup.Register(LogicEvent.HideNineGrid, OnHideNineGrid);
             m_EventGroup.Register(LogicEvent.ShowMiningReward, OnShowMiningReward);
             m_EventGroup.Register(LogicEvent.MiningDataChanged, OnMiningDataChanged);
-            m_EventGroup.Register(LogicEvent.EngineGet, OnEngineGet);
             m_EventGroup.Register(LogicEvent.ResearchCompleteEffectUpdate, (i, o) => OnResearchCompleteEffectUpdate());
+            m_EventGroup.Register(LogicEvent.EnginePartsUpdate, OnEnginePartsUpdate);
         }
 
         private void Start()
@@ -75,14 +76,16 @@ namespace Logic.UI.UIMining
             m_ResearchHammerRecoverSpeed = ResearchManager.Ins.ResearchHammerRecoverSpeed;
         }
 
-        private void OnEngineGet(int eventId,object data)
+        private void OnEnginePartsUpdate(int eventId, object data)
         {
+            if (!this.gameObject.activeSelf) return;
+           
             // 引擎获取弹出面板
-            var gameEngineData = EngineManager.Ins.EngineMap[(int)data];
-            var engineData = EngineManager.Ins.GetEngineData(gameEngineData.TypeId);
-            var resId = engineData.ResID;
-            var resPath = EngineManager.Ins.GetResData(resId).Res;
-            var engineName = engineData.Name;
+            var pList = (List<GameEnginePartData>)data;
+            var sparkData = SparkCfg.GetData(pList[0].CfgID);
+            //var resPath = ResCfg.GetData(sparkData.ResID).Res;
+            var resPath = "Engine_101";
+            var engineName = sparkData.Name;
             var arg = new UICommonObtain.Args
             {
                 title = "恭喜获得",
@@ -152,10 +155,8 @@ namespace Logic.UI.UIMining
 
         private void OnGearChanged()
         {
-            m_EngineText.text =
-                $"{MiningManager.Ins.m_MiningData.GearCount}/{EngineManager.Ins.curEngineGetIdGearCost}";
-            m_CanProgress.fillAmount = (float)MiningManager.Ins.m_MiningData.GearCount /
-                                       EngineManager.Ins.curEngineGetIdGearCost;
+            m_EngineText.text = $"{MiningManager.Ins.m_MiningData.GearCount}/{GameDefine.SparkComposeCost}";
+            m_CanProgress.fillAmount = (float)MiningManager.Ins.m_MiningData.GearCount / GameDefine.SparkComposeCost;
         }
 
         public override void OnShow()
@@ -174,14 +175,13 @@ namespace Logic.UI.UIMining
         private void Refresh()
         {
             var miningData = MiningManager.Ins.m_MiningData;
-            var gearCost = EngineManager.Ins.curEngineGetIdGearCost;
             m_Floor.text = miningData.FloorCount.ToString();
             m_HammerText.text = $"{miningData.HammerCount}/{m_MaxHammerCount}";
             m_MineText.text = miningData.MineCount.ToString();
             m_BombText.text = miningData.BombCount.ToString();
             m_ScopeText.text = miningData.ScopeCount.ToString();
-            m_EngineText.text = $"{miningData.GearCount}/{gearCost}";
-            m_CanProgress.fillAmount = (float)miningData.GearCount / gearCost;
+            m_EngineText.text = $"{miningData.GearCount}/{GameDefine.SparkComposeCost}";
+            m_CanProgress.fillAmount = (float)miningData.GearCount / GameDefine.SparkComposeCost;
         }
 
         private void OnShowMiningReward(int eventId, object data)

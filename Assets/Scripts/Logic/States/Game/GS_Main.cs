@@ -6,6 +6,7 @@ using Logic.Fight;
 using Logic.Manager;
 using Logic.UI.Common;
 using Logic.UI.UIFight;
+using Logic.UI.UIGuidance;
 using Logic.UI.UIMain;
 using Main;
 using YooAsset;
@@ -53,12 +54,12 @@ namespace Logic.States.Game
             await UIManager.Ins.OpenUI<UIMainRight>();
             await UIManager.Ins.OpenUI<UIMainLeft>();
             await UIManager.Ins.OpenUI<UIMainCommon>();
+            await UIManager.Ins.OpenUI<UIGuidance>();
 
-            //初始化某些游戏逻辑
-            SingletonCreator.CreateSingleton<SyncUserDataManager>();
-
-            //进入主场景后启动游戏时间相关逻辑
-            GameTimeManager.Ins.StartGameTimer();
+            //进入主场景后初始化某些游戏逻辑
+            SingletonCreator.CreateSingleton<SyncUserDataManager>(); //数据同步
+            GameTimeManager.Ins.Init(); //时间
+            GuidanceManager.Ins.Init(); //引导
 
             FightManager.Ins.m_IsInit = true; //FightManager挂在场景中 需要UI都打开之后 然后进行后续的逻辑
             LoadProcess = 1f;
@@ -70,7 +71,6 @@ namespace Logic.States.Game
 
         public override void Release(GameStateData pContext)
         {
-            
         }
     }
 }

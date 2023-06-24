@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using Logic.Common;
-using UnityEngine.Serialization;
 
 namespace Networks
 {
@@ -9,6 +9,37 @@ namespace Networks
      *
      * 现在客户端的DummyServer会直接使用这些结构
      */
+
+    // 服务器时间相关
+    public class ServerTimes
+    {
+        // 服务器当前时间
+        public long ServerTimer;
+
+        // 距离下一天的秒数 - 以0点为结束
+        public long NextDaySeconds;
+
+        // 以下皆以凌晨5点为起始
+
+        // 每日开始
+        public long DayST;
+
+        // 每日结束
+        public long DayET;
+
+        // 每周开始
+        public long WeekST;
+
+        // 每周结束
+        public long WeekET;
+
+        // 每月开始
+        public long MonthST;
+
+        // 每月结束
+        public long MonthET;
+    }
+
 
     [Serializable]
     public class GameEquipData
@@ -102,48 +133,17 @@ namespace Networks
         public GamePartnerData PartnerData;
         public int OldLevel;
     }
-    
+
     // 到达顶级以后 自动合成的数据
     // 合成数据
     [Serializable]
     public class GameComposeData
     {
-        public int FromID;   //合成者ID
-        public int ToID;     //合成后ID
+        public int FromID; //合成者ID
+        public int FromCount; //合成者数量
+        public int ToID; //合成后ID
         public int ToAddCount; //合成新增数量
         public int ToCount; //合成后数量
-    }
-    
-
-    // 引擎数据
-    [Serializable]
-    public class GameEngineData
-    {
-        public int Id; //引擎Id
-        public int TypeId; //引擎TypeId
-        public int IsGet; // 引擎是否获取 0/1
-        public int AttrId; // 引擎随机属性Id
-        public int Level; // 引擎等级
-        public int Reform; // 引擎改造次数
-
-        public GameEngineData()
-        {
-        }
-
-        public GameEngineData(GameEngineData pData)
-        {
-            Id = pData.Id;
-            TypeId = pData.TypeId;
-            IsGet = pData.IsGet;
-            AttrId = pData.AttrId;
-            Level = pData.Level;
-            Reform = pData.Reform;
-        }
-
-        public GameEngineData Clone()
-        {
-            return new GameEngineData(this);
-        }
     }
 
     //任务数据
@@ -173,18 +173,18 @@ namespace Networks
 
     // 抽卡数据
     [Serializable]
-    public class GameShopSkillData
+    public class GameShopCardData
     {
         public int ID; // 卡池id
         public int Level; // 卡池等级
         public int Exp; // 卡池经验
         public int TotalExp; //卡池累计经验值
 
-        public GameShopSkillData()
+        public GameShopCardData()
         {
         }
 
-        public GameShopSkillData(GameShopSkillData pData)
+        public GameShopCardData(GameShopCardData pData)
         {
             ID = pData.ID;
             Level = pData.Level;
@@ -192,62 +192,27 @@ namespace Networks
             TotalExp = pData.TotalExp;
         }
 
-        public GameShopSkillData Clone()
+        public GameShopCardData Clone()
         {
-            return new GameShopSkillData(this);
+            return new GameShopCardData(this);
         }
     }
 
-    [Serializable]
-    public class GameShopPartnerData
+    //商城数据
+    public class GameShopData
     {
-        public int ID; // 卡池id
-        public int Level; // 卡池等级
-        public int Exp; // 卡池经验
-        public int TotalExp; //卡池累计经验值
-
-        public GameShopPartnerData()
-        {
-        }
-
-        public GameShopPartnerData(GameShopPartnerData pData)
-        {
-            ID = pData.ID;
-            Level = pData.Level;
-            Exp = pData.Exp;
-            TotalExp = pData.TotalExp;
-        }
-
-        public GameShopPartnerData Clone()
-        {
-            return new GameShopPartnerData(this);
-        }
+        public bool FirstBuy; //首次购买奖励状态 - false 表示没有购买过
+        public List<GameShopBuyData> BuyDataList = new List<GameShopBuyData>(); //购买数据
     }
 
-    [Serializable]
-    public class GameShopEquipData
+    public class GameShopBuyData
     {
-        public int ID; // 卡池id
-        public int Level; // 卡池等级
-        public int Exp; // 卡池经验
-        public int TotalExp; //卡池累计经验值
-
-        public GameShopEquipData()
-        {
-        }
-
-        public GameShopEquipData(GameShopEquipData pData)
-        {
-            ID = pData.ID;
-            Level = pData.Level;
-            Exp = pData.Exp;
-            TotalExp = pData.TotalExp;
-        }
-
-        public GameShopEquipData Clone()
-        {
-            return new GameShopEquipData(this);
-        }
+        public int ID; //表ID
+        public int Type; //购买类型
+        public int Count; //已经购买次数-累计
+        public long StartTime; //开始时间
+        public long BuyTime; //最后一次购买时间戳
+        public int Total; //历史累计购买次数
     }
 
     //副本数据
@@ -507,9 +472,11 @@ namespace Networks
     public class SpoilBreakthroughData
     {
         public int SpoilId;
-        public int Count;//已突破的次数
+        public int Count; //已突破的次数
 
-        public SpoilBreakthroughData() { }
+        public SpoilBreakthroughData()
+        {
+        }
 
         public SpoilBreakthroughData(SpoilBreakthroughData pData)
         {
@@ -554,5 +521,47 @@ namespace Networks
         {
             return new GameRoleData(this);
         }
+    }
+
+    //英雄突破天赋树
+    [Serializable]
+    public class GameBreakTreeData
+    {
+        public int Id; // 英雄突破天赋树Id
+        public int Level; // 英雄突破天赋树等级
+
+        public GameBreakTreeData()
+        {
+            Level = 0;
+        }
+
+        public GameBreakTreeData(GameBreakTreeData pData)
+        {
+            Id = pData.Id;
+            Level = pData.Level;
+        }
+
+        public GameBreakTreeData Clone()
+        {
+            return new GameBreakTreeData(this);
+        }
+    }
+    
+    // 引擎数据
+    public class GameEngineData
+    {
+        public int Level;           // 当前等级
+        public int Exp;             // 当前经验
+        public List<int> OnList;    // 当前装备列表 0 - 5
+    }
+
+    // 引擎装备数据
+    public class GameEnginePartData
+    {
+        public int InsID;  // 实例ID
+        public int CfgID;  // 配置ID
+        public int Type;   // 类型 0:气缸 1:火花塞
+        public int Attr1ID; // 属性1ID
+        public int Attr2ID; // 属性1ID
     }
 }

@@ -68,6 +68,7 @@ namespace Logic.UI.UIUser
             UpdatePartnerInfo();
 
             m_EventGroup.Register(LogicEvent.PartnerUpgraded, (i, o) => { OnPartnerUpgraded(); });
+            m_EventGroup.Register(LogicEvent.PartnerListChanged, (i, o) => { UpdatePartnerInfo(); });
 
             if (IsHave)
             {

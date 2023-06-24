@@ -16,7 +16,6 @@ using UnityEngine.UI;
 
 namespace Logic.UI.UISpoil
 {
-
     public class UISpoilDetail : UIPage
     {
         [SerializeField] Button m_BtnClose;
@@ -30,16 +29,21 @@ namespace Logic.UI.UISpoil
         [SerializeField] TextMeshProUGUI m_TxtCost;
         [SerializeField] TextMeshProUGUI m_TxtSlotName;
         [SerializeField] TextMeshProUGUI m_TxtLevel;
-        
+        [SerializeField] TextMeshProUGUI m_TxtBreakthroughCost;
+        [SerializeField] TextMeshProUGUI m_TxtBreakCount;
+        [SerializeField] TextMeshProUGUI m_TxtPowerSauce;
+
         [SerializeField] Image m_IconSpoil;
         [SerializeField] Button m_BtnLeft;
         [SerializeField] Button m_BtnRight;
         [SerializeField] Button m_BtnUpgrade;
         [SerializeField] Button m_BtnEquip;
         [SerializeField] Button m_BtnUnHold;
+        [SerializeField] Button m_BtnBreakthrough;
 
         [SerializeField] GameObject m_GoMax;
         [SerializeField] GameObject m_GoUpgrade;
+        [SerializeField] GameObject m_GoBreak;
 
 
         SpoilSlotVO m_SlotVO;
@@ -66,6 +70,7 @@ namespace Logic.UI.UISpoil
             m_BtnRight.onClick.AddListener(OnRightClick);
             m_BtnEquip.onClick.AddListener(OnEquipClick);
             m_BtnUpgrade.onClick.AddListener(OnUpgradeClick);
+            m_BtnBreakthrough.onClick.AddListener(OnBreakthrough);
 
             m_OriginSprite = m_BtnUpgrade.image.sprite;
 
@@ -77,6 +82,8 @@ namespace Logic.UI.UISpoil
             m_EventGroup.Register(LogicEvent.OnSpoilEquipChanged, (i, o) => { OnSpoilEqiup(o as SpoilSlotData); });
             m_EventGroup.Register(LogicEvent.OnSpoilUpgrade, (i, o) => { OnSpoilUpgrade(o as SpoilData); });
             m_EventGroup.Register(LogicEvent.TropyChanged, (i, o) => { OnTrophyChanged(); });
+            m_EventGroup.Register(LogicEvent.RoleBreakOreChanged, (i, o) => { OnPowerSauceChanged(); });
+            m_EventGroup.Register(LogicEvent.OnSpoilBreakthrough, (i, o) => { OnSpoilBreakthrough(o as SpoilBreakthroughData); });
         }
 
 
@@ -90,6 +97,7 @@ namespace Logic.UI.UISpoil
             SelectDefault();
             //刷新战功
             RefreshTrophy(GetTrophy());
+            RefreshPowerSauce(GetPowerSauce());
         }
 
         private void OnClose()
@@ -124,8 +132,18 @@ namespace Logic.UI.UISpoil
         void RefreshTrophy(BigDouble value)
         {
             m_TxtTrophy.text = value.ToUIString();
-            RefreshButtonDraw(value);
+            RefreshButtonUpgrade(value);
 
+        }
+
+        /// <summary>
+        /// 刷新突破石
+        /// </summary>
+        /// <param name="value"></param>
+        void RefreshPowerSauce(float value)
+        {
+            m_TxtPowerSauce.text = value.ToString();
+            RefreshButtonBreakthrough(GetPowerSauce());
         }
 
         /// <summary>
@@ -160,8 +178,9 @@ namespace Logic.UI.UISpoil
         void RefreshSpoilDetail(SpoilDetailVO detailVO)
         {
             m_BtnEquip.gameObject.SetActive(detailVO.hold);
-            m_BtnUpgrade.gameObject.SetActive(detailVO.hold);
+            m_BtnUpgrade.gameObject.SetActive(detailVO.hold && !detailVO.canBreakthrough);
             m_BtnUnHold.gameObject.SetActive(!detailVO.hold);
+            m_BtnBreakthrough.gameObject.SetActive(detailVO.hold && detailVO.canBreakthrough);
 
             m_TxtSpoilName.text = detailVO.name;
             m_TxtHoldEffect.text = detailVO.holdEffect;
@@ -172,13 +191,20 @@ namespace Logic.UI.UISpoil
             m_TxtSkillDesc.text = detailVO.skillDesc;
             m_TxtCost.text = detailVO.cost.ToUIString();
             m_TxtSlotName.text = detailVO.slotName;
+            m_TxtBreakthroughCost.text = detailVO.breakthroughCost.ToString();
+            m_TxtBreakCount.text = detailVO.breakCount.ToString();
 
             m_GoMax.SetActive(detailVO.isMaxLevel);
             m_GoUpgrade.SetActive(!detailVO.isMaxLevel);
+            m_GoBreak.SetActive(detailVO.breakCount > 0);
+
 
             UICommonHelper.LoadIcon(m_IconSpoil, detailVO.iconPath);
-            RefreshButtonDraw(GetTrophy());
+            RefreshButtonUpgrade(GetTrophy());
+            RefreshButtonBreakthrough(GetPowerSauce());
         }
+
+
 
         /// <summary>
         /// 刷新Spoil详细信息部分
@@ -195,7 +221,7 @@ namespace Logic.UI.UISpoil
         /// 刷新抽卡按钮
         /// </summary>
         /// <param name="trophy"></param>
-        public void RefreshButtonDraw(BigDouble trophy)
+        public void RefreshButtonUpgrade(BigDouble trophy)
         {
             //设置消耗
             var cost = GetUpgradeCost(m_CurSpoilId);
@@ -211,6 +237,24 @@ namespace Logic.UI.UISpoil
             {
                 m_TxtCost.color = Color.white;
                 m_BtnUpgrade.image.sprite = m_OriginSprite;
+            }
+        }
+
+        public void RefreshButtonBreakthrough(int breakthroughOre)
+        {
+            var cost = GetBreakthroughCost(m_CurSpoilId);
+            m_TxtBreakthroughCost.text = cost.ToString();
+
+            //设置按钮状态
+            if (cost > breakthroughOre)
+            {
+                m_TxtBreakthroughCost.color = Color.red;
+                m_BtnBreakthrough.image.sprite = UICommonSprites.Ins.m_ButtonState[0];
+            }
+            else
+            {
+                m_TxtBreakthroughCost.color = Color.white;
+                m_BtnBreakthrough.image.sprite = m_OriginSprite;
             }
         }
 
@@ -272,6 +316,15 @@ namespace Logic.UI.UISpoil
             SpoilManager.Ins.RequestSpoilEquip(m_CurSpoilId);
         }
 
+        /// <summary>
+        /// 突破按钮被点击
+        /// </summary>
+        private async void OnBreakthrough()
+        {
+            await UIManager.Ins.OpenUI<UISpoilBreak>(m_CurSpoilId);
+            //SpoilManager.Ins.RequestSpoilUpgrade(m_CurSpoilId);
+        }
+
         #endregion
 
         #region manager消息
@@ -298,6 +351,19 @@ namespace Logic.UI.UISpoil
         {
             //刷新战功
             RefreshTrophy(GetTrophy());
+        }
+
+        private void OnPowerSauceChanged()
+        {
+            RefreshPowerSauce(GetPowerSauce());
+        }
+
+        private void OnSpoilBreakthrough(SpoilBreakthroughData spoilBreakthroughData)
+        {
+            //刷新unit
+            RefreshSpoilUnit(spoilBreakthroughData.SpoilId);
+            //刷新详细信息
+            RefreshSpoilDetail(spoilBreakthroughData.SpoilId);
         }
 
         #endregion
@@ -408,6 +474,7 @@ namespace Logic.UI.UISpoil
             var vo = new SpoilDetailVO();
             var cfg = Configs.SpoilCfg.GetData(unitVO.spoilId);
             var slotState = SpoilManager.Ins.GetSlotStateBySpoilId(unitVO.spoilId);
+            var spoilData = SpoilManager.Ins.GetSpoil(unitVO.spoilId);
             vo.skillDesc = SpoilManager.Ins.GetSkillDesc(unitVO.spoilId);
             BigDouble atk = SpoilManager.Ins.GetAtkEffect(unitVO.spoilId, unitVO.level);
             BigDouble hp = SpoilManager.Ins.GetHpEffect(unitVO.spoilId, unitVO.level);
@@ -423,6 +490,9 @@ namespace Logic.UI.UISpoil
             vo.name = cfg.SpoilName;
             vo.slotName = cfg.GroupName;
             vo.isMaxLevel = SpoilManager.Ins.IsMaxLevel(unitVO.spoilId);
+            vo.canBreakthrough = spoilData == null ? false : SpoilManager.Ins.CanBreakthrough(spoilData);
+            vo.breakthroughCost = SpoilManager.Ins.GetBreakCost(unitVO.spoilId);
+            vo.breakCount = SpoilManager.Ins.GetSpoilBreakthroughLevel(unitVO.spoilId);
             return vo;
         }
 
@@ -438,6 +508,15 @@ namespace Logic.UI.UISpoil
         }
 
         /// <summary>
+        /// 获取突破石
+        /// </summary>
+        /// <returns></returns>
+        private int GetPowerSauce()
+        {
+            return GameDataManager.Ins.BreakOre;
+        }
+
+        /// <summary>
         /// 获取当前抽卡消费
         /// </summary>
         /// <returns></returns>
@@ -446,6 +525,11 @@ namespace Logic.UI.UISpoil
             var spoilData = SpoilManager.Ins.GetSpoil(spoilId);
             var level = spoilData == null ? 1 : spoilData.Level;
             return SpoilManager.Ins.GetUpgradeCost(spoilId, level);
+        }
+
+        private int GetBreakthroughCost(int spoilId)
+        {
+            return SpoilManager.Ins.GetBreakCost(spoilId);
         }
 
         /// <summary>

@@ -110,7 +110,17 @@ namespace Logic.Fight.Skill.Implement
         {
             base.DoEmitting(m_CurrentTarget);
 
-            PlayAtk(m_CurrentTarget.GetPos());
+            var enemy = m_CurrentTarget as Enemy;
+
+            Transform target = null;
+
+            if (enemy != null)
+                target = enemy.GetRandomHitteePosition();
+
+            if (target == null)
+                target = m_CurrentTarget.GetTransform();
+
+            PlayAtk(target);
         }
 
 
@@ -129,7 +139,7 @@ namespace Logic.Fight.Skill.Implement
         /// 播放攻击动画
         /// </summary>
         /// <param name="targetPos"></param>
-        private void PlayAtk(Vector3 targetPos)
+        private void PlayAtk(Transform targetPos)
         {
 
             //播放一次hahha
@@ -140,7 +150,7 @@ namespace Logic.Fight.Skill.Implement
             var path = new Vector3[3];
             path[0] = transform.position; //0.8 5.6
             path[1] = transform.position + new Vector3(3f, m_PathHight, 0);
-            path[2] = targetPos; //10 5
+            path[2] = targetPos.position; //10 5
             var tweenPath = transform.DOPath(path, m_AtkSpeed, PathType.CatmullRom).SetSpeedBased().SetEase(Ease.InSine);
             tweenPath.SetUpdate(UpdateType.Manual).onComplete = () =>
             {
@@ -164,11 +174,11 @@ namespace Logic.Fight.Skill.Implement
         /// 播放命中动画
         /// </summary>
         /// <param name="targetPos"></param>
-        private void OnHitting(Vector3 targetPos)
+        private void OnHitting(Transform targetPos)
         {
             //播放爆炸特效
             hitEffect.Show();
-            hitEffect.PlayAni(targetPos - new Vector3(0,0.5f,0));
+            hitEffect.PlayAni(targetPos.position - new Vector3(0,0.5f,0));
 
             //伤害
             List<Enemy> m_HitList = new List<Enemy>(6);
@@ -176,7 +186,7 @@ namespace Logic.Fight.Skill.Implement
             foreach (var enemy in m_HitList)
             {
                 if (enemy != null && enemy.CanAttack())
-                    enemy.m_Health.Damage(m_Damage);
+                    enemy.m_Health.Damage(m_Damage,false, targetPos);
             }
 
 
@@ -195,14 +205,14 @@ namespace Logic.Fight.Skill.Implement
 
         }
 
-        IEnumerator WaitEnd(float interval)
-        {
-            yield return new WaitForSeconds(interval);
-            hitEffect.Destroy();
+        //IEnumerator WaitEnd(float interval)
+        //{
+        //    yield return new WaitForSeconds(interval);
+        //    hitEffect.Destroy();
 
-            //进入结束状态
-            End();
-        }
+        //    //进入结束状态
+        //    End();
+        //}
 
         public void DOTweenDelay(float delayedTimer, int loopTimes)
         {

@@ -1,4 +1,5 @@
 using System;
+using Configs;
 using DG.Tweening;
 using Framework.EventKit;
 using Framework.Extension;
@@ -56,7 +57,7 @@ namespace Logic.UI.Cells
 
         private void UpdateUnlockDescription()
         {
-            var lockData = LockStoryManager.Ins.GetLockData((int)m_LockType);
+            var lockData = LockCfg.GetData((int)m_LockType);
             var unlockLvl = (long)lockData.UnlockLvl;
             var unlockDes = UICommonHelper.GetLevelNameByID(unlockLvl);
             m_UnlockDes.text = string.Format(lockData.UnlockDes, unlockDes);
@@ -91,7 +92,6 @@ namespace Logic.UI.Cells
 
             if (lockType != m_LockType || lockState != 1) return;
 
-            // TODO:解锁动画
             m_LockBg.DOFade(0, 2f).OnComplete(() => { this.gameObject.Hide(); });
         }
 

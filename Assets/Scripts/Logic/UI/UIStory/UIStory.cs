@@ -39,7 +39,7 @@ namespace Logic.UI.UIStory
         private void ShowContext(int pID)
         {
             m_ContextBK.transform.DOScale(new Vector3(0.8f, 0.8f, 1), 0.2f).SetEase(Ease.OutBack);
-            m_CurrentData = LockStoryManager.Ins.GetStoryData(pID);
+            m_CurrentData = StoryCfg.GetData(pID);
             m_Context.text = "";
             m_Context.DOText(m_CurrentData.Dialogue, 1.0f);
         }

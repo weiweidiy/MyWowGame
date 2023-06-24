@@ -56,7 +56,7 @@ namespace Logic.UI.UIMain
 
         public void OnBtnUnlockClick()
         {
-            LockStoryManager.Ins.m_IsUnlockAll = true; //开放所有功能和剧情
+            LockStoryManager.Ins.m_IsUnlockAll = true; //开放所有功能
             EventManager.Call(LogicEvent.UpdateUnlockAll); //开放所有解锁
             PartnerManager.Ins.UpdateAllDoOnCount(); //开放所有上阵伙伴
             SkillManager.Ins.UpdateAllDoOnCount(); //开放所有上阵技能

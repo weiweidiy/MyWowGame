@@ -54,6 +54,10 @@ namespace Logic.Fight.Skill.Implement
                     FightManager.Ins.m_CurGJJ.PlayMainGunAni();
                     m_NeedSearch = false;
                 }
+                else
+                {
+                    OnFindTarget(m_SM.m_ContextData.m_CurrentTarget);
+                }
             }
         }
 
@@ -95,6 +99,12 @@ namespace Logic.Fight.Skill.Implement
             m_SkillFireObj.Hide();
             m_SkillFireObj.transform.SetParent(transform);
             m_SkillFireObj.transform.localPosition = Vector3.zero;
+        }
+
+
+        public override Enemy GetSkillTarget()
+        {
+            return FightEnemyManager.Ins.GetOneTarget(posType);
         }
 
         public override void OnSkillReset()
@@ -141,7 +151,7 @@ namespace Logic.Fight.Skill.Implement
             while (true)
             {
                 var _PosX = m_SkillFireObj.transform.position.x;
-                FightEnemyManager.Ins.GetTargetByRange(m_HitList, _PosX - m_FireATKRange, _PosX + m_FireATKRange);
+                FightEnemyManager.Ins.GetTargetByRange(m_HitList, _PosX - m_FireATKRange, _PosX + m_FireATKRange,Enemy.PositionType.Ground);
                 BigDouble _ATK = Formula.GetGJJAtk() * GetSkillBaseDamage()/100;
                 foreach (var enemy in m_HitList)
                 {

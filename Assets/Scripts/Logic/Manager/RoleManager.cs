@@ -29,7 +29,8 @@ namespace Logic.Manager
                 RoleMap.Add(roleData.RoleID, roleData);
             }
 
-            UpdateRoleEffect();
+            //TODO:添加英雄相关加成属性
+            // UpdateRoleEffect();
         }
 
         #region 通用
@@ -54,8 +55,9 @@ namespace Logic.Manager
             return CurRoleOnID == pRoleId;
         }
 
-        public bool IsCanRoleIntensify(int cost)
+        public bool IsCanRoleIntensify()
         {
+            var cost = GameDefine.RoleUpgradeCost;
             return GameDataManager.Ins.MushRoom >= cost;
         }
 
@@ -76,6 +78,7 @@ namespace Logic.Manager
 
         public void UpdateRoleEffect()
         {
+            EventManager.Call(LogicEvent.RoleEffectUpdate);
         }
 
         #endregion

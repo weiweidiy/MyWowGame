@@ -37,4 +37,16 @@ public class DotweenManager : MonoSingleton<DotweenManager>
                       .SetLoops(loopTimes);
     }
 
+    public void DOTweenDelayUnityTime(float delayedTimer, int loopTimes, Action action)
+    {
+        float timer = 0;
+        //DOTwwen.To()中参数：前两个参数是固定写法，第三个是到达的最终值，第四个是渐变过程所用的时间
+        Tween t = DOTween.To(() => timer, x => timer = x, 1, delayedTimer)
+                      .OnStepComplete(() =>
+                      {
+                          action?.Invoke();
+                      })
+                      .SetLoops(loopTimes);
+    }
+
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [Serializable]
-public class UnityDamageEvent : UnityEvent<FightDamageData>
+public class UnityDamageEvent : UnityEvent<FightDamageData, Transform>
 {
 }
 
@@ -52,7 +52,7 @@ namespace Logic.Fight.Actor
         /// <summary>
         /// 受到攻击 扣血
         /// </summary>
-        public virtual void Damage(BigDouble pDamage, bool pIsCritical = false)
+        public virtual void Damage(BigDouble pDamage, bool pIsCritical = false ,Transform target = null )
         {
             if (pDamage < BigDouble.Zero)
             {
@@ -71,7 +71,7 @@ namespace Logic.Fight.Actor
             }
 
             OnHealthChange.Invoke(HP);
-            OnHurt.Invoke(new FightDamageData(pDamage, pIsCritical));
+            OnHurt.Invoke(new FightDamageData(pDamage, pIsCritical), target);
             if (_PreHP != BigDouble.Zero && HP == BigDouble.Zero)
             {
                 OnDeath.Invoke();

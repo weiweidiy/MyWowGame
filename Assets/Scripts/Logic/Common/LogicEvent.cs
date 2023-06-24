@@ -17,20 +17,6 @@
 
         #endregion
 
-        // #region GJJ 相关
-        //
-        // GJJAtkLevelChanged,             //GJJ攻击力等级变化
-        // GJJHPLevelChanged,              //GJJ血量等级变化
-        // GJJHPRecoverLevelChanged,       //GJJ血量恢复速度等级变化
-        // GJJCriticalLevelChanged,        //GJJ暴击等级变化
-        // GJJCriticalDamageLevelChanged,  //GJJ暴击伤害等级变化
-        // GJJAtkSpeedLevelChanged,        //GJJ攻击速度等级变化
-        // GJJDoubleHitLevelChanged,       //GJJ两连攻击等级变化
-        // GJJTripletHitLevelChanged,      //GJJ三连攻击等级变化
-        //
-        // #endregion
-
-
         #region 战场/战斗相关
 
         Fight_Standby, //战斗准备
@@ -63,6 +49,9 @@
 
 
         Fight_MapChanged, //地图场景改变
+        Fight_SwitchComplete, //切换完成
+
+        Fight_EnemyCountChanged, //怪物数量信息改变
 
         #endregion
 
@@ -73,9 +62,16 @@
         OilChanged, //原油变化
         TropyChanged, //战利品变化
         CopyKeyChanged, // 副本钥匙变化
-        EngineIronChanged, //引擎分解强化材料变化
         RoleMushRoomChanged, //英雄升级材料变化
         RoleBreakOreChanged, //英雄突破材料变化
+        RoleBreakTPChanged, //英雄突破天赋点变化
+        HammerChanged, // 考古矿锤变化
+        MineChanged, // 考古矿石变化
+        TecPointChanged, //机灵点变化
+
+        #endregion
+
+        #region 技能 伙伴 装备 引擎相关
 
         //技能
         SkillListChanged, //技能变化
@@ -103,12 +99,12 @@
         EquipAllHPEffectUpdate, //装备总加成血量变化
 
         //引擎
-        EngineGet, //引擎获得
-        EngineRemove, //引擎分解
-        EngineIntensify, //引擎强化
-        EngineOn, //引擎装备
+        EngineUpgrade, //引擎升级
+        EngineOn, //引擎装配
         EngineOff, //引擎解除
-        EngineAllEffectUpdate, //引擎属性总加成变化
+        EngineResolve, //引擎分解
+        EnginePartsUpdate, //更新引擎装备列表
+        EngineEffectUpdate, //更新引擎加成属性
 
         #endregion
 
@@ -118,6 +114,8 @@
         ShowFightSwitch, //战斗切换UI
         ShowObtain, //显示通用的获得界面
 
+        MoveCamera, //摄像机操作
+
         #endregion
 
         #region 商店 抽卡 相关
@@ -126,6 +124,9 @@
         ShowDrawProbability,
         UpdateDrawCardData,
         ShowOrHideLevelUp,
+
+        OnShopBuyOrder, //商店购买
+        OnShopBuy,
 
         #endregion
 
@@ -137,6 +138,7 @@
         TaskStateChanged, //任务状态变化
         MainTaskChanged, //主线任务变化 - 更换主线任务
         MainTaskProcessChanged, //主线任务进度变化
+        MainTaskDoneChanged, //主线任务已领取变化
         DailyTaskChanged, //日常任务变化 - 领取状态变化
         DailyTaskProcessChanged, //日常任务进度变化
         DailyTaskListUpdate, //日常任务列表更新
@@ -159,6 +161,8 @@
         ShowPlaceReward, // 显示放置奖励
         ShowCommonReward, // 显示通用奖励
         ShowOilCopyRewards,
+        ShowReformCopyRewards, //显示改造副本奖励
+        RefreshReformItems, //刷新改造副本道具
 
         #endregion
 
@@ -181,6 +185,7 @@
         OnResearching, //研究完成
         ResearchLevelChanged, //研究等级变化
         ResearchCompleteEffectUpdate, //研究属性总加成变化
+        ResearchMapChanged, //研究数据表变化
 
         #endregion
 
@@ -197,6 +202,7 @@
         OnSpoilSlotUnlock,
         OnSpoilEquipChanged,
         OnSpoilUpgrade,
+        OnSpoilBreakthrough,
 
         #endregion
 
@@ -208,13 +214,25 @@
         RoleIntensify, //英雄升级
         RoleBreak,
         RoleEffectUpdate, //英雄属性变化
+        RoleBreakTreeReset, //英雄天赋树重置
+        RoleBreakTreeIntensify, //英雄天赋树强化
+        RoleBreakTreeEffectUpdate, //英雄天赋树属性变化
 
         #endregion
 
         #region 时间相关
 
-        TimeNextDaySecondsChanged,
-        TimeDayChanged,
+        TimeDaySecondsChanged, //跨天秒数变化
+        TimeDayChanged, //跨天天数变化
+        TimeWeekSecondsChanged, //跨周秒数变化
+        TimeWeekChanged, //跨周周数变化
+
+        #endregion
+
+        #region 引导相关
+
+        GuidanceStart,
+        GuidanceEnd,
 
         #endregion
     }

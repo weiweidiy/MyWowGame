@@ -25,11 +25,13 @@ namespace DummyServer
 
         public string m_Coin; //游戏币
         public long m_Diamond; //钻石
-        public int m_Iron; //钢铁
         public int m_Oil; //原油
         public string m_Trophy; //战利品
         public int m_MushRoom; //角色升级蘑菇
         public int m_BreakOre; //角色突破矿石
+        public int BreakTP; //英雄突破天赋点
+        public int BreakTPTotal; //返还的英雄突破天赋点
+        public long m_TechnologyPoint; //改造科技点
 
         #endregion
 
@@ -70,7 +72,7 @@ namespace DummyServer
 
         #endregion
 
-        #region 伙伴, 装备, 技能, 引擎 数据
+        #region 伙伴, 装备, 技能数据
 
         public List<int> m_PartnerOnList; //伙伴上阵列表
         public List<GamePartnerData> m_PartnerList;
@@ -82,10 +84,6 @@ namespace DummyServer
 
         public List<int> m_SkillOnList; //技能上阵列表
         public List<GameSkillData> m_SkillList;
-
-        public int m_EngineOnId; // 引擎上阵Id
-        public int m_EngineGetId; // 引擎获取Id
-        public List<GameEngineData> m_EngineList;
 
         #endregion
 
@@ -99,9 +97,9 @@ namespace DummyServer
 
         #region 抽卡数据
 
-        public GameShopSkillData m_ShopSkillData;
-        public GameShopPartnerData m_ShopPartnerData;
-        public GameShopEquipData m_ShopEquipData;
+        public GameShopCardData m_ShopSkillData;
+        public GameShopCardData m_ShopPartnerData;
+        public GameShopCardData m_ShopEquipData;
 
         #endregion
 
@@ -117,6 +115,7 @@ namespace DummyServer
         public GameCopyData m_CoinCopyData; //金币副本数据
         public GameCopyOilData m_OilCopyData; //原油副本
         public GameCopyData m_TropyCopyData; //战利品副本
+        public GameCopyData m_ReformCopyData; //改造副本
 
         #endregion
 
@@ -155,6 +154,7 @@ namespace DummyServer
 
         public int m_RoleOnId; //英雄上阵ID
         public List<GameRoleData> m_RoleList; //英雄上阵列表
+        public List<GameBreakTreeData> BreakTreeList; //英雄突破天赋树列表数据
 
         #endregion
 
@@ -169,9 +169,10 @@ namespace DummyServer
 
             m_Coin = "0";
             m_Diamond = 0;
-            m_Iron = 0;
             m_MushRoom = 0;
             m_BreakOre = 0;
+            BreakTP = 0;
+            BreakTPTotal = 0;
 
             m_GJJAtkLevel = 1;
             m_GJJHPLevel = 1;
@@ -195,10 +196,6 @@ namespace DummyServer
 
             m_SkillOnList = new List<int> { 0, 0, 0, 0, 0, 0 };
             m_SkillList = new List<GameSkillData>(64);
-
-            m_EngineOnId = 0;
-            m_EngineGetId = 0;
-            m_EngineList = new List<GameEngineData>(64);
 
             m_BtnPlaceRewardClickTime = TimeHelper.GetUnixTimeStamp();
             m_BtnPlaceRewardShowTime = 0;
@@ -226,6 +223,10 @@ namespace DummyServer
             m_RoleOnId = 7101;
             m_RoleList = new List<GameRoleData>(64);
             DummyServerMgr.Ins.InitRole(this);
+
+            //英雄突破天赋树
+            BreakTreeList = new List<GameBreakTreeData>(64);
+            DummyServerMgr.Ins.InitRoleBreakTree(this);
         }
 
         #region 静态操作接口

@@ -2643,6 +2643,7 @@ MonoBehaviour:
   m_DiamondCopyNode: {fileID: 330372401122737701}
   m_CoinCopyNode: {fileID: 1136685534412843806}
   m_OilCopyNode: {fileID: 887721612925547055}
+  m_SkillNode: {fileID: 8759773608762820022}
   m_LevelName: {fileID: 4089761088491872004}
   m_ProcessNode: {fileID: 1475298130858004140}
   m_BtnFightStart: {fileID: 7303512957401841823}
@@ -3913,6 +3914,8 @@ GameObject:
   - component: {fileID: 8088179133138442198}
   - component: {fileID: 8080060505828148351}
   - component: {fileID: 5968787570242917888}
+  - component: {fileID: 7451488485855369232}
+  - component: {fileID: 8126578929701007614}
   m_Layer: 5
   m_Name: SkillNode
   m_TagString: Untagged
@@ -3985,6 +3988,44 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!223 &7451488485855369232
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8759773608762820022}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &8126578929701007614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8759773608762820022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 174775
 --- !u!1 &8869596683066066052
 GameObject:
   m_ObjectHideFlags: 0

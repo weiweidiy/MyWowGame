@@ -1,4 +1,5 @@
 ﻿using System;
+using Framework.Core;
 using Framework.Extension;
 using Framework.Helper;
 using Logic.Common;
@@ -93,18 +94,6 @@ namespace DummyServer
                 case NetWorkMsgType.C2S_SkillIntensify:
                     On_C2S_SkillIntensify(_Msg as C2S_SkillIntensify);
                     break;
-                case NetWorkMsgType.C2S_EngineIntensify:
-                    On_C2S_EngineIntensify(_Msg as C2S_EngineIntensify);
-                    break;
-                case NetWorkMsgType.C2S_EngineRemove:
-                    On_C2S_EngineRemove(_Msg as C2S_EngineRemove);
-                    break;
-                case NetWorkMsgType.C2S_EngineOn:
-                    On_C2S_EngineOn(_Msg as C2S_EngineOn);
-                    break;
-                case NetWorkMsgType.C2S_EngineOff:
-                    On_C2S_EngineOff(_Msg as C2S_EngineOff);
-                    break;
                 case NetWorkMsgType.C2S_DrawCard:
                     On_C2S_DrawCard(_Msg as C2S_DrawCard);
                     break;
@@ -180,6 +169,12 @@ namespace DummyServer
                 case NetWorkMsgType.C2S_RoleBreak:
                     On_C2S_RoleBreak(_Msg as C2S_RoleBreak);
                     break;
+                case NetWorkMsgType.C2S_BreakTreeReset:
+                    OnBreakTreeReset(_Msg as C2S_BreakTreeReset);
+                    break;
+                case NetWorkMsgType.C2S_BreakTreeIntensify:
+                    OnBreakTreeIntensify(_Msg as C2S_BreakTreeIntensify);
+                    break;
                 default:
                 {
                     Debug.LogError(_Msg.MsgType);
@@ -187,8 +182,6 @@ namespace DummyServer
                 }
             }
         }
-
-
 
 
         #region 消息处理
@@ -214,11 +207,11 @@ namespace DummyServer
 
                 Coin = m_DB.m_Coin,
                 Diamond = m_DB.m_Diamond,
-                Iron = m_DB.m_Iron,
                 Oil = m_DB.m_Oil,
                 Trophy = m_DB.m_Trophy,
                 MushRoom = m_DB.m_MushRoom,
                 BreakOre = m_DB.m_BreakOre,
+                BreakTP = m_DB.BreakTP,
 
                 GJJAtkLevel = m_DB.m_GJJAtkLevel,
                 GJJHPLevel = m_DB.m_GJJHPLevel,
@@ -243,8 +236,6 @@ namespace DummyServer
 
                 WeaponOnID = m_DB.m_WeaponOnID,
                 ArmorOnID = m_DB.m_ArmorOnID,
-                EngineOnId = m_DB.m_EngineOnId,
-                EngineGetId = m_DB.m_EngineGetId,
 
                 MainTaskCount = m_DB.m_MainTaskCount,
 
@@ -276,11 +267,6 @@ namespace DummyServer
                 _Data.SkillList.Add(skillData.Clone());
             }
 
-            foreach (var engineData in m_DB.m_EngineList)
-            {
-                _Data.EngineList.Add(engineData.Clone());
-            }
-
             // 抽卡
             _Data.ShopSkillData = m_DB.m_ShopSkillData.Clone();
             _Data.ShopPartnerData = m_DB.m_ShopPartnerData.Clone();
@@ -298,6 +284,7 @@ namespace DummyServer
             _Data.CoinCopyData = m_DB.m_CoinCopyData.Clone();
             _Data.OilCopyData = m_DB.m_OilCopyData.Clone();
             _Data.TrophyCopyData = m_DB.m_TropyCopyData.Clone();
+            _Data.ReformCopyData = m_DB.m_ReformCopyData.Clone();
 
             //考古
             _Data.MiningData = m_DB.m_MiningData.Clone();
@@ -336,7 +323,7 @@ namespace DummyServer
                 _Data.SpoilsData.Add(item.Clone());
             }
 
-            foreach(var item in m_DB.m_SpoilBreakthrough)
+            foreach (var item in m_DB.m_SpoilBreakthrough)
             {
                 _Data.SpoilBreakthroughData.Add(item.Clone());
             }
@@ -348,6 +335,11 @@ namespace DummyServer
                 _Data.RoleList.Add(roleData.Clone());
             }
 
+            //英雄突破天赋树
+            foreach (var breakTreeData in m_DB.BreakTreeList)
+            {
+                _Data.RoleBreakTree.Add(breakTreeData.Clone());
+            }
 
             SendMsg(_Data);
         }
@@ -444,26 +436,6 @@ namespace DummyServer
                 SkillIntensifyAuto();
             else
                 SkillIntensify(pMsg.SkillID);
-        }
-
-        private void On_C2S_EngineIntensify(C2S_EngineIntensify pMsg)
-        {
-            DoEngineIntensify(pMsg.EngineId);
-        }
-
-        private void On_C2S_EngineRemove(C2S_EngineRemove pMsg)
-        {
-            DoEngineRemove(pMsg.EngineId);
-        }
-
-        private void On_C2S_EngineOn(C2S_EngineOn pMsg)
-        {
-            DoEngineOn(pMsg.EngineId);
-        }
-
-        private void On_C2S_EngineOff(C2S_EngineOff pMsg)
-        {
-            DoEngineOff(pMsg.EngineId);
         }
 
         private void On_C2S_DrawCard(C2S_DrawCard pMsg)
@@ -619,15 +591,14 @@ namespace DummyServer
             SendMsg(new S2C_OilUpdate { Oil = m_DB.m_Oil });
         }
 
-        /// <summary>
-        /// 更新引擎强化分解材料
-        /// </summary>
-        /// <param name="pIron"></param>
-        public void UpdateIron(int pIron)
+        public void UpdateTechnologyPoint(long pTechnologyPoint)
         {
-            m_DB.m_Iron += pIron;
-            DummyDB.Save(m_DB);
-            SendMsg(new S2C_EngineIronUpdate { Iron = m_DB.m_Iron });
+            //服务器实现，增加科技点，并通知客户端更新
+
+            //m_DB.m_TechnologyPoint += pTechnologyPoint;
+            //DummyDB.Save(m_DB);
+            //SendMsg(new S2C_TechnologyPointUpdate { TechnologyPoint = m_DB.m_TechnologyPoint });
+            
         }
 
         /// <summary>
@@ -639,13 +610,15 @@ namespace DummyServer
             m_DB.m_DiamondCopyData.KeyCount += pKey;
             m_DB.m_OilCopyData.KeyCount += pKey;
             m_DB.m_TropyCopyData.KeyCount += pKey;
+            m_DB.m_ReformCopyData.KeyCount += pKey;
             DummyDB.Save(m_DB);
             SendMsg(new S2C_UpdateCopyKeyCount
             {
                 CoinKeyCount = m_DB.m_CoinCopyData.KeyCount,
                 DiamondKeyCount = m_DB.m_DiamondCopyData.KeyCount,
                 OilKeyCount = m_DB.m_OilCopyData.KeyCount,
-                TrophyKeyCount = m_DB.m_TropyCopyData.KeyCount
+                TrophyKeyCount = m_DB.m_TropyCopyData.KeyCount,
+                ReformKeyCount = m_DB.m_ReformCopyData.KeyCount
             });
         }
 
@@ -669,10 +642,20 @@ namespace DummyServer
             SendMsg(new S2C_BreakOreUpdate() { BreakOre = m_DB.m_BreakOre });
         }
 
+        /// <summary>
+        /// 更新英雄天赋树突破点
+        /// </summary>
+        /// <param name="pBreakTP"></param>
+        public void UpdateBreakTP(int pBreakTP)
+        {
+            m_DB.BreakTP += pBreakTP;
+            DummyDB.Save(m_DB);
+            SendMsg(new S2C_BreakTPUpdate() { BreakTP = m_DB.BreakTP });
+        }
+
         private void UpdateGMAccount()
         {
             UpdateDiamond(10000); //增加钻石数量
-            UpdateIron(10000); //增加引擎强化分解材料数量
             OnIncreaseMiningData((int)MiningType.GoldMine, 10000); //增加考古研究矿石数量
             OnIncreaseMiningData((int)MiningType.Hammer, 100); //增加考古矿锤数量
             OnIncreaseMiningData((int)MiningType.Bomb, 100); //增加考古炸弹数量
@@ -681,6 +664,7 @@ namespace DummyServer
             UpdateOil(10000); //增加原油数量
             UpdateMushRoom(100); //增加英雄升级材料
             UpdateBreakOre(1000); //增加英雄突破材料
+            UpdateBreakTP(10); //增加英雄天赋树突破点
         }
 
         /// <summary>
@@ -688,9 +672,10 @@ namespace DummyServer
         /// </summary>
         public void DummyOnExitGame()
         {
+            if (!GameCore.Ins.UseDummyServer) return;
             m_DB.m_IsFirstLogin = false;
             m_DB.m_LastGameDate = TimeHelper.GetUnixTimeStamp();
-            // DummyDB.Save(m_DB);
+            DummyDB.Save(m_DB);
         }
 
         public DummyDB DummyGetDB()

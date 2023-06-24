@@ -13,6 +13,7 @@ namespace Logic.UI.UIUser
         Partner, // 伙伴页签
         Trophy, //战利品页签
         Quenching, // 淬炼页签
+        Engine, //引擎页签
     }
 
     /// <summary>
@@ -25,6 +26,7 @@ namespace Logic.UI.UIUser
         public GameObject PartnerNode;
         public GameObject TrophyNode;
         public GameObject QuenchingNode;
+        public GameObject EngineNode;
 
         public Toggle[] Toggles;
 
@@ -95,6 +97,18 @@ namespace Logic.UI.UIUser
             else
             {
                 QuenchingNode.Hide();
+            }
+        }
+
+        public void OnToggleEngine(bool pOn)
+        {
+            if (pOn)
+            {
+                EngineNode.Show();
+            }
+            else
+            {
+                EngineNode.Hide();
             }
         }
     }

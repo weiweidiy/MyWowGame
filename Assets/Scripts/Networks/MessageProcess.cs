@@ -28,16 +28,22 @@ namespace Networks
                 case NetWorkMsgType.S2C_Login:
                     Debug.LogError("Login Size : " + pMsg.Length);
                     return JsonMapper.ToObject<S2C_Login>(_Msg);
+                case NetWorkMsgType.C2S_ST:
+                    return JsonMapper.ToObject<C2S_ST>(_Msg);
+                case NetWorkMsgType.S2C_ST:
+                    return JsonMapper.ToObject<S2C_ST>(_Msg);
                 case NetWorkMsgType.C2S_GMCommand:
                     return JsonMapper.ToObject<C2S_GMAccount>(_Msg);
                 case NetWorkMsgType.C2S_SyncCoin:
                     return JsonMapper.ToObject<C2S_SyncCoin>(_Msg);
-                case NetWorkMsgType.C2S_SyncTrophy:
-                    return JsonMapper.ToObject<C2S_SyncTrophy>(_Msg);
                 case NetWorkMsgType.S2C_DiamondUpdate:
                     return JsonMapper.ToObject<S2C_DiamondUpdate>(_Msg);
                 case NetWorkMsgType.S2C_OilUpdate:
                     return JsonMapper.ToObject<S2C_OilUpdate>(_Msg);
+                case NetWorkMsgType.C2S_SyncTrophy:
+                    return JsonMapper.ToObject<C2S_SyncTrophy>(_Msg);
+                case NetWorkMsgType.S2C_TecPointUpdate:
+                    return JsonMapper.ToObject<S2C_TecPointUpdate>(_Msg);
                 case NetWorkMsgType.C2S_SyncRoomData:
                     return JsonMapper.ToObject<C2S_SyncRoomData>(_Msg);
                 case NetWorkMsgType.C2S_SyncSettingData:
@@ -76,6 +82,10 @@ namespace Networks
                     return JsonMapper.ToObject<S2C_PartnerIntensify>(_Msg);
                 case NetWorkMsgType.S2C_PartnerListUpdate:
                     return JsonMapper.ToObject<S2C_PartnerListUpdate>(_Msg);
+                case NetWorkMsgType.C2S_PartnerCompose:
+                    return JsonMapper.ToObject<C2S_PartnerCompose>(_Msg);
+                case NetWorkMsgType.S2S_PartnerCompose:
+                    return JsonMapper.ToObject<S2S_PartnerCompose>(_Msg);
                 case NetWorkMsgType.C2S_SkillOn:
                     return JsonMapper.ToObject<C2S_SkillOn>(_Msg);
                 case NetWorkMsgType.S2C_SkillOn:
@@ -90,24 +100,10 @@ namespace Networks
                     return JsonMapper.ToObject<S2C_SkillIntensify>(_Msg);
                 case NetWorkMsgType.S2C_SkillListUpdate:
                     return JsonMapper.ToObject<S2C_SkillListUpdate>(_Msg);
-                case NetWorkMsgType.S2C_EngineGet:
-                    return JsonMapper.ToObject<S2C_EngineGet>(_Msg);
-                case NetWorkMsgType.C2S_EngineIntensify:
-                    return JsonMapper.ToObject<C2S_EngineIntensify>(_Msg);
-                case NetWorkMsgType.S2C_EngineIntensify:
-                    return JsonMapper.ToObject<S2C_EngineIntensify>(_Msg);
-                case NetWorkMsgType.C2S_EngineRemove:
-                    return JsonMapper.ToObject<C2S_EngineRemove>(_Msg);
-                case NetWorkMsgType.S2C_EngineIronUpdate:
-                    return JsonMapper.ToObject<S2C_EngineIronUpdate>(_Msg);
-                case NetWorkMsgType.C2S_EngineOn:
-                    return JsonMapper.ToObject<C2S_EngineOn>(_Msg);
-                case NetWorkMsgType.S2C_EngineOn:
-                    return JsonMapper.ToObject<S2C_EngineOn>(_Msg);
-                case NetWorkMsgType.C2S_EngineOff:
-                    return JsonMapper.ToObject<C2S_EngineOff>(_Msg);
-                case NetWorkMsgType.S2C_EngineOff:
-                    return JsonMapper.ToObject<S2C_EngineOff>(_Msg);
+                case NetWorkMsgType.C2S_SkillCompose:
+                    return JsonMapper.ToObject<C2S_SkillCompose>(_Msg);
+                case NetWorkMsgType.S2S_SkillCompose:
+                    return JsonMapper.ToObject<S2S_SkillCompose>(_Msg);
                 case NetWorkMsgType.C2S_DrawCard:
                     return JsonMapper.ToObject<C2S_DrawCard>(_Msg);
                 case NetWorkMsgType.S2C_DrawCard:
@@ -116,10 +112,12 @@ namespace Networks
                     return JsonMapper.ToObject<C2S_UpdateDrawCardData>(_Msg);
                 case NetWorkMsgType.S2C_UpdateDrawCardData:
                     return JsonMapper.ToObject<S2C_UpdateDrawCardData>(_Msg);
-                case NetWorkMsgType.C2S_MiningReward:
-                    return JsonMapper.ToObject<C2S_MiningReward>(_Msg);
-                case NetWorkMsgType.S2C_MiningReward:
-                    return JsonMapper.ToObject<S2C_MiningReward>(_Msg);
+                case NetWorkMsgType.C2S_ShopBuy:
+                    return JsonMapper.ToObject<C2S_ShopBuy>(_Msg);
+                case NetWorkMsgType.S2C_ShopBuyOrder:
+                    return JsonMapper.ToObject<S2C_ShopBuyOrder>(_Msg);
+                case NetWorkMsgType.S2C_ShopBuy:
+                    return JsonMapper.ToObject<S2C_ShopBuy>(_Msg);
                 case NetWorkMsgType.C2S_PlaceReward:
                     return JsonMapper.ToObject<C2S_PlaceReward>(_Msg);
                 case NetWorkMsgType.S2C_PlaceReward:
@@ -132,10 +130,24 @@ namespace Networks
                     return JsonMapper.ToObject<S2C_CommonReward>(_Msg);
                 case NetWorkMsgType.S2C_OilCopyReward:
                     return JsonMapper.ToObject<S2C_OilCopyReward>(_Msg);
+                case NetWorkMsgType.S2C_ReformCopyReward:
+                    return JsonMapper.ToObject<S2C_ReformCopyReward>(_Msg);
+                case NetWorkMsgType.C2S_MiningReward:
+                    return JsonMapper.ToObject<C2S_MiningReward>(_Msg);
+                case NetWorkMsgType.S2C_MiningReward:
+                    return JsonMapper.ToObject<S2C_MiningReward>(_Msg);
                 case NetWorkMsgType.C2S_UpdateMiningData:
                     return JsonMapper.ToObject<C2S_UpdateMiningData>(_Msg);
                 case NetWorkMsgType.S2C_UpdateMiningData:
                     return JsonMapper.ToObject<S2C_UpdateMiningData>(_Msg);
+                case NetWorkMsgType.C2S_UpdateResearchTime:
+                    return JsonMapper.ToObject<C2S_UpdateResearchTime>(_Msg);
+                case NetWorkMsgType.S2C_UpdateResearchTime:
+                    return JsonMapper.ToObject<S2C_UpdateResearchTime>(_Msg);
+                case NetWorkMsgType.C2S_Researching:
+                    return JsonMapper.ToObject<C2S_Researching>(_Msg);
+                case NetWorkMsgType.S2C_Researching:
+                    return JsonMapper.ToObject<S2C_Researching>(_Msg);
                 case NetWorkMsgType.C2S_UpdateTaskProcess:
                     return JsonMapper.ToObject<C2S_UpdateTaskProcess>(_Msg);
                 case NetWorkMsgType.S2C_UpdateTaskState:
@@ -164,14 +176,6 @@ namespace Networks
                     return JsonMapper.ToObject<S2C_UpdateCopyKeyCount>(_Msg);
                 case NetWorkMsgType.C2S_UpdateLockStoryData:
                     return JsonMapper.ToObject<C2S_UpdateLockStoryData>(_Msg);
-                case NetWorkMsgType.C2S_UpdateResearchTime:
-                    return JsonMapper.ToObject<C2S_UpdateResearchTime>(_Msg);
-                case NetWorkMsgType.S2C_UpdateResearchTime:
-                    return JsonMapper.ToObject<S2C_UpdateResearchTime>(_Msg);
-                case NetWorkMsgType.C2S_Researching:
-                    return JsonMapper.ToObject<C2S_Researching>(_Msg);
-                case NetWorkMsgType.S2C_Researching:
-                    return JsonMapper.ToObject<S2C_Researching>(_Msg);
                 case NetWorkMsgType.C2S_QuenchingLock:
                     return JsonMapper.ToObject<C2S_QuenchingLock>(_Msg);
                 case NetWorkMsgType.C2S_Quenching:
@@ -214,7 +218,32 @@ namespace Networks
                     return JsonMapper.ToObject<S2C_MushRoomUpdate>(_Msg);
                 case NetWorkMsgType.S2C_BreakOreUpdate:
                     return JsonMapper.ToObject<S2C_BreakOreUpdate>(_Msg);
-
+                case NetWorkMsgType.C2S_BreakTreeReset:
+                    return JsonMapper.ToObject<C2S_BreakTreeReset>(_Msg);
+                case NetWorkMsgType.C2S_BreakTreeIntensify:
+                    return JsonMapper.ToObject<C2S_BreakTreeIntensify>(_Msg);
+                case NetWorkMsgType.S2C_BreakTreeIntensify:
+                    return JsonMapper.ToObject<S2C_BreakTreeIntensify>(_Msg);
+                case NetWorkMsgType.S2C_BreakTPUpdate:
+                    return JsonMapper.ToObject<S2C_BreakTPUpdate>(_Msg);
+                case NetWorkMsgType.C2S_EngUpgrade:
+                    return JsonMapper.ToObject<C2S_EngUpgrade>(_Msg);
+                case NetWorkMsgType.S2C_EngUpgrade:
+                    return JsonMapper.ToObject<S2C_EngUpgrade>(_Msg);
+                case NetWorkMsgType.C2S_EngPartOn:
+                    return JsonMapper.ToObject<C2S_EngPartOn>(_Msg);
+                case NetWorkMsgType.S2C_EngPartOn:
+                    return JsonMapper.ToObject<S2C_EngPartOn>(_Msg);
+                case NetWorkMsgType.C2S_EngPartOff:
+                    return JsonMapper.ToObject<C2S_EngPartOff>(_Msg);
+                case NetWorkMsgType.S2C_EngPartOff:
+                    return JsonMapper.ToObject<S2C_EngPartOff>(_Msg);
+                case NetWorkMsgType.C2S_EngResolve:
+                    return JsonMapper.ToObject<C2S_EngResolve>(_Msg);
+                case NetWorkMsgType.S2C_EngResolve:
+                    return JsonMapper.ToObject<S2C_EngResolve>(_Msg);
+                case NetWorkMsgType.S2C_UpdateEngParts:
+                    return JsonMapper.ToObject<S2C_UpdateEngParts>(_Msg);
                 default:
                     throw new Exception($"MessageProcess 没有实现! 请实现一下! {_T.MsgType}");
             }

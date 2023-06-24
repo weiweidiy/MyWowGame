@@ -7,9 +7,9 @@ namespace Logic.Fight.Actor
 {
     public class OilActorHealth : ActorHealth
     {
-        public override void Damage(BigDouble pDamage, bool pIsCritical = false)
+        public override void Damage(BigDouble pDamage ,bool pIsCritical = false, Transform target = null)
         {
-            base.Damage(pDamage, pIsCritical);
+            base.Damage(pDamage, pIsCritical, target);
 
             CopyManager.Ins.CurTotalDamage += pDamage;
         }

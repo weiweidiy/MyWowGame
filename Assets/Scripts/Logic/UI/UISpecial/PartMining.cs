@@ -18,7 +18,7 @@ namespace Logic.UI.UISpecial
         private void Awake()
         {
             m_BtnEnter.onClick.AddListener(OnBtnEnterClick);
-            m_EventGroup.Register(LogicEvent.MiningDataChanged, OnHammerChanged);
+            m_EventGroup.Register(LogicEvent.HammerChanged, (i, o) => OnHammerChanged());
             m_EventGroup.Register(LogicEvent.ResearchCompleteEffectUpdate, (i, o) => OnResearchCompleteEffectUpdate());
             Refresh();
         }
@@ -33,12 +33,9 @@ namespace Logic.UI.UISpecial
             await UIManager.Ins.OpenUI<UIMining.UIMining>();
         }
 
-        private void OnHammerChanged(int eventId, object data)
+        private void OnHammerChanged()
         {
-            if ((MiningType)data == MiningType.Hammer)
-            {
-                Refresh();
-            }
+            Refresh();
         }
 
         private void OnResearchCompleteEffectUpdate()

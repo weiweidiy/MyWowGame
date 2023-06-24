@@ -15,6 +15,7 @@ namespace Logic.Common
         CoinCopy = 2, //金币副本
         OilCopy = 3, //原油副本
         TrophyCopy = 4, //功勋副本
+        ReformCopy = 5, //改造副本
     }
 
     /// <summary>
@@ -41,6 +42,7 @@ namespace Logic.Common
         ToCoinCopy = 11, //金币副本
         ToOilCopy = 12, //原油副本
         ToTrophyCopy = 13, //战利品副本
+        ToReformCopy = 14, //改造副本
     }
 
     /// <summary>
@@ -80,16 +82,28 @@ namespace Logic.Common
         [LabelText("防具")] Armor = 2,
         [LabelText("技能")] Skill = 3,
         [LabelText("伙伴")] Partner = 4,
-        [LabelText("引擎")] Engine = 5,
-        [LabelText("玩具")] Toy = 6,
+        [LabelText("火花塞")] Spark = 5,
+        [LabelText("气缸")] Cylinder = 6,
+        [LabelText("战利品")] Spoil = 7,
+        [LabelText("礼包")] ShopGift = 8,
+        [LabelText("英雄技能")] HeroSkill = 10,
         [LabelText("钻石/元宝")] Diamond = 101,
         [LabelText("金币")] Coin = 102,
         [LabelText("零件")] Gear = 103,
         [LabelText("统领材料")] Honor = 104,
         [LabelText("古代金属")] Metal = 105,
         [LabelText("钢铁")] Iron = 106,
+        [LabelText("音符")] Oil = 107,
+        [LabelText("鸡腿")] Trophy = 108,
+        [LabelText("蘑菇")] MushRoom = 109,
+        [LabelText("氪金矿石")] BreakOre = 110,
         [LabelText("宝箱")] Treasure = 1000,
         [LabelText("道具")] Prop = 2000,
+        [LabelText("钻石钥匙")] DiamondKey = 2101,
+        [LabelText("金币钥匙")] CoinKey = 2102,
+        [LabelText("功勋钥匙")] TrophyKey = 2103,
+        [LabelText("音乐钥匙")] OilKey = 2104,
+        [LabelText("改造钥匙")] ReformKey = 2105,
     }
 
     /// <summary>
@@ -119,7 +133,51 @@ namespace Logic.Common
         [LabelText("矿石获得量增加")] MineObtainAmount = 31,
         [LabelText("矿锤补充速度增加")] HammerRecoverSpeed = 32,
         [LabelText("研究速度增加")] ResearchSpeed = 33,
+
+        [LabelText("武器攻击力提升")] WeaponATK = 34,
+        [LabelText("防具血量提升")] ArmorHP = 35,
+        [LabelText("导弹类技能伤害提升")] MissileSkillDamage = 36,
+        [LabelText("炮弹类技能伤害提升")] CannonBallSkillDamage = 37,
+        [LabelText("机枪类技能伤害提升")] MachineGunSkillDamage = 38,
+        [LabelText("特战小队伤害提升")] MachineGun = 40,
+        [LabelText("工程小队伤害提升")] SpecialWarfareTeam = 41,
+        [LabelText("后勤小队伤害提升")] LogisticsTeam = 42,
+        [LabelText("摇滚乐队伤害提升")] RockTeam = 43,
+        [LabelText("坏人小队伤害提升")] BadGuyTeam = 44,
+        [LabelText("运动员队伤害提升")] AthleteTeam = 45,
+        [LabelText("英雄经验获取")] RoleExpObtain = 50,
     }
+
+    #region 商店相关
+
+    //商店类型
+    public enum ShopType
+    {
+        Diamond = 0, //充值
+        Gift = 1, //礼包
+        //季票
+    }
+
+    //商店礼包类型
+    public enum ShopGiftType
+    {
+        Once = 1, //一次性 购买后就没了
+        Day = 2, //每日重置 - 自然日凌晨5点起算
+        Week = 3, //每周重置
+        Month = 4, //每月重置
+    }
+
+    //商店礼包时间类型
+    public enum ShopGiftTimeType
+    {
+        None = 0, //无时间
+        Fixed = 1, //固定时间间隔 读 起始时间 终止时间
+        Start = 2, //无时间限制 读 起始时间
+        UnLockTime = 3, //解锁条件 持续时间后终止 读 持续时间
+        UnLock = 4, //解锁条件 无时间限制
+    }
+
+    #endregion
 
     /// <summary>
     /// 定义游戏里用到的颜色数值(主要是字体)
@@ -431,6 +489,16 @@ namespace Logic.Common
         LT_3600 = 3600, //伙伴页签
         LT_3700 = 3700, //战利品页签
         LT_3800 = 3800, //淬炼页签
+    }
+
+    #endregion
+
+    #region 引导相关
+
+    public enum GuidanceType
+    {
+        Forced = 0, //强制引导
+        Soft = 1, //软引导
     }
 
     #endregion

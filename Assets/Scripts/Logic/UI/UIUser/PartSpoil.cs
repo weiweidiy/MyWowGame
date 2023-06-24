@@ -222,6 +222,7 @@ namespace Logic.UI.UIUser
             var spoilData = GetSpoil(vo.spoilId);
             vo.spoilLevel = spoilData == null ? 0 : spoilData.Level;
             vo.iconPath = spoilData == null ? null : GetSpoilResPath(slotData.SpoilId);
+            vo.breakCount = spoilData == null ? 0 : GetSpoilBreakCount(slotData.SpoilId);
             return vo;
         }
 
@@ -363,6 +364,16 @@ namespace Logic.UI.UIUser
         public BigDouble GetAllHpEffect()
         {
             return SpoilManager.Ins.GetAllHpEffect();
+        }
+
+        /// <summary>
+        /// 获取当前突破次数
+        /// </summary>
+        /// <param name="spoilId"></param>
+        /// <returns></returns>
+        private int GetSpoilBreakCount(int spoilId)
+        {
+            return SpoilManager.Ins.GetSpoilBreakthroughLevel(spoilId);
         }
 
         #endregion

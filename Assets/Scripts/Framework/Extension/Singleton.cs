@@ -54,8 +54,9 @@ namespace Framework.Extension
         /// <summary>
         /// 资源释放
         /// </summary>
-        public virtual void Dispose()
+        public void Release()
         {
+            OnSingletonRelease();
             mInstance = null;
         }
 
@@ -63,6 +64,10 @@ namespace Framework.Extension
         /// 单例初始化方法
         /// </summary>
         public virtual void OnSingletonInit()
+        {
+        }
+        
+        public virtual void OnSingletonRelease()
         {
         }
     }

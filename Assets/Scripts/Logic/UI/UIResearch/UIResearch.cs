@@ -46,7 +46,7 @@ namespace Logic.UI.UIResearch
         {
             m_EventGroup.Register(LogicEvent.OnUpdateResearchTime, OnUpdateResearchTime);
             m_EventGroup.Register(LogicEvent.OnResearching, OnResearching);
-            m_EventGroup.Register(LogicEvent.MiningDataChanged, OnMineChanged);
+            m_EventGroup.Register(LogicEvent.MineChanged, (i, o) => OnMineChanged());
             m_EventGroup.Register(LogicEvent.ResearchLevelChanged, OnResearchLevelChanged);
             m_EventGroup.Register(LogicEvent.DiamondChanged, (i, o) => { OnDiamondChanged(); });
         }
@@ -205,9 +205,9 @@ namespace Logic.UI.UIResearch
         {
             if (m_CurSelectResearch == null) return;
 
-            var cost = Formula.GetResearchMineCost(m_CurSelectResearch.m_ResearchId,
-                m_CurSelectResearch.m_ResearchLevel);
-            if (ResearchManager.Ins.IsCanResearch(cost))
+            // var cost = Formula.GetResearchMineCost(m_CurSelectResearch.m_ResearchId,
+            //     m_CurSelectResearch.m_ResearchLevel);
+            if (ResearchManager.Ins.IsMineCanResearch(m_CurSelectResearch.m_ResearchId))
             {
                 m_BtnResearchCan.Show();
                 m_BtnResearchCant.Hide();
@@ -283,15 +283,9 @@ namespace Logic.UI.UIResearch
         /// <summary>
         /// 矿石数量变化
         /// </summary>
-        /// <param name="eventId"></param>
-        /// <param name="data"></param>
-        private void OnMineChanged(int eventId, object data)
+        private void OnMineChanged()
         {
-            var miningType = (MiningType)data;
-            if (miningType is MiningType.CopperMine or MiningType.SilverMine or MiningType.GoldMine)
-            {
-                UpdateMineCount();
-            }
+            UpdateMineCount();
         }
 
         /// <summary>
@@ -376,9 +370,9 @@ namespace Logic.UI.UIResearch
             }
             else
             {
-                var cost = Formula.GetResearchMineCost(m_CurSelectResearch.m_ResearchId,
-                    m_CurSelectResearch.m_ResearchLevel);
-                if (ResearchManager.Ins.IsCanResearch(cost))
+                // var cost = Formula.GetResearchMineCost(m_CurSelectResearch.m_ResearchId,
+                //     m_CurSelectResearch.m_ResearchLevel);
+                if (ResearchManager.Ins.IsMineCanResearch(m_CurSelectResearch.m_ResearchId))
                 {
                     ResearchManager.Ins.DoUpdateResearchTime(m_CurSelectResearch.m_ResearchId);
                 }

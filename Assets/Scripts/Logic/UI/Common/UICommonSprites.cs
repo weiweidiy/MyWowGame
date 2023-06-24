@@ -31,5 +31,11 @@ namespace Logic.UI.Common
         [LabelText("按钮状态")] public Sprite[] m_ButtonState;
 
         [LabelText("品质")] public Sprite[] m_QuenchingQuality;
+
+        [LabelText("限时礼包底框A")] public Sprite[] m_TimeGiftBgA;
+        [LabelText("限时礼包底框B")] public Sprite[] m_TimeGiftBgB;
+        [LabelText("一次性礼包底框A")] public Sprite[] m_GiftBgA;
+        [LabelText("一次性礼包底框B")] public Sprite[] m_GiftBgB;
+        [LabelText("一次性礼包状态标签")] public Sprite[] m_GiftTag;
     }
 }

@@ -29,6 +29,10 @@ namespace Logic.UI.UISpoil
 
         [SerializeField] Button m_Button;
 
+        [SerializeField] GameObject m_GoBreak;
+
+        [SerializeField] TextMeshProUGUI m_TxtBreakCount;
+
         SpoilSlotVO m_VO;
 
 
@@ -41,9 +45,11 @@ namespace Logic.UI.UISpoil
             m_FlagLocked.gameObject.SetActive(vo.state == SpoilSlotVO.State.Locked);
             m_FlagEquiped.gameObject.SetActive(vo.state == SpoilSlotVO.State.Equiped);
             m_Icon.gameObject.SetActive(vo.state == SpoilSlotVO.State.Equiped);
+            m_GoBreak.SetActive(vo.breakCount > 0);
+            m_TxtBreakCount.text = vo.breakCount.ToString();
             //m_Level.gameObject.SetActive(vo.state == SpoilSlotVO.State.Equiped);
 
-            switch(vo.state)
+            switch (vo.state)
             {
                 case SpoilSlotVO.State.Locked:
                     m_Level.text = "未获得";

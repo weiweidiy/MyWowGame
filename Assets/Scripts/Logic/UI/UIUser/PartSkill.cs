@@ -77,13 +77,14 @@ namespace Logic.UI.UIUser
 
         public void OnClickAuto()
         {
-            if (SkillManager.Ins.HasOneCanUpgrade())
+            if (SkillManager.Ins.HasOneCanUpgrade() ||
+                SkillManager.Ins.HaveCanComposeSkill())
             {
                 SkillManager.Ins.DoIntensify(0, true);
             }
             else
             {
-                EventManager.Call(LogicEvent.ShowTips, "没有可升级的技能");
+                EventManager.Call(LogicEvent.ShowTips, "没有可升级或合成的技能");
             }
         }
 

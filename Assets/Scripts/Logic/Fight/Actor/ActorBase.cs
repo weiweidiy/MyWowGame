@@ -26,6 +26,11 @@ namespace Logic.Fight.Actor
 
         protected Timeline m_TimeLine;
 
+
+
+        protected float m_AttackSpeed;
+        public bool IsUnderAttackCD { get; private set; }
+
         protected virtual void Awake()
         {
             m_OffsetY = new Vector3(0, OffsetY, 0);
@@ -59,6 +64,14 @@ namespace Logic.Fight.Actor
         }
 
         /// <summary>
+        /// 进入战斗状态时候调用
+        /// </summary>
+        public virtual void OnEnterAttack()
+        {
+
+        }
+
+        /// <summary>
         /// 这个接口主要给表现逻辑使用, 特殊是参数pNeedRandom为true时!
         /// </summary>
         public Vector3 GetPos(bool pNeedRandom = true)
@@ -89,6 +102,11 @@ namespace Logic.Fight.Actor
         public virtual void PlayAttack()
         {
             m_Animator.SetTrigger(AniTrigger.ToAtk);
+            IsUnderAttackCD = true;
+            DotweenManager.Ins.DOTweenDelay(1 / m_AttackSpeed, 1, () =>
+            {
+                IsUnderAttackCD = false;
+            });
         }
         
         public void PlayDead()

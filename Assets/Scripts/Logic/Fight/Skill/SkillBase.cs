@@ -32,6 +32,10 @@ namespace Logic.Fight.Skill
         [NonSerialized]
         public GameSkillData m_GameSkillData;
 
+        [LabelText("技能选择目标类型")]
+        [EnumMultiAttribute]
+        public Enemy.PositionType posType;
+
         // //状态
         // private bool m_IsDoing = false;
         // private bool m_IsDisable = false;

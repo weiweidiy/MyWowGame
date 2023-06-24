@@ -92,6 +92,11 @@ namespace Logic.Fight.Skill.Implement
             }
         }
 
+        public override Enemy GetSkillTarget()
+        {
+            return FightEnemyManager.Ins.GetOneTarget(posType);
+        }
+
         //private List<Enemy> m_HitList = new List<Enemy>(6);
 
         ////导弹攻击落地

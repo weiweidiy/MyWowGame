@@ -25,6 +25,18 @@ namespace Framework.Helper
             return (long)(pTargetDateTime - m_1970_01_01).TotalSeconds;
         }
 
+        //获取string目标时间点的时间戳
+        public static long GetUnixTimeStamp(string pDataTime)
+        {
+            if (string.IsNullOrEmpty(pDataTime))
+            {
+                return 0;
+            }
+
+            var targetDataTime = DateTime.ParseExact(pDataTime, "yyyy-MM-dd HH:mm:ss", null);
+            return GetUnixTimeStamp(targetDataTime);
+        }
+
         //获取差值
         public static int GetBetween(DateTime pLastDateTime, long pStartTimeStamp)
         {
@@ -42,9 +54,16 @@ namespace Framework.Helper
             return DateTimeOffset.FromUnixTimeSeconds(pTimeStamp).UtcDateTime;
         }
 
+        // 获取当前时间戳的本地DateTime值
+        public static DateTime GetDateTime(long pTimeStamp)
+        {
+            return GetUtcDateTime(pTimeStamp).ToLocalTime();
+        }
+
         /*
          * 将时间秒转换成如下sting格式
-         * Hour && Minute && Second
+         * Day && Hour && Minute && Second
+         * x天23:59:59
          * 23:59:59
          * 59:59
          * 00:59
@@ -55,6 +74,13 @@ namespace Framework.Helper
         {
             m_StringBuilder.Clear();
             var ts = new TimeSpan(0, 0, 0, Convert.ToInt32(second));
+
+            if (second >= 86400)
+            {
+                m_StringBuilder.Append(ts.Days.ToString());
+                m_StringBuilder.Append("天");
+            }
+
             if (second >= 3600)
             {
                 m_StringBuilder.Append(ts.Hours.ToString("00"));
@@ -64,6 +90,7 @@ namespace Framework.Helper
             m_StringBuilder.Append(ts.Minutes.ToString("00"));
             m_StringBuilder.Append(":");
             m_StringBuilder.Append(ts.Seconds.ToString("00"));
+
             return m_StringBuilder.ToString();
         }
     }

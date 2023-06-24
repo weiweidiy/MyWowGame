@@ -37,7 +37,7 @@ namespace Logic.Fight.Skill.State
             if(NeedSearch)
             {
                 //搜敌
-                pContext.m_CurrentTarget = FightEnemyManager.Ins.GetOneTarget(pContext.m_SkillBase.m_AutoSkillThreshold);
+                pContext.m_CurrentTarget = FightEnemyManager.Ins.GetOneTarget(pContext.m_SkillBase.m_AutoSkillThreshold, pContext.m_SkillBase.posType);
                 if (pContext.m_CurrentTarget != null)
                 {
                     NeedSearch = false;

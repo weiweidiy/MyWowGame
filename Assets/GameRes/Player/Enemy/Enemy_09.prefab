@@ -139,16 +139,19 @@ MonoBehaviour:
   m_HPCtrl: {fileID: 3922754327004818680}
   MoveSpeed: 1.57
   TargetPosX: -1.5
-  AttackRange: 3.9
+  AttackRange: 4.5
   m_Attack:
     mantissa: 0
     exponent: 0
   m_DropCoin:
     mantissa: 0
     exponent: 0
+  positionType: 1
+  m_HitteePoints: []
   m_MuzzlePos: {fileID: 600394759324783312}
   m_BulletPrefab: {fileID: 4256950044657942312, guid: 0813485e99fdd9e4b8b940e87e821561, type: 3}
   m_MuzzleEffectPrefab: {fileID: 8719585288675716896, guid: 37e2e458b2ebc2a4eae7a37df730346a, type: 3}
+  m_HitIndexArray: 
 --- !u!114 &-6082103996356769994
 MonoBehaviour:
   m_ObjectHideFlags: 0

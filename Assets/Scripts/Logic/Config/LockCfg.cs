@@ -29,6 +29,9 @@ namespace Configs
         //解锁描述
         public string UnlockDes;
 
+        /*
+        0.2.5版本引导废弃该字段
+        */
         //剧情ID
         public int StoryID;
 

@@ -12,12 +12,13 @@ namespace Logic.UI.UICopy
         public TextMeshProUGUI m_CoinKeyCount;
         public TextMeshProUGUI m_OilKeyCount;
         public TextMeshProUGUI m_TrophyKeyCount;
+        public TextMeshProUGUI m_ReformKeyCount;
         public TextMeshProUGUI m_CDTimer;
 
         private void Awake()
         {
             m_EventGroup.Register(LogicEvent.CopyKeyChanged, (i, o) => OnCopyKeyChanged());
-            m_EventGroup.Register(LogicEvent.TimeNextDaySecondsChanged, OnTimeNextDaySecondsChanged);
+            m_EventGroup.Register(LogicEvent.TimeDaySecondsChanged, OnTimeDaySecondsChanged);
         }
 
         public override void OnShow()
@@ -46,6 +47,11 @@ namespace Logic.UI.UICopy
             await UIManager.Ins.OpenUI<UICopyEnter>(LevelType.TrophyCopy);
         }
 
+        public async void OnClick_EnterDissolveCopy()
+        {
+            await UIManager.Ins.OpenUI<UICopyEnter>(LevelType.ReformCopy);
+        }
+
         /// <summary>
         /// 副本钥匙变化
         /// </summary>
@@ -55,6 +61,7 @@ namespace Logic.UI.UICopy
             m_CoinKeyCount.text = $"{CopyManager.Ins.m_CoinCopyData.KeyCount}/2";
             m_OilKeyCount.text = $"{CopyManager.Ins.m_OilCopyData.KeyCount}/2";
             m_TrophyKeyCount.text = $"{CopyManager.Ins.m_TrophyCopyData.KeyCount}/2";
+            m_ReformKeyCount.text = $"{CopyManager.Ins.m_ReformCopyData.KeyCount}/2";
         }
 
         /// <summary>
@@ -62,7 +69,7 @@ namespace Logic.UI.UICopy
         /// </summary>
         /// <param name="eventId"></param>
         /// <param name="data"></param>
-        private void OnTimeNextDaySecondsChanged(int eventId, object data)
+        private void OnTimeDaySecondsChanged(int eventId, object data)
         {
             var secondsLeft = (int)data;
             m_CDTimer.text = TimeHelper.FormatSecond(secondsLeft);

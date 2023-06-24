@@ -56,7 +56,11 @@ namespace Logic.Fight.Skill.Implement
             m_coCreateSkillSubObject = StartCoroutine(CreateAttackers());
         }
 
-        
+        public override Enemy GetSkillTarget()
+        {
+            return FightEnemyManager.Ins.GetOneTarget(posType);
+        }
+
         IEnumerator CreateAttackers()
         {
             for (int i = 0; i < m_subSkillObjectCount; i++)
@@ -97,8 +101,11 @@ namespace Logic.Fight.Skill.Implement
 
             foreach (var go in m_goSkillSubObjects)
             {
-                GameObject.Destroy(go);
+                if(go != null)
+                    GameObject.Destroy(go);
             }
+
+            m_goSkillSubObjects.Clear();
         }
 
         public override void OnSkillReset()
@@ -127,7 +134,7 @@ namespace Logic.Fight.Skill.Implement
             });
             _Tweener.OnUpdate(() =>
             {
-                var _Enemy = FightEnemyManager.Ins.GetOneTarget();
+                var _Enemy = FightEnemyManager.Ins.GetOneTarget(posType);
                 if (_Enemy != null && Mathf.Abs(_Enemy.transform.position.x - _ObjTrans.position.x) <= 0.1f)
                 {
                     _body.SetActive(false);
@@ -140,7 +147,7 @@ namespace Logic.Fight.Skill.Implement
 
                     var position = _ObjTrans.position;
                     FightEnemyManager.Ins.GetTargetByRange(_hitList, position.x - m_AttackRange, 
-                        position.x + m_AttackRange);
+                        position.x + m_AttackRange, Enemy.PositionType.Ground);
                     
                     BigDouble _ATK = Formula.GetGJJAtk() * GetSkillBaseDamage()/100;
                     foreach (var enemy in _hitList)
@@ -155,6 +162,7 @@ namespace Logic.Fight.Skill.Implement
         IEnumerator WaitForHide(Skill_3MissilesHit component)
         {
             yield return new WaitForSeconds(1f);
+            if(component != null)
             component.Destroy();
 
         }

@@ -26,12 +26,6 @@ namespace Logic.UI.UIUser
         public Image m_AIcon;
         public TextMeshProUGUI m_ALevel;
 
-        [Header("引擎")] public GameObject m_EngineEmpty;
-        public GameObject m_EngineNode;
-        public Image m_EQuality;
-        public Image m_EIcon;
-        public TextMeshProUGUI m_ELevel;
-
         [Header("属性")] public TextMeshProUGUI m_ATKValue;
         public TextMeshProUGUI m_HPValue;
         public TextMeshProUGUI m_HPRecoverValue;
@@ -54,6 +48,7 @@ namespace Logic.UI.UIUser
         public TextMeshProUGUI m_ResearchMineObtainAmountValue;
         public TextMeshProUGUI m_ResearchHammerRecoverSpeedValue;
         public TextMeshProUGUI m_ResearchSpeedValue;
+        public TextMeshProUGUI m_RoleExpObtainValue;
 
 
         private EventGroup m_EventGroup = new EventGroup();
@@ -88,17 +83,15 @@ namespace Logic.UI.UIUser
                     UpdateArmorNode();
             });
 
-            // 引擎
-            m_EventGroup.Register(LogicEvent.EngineOn, (i, o) => { UpdateEngineNode(); });
-            m_EventGroup.Register(LogicEvent.EngineOff, (i, o) => { UpdateEngineNode(); });
-            m_EventGroup.Register(LogicEvent.EngineAllEffectUpdate, (i, o) => UpdateAttrInfo());
-            m_EventGroup.Register(LogicEvent.EngineIntensify, (i, o) => UpdateEngineNode());
             //研究
             m_EventGroup.Register(LogicEvent.ResearchCompleteEffectUpdate, (i, o) => { UpdateAttrInfo(); });
+            //淬炼
             m_EventGroup.Register(LogicEvent.QuenchingEffectUpdate, (i, o) => { UpdateAttrInfo(); });
             //战利品
             m_EventGroup.Register(LogicEvent.OnSpoilDraw, (i, o) => { UpdateAttrInfo(); });
             m_EventGroup.Register(LogicEvent.OnSpoilUpgrade, (i, o) => { UpdateAttrInfo(); });
+            //突破天赋树
+            m_EventGroup.Register(LogicEvent.RoleBreakTreeEffectUpdate, (i, o) => { UpdateAttrInfo(); });
         }
 
         private void OnDestroy()
@@ -131,17 +124,17 @@ namespace Logic.UI.UIUser
             m_BattleDurationValue.text = Formula.GetBattleDuration() + "";
             m_HPRecoverEverySecondValue.text = (Formula.GetGJJHPRecoverEverySecond() * 100) + "%";
             m_MultipleShotValue.text = (Formula.GetGJJMultipleShot() * 100) + "%";
-            m_ResearchHammerLimitValue.text = Formula.GetResearchHammerLimit() + "";
-            m_ResearchMineObtainAmountValue.text = (Formula.GetResearchMineObtainAmount() * 100) + "%";
-            m_ResearchHammerRecoverSpeedValue.text = (Formula.GetResearchHammerRecoverSpeed() * 100) + "%";
+            m_ResearchHammerLimitValue.text = Formula.GetHammerLimit() + "";
+            m_ResearchMineObtainAmountValue.text = (Formula.GetMineObtainAmount() * 100) + "%";
+            m_ResearchHammerRecoverSpeedValue.text = (Formula.GetHammerRecoverSpeed() * 100) + "%";
             m_ResearchSpeedValue.text = (Formula.GetResearchSpeed() * 100) + "%";
+            m_RoleExpObtainValue.text = (Formula.GetRoleExpObtain() * 100) + "%";
         }
 
         private void Start()
         {
             UpdateWeaponNode();
             UpdateArmorNode();
-            UpdateEngineNode();
         }
 
         private void UpdateWeaponNode()
@@ -204,27 +197,6 @@ namespace Logic.UI.UIUser
             }
         }
 
-        private void UpdateEngineNode()
-        {
-            if (EngineManager.Ins.curEngineOnId == 0)
-            {
-                m_EngineEmpty.Show();
-                m_EngineNode.Hide();
-            }
-            else
-            {
-                m_EngineEmpty.Hide();
-                var curEngineOnID = EngineManager.Ins.curEngineOnId;
-                var engineGameData = EngineManager.Ins.GetGameEngineData(curEngineOnID);
-                var engineData = EngineCfg.GetData(engineGameData.TypeId);
-                var resPath = ResCfg.GetData(engineData.ResID).Res;
-                UICommonHelper.LoadIcon(m_EIcon, resPath);
-                UICommonHelper.LoadQuality(m_EQuality, engineData.Quality);
-                m_ELevel.text = "Lv." + engineGameData.Level;
-                m_EngineNode.Show();
-            }
-        }
-
         public async void OnClickWeapon()
         {
             await UIManager.Ins.OpenUI<UIWeapon>();
@@ -233,11 +205,6 @@ namespace Logic.UI.UIUser
         public async void OnClickArmor()
         {
             await UIManager.Ins.OpenUI<UIArmor>();
-        }
-
-        public async void OnClickEngine()
-        {
-            await UIManager.Ins.OpenUI<UIEngine>();
         }
 
         public async void OnBtnRoleChangeClick()

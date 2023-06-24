@@ -77,5 +77,13 @@ namespace Logic.Manager
             //(List<int>, List<int>) data = (pMsg.m_LstRewardId, pMsg.m_LstRewardCount);
             EventManager.Call(LogicEvent.ShowOilCopyRewards, pMsg);
         }
+
+        /// <summary>
+        /// 改造奖励
+        /// </summary>
+        public void On_S2C_ReformCopyReward(S2C_ReformCopyReward pMsg)
+        {
+            EventManager.Call(LogicEvent.ShowReformCopyRewards, pMsg);
+        }
     }
 }

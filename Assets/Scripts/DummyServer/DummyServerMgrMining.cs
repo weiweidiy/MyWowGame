@@ -9,13 +9,11 @@ namespace DummyServer
 
         /// <summary>
         /// 初始化考古数据
-        /// 更新将要获取齿轮的ID
         /// </summary>
         /// <param name="pDB"></param>
         public void InitMining(DummyDB pDB)
         {
             pDB.m_MiningData = new GameMiningData();
-            UpdateToGetEngine();
         }
 
         /// <summary>
@@ -24,18 +22,7 @@ namespace DummyServer
         /// <param name="pGear"></param>
         public void UpdateGear(int pGear)
         {
-            if (m_DB.m_EngineList.Count >= GameDefine.MaxEngineCount + 1)
-            {
-                // TODO:通知客户端引擎已达到拥有上限，无法添加新的引擎数据
-                return;
-            }
-
             m_DB.m_MiningData.GearCount += pGear;
-            if (m_DB.m_MiningData.GearCount >= GetEngineCostGear())
-            {
-                m_DB.m_MiningData.GearCount -= GetEngineCostGear();
-                UpdateGetEngine();
-            }
         }
 
         #endregion

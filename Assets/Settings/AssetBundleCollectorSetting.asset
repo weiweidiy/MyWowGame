@@ -101,6 +101,14 @@ MonoBehaviour:
         FilterRuleName: CollectPrefab
         AssetTags: 
         UserData: 
+      - CollectPath: Assets/GameRes/Player/GJJ
+        CollectorGUID: cc9620b131e4e97439e964a5b03f8291
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackSeparately
+        FilterRuleName: CollectPrefab
+        AssetTags: 
+        UserData: 
     - GroupName: Effect
       GroupDesc: "\u6548\u679C\u8868\u73B0"
       AssetTags: Effect
@@ -217,6 +225,30 @@ MonoBehaviour:
         UserData: 
       - CollectPath: Assets/GameRes/Icons/SkillShow
         CollectorGUID: c07509717cbd0b94eb82c64aa9606a93
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameRes/Icons/DriverBreak
+        CollectorGUID: 34d18b9c4717c594d8c37e2ea10ac9e7
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameRes/Icons/Goods
+        CollectorGUID: 57f276003d292ea42b0416184278c2fc
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameRes/Icons/Item
+        CollectorGUID: 63eb9a759d95c4240bd1a0d17a16319f
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory

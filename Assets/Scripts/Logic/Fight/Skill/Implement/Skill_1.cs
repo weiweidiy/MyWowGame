@@ -41,6 +41,9 @@ namespace Logic.Fight.Skill.Implement
         public override void OnStartSkill()
         {
             base.OnStartSkill();
+
+            transform.rotation = Quaternion.Euler(0,0,0);
+
             m_NeedSearch = false;
             
             m_SkillObj.SetActive(true);
@@ -86,7 +89,7 @@ namespace Logic.Fight.Skill.Implement
         {
             Vector2 direction = m_TargetPos - transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            m_SkillObj.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
         
         private Vector3 m_TargetPos;
@@ -98,7 +101,8 @@ namespace Logic.Fight.Skill.Implement
             
             var position = m_MuzzlePos.position;
             var rotation = m_MuzzlePos.rotation;
-            
+            //transform.rotation = rotation;
+
             var _MuzzleObj = FightObjPool.Ins.Spawn(m_MuzzleEffectPrefab);
             _MuzzleObj.transform.position = position;
             _MuzzleObj.transform.rotation = rotation;
@@ -130,11 +134,11 @@ namespace Logic.Fight.Skill.Implement
         }
 
         
-        IEnumerator WaitNextAttack()
-        {
-            yield return m_WaitForSeconds;
-            m_SM.m_ContextData.m_CurrentTarget = null;
-            m_NeedSearch = true;
-        }
+        //IEnumerator WaitNextAttack()
+        //{
+        //    yield return m_WaitForSeconds;
+        //    m_SM.m_ContextData.m_CurrentTarget = null;
+        //    m_NeedSearch = true;
+        //}
     }
 }

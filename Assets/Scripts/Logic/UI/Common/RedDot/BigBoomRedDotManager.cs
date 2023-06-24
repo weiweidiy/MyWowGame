@@ -1,13 +1,9 @@
 ﻿using Framework.Extension;
-using System;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace Logic.Common.RedDot
 {
-    public class BigBoomRedDotManager : RedDotManager , ISingleton
+    public class BigBoomRedDotManager : RedDotManager, ISingleton
     {
-
         public override void Init()
         {
             //注册逻辑
@@ -20,9 +16,9 @@ namespace Logic.Common.RedDot
             mapObservables.Add(RedDotKey.EquipArmorEquipable.ToString(), new EquipArmorEquipable()); //可装备防具
             mapObservables.Add(RedDotKey.SkillUpgradable.ToString(), new SkillUpgradable()); //可强化技能
             mapObservables.Add(RedDotKey.PartnerUpgradable.ToString(), new PartnerUpgradable()); //可强化伙伴
+            mapObservables.Add(RedDotKey.Researchable.ToString(), new Researchable()); //可研究
+            mapObservables.Add(RedDotKey.BreakTreeUpgradable.ToString(), new BreakTreeUpgradable()); // 可升级英雄突破天赋树
         }
-
-
 
         /// <summary>
         /// 静态实例
@@ -62,15 +58,11 @@ namespace Logic.Common.RedDot
             mInstance = null;
         }
 
-
-
         /// <summary>
         /// 单例初始化方法
         /// </summary>
         public virtual void OnSingletonInit()
         {
         }
-
     }
-
 }

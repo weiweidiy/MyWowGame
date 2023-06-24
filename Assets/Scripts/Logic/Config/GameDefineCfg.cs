@@ -24,7 +24,7 @@ namespace Configs
         public int IntValue;
 
         //浮点值类型
-        public float floatValue;
+        public float FloatValue;
 
         //字符串类型
         public string StringValue;

@@ -10,7 +10,14 @@
     "GrowCost":200,
     "BaseCostTime":300,
     "GrowCostTime":300,
-    "ResID":8001
+    "ResID":8001,
+    "NextID":[
+            102,
+            103
+         ],
+    "PriorID":[
+            0
+         ]
    },
   "102":  {
     "ID":102,
@@ -22,7 +29,13 @@
     "GrowCost":150,
     "BaseCostTime":450,
     "GrowCostTime":225,
-    "ResID":8006
+    "ResID":8006,
+    "NextID":[
+            104
+         ],
+    "PriorID":[
+            101
+         ]
    },
   "103":  {
     "ID":103,
@@ -34,7 +47,14 @@
     "GrowCost":90,
     "BaseCostTime":675,
     "GrowCostTime":135,
-    "ResID":8001
+    "ResID":8001,
+    "NextID":[
+            105,
+            106
+         ],
+    "PriorID":[
+            101
+         ]
    },
   "104":  {
     "ID":104,
@@ -46,7 +66,13 @@
     "GrowCost":270,
     "BaseCostTime":1012,
     "GrowCostTime":506,
-    "ResID":8005
+    "ResID":8005,
+    "NextID":[
+            107
+         ],
+    "PriorID":[
+            102
+         ]
    },
   "105":  {
     "ID":105,
@@ -58,7 +84,13 @@
     "GrowCost":129,
     "BaseCostTime":1518,
     "GrowCostTime":303,
-    "ResID":8004
+    "ResID":8004,
+    "NextID":[
+            107
+         ],
+    "PriorID":[
+            103
+         ]
    },
   "106":  {
     "ID":106,
@@ -70,7 +102,13 @@
     "GrowCost":155,
     "BaseCostTime":2277,
     "GrowCostTime":455,
-    "ResID":8002
+    "ResID":8002,
+    "NextID":[
+            107
+         ],
+    "PriorID":[
+            103
+         ]
    },
   "107":  {
     "ID":107,
@@ -82,7 +120,17 @@
     "GrowCost":186,
     "BaseCostTime":3415,
     "GrowCostTime":683,
-    "ResID":8001
+    "ResID":8001,
+    "NextID":[
+            108,
+            109,
+            110
+         ],
+    "PriorID":[
+            104,
+            105,
+            106
+         ]
    },
   "108":  {
     "ID":108,
@@ -94,7 +142,13 @@
     "GrowCost":223,
     "BaseCostTime":5122,
     "GrowCostTime":1024,
-    "ResID":8003
+    "ResID":8003,
+    "NextID":[
+            0
+         ],
+    "PriorID":[
+            107
+         ]
    },
   "109":  {
     "ID":109,
@@ -106,7 +160,13 @@
     "GrowCost":670,
     "BaseCostTime":7683,
     "GrowCostTime":3841,
-    "ResID":8005
+    "ResID":8005,
+    "NextID":[
+            0
+         ],
+    "PriorID":[
+            107
+         ]
    },
   "110":  {
     "ID":110,
@@ -118,7 +178,14 @@
     "GrowCost":1609,
     "BaseCostTime":11524,
     "GrowCostTime":11524,
-    "ResID":8001
+    "ResID":8001,
+    "NextID":[
+            111,
+            112
+         ],
+    "PriorID":[
+            107
+         ]
    },
   "111":  {
     "ID":111,
@@ -130,7 +197,13 @@
     "GrowCost":386,
     "BaseCostTime":17286,
     "GrowCostTime":3457,
-    "ResID":8002
+    "ResID":8002,
+    "NextID":[
+            113
+         ],
+    "PriorID":[
+            110
+         ]
    },
   "112":  {
     "ID":112,
@@ -142,7 +215,13 @@
     "GrowCost":463,
     "BaseCostTime":25929,
     "GrowCostTime":5185,
-    "ResID":8001
+    "ResID":8001,
+    "NextID":[
+            114
+         ],
+    "PriorID":[
+            110
+         ]
    },
   "113":  {
     "ID":113,
@@ -154,7 +233,13 @@
     "GrowCost":2779,
     "BaseCostTime":38893,
     "GrowCostTime":38893,
-    "ResID":8006
+    "ResID":8006,
+    "NextID":[
+            115
+         ],
+    "PriorID":[
+            111
+         ]
    },
   "114":  {
     "ID":114,
@@ -166,7 +251,14 @@
     "GrowCost":333,
     "BaseCostTime":58339,
     "GrowCostTime":5833,
-    "ResID":8004
+    "ResID":8004,
+    "NextID":[
+            116,
+            117
+         ],
+    "PriorID":[
+            112
+         ]
    },
   "115":  {
     "ID":115,
@@ -178,7 +270,13 @@
     "GrowCost":800,
     "BaseCostTime":87508,
     "GrowCostTime":17501,
-    "ResID":8001
+    "ResID":8001,
+    "NextID":[
+            118
+         ],
+    "PriorID":[
+            113
+         ]
    },
   "116":  {
     "ID":116,
@@ -190,7 +288,13 @@
     "GrowCost":2400,
     "BaseCostTime":131262,
     "GrowCostTime":65631,
-    "ResID":8005
+    "ResID":8005,
+    "NextID":[
+            118
+         ],
+    "PriorID":[
+            114
+         ]
    },
   "117":  {
     "ID":117,
@@ -202,7 +306,13 @@
     "GrowCost":1440,
     "BaseCostTime":196893,
     "GrowCostTime":49223,
-    "ResID":8003
+    "ResID":8003,
+    "NextID":[
+            118
+         ],
+    "PriorID":[
+            114
+         ]
    },
   "118":  {
     "ID":118,
@@ -214,7 +324,16 @@
     "GrowCost":6912,
     "BaseCostTime":295339,
     "GrowCostTime":295339,
-    "ResID":8004
+    "ResID":8004,
+    "NextID":[
+            119,
+            120
+         ],
+    "PriorID":[
+            115,
+            116,
+            117
+         ]
    },
   "119":  {
     "ID":119,
@@ -226,7 +345,13 @@
     "GrowCost":1658,
     "BaseCostTime":443008,
     "GrowCostTime":88601,
-    "ResID":8002
+    "ResID":8002,
+    "NextID":[
+            121
+         ],
+    "PriorID":[
+            118
+         ]
    },
   "120":  {
     "ID":120,
@@ -238,7 +363,13 @@
     "GrowCost":995,
     "BaseCostTime":664512,
     "GrowCostTime":66451,
-    "ResID":8001
+    "ResID":8001,
+    "NextID":[
+            122
+         ],
+    "PriorID":[
+            118
+         ]
    },
   "121":  {
     "ID":121,
@@ -250,7 +381,13 @@
     "GrowCost":1194,
     "BaseCostTime":996768,
     "GrowCostTime":99676,
-    "ResID":8002
+    "ResID":8002,
+    "NextID":[
+            123
+         ],
+    "PriorID":[
+            119
+         ]
    },
   "122":  {
     "ID":122,
@@ -262,7 +399,13 @@
     "GrowCost":1433,
     "BaseCostTime":1495152,
     "GrowCostTime":149515,
-    "ResID":8001
+    "ResID":8001,
+    "NextID":[
+            123
+         ],
+    "PriorID":[
+            120
+         ]
    },
   "123":  {
     "ID":123,
@@ -274,7 +417,15 @@
     "GrowCost":1719,
     "BaseCostTime":2242728,
     "GrowCostTime":224272,
-    "ResID":8003
+    "ResID":8003,
+    "NextID":[
+            124,
+            125
+         ],
+    "PriorID":[
+            121,
+            122
+         ]
    },
   "124":  {
     "ID":124,
@@ -286,7 +437,13 @@
     "GrowCost":1031,
     "BaseCostTime":3364092,
     "GrowCostTime":168204,
-    "ResID":8001
+    "ResID":8001,
+    "NextID":[
+            0
+         ],
+    "PriorID":[
+            123
+         ]
    },
   "125":  {
     "ID":125,
@@ -298,7 +455,13 @@
     "GrowCost":1238,
     "BaseCostTime":5046138,
     "GrowCostTime":252306,
-    "ResID":8002
+    "ResID":8002,
+    "NextID":[
+            0
+         ],
+    "PriorID":[
+            123
+         ]
    }
   }
 }

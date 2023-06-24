@@ -47,5 +47,11 @@ namespace Configs
         //ResID
         public int ResID;
 
+        //NextID
+        public List<int> NextID;
+
+        //PriorID
+        public List<int> PriorID;
+
     }
 }

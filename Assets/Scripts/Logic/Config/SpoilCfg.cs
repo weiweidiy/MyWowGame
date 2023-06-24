@@ -32,6 +32,12 @@ namespace Configs
         //Spoil属性
         public int AttributeID;
 
+        //Spoil升级成长
+        public float AttributeGrow;
+
+        //Spoil属性最大等级
+        public int MaxAttribute;
+
         /*
         Administrator:
 百分数

@@ -46,11 +46,13 @@ namespace Logic.Manager
                     break;
                 case MiningType.Hammer:
                     m_MiningData.HammerCount = pMsg.MiningData.HammerCount;
+                    EventManager.Call(LogicEvent.HammerChanged);
                     break;
                 case MiningType.CopperMine:
                 case MiningType.SilverMine:
                 case MiningType.GoldMine:
                     m_MiningData.MineCount = pMsg.MiningData.MineCount;
+                    EventManager.Call(LogicEvent.MineChanged);
                     break;
                 case MiningType.Bomb:
                     m_MiningData.BombCount = pMsg.MiningData.BombCount;

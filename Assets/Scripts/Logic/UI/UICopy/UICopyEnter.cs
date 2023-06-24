@@ -14,6 +14,7 @@ namespace Logic.UI.UICopy
         public GameObject m_DiamondNode;
         public GameObject m_CoinNode;
         public GameObject m_TrophyNode;
+        public GameObject m_DissolveNode;
         public TextMeshProUGUI m_KeyCount;
         public TextMeshProUGUI m_Level;
         public TextMeshProUGUI m_Reward;
@@ -28,21 +29,22 @@ namespace Logic.UI.UICopy
 
         public override void OnShow()
         {
+            m_DiamondNode.Hide();
+            m_CoinNode.Hide();
+            m_TrophyNode.Hide();
+            m_DissolveNode.Hide();
+
             m_LevelType = (LevelType)m_OpenData_;
             switch (m_LevelType)
             {
                 case LevelType.DiamondCopy:
                     m_DiamondNode.Show();
-                    m_CoinNode.Hide();
-                    m_TrophyNode.Hide();
                     m_CurSelectLevel = CopyManager.Ins.m_DiamondCopyData.Level;
                     m_BaseLevel = CopyManager.Ins.m_DiamondCopyData.Level;
                     m_KeyCount.text = $"{CopyManager.Ins.m_DiamondCopyData.KeyCount}/2";
                     ShowLevel();
                     break;
                 case LevelType.CoinCopy:
-                    m_DiamondNode.Hide();
-                    m_TrophyNode.Hide();
                     m_CoinNode.Show();
                     m_CurSelectLevel = CopyManager.Ins.m_CoinCopyData.Level;
                     m_BaseLevel = CopyManager.Ins.m_CoinCopyData.Level;
@@ -50,17 +52,20 @@ namespace Logic.UI.UICopy
                     ShowLevel();
                     break;
                 case LevelType.OilCopy:
-                    m_DiamondNode.Hide();
-                    m_CoinNode.Hide();
-                    m_TrophyNode.Hide();
+
                     break;
                 case LevelType.TrophyCopy:
-                    m_DiamondNode.Hide();
-                    m_CoinNode.Hide();
                     m_TrophyNode.Show();
                     m_CurSelectLevel = CopyManager.Ins.m_TrophyCopyData.Level;
                     m_BaseLevel = CopyManager.Ins.m_TrophyCopyData.Level;
                     m_KeyCount.text = $"{CopyManager.Ins.m_TrophyCopyData.KeyCount}/2";
+                    ShowLevel();
+                    break;
+                case LevelType.ReformCopy:
+                    m_DissolveNode.Show();
+                    m_CurSelectLevel = CopyManager.Ins.m_ReformCopyData.Level;
+                    m_BaseLevel = CopyManager.Ins.m_ReformCopyData.Level;
+                    m_KeyCount.text = $"{CopyManager.Ins.m_ReformCopyData.KeyCount}/2";
                     ShowLevel();
                     break;
                 default:
@@ -88,6 +93,9 @@ namespace Logic.UI.UICopy
                     break;
                 case LevelType.TrophyCopy:
                     m_Reward.text = CopyManager.Ins.GetCopyTrophyReward(m_CurSelectLevel) + "";
+                    break;
+                case LevelType.ReformCopy:
+                    m_Reward.text = CopyManager.Ins.GetCopyReformReward(m_CurSelectLevel) + "";
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -155,6 +163,9 @@ namespace Logic.UI.UICopy
                     break;
                 case LevelType.TrophyCopy:
                     _KeyCount = CopyManager.Ins.m_TrophyCopyData.KeyCount;
+                    break;
+                case LevelType.ReformCopy:
+                    _KeyCount = CopyManager.Ins.m_ReformCopyData.KeyCount;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

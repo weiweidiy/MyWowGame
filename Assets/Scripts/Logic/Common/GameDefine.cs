@@ -133,6 +133,12 @@ namespace Logic.Common
         public static int CopyTrophySpawnInterval; //刷怪间隔
         public static int CopyTrophyCount;
 
+        public static float CopyReformMoveSpeedMult;
+        public static int CopyReformSpawnInterval; //刷怪间隔
+        public static int CopyReformCount;
+        public static int CopyReformCylinderRate; //气缸权重
+        public static int CopyReformAttrRate; //属性权重
+
         #endregion
 
         #region 考古相关配置
@@ -142,9 +148,6 @@ namespace Logic.Common
         public static int MiningLoopStartFloor; // 考古随机开始矿层
         public static int MiningLoopEndFloor; // 考古随机终止矿层
         public static int ResearchDiamondCost; // 研究每分钟钻石消耗数
-
-        public static int MaxEngineCount; // 玩家引擎数量初始上限
-        public static int EngineFormulaId; // 引擎强化公式ID
 
         #endregion
 
@@ -164,9 +167,20 @@ namespace Logic.Common
         #region 英雄系统相关
 
         public static int RoleAttrMaxLevel;
-        public static int RoleMushRoomExp;
-        public static int RoleBreakSpecialMaterial;
+        public static float RoleMushRoomExp;
+        public static int RoleBreakBreakTPGet;
         public static int RoleBreakEveryLevel;
+        public static int RoleBreakTreeDiamondCost;
+        public static int RoleBreakTreeDefaultId;
+        public static int RoleUpgradeCost;
+
+        #endregion
+
+        #region 引擎
+
+        public static float EngineUpgradeExp;
+        public static int EngineMaxLevel;
+        public static int SparkComposeCost;
 
         #endregion
 
@@ -179,14 +193,14 @@ namespace Logic.Common
             GJJAtkGrow = GameDefineCfg.GetData(2).IntValue;
             GJJBaseHP = GameDefineCfg.GetData(3).IntValue;
             GJJHPGrow = GameDefineCfg.GetData(4).IntValue;
-            GJJAtkSpeed = GameDefineCfg.GetData(5).floatValue;
-            GJJAtkSpeedGrow = GameDefineCfg.GetData(6).floatValue;
-            GJJBaseCriticalDamage = GameDefineCfg.GetData(7).floatValue;
-            GJJCriticalDamageGrow = GameDefineCfg.GetData(8).floatValue;
+            GJJAtkSpeed = GameDefineCfg.GetData(5).FloatValue;
+            GJJAtkSpeedGrow = GameDefineCfg.GetData(6).FloatValue;
+            GJJBaseCriticalDamage = GameDefineCfg.GetData(7).FloatValue;
+            GJJCriticalDamageGrow = GameDefineCfg.GetData(8).FloatValue;
             GJJBaseCritical = GameDefineCfg.GetData(9).IntValue;
             GJJCriticalGrow = GameDefineCfg.GetData(10).IntValue;
-            GJJBaseHPRecover = GameDefineCfg.GetData(11).floatValue;
-            GJJHPRecoverGrow = GameDefineCfg.GetData(12).floatValue;
+            GJJBaseHPRecover = GameDefineCfg.GetData(11).FloatValue;
+            GJJHPRecoverGrow = GameDefineCfg.GetData(12).FloatValue;
             GJJBaseDoubleHit = GameDefineCfg.GetData(13).IntValue;
             GJJDoubleHitGrow = GameDefineCfg.GetData(14).IntValue;
             GJJBaseTripletHit = GameDefineCfg.GetData(15).IntValue;
@@ -196,11 +210,11 @@ namespace Logic.Common
             ChapterDefaultLevel = GameDefineCfg.GetData(112).IntValue;
             LevelDefaultNodeNum = GameDefineCfg.GetData(113).IntValue;
             NormalSpawnInterval = GameDefineCfg.GetData(114).IntValue;
-            BOSSFightTime = GameDefineCfg.GetData(115).floatValue;
-            PlaceRewardMultiplier = GameDefineCfg.GetData(116).floatValue;
+            BOSSFightTime = GameDefineCfg.GetData(115).FloatValue;
+            PlaceRewardMultiplier = GameDefineCfg.GetData(116).FloatValue;
             PlaceRewardBtnShowTime = GameDefineCfg.GetData(117).IntValue;
             PlaceRewardMaxTime = GameDefineCfg.GetData(118).IntValue;
-            PlaceRewardFactor = GameDefineCfg.GetData(119).floatValue;
+            PlaceRewardFactor = GameDefineCfg.GetData(119).FloatValue;
 
             SkillMaxID = GameDefineCfg.GetData(300).IntValue;
             PartnerMaxID = GameDefineCfg.GetData(301).IntValue;
@@ -212,9 +226,9 @@ namespace Logic.Common
             ArmorMinID = GameDefineCfg.GetData(313).IntValue;
             CommonItemMaxLevel = GameDefineCfg.GetData(320).IntValue;
 
-            HangUpATKWight = GameDefineCfg.GetData(400).floatValue;
-            HangUpHPWight = GameDefineCfg.GetData(401).floatValue;
-            HangUpDropWight = GameDefineCfg.GetData(402).floatValue;
+            HangUpATKWight = GameDefineCfg.GetData(400).FloatValue;
+            HangUpHPWight = GameDefineCfg.GetData(401).FloatValue;
+            HangUpDropWight = GameDefineCfg.GetData(402).FloatValue;
             HangUpSpawnInterval = GameDefineCfg.GetData(420).IntValue;
 
             Draw11CardCost = GameDefineCfg.GetData(500).IntValue;
@@ -222,17 +236,25 @@ namespace Logic.Common
 
             CopyDiamondTime = GameDefineCfg.GetData(601).IntValue;
             CopyDiamondCount = GameDefineCfg.GetData(602).IntValue;
-            CopyDiamondMoveSpeedMult = GameDefineCfg.GetData(605).floatValue;
+            CopyDiamondMoveSpeedMult = GameDefineCfg.GetData(605).FloatValue;
             CopyDiamondSpawnInterval = GameDefineCfg.GetData(606).IntValue;
             CopyCoinTime = GameDefineCfg.GetData(611).IntValue;
 
             CopyTrophyTime = GameDefineCfg.GetData(631).IntValue; //战利品副本战斗时限
             CopyTrophyCount = GameDefineCfg.GetData(632).IntValue;
-            CopyTrophyMoveSpeedMult = GameDefineCfg.GetData(635).floatValue;
+            CopyTrophyMoveSpeedMult = GameDefineCfg.GetData(635).FloatValue;
             CopyTrophySpawnInterval = GameDefineCfg.GetData(636).IntValue;
 
+            CopyReformCount = GameDefineCfg.GetData(1001).IntValue;
+            CopyReformMoveSpeedMult = GameDefineCfg.GetData(1004).FloatValue;
+            CopyReformSpawnInterval = GameDefineCfg.GetData(1005).IntValue;
+
+            CopyReformCylinderRate = GameDefineCfg.GetData(1010).IntValue;
+            CopyReformAttrRate = GameDefineCfg.GetData(1011).IntValue;
+
+
             CopyOilConstValue = GameDefineCfg.GetData(641).IntValue;
-            CopyOilBossAtkConstValue = GameDefineCfg.GetData(642).floatValue;
+            CopyOilBossAtkConstValue = GameDefineCfg.GetData(642).FloatValue;
 
             DJProbabilityF = GameDefineCfg.GetData(650).IntValue;
             DJProbabilityE = GameDefineCfg.GetData(651).IntValue;
@@ -249,13 +271,17 @@ namespace Logic.Common
             MiningLoopEndFloor = GameDefineCfg.GetData(705).IntValue;
             ResearchDiamondCost = GameDefineCfg.GetData(706).IntValue;
 
-            MaxEngineCount = GameDefineCfg.GetData(800).IntValue;
-            EngineFormulaId = GameDefineCfg.GetData(801).IntValue;
-
             RoleAttrMaxLevel = GameDefineCfg.GetData(901).IntValue;
-            RoleMushRoomExp = GameDefineCfg.GetData(902).IntValue;
-            RoleBreakSpecialMaterial = GameDefineCfg.GetData(903).IntValue;
+            RoleMushRoomExp = GameDefineCfg.GetData(902).FloatValue;
+            RoleBreakBreakTPGet = GameDefineCfg.GetData(903).IntValue;
             RoleBreakEveryLevel = GameDefineCfg.GetData(904).IntValue;
+            RoleBreakTreeDiamondCost = GameDefineCfg.GetData(905).IntValue;
+            RoleBreakTreeDefaultId = GameDefineCfg.GetData(906).IntValue;
+            RoleUpgradeCost = GameDefineCfg.GetData(907).IntValue;
+
+            EngineUpgradeExp = GameDefineCfg.GetData(1100).FloatValue;
+            EngineMaxLevel = GameDefineCfg.GetData(1102).IntValue;
+            SparkComposeCost = GameDefineCfg.GetData(1103).IntValue;
         }
     }
 }

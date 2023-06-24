@@ -1,6 +1,7 @@
 ﻿using Framework.UI;
 using Logic.Common;
 using Logic.UI.UICopy;
+using Logic.UI.UIPlaceRewards;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,7 +16,12 @@ namespace Logic.UI.UIMain
             m_EventGroup.Register(LogicEvent.ShowOilCopyRewards, async (i, o) =>
             {
 
-                await UIManager.Ins.OpenUI<UIPlaceRewards.UIOilRewards>(o);
+                await UIManager.Ins.OpenUI<UIOilRewards>(o);
+            });
+
+            m_EventGroup.Register(LogicEvent.ShowReformCopyRewards, async (i, o) =>
+            {
+                await UIManager.Ins.OpenUI<UIReformRewards>(o);
             });
         }
     }

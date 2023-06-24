@@ -94,9 +94,12 @@ MonoBehaviour:
   m_DropCoin:
     mantissa: 0
     exponent: 0
+  positionType: 2
+  m_HitteePoints: []
   m_MuzzlePos: {fileID: 0}
-  m_BulletPrefab: {fileID: 0}
+  m_BulletPrefab: {fileID: 1022691708801192542, guid: 208c6dbc48a9fd0419b7a54b7de8943a, type: 3}
   m_MuzzleEffectPrefab: {fileID: 0}
+  m_HitIndexArray: 
 --- !u!95 &7849519444516882382
 Animator:
   serializedVersion: 5
@@ -172,6 +175,14 @@ PrefabInstance:
     - target: {fileID: 2313874603843258738, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852805172422318554, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
+      propertyPath: m_DrawMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718013569475578051, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
+      propertyPath: m_DrawMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7228788573886431633, guid: 9b70d3bc3e1f647409b1b6bae1c2fcba, type: 3}
       propertyPath: m_Name

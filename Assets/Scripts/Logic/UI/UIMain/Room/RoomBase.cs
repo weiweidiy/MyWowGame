@@ -60,11 +60,11 @@ namespace Logic.UI.UIMain.Room
                 m_EventGroup.Register(LogicEvent.EquipAllHPEffectUpdate, (i, o) => ShowAddEffect());
             }
 
-            m_EventGroup.Register(LogicEvent.EngineAllEffectUpdate, (i, o) => ShowAddEffect());
             m_EventGroup.Register(LogicEvent.ResearchCompleteEffectUpdate, (i, o) => ShowAddEffect());
             m_EventGroup.Register(LogicEvent.QuenchingEffectUpdate, (i, o) => ShowAddEffect());
             m_EventGroup.Register(LogicEvent.OnSpoilDraw, (i, o) => { ShowAddEffect(); });
             m_EventGroup.Register(LogicEvent.OnSpoilUpgrade, (i, o) => { ShowAddEffect(); });
+            m_EventGroup.Register(LogicEvent.RoleBreakTreeEffectUpdate, (i, o) => { ShowAddEffect(); });
         }
 
         private void OnDestroy()
@@ -151,7 +151,7 @@ namespace Logic.UI.UIMain.Room
                     m_RoomEffect.text = Formula.GetGJJHPRecover().ToUIString();
                     break;
                 case AttributeType.Critical:
-                    m_RoomEffect.text = (Formula.GetGJJCritical() * 100) + "%";
+                    m_RoomEffect.text = (Formula.GetGJJCritical() * 100).ToString("F2") + "%";
                     break;
                 case AttributeType.CriticalDamage:
                     m_RoomEffect.text = (Formula.GetGJJCriticalDamage() * 100).ToUIStringFloat() + "%";

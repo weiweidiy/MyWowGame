@@ -44,5 +44,21 @@ namespace Configs
         //资源
         public int Res;
 
+        /*
+        1	研究
+2	DJ
+3	DJ组合
+4	司机/英雄
+5	英雄突破树
+6	改造副本-英雄加成
+7	料理
+8	引擎
+9	火花塞
+10	气缸
+11	改造副本战斗属性
+        */
+        //属性归属系统类型
+        public int SystemType;
+
     }
 }

@@ -32,12 +32,23 @@ namespace Logic.Manager
         public void Init(List<GameResearchData> researchList, GameResearchEffectData researchEffectData)
         {
             ResearchMap = new Dictionary<int, GameResearchData>(64);
+
             foreach (var gameResearchData in researchList)
             {
                 ResearchMap.Add(gameResearchData.ResearchId, gameResearchData);
             }
 
+            // 特殊处理后继节点
+            UpdateResearchNextID(researchList);
+
+            // 特殊处理第一个研究项ID
+            if (ResearchMap.Count == 0)
+            {
+                ResearchMap.Add(101, new GameResearchData() { ResearchId = 101 });
+            }
+
             UpdateAllResearchCompleteEffect(researchEffectData);
+            EventManager.Call(LogicEvent.ResearchMapChanged);
         }
 
         #region 研究属性加成
@@ -99,12 +110,48 @@ namespace Logic.Manager
         }
 
         /// <summary>
-        /// 是否能够强化研究
+        /// 用于红点事件的监听
+        /// 研究项目是否满足强化研究
         /// </summary>
-        /// <param name="cost"></param>
         /// <returns></returns>
-        public bool IsCanResearch(int cost)
+        public bool IsItemCanResearch(int id)
         {
+            if (!ResearchMap.ContainsKey(id))
+            {
+                //如果研究Map中没有该id
+                return false;
+            }
+            else
+            {
+                //如果研究Map中有该id
+                if (ResearchMap[id].IsResearching == 1)
+                {
+                    return false;
+                }
+
+                if (ResearchMap[id].ResearchLevel >= GetResearchData(id).LvlMax)
+                {
+                    return false;
+                }
+
+                if (!IsMineCanResearch(id))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// 矿石是否满足强化研究
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool IsMineCanResearch(int id)
+        {
+            var level = GetGameResearchData(id).ResearchLevel;
+            var cost = Formula.GetResearchMineCost(id, level);
             return MiningManager.Ins.m_MiningData.MineCount >= cost;
         }
 
@@ -132,12 +179,73 @@ namespace Logic.Manager
             EventManager.Call(LogicEvent.ResearchCompleteEffectUpdate);
         }
 
+        /// <summary>
+        /// 特殊处理后继节点
+        /// </summary>
+        /// <param name="researchList"></param>
+        private void UpdateResearchNextID(List<GameResearchData> researchList)
+        {
+            foreach (var gameResearchData in researchList)
+            {
+                if (gameResearchData.ResearchLevel >= GetResearchData(gameResearchData.ResearchId).LvlMax)
+                {
+                    //找到当前研究项达到最大等级后的后继节点
+                    var nextIdList = GetResearchData(gameResearchData.ResearchId).NextID;
+                    foreach (var nextId in nextIdList)
+                    {
+                        if (nextId != 0)
+                        {
+                            //找到后继节点对应的前驱节点
+                            var priorIdList = GetResearchData(nextId).PriorID;
+                            //判断该后继节点对应的前驱节点是否都都达到最大等级
+                            if (IsUpdateResearchNextID(priorIdList))
+                            {
+                                if (!ResearchMap.ContainsKey(nextId))
+                                {
+                                    ResearchMap.Add(nextId, new GameResearchData() { ResearchId = nextId });
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 判断该后继节点对应的前驱节点是否都达到最大等级
+        /// </summary>
+        /// <returns></returns>
+        private bool IsUpdateResearchNextID(List<int> priorIdList)
+        {
+            foreach (var priorId in priorIdList)
+            {
+                var priorGameResearchData = GetGameResearchData(priorId);
+                if (priorGameResearchData == null)
+                {
+                    return false;
+                }
+
+                if (priorGameResearchData.ResearchLevel < GetResearchData(priorGameResearchData.ResearchId).LvlMax)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         #endregion
 
         #region 消息发送
 
         public void DoUpdateResearchTime(int pResearchId)
         {
+            var gameResearchData = GetGameResearchData(pResearchId);
+            if (gameResearchData != null)
+            {
+                gameResearchData.IsResearching = 1;
+            }
+
             NetworkManager.Ins.SendMsg(new C2S_UpdateResearchTime()
             {
                 ResearchId = pResearchId,
@@ -161,6 +269,7 @@ namespace Logic.Manager
         {
             var data = (m_ResearchId: pMsg.ResearchId, m_ResearchTimeStamp: pMsg.ResearchTimeStamp);
             EventManager.Call(LogicEvent.OnUpdateResearchTime, data);
+            EventManager.Call(LogicEvent.ResearchMapChanged);
         }
 
         public void OnResearching(S2C_Researching pMsg)
@@ -182,10 +291,14 @@ namespace Logic.Manager
                 }
             }
 
+            // 特殊处理后继节点
+            UpdateResearchNextID(pMsg.ResearchList);
+
             UpdateAllResearchCompleteEffect(pMsg.ResearchEffectData);
 
             var eventData = (m_ResearchId: pMsg.ResearchId, m_ResearchLevel: pMsg.ResearchLevel);
             EventManager.Call(LogicEvent.OnResearching, eventData);
+            EventManager.Call(LogicEvent.ResearchMapChanged);
         }
 
         #endregion

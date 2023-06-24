@@ -17,46 +17,23 @@ namespace Configs
 
     public class EngineData
     {
+        /*
+        等级=ID
+        */
         //引擎ID
         public int ID;
 
-        //类型
-        public int Quality;
+        //基础攻击力比例
+        public float BaseAdditionATK;
 
-        /*
-        Administrator:
-显示为百分比
+        //基础体力比例
+        public float BaseAdditionHP;
 
-        */
-        //引擎名称
-        public string Name;
-
-        //拥有加成攻击力比例
-        public float HasAdditionATK;
-
-        //拥有加成体力比例
-        public float HasAdditionHP;
-
-        //消耗齿轮
+        //消耗科技点经验
         public int CostGear;
 
-        //改造次数
-        public int ReformTime;
-
-        //引擎属性随机组ID
-        public List<int> EngineAttrGroup;
-
-        //引擎属性随机组权重
-        public List<int> Wight;
-
-        //攻击成长
-        public int AttGrow;
-
-        //体力成长
-        public int HPGrow;
-
-        //ResID
-        public int ResID;
+        //消耗科技点
+        public int Costtech;
 
     }
 }

@@ -17,9 +17,9 @@ namespace DummyServer
 
         public void InitShop(DummyDB pDB)
         {
-            pDB.m_ShopSkillData = new GameShopSkillData { ID = 3001, Level = 1, Exp = 0, TotalExp = 0 };
-            pDB.m_ShopPartnerData = new GameShopPartnerData { ID = 4001, Level = 1, Exp = 0, TotalExp = 0 };
-            pDB.m_ShopEquipData = new GameShopEquipData { ID = 1001, Level = 1, Exp = 0, TotalExp = 0 };
+            pDB.m_ShopSkillData = new GameShopCardData { ID = 3001, Level = 1, Exp = 0, TotalExp = 0 };
+            pDB.m_ShopPartnerData = new GameShopCardData { ID = 4001, Level = 1, Exp = 0, TotalExp = 0 };
+            pDB.m_ShopEquipData = new GameShopCardData { ID = 1001, Level = 1, Exp = 0, TotalExp = 0 };
         }
 
         #endregion

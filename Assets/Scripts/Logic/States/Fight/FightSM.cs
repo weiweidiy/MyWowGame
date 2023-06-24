@@ -38,6 +38,11 @@ namespace Logic.States.Fight
         {
             NextState(m_ContextData.m_HandUp);
         }
+
+        public void ToIdle()
+        {
+            NextState(m_ContextData.m_Idle);
+        }
         
         #endregion
     }
@@ -53,6 +58,7 @@ namespace Logic.States.Fight
         public readonly FS_Over m_FightOver = new (FightState.Over);
         public readonly FS_Switch m_Switch = new (FightState.Switch);
         public readonly FS_HandUp m_HandUp = new (FightState.HandUp);
+        public readonly FS_Idle m_Idle = new(FightState.Idle);
 
         //当前的关卡类型
         public LevelType m_LevelType = LevelType.NormalLevel;
@@ -73,5 +79,6 @@ namespace Logic.States.Fight
         Over,       //战斗结束
         Switch,     //战斗特殊UI/清理战场/切换到特殊战斗状态(Boss/副本等)
         HandUp,     //挂机状态
+        Idle,       //待机，什么都不干
     }
 }

@@ -1,5 +1,4 @@
 ﻿using BreakInfinity;
-using Framework.Extension;
 using Framework.Pool;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -18,9 +17,9 @@ namespace Logic.Fight.Weapon
         
         private bool m_IsFired = false;
         private BigDouble m_Damage;
-        private Vector3 m_TargetPos;
+        private Transform m_TargetPos;
 
-        public void Fire(Vector3 pTargetPos, BigDouble pDamage)
+        public void Fire(Transform pTargetPos, BigDouble pDamage)
         {
             m_TargetPos = pTargetPos;
             m_IsFired = true;
@@ -37,9 +36,9 @@ namespace Logic.Fight.Weapon
                 return;
             }
             
-            transform.position = Vector3.MoveTowards(transform.position, m_TargetPos, Time.deltaTime * m_Speed);
+            transform.position = Vector3.MoveTowards(transform.position, m_TargetPos.position, Time.deltaTime * m_Speed);
 
-            if (Mathf.Abs(transform.position.x - m_TargetPos.x) < 0.03f)
+            if (Mathf.Abs(transform.position.x - m_TargetPos.position.x) < 0.03f)
             {
                 DoAttack();
             }
@@ -55,7 +54,7 @@ namespace Logic.Fight.Weapon
             }
 
             m_IsFired = false;
-            FightManager.Ins.GetGJJTarget().m_Health.Damage(m_Damage);
+            FightManager.Ins.GetGJJTarget().m_Health.Damage(m_Damage, false, m_TargetPos);
             FightObjPool.Ins.Recycle(gameObject);
         }
         

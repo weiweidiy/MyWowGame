@@ -32,9 +32,8 @@ namespace Logic.Manager
             m_EventGroup.Register(LogicEvent.TimeDayChanged, (i, o) => SendC2S_RequestDailyTaskList());
         }
 
-        public override void Dispose()
+        public override void OnSingletonRelease()
         {
-            base.Dispose();
             m_EventGroup.Release();
         }
 

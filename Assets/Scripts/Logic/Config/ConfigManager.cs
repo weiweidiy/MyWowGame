@@ -36,12 +36,10 @@ namespace Logic.Config
         public CopyDiamondCfg m_CopyDiamondCfg;
         public HandUpCfg m_HandUpCfg;
         public EngineCfg m_EngineCfg;
-        public DigEngineCfg m_DigEngineCfg;
         public AttributeCfg m_AttributeCfg;
         public StoryCfg m_StoryCfg;
         public LockCfg m_LockCfg;
         public LevelCfg m_LevelCfg;
-        public EngineLvlUpCfg m_EngineLvlUpCfg;
         public DigResearchCfg m_DigResearchCfg;
         public CopyOilCfg m_CopyOilCfg;
         public CopyTrophyCfg m_CopyTrophyCfg;
@@ -56,6 +54,23 @@ namespace Logic.Config
         public HerosLvUpCfg m_HerosLvUpCfg;
         public HerosBreakUpCfg m_HerosBreakUpCfg;
         public RoomCfg m_RoomCfg;
+        public SpoilBreakUpCfg m_SpoilBreakUpCfg;
+        public HerosBreakCfg m_HerosBreakCfg;
+        public ShopCfg m_ShopCfg;
+        public ShopDiamondCfg m_ShopDiamondCfg;
+        public CopyReformCfg m_CopyReformCfg;
+        public ReformHeroSlotCfg m_ReformHeroSlotCfg;
+        public CylinderCfg m_CylinderCfg;
+        public ReformFightAttributeCfg m_ReformFightAttributeCfg;
+        public ReformCylinderGroupCfg m_ReformCylinderGroupCfg;
+        public ReformRewardCfg m_ReformRewardCfg;
+        public AttributeRandomCfg m_AttributeRandomCfg;
+        public DigSparkCfg m_DigSparkCfg;
+        public SparkCfg m_SparkCfg;
+        public SparkGroupCfg m_SparkGroupCfg;
+        public MonsterCfg m_MonsterCfg;
+        public FormationGroupCfg m_FormationGroupCfg;
+        public FormationCfg m_FormationCfg;
 
         #endregion
 
@@ -184,12 +199,6 @@ namespace Logic.Config
                 m_EngineCfg = JsonMapper.ToObject<EngineCfg>(_Data.text);
                 _Load.Release();
 
-                _Load = YooAssets.LoadAssetAsync<TextAsset>("DigEngineCfg");
-                await _Load.ToUniTask();
-                _Data = _Load.AssetObject as TextAsset;
-                m_DigEngineCfg = JsonMapper.ToObject<DigEngineCfg>(_Data.text);
-                _Load.Release();
-
                 _Load = YooAssets.LoadAssetAsync<TextAsset>("AttributeCfg");
                 await _Load.ToUniTask();
                 _Data = _Load.AssetObject as TextAsset;
@@ -212,12 +221,6 @@ namespace Logic.Config
                 await _Load.ToUniTask();
                 _Data = _Load.AssetObject as TextAsset;
                 m_LevelCfg = JsonMapper.ToObject<LevelCfg>(_Data.text);
-                _Load.Release();
-
-                _Load = YooAssets.LoadAssetAsync<TextAsset>("EngineLvlUpCfg");
-                await _Load.ToUniTask();
-                _Data = _Load.AssetObject as TextAsset;
-                m_EngineLvlUpCfg = JsonMapper.ToObject<EngineLvlUpCfg>(_Data.text);
                 _Load.Release();
 
                 _Load = YooAssets.LoadAssetAsync<TextAsset>("DigResearchCfg");
@@ -304,12 +307,118 @@ namespace Logic.Config
                 _Data = _Load.AssetObject as TextAsset;
                 m_RoomCfg = JsonMapper.ToObject<RoomCfg>(_Data.text);
                 _Load.Release();
-                
+
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("SpoilBreakUpCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_SpoilBreakUpCfg = JsonMapper.ToObject<SpoilBreakUpCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("HerosBreakCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_HerosBreakCfg = JsonMapper.ToObject<HerosBreakCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("ShopCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_ShopCfg = JsonMapper.ToObject<ShopCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("ShopDiamondCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_ShopDiamondCfg = JsonMapper.ToObject<ShopDiamondCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("CopyReformCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_CopyReformCfg = JsonMapper.ToObject<CopyReformCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("ReformHeroSlotCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_ReformHeroSlotCfg = JsonMapper.ToObject<ReformHeroSlotCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("CylinderCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_CylinderCfg = JsonMapper.ToObject<CylinderCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("ReformFightAttributeCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_ReformFightAttributeCfg = JsonMapper.ToObject<ReformFightAttributeCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("ReformCylinderGroupCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_ReformCylinderGroupCfg = JsonMapper.ToObject<ReformCylinderGroupCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("ReformRewardCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_ReformRewardCfg = JsonMapper.ToObject<ReformRewardCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("AttributeRandomCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_AttributeRandomCfg = JsonMapper.ToObject<AttributeRandomCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("DigSparkCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_DigSparkCfg = JsonMapper.ToObject<DigSparkCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("SparkCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_SparkCfg = JsonMapper.ToObject<SparkCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("SparkGroupCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_SparkGroupCfg = JsonMapper.ToObject<SparkGroupCfg>(_Data.text);
+                _Load.Release();
+
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("MonsterCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_MonsterCfg = JsonMapper.ToObject<MonsterCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("FormationGroupCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_FormationGroupCfg = JsonMapper.ToObject<FormationGroupCfg>(_Data.text);
+                _Load.Release();
+
+                _Load = YooAssets.LoadAssetAsync<TextAsset>("FormationCfg");
+                await _Load.ToUniTask();
+                _Data = _Load.AssetObject as TextAsset;
+                m_FormationCfg = JsonMapper.ToObject<FormationCfg>(_Data.text);
+                _Load.Release();
+
             }
             catch (Exception e)
             {
                 Debug.LogError(e);
             }
+
+
 
             //卸载
             GameMain.Ins.UnloadUnusedAssets();

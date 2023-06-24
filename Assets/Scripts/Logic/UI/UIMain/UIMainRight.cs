@@ -1,5 +1,6 @@
 ﻿using System;
 using Configs;
+using Framework.EventKit;
 using Framework.Extension;
 using Framework.Helper;
 using Framework.UI;
@@ -112,6 +113,8 @@ namespace Logic.UI.UIMain
             {
                 NetworkManager.Ins.SendMsg(
                     new C2S_TaskGetReward { IsMain = true, TaskID = m_GameTaskData.TaskID });
+                //主线任务已领取变化
+                EventManager.Call(LogicEvent.MainTaskDoneChanged, m_GameTaskData.TaskID);
             }
             else
             {

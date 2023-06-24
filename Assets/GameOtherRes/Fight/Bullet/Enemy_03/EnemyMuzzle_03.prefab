@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4211918969739557596}
   - component: {fileID: 4211918969739557598}
   - component: {fileID: 4211918969739557599}
+  - component: {fileID: 4189537355438966714}
   m_Layer: 13
   m_Name: TX_QK01_1
   m_TagString: Untagged
@@ -105,6 +106,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &4189537355438966714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4211918969739557597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c364e7a8609b1f94fa72d62049a91de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
 --- !u!1 &4211918970376861571
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,6 +129,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4211918970376861570}
   - component: {fileID: -6067499686826319678}
+  - component: {fileID: 6757222308922262278}
+  - component: {fileID: 8459544112744072761}
   m_Layer: 13
   m_Name: EnemyMuzzle_03
   m_TagString: Untagged
@@ -151,3 +167,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DelayTime: 0.3
+--- !u!114 &6757222308922262278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4211918970376861571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6090da511f8374135a15dd8655adcd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
+  _mode: 1
+  _globalClockKey: 
+  _rewindable: 0
+  _recordingDuration: 30
+--- !u!114 &8459544112744072761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4211918970376861571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9fdec4ff2bd044dbcd4aad1d46f3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  module: 2

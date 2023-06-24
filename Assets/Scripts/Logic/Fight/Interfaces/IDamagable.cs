@@ -7,5 +7,7 @@ namespace Logic.Fight.Skill.State
         bool IsDead();
 
         Vector3 GetPos(bool pNeedRandom = true);
+
+        Transform GetTransform();
     }
 }
